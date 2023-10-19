@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class scenemanager_001 : MonoBehaviour
+public class scene_manager_001 : MonoBehaviour
 {
     [SerializeField]
     string targetSceneName;
 
-    public static scenemanager_001 Instance { get; private set; }
+    public static scene_manager_001 Instance { get; private set; }
 
     //使い方
     //①このスクリプトをadd componentする
