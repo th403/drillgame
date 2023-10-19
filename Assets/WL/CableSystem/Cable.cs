@@ -13,6 +13,9 @@ public class Cable : MonoBehaviour
 
     private void Start()
     {
+        //set length
+        SetLength();
+
         //set toward
         SetToward();
     }
@@ -21,8 +24,7 @@ public class Cable : MonoBehaviour
     void FixedUpdate()
     {
         //set length
-        Vector3 delta = cat.position - joint.position;
-        length = delta.magnitude;
+        SetLength();
 
         //set toward
         SetToward();
@@ -33,6 +35,13 @@ public class Cable : MonoBehaviour
             CableManager.Instance.AddCable(tail.position);
             Destroy(this);
         }
+    }
+
+    void SetLength()
+    {
+        Vector3 delta = cat.position - joint.position;
+        length = delta.magnitude;
+        joint.localScale = new Vector3(1, 1, length);
     }
 
     void SetToward()
