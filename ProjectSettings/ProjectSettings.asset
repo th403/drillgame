@@ -621,7 +621,8 @@ PlayerSettings:
   webGLThreadsSupport: 0
   webGLDecompressionFallback: 0
   webGLPowerPreference: 2
-  scriptingDefineSymbols: {}
+  scriptingDefineSymbols:
+    Standalone: __DIGGER__;__DIGGER_RUNTIME__
   additionalCompilerArguments: {}
   platformArchitecture: {}
   scriptingBackend: {}
