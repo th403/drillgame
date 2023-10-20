@@ -229,6 +229,7 @@ Material:
     - _NormalMapSpace: 0
     - _NormalScale: 1
     - _OpaqueCullMode: 2
+    - _Opaque_or: 1
     - _PPDLodThreshold: 5
     - _PPDMaxSamples: 15
     - _PPDMinSamples: 5
@@ -284,13 +285,15 @@ Material:
     - _ZTestGBuffer: 4
     - _ZTestTransparent: 3
     - _ZWrite: 0
+    - _border_speed: 0.09
+    - _border_whith: 2
     - _circle_X: 0.495
     - _circle_Y: 0.205
     - _circle_hight: 0.5
     - _circle_offset_X: 0.5
     - _circle_offset_Y: 0.673
     - _circle_size: 0.262
-    - _circle_transparent: 1
+    - _circle_transparent: 0.388
     - _circle_whith: 0.686
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
