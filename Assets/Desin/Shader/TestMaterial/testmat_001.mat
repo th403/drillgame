@@ -264,7 +264,7 @@ Material:
     - _TexWorldScaleEmissive: 1
     - _TextureTiling: 0.5
     - _Texture_Tiling: 0.5
-    - _Texture_or_SolidColor: 1
+    - _Texture_or_SolidColor: 0
     - _Thickness: 1
     - _TransmissionEnable: 1
     - _TransparentBackfaceEnable: 0
@@ -288,9 +288,9 @@ Material:
     - _circle_Y: 0.205
     - _circle_hight: 0.5
     - _circle_offset_X: 0.5
-    - _circle_offset_Y: 0.5
-    - _circle_size: 0.278
-    - _circle_transparent: 0
+    - _circle_offset_Y: 0.673
+    - _circle_size: 0.262
+    - _circle_transparent: 1
     - _circle_whith: 0.686
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
@@ -309,7 +309,7 @@ Material:
     - _UVDetailsMappingMask: {r: 1, g: 0, b: 0, a: 0}
     - _UVMappingMask: {r: 1, g: 0, b: 0, a: 0}
     - _UVMappingMaskEmissive: {r: 1, g: 0, b: 0, a: 0}
-    - _circle_color: {r: 1, g: 0, b: 0, a: 0}
+    - _circle_color: {r: 0.65881985, g: 0.9689649, b: 0.99056596, a: 1}
   m_BuildTextureStacks: []
 --- !u!114 &4750596952477883242
 MonoBehaviour:
