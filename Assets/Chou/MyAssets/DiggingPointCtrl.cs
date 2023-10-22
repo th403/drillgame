@@ -10,8 +10,8 @@ namespace Digger.Modules.Runtime.Sources
 {
     public class DiggingPointCtrl : ADiggerRuntimeMonoBehaviour
     {
-        public GameObject Camera;
-        public GameObject Player;
+        //public GameObject Camera;
+        //public GameObject Player;
         public GameObject Effect;
         //public GameObject DirtAndSpace;
         public float length = 1.0f;
@@ -53,8 +53,8 @@ namespace Digger.Modules.Runtime.Sources
         {
             time += Time.deltaTime;
 
-            Vector3 direction = -(Camera.transform.position - Player.transform.position);
-            this.transform.position = Player.transform.position + direction.normalized * length;
+            //Vector3 direction = -(Camera.transform.position - Player.transform.position);
+            //this.transform.position = Player.transform.position + direction.normalized * length;
             //if (Input.GetMouseButtonDown(0))
             //{
             //    GameObject clone = Instantiate(DirtAndSpace, transform.position, transform.rotation);
