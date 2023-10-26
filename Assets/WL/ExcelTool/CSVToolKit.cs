@@ -25,7 +25,6 @@ public static class CSVToolKit
             while((line=sr.ReadLine())!=null)
             {
                 string[] words = line.Split(',');
-                Debug.Log(',');
                 List<string> wordList = new List<string>();
                 foreach(var word in words)
                 {
