@@ -4,41 +4,35 @@ using UnityEngine;
 
 public class MineralCtrl : MonoBehaviour
 {
-    //public float PhysicalEffect = 100;
-    //public float FlameEffect = 50;
-    //public float ChemicalEffect = 0;
-    public float HP = 10;
-    public GameObject Dropping;
-    private float CountDamage = 0;
+    public int Value = 1000;
+    //public GameObject Dropping;
+
+    public GameObject FundsText;
+    private UIFundsCtrl UIFunds;
+
     // Start is called before the first frame update
     void Start()
     {
-
+        UIFunds = FundsText.GetComponent<UIFundsCtrl>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (CountDamage >= 10)
-        {
-            HP -= CountDamage;
-
-            if (Dropping)
-            {
-                Instantiate(Dropping, transform.position, transform.rotation);
-            }
-
-            if (HP <= 0)
-            {
-                Destroy(this.gameObject);
-            }
-            CountDamage -= 10;
-        }
 
     }
 
-    public void TakeDamage(float damage)
+    private void OnTriggerEnter(Collider other)
     {
-        CountDamage += damage;
+        if (other.tag == "Driller")
+        {
+            this.GetComponent<Rigidbody>().useGravity = true;
+        }
+
+        if(other.tag == "Player")
+        {
+            UIFunds.AddFunds(Value);
+            Destroy(this.gameObject);
+        }
     }
 }
