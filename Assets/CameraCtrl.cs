@@ -1,32 +1,55 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Digger.Modules.Core.Sources;
+using Digger.Modules.Core.Sources.Operations;
+using Unity.Jobs;
 using UnityEngine;
 
-public class CameraCtrl : MonoBehaviour
-{
-    public Camera camera_Player;
-    public Camera camera_Driller;
-    public GameObject player;
-    public GameObject driller;
-    private DrillerRobo drillerRobo;
-
-    // Start is called before the first frame update
-    void Start()
+    public class CameraCtrl : MonoBehaviour
     {
-        camera_Player.enabled = true;
-        camera_Driller.enabled = false;
-        drillerRobo = camera_Driller.GetComponent<DrillerRobo>();
-    }
+        public Camera camera_Player;
+        public Camera camera_Driller;
+        public GameObject player;
+        public GameObject driller;
+        private DrillerRobo drillerRobo;
 
-    // Update is called once per frame
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.F))
+        public GameObject FundsText;
+        private UIFundsCtrl UIFunds;
+
+        // Start is called before the first frame update
+        void Start()
         {
+            camera_Player.enabled = true;
+            camera_Driller.enabled = false;
+            drillerRobo = driller.GetComponent<DrillerRobo>();
+            driller.gameObject.SetActive(false);
+            UIFunds = FundsText.GetComponent<UIFundsCtrl>();
+
+        }
+
+        // Update is called once per frame
+        void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.F))
+            {
+                if((!driller.gameObject.activeSelf && UIFunds.AddFunds(-10000))
+                    || (driller.gameObject.activeSelf))
+                {
+                    ChangeCamera();
+                }
+            }
+        }
+
+        public void ChangeCamera()
+        {
+            driller.gameObject.SetActive(!driller.gameObject.activeSelf);
+            driller.transform.position = player.transform.position;
+            driller.transform.rotation = camera_Player.transform.rotation;
             camera_Player.enabled = !camera_Player.enabled;
 
             camera_Driller.enabled = !camera_Driller.enabled;
             drillerRobo.SetUse(camera_Driller.enabled);
         }
+
     }
-}
