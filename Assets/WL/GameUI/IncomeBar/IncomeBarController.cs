@@ -8,6 +8,7 @@ using UnityEngine;
 /// income and expense
 /// start update
 /// is finish
+/// create noruma
 /// </summary>
 public class IncomeBarController : MonoBehaviour
 {
@@ -23,15 +24,18 @@ public class IncomeBarController : MonoBehaviour
         get { return instance; }
     }
 
+    public GameObject norumaUIPrefab;
+    public RectTransform norumaBar;
     public Transform currentMoneyBar;
     public Transform delayMoneyBar;
 
-    public WLProperty<float> targetMoney=new WLProperty<float>();
-    public WLProperty<float> currentMoney=new WLProperty<float>();
+    //public WLProperty<float> targetMoney=new WLProperty<float>();
+    //public WLProperty<float> currentMoney=new WLProperty<float>();
 
     private void Start()
     {
-        currentMoney.OnValueChange += (float cur, float next) =>
+        //add event to property 'money'
+        MainGameDataManager.Instance.money.OnValueChange += (float cur, float next) =>
           {
               if(cur>next)
               {
@@ -46,12 +50,8 @@ public class IncomeBarController : MonoBehaviour
 
     float MoneyRate
     {
-        get { return currentMoney.Value / targetMoney.Value; }
-    }
-
-    public bool IsFinishTarget
-    {
-        get { return currentMoney.Value >= targetMoney.Value; }
+        get { return MainGameDataManager.Instance.Money / 
+                MainGameDataManager.Instance.GreatestNorumaTarget; }
     }
 
     public void StartShorter()
@@ -68,5 +68,21 @@ public class IncomeBarController : MonoBehaviour
 
         currentMoneyBar.DOKill();
         currentMoneyBar.DOScale(new Vector3(MoneyRate, 1, 1), 1).SetEase(Ease.OutSine);
+    }
+
+    public void CreateNorumaUI(Noruma noruma)
+    {
+        //create
+        GameObject go = Instantiate(norumaUIPrefab, norumaBar);
+        NorumaUI ui = go.GetComponent<NorumaUI>();
+
+        //set ui name
+        ui.SetNorumaName(noruma.norumaName);
+
+        //set ui position
+        float barLength = norumaBar.rect.width;
+        float target = noruma.norumaTarget;
+        float max = MainGameDataManager.Instance.GreatestNorumaTarget;
+        ui.SetRatioPosition(barLength, target, max);
     }
 }

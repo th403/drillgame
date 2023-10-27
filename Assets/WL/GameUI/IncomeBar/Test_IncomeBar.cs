@@ -4,14 +4,32 @@ using UnityEngine;
 
 public class Test_IncomeBar : MonoBehaviour
 {
-    public float money;
-    public float targetMoney;
+    public List<Noruma> norumas; 
+
+    [Header("button")]
     public bool test;
+
+    [Header("read only")]
+    public float money;
+    public float maxMoney;
 
     private void Start()
     {
-        money = IncomeBarController.Instance.currentMoney.Value;
-        targetMoney = IncomeBarController.Instance.targetMoney.Value;
+        //set noruma target before make ui
+        foreach (var n in norumas)
+        {
+            MainGameDataManager.Instance.norumaTargets.Add(n.norumaTarget);
+        }
+
+        //create ui
+        foreach (var n in norumas)
+        {
+            IncomeBarController.Instance.CreateNorumaUI(n);
+        }
+
+        //show value
+        money = MainGameDataManager.Instance.money.Value;
+        maxMoney = MainGameDataManager.Instance.GreatestNorumaTarget;
     }
 
     private void Update()
@@ -19,8 +37,7 @@ public class Test_IncomeBar : MonoBehaviour
         if(test)
         {
             test = false;
-            IncomeBarController.Instance.currentMoney.Value = money;
-            IncomeBarController.Instance.targetMoney.Value = targetMoney;
+            MainGameDataManager.Instance.money.Value = money;
         }
     }
 }
