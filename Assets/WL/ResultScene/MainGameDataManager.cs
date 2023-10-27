@@ -21,9 +21,10 @@ public class MainGameDataManager : MonoBehaviour
     public WLProperty<float> money;
 
     //target
-    public List<float> norumaTargets;
+    public List<Noruma> norumas;
     public List<WLProperty<bool>> energyGots;//x num
     public WLProperty<float> time;
+    public WLProperty<Noruma> nowNoruma;
 
     //result
     public WLProperty<int> rank;
@@ -34,12 +35,30 @@ public class MainGameDataManager : MonoBehaviour
         get { return money.Value; }
         set { money.Value = value; }
     }
+
     public float GreatestNorumaTarget
     {
         get 
         {
-            if (norumaTargets.Count == 0) return 0;
-            return norumaTargets[norumaTargets.Count - 1]; 
+            if (norumas.Count == 0) return 0;
+            return norumas[norumas.Count - 1].target; 
+        }
+    }
+
+    public Noruma GreatestNoruma
+    {
+        get { return norumas[norumas.Count - 1]; }
+    }
+
+    public Noruma NowNoruma
+    {
+        get
+        {
+            return nowNoruma.Value;
+        }
+        set
+        {
+            nowNoruma.Value = value;
         }
     }
 

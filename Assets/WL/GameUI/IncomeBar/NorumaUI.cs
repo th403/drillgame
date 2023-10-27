@@ -8,14 +8,14 @@ using System;
 [Serializable]
 public class Noruma
 {
-    public string norumaName;
-    public float norumaTarget;
+    public string name;
+    public float target;
+    public Color color;
 }
 
 public class NorumaUI : MonoBehaviour
 {
     public TMP_Text text;
-    public float barLength;
 
     public void Start()
     {
