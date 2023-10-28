@@ -24,11 +24,10 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: terrainMaterial
-  m_Shader: {fileID: 4800000, guid: 6e4ae4064600d784cac1e41a9e6f2e59, type: 3}
-  m_ValidKeywords:
-  - _DISABLE_SSR_TRANSPARENT
+  m_Shader: {fileID: 4800000, guid: 7e84d05393d3a4541ae56ebd3eeb4ade, type: 3}
+  m_ValidKeywords: []
+  m_InvalidKeywords:
   - _NORMALMAP_TANGENT_SPACE
-  m_InvalidKeywords: []
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -131,6 +130,22 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _Mask4:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Mask5:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Mask6:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Mask7:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _MaskMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -152,6 +167,22 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Normal3:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Normal4:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Normal5:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Normal6:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Normal7:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
@@ -192,6 +223,22 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Splat3:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Splat4:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Splat5:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Splat6:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Splat7:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
@@ -249,6 +296,7 @@ Material:
     - _AlphaToMask: 0
     - _AlphaToMaskInspectorValue: 0
     - _Anisotropy: 0
+    - _BaryContrast: 20
     - _Blend: 0
     - _BlendMode: 0
     - _BumpScale: 1
@@ -302,6 +350,14 @@ Material:
     - _Ior: 1.5
     - _IridescenceMask: 1
     - _IridescenceThickness: 1
+    - _LayerHasMask0: 0
+    - _LayerHasMask1: 0
+    - _LayerHasMask2: 0
+    - _LayerHasMask3: 0
+    - _LayerHasMask4: 0
+    - _LayerHasMask5: 0
+    - _LayerHasMask6: 0
+    - _LayerHasMask7: 0
     - _LinkDetailsWithBase: 1
     - _MaterialID: 1
     - _Metallic: 0
@@ -309,11 +365,23 @@ Material:
     - _Metallic1: 0
     - _Metallic2: 0
     - _Metallic3: 0
+    - _Metallic4: 0
+    - _Metallic5: 0
+    - _Metallic6: 0
+    - _Metallic7: 0
     - _MetallicRemapMax: 0
     - _MetallicRemapMin: 0
     - _Mode: 0
     - _NormalMapSpace: 0
     - _NormalScale: 1
+    - _NormalScale0: 1
+    - _NormalScale1: 1
+    - _NormalScale2: 1
+    - _NormalScale3: 1
+    - _NormalScale4: 1
+    - _NormalScale5: 1
+    - _NormalScale6: 1
+    - _NormalScale7: 1
     - _NumLayersCount: 1
     - _OcclusionStrength: 1
     - _OpaqueCullMode: 2
@@ -334,6 +402,10 @@ Material:
     - _Smoothness1: 0.5
     - _Smoothness2: 0.5
     - _Smoothness3: 0.5
+    - _Smoothness4: 0
+    - _Smoothness5: 0
+    - _Smoothness6: 0
+    - _Smoothness7: 0
     - _SmoothnessRemapMax: 1
     - _SmoothnessRemapMin: 0
     - _SmoothnessTextureChannel: 0
@@ -382,6 +454,14 @@ Material:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _BaseColorMap_MipInfo: {r: 0, g: 0, b: 0, a: 0}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _DiffuseRemapScale0: {r: 1, g: 1, b: 1, a: 1}
+    - _DiffuseRemapScale1: {r: 1, g: 1, b: 1, a: 1}
+    - _DiffuseRemapScale2: {r: 1, g: 1, b: 1, a: 1}
+    - _DiffuseRemapScale3: {r: 1, g: 1, b: 1, a: 1}
+    - _DiffuseRemapScale4: {r: 1, g: 1, b: 1, a: 1}
+    - _DiffuseRemapScale5: {r: 1, g: 1, b: 1, a: 1}
+    - _DiffuseRemapScale6: {r: 1, g: 1, b: 1, a: 1}
+    - _DiffuseRemapScale7: {r: 1, g: 1, b: 1, a: 1}
     - _DiffusionProfileAsset: {r: 0, g: 0, b: 0, a: 0}
     - _DoubleSidedConstants: {r: 1, g: 1, b: -1, a: 0}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
@@ -389,6 +469,22 @@ Material:
     - _EmissiveColorLDR: {r: 0, g: 0, b: 0, a: 1}
     - _InvPrimScale: {r: 1, g: 1, b: 0, a: 0}
     - _IridescenceThicknessRemap: {r: 0, g: 1, b: 0, a: 0}
+    - _MaskMapRemapOffset0: {r: 0, g: 0, b: 0, a: 0}
+    - _MaskMapRemapOffset1: {r: 0, g: 0, b: 0, a: 0}
+    - _MaskMapRemapOffset2: {r: 0, g: 0, b: 0, a: 0}
+    - _MaskMapRemapOffset3: {r: 0, g: 0, b: 0, a: 0}
+    - _MaskMapRemapOffset4: {r: 0, g: 0, b: 0, a: 0}
+    - _MaskMapRemapOffset5: {r: 0, g: 0, b: 0, a: 0}
+    - _MaskMapRemapOffset6: {r: 0, g: 0, b: 0, a: 0}
+    - _MaskMapRemapOffset7: {r: 0, g: 0, b: 0, a: 0}
+    - _MaskMapRemapScale0: {r: 1, g: 1, b: 1, a: 1}
+    - _MaskMapRemapScale1: {r: 1, g: 1, b: 1, a: 1}
+    - _MaskMapRemapScale2: {r: 1, g: 1, b: 1, a: 1}
+    - _MaskMapRemapScale3: {r: 1, g: 1, b: 1, a: 1}
+    - _MaskMapRemapScale4: {r: 1, g: 1, b: 1, a: 1}
+    - _MaskMapRemapScale5: {r: 1, g: 1, b: 1, a: 1}
+    - _MaskMapRemapScale6: {r: 1, g: 1, b: 1, a: 1}
+    - _MaskMapRemapScale7: {r: 1, g: 1, b: 1, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
     - _SpecularColor: {r: 1, g: 1, b: 1, a: 1}
     - _ThicknessRemap: {r: 0, g: 1, b: 0, a: 0}
