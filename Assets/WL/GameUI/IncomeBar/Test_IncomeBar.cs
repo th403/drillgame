@@ -22,12 +22,6 @@ public class Test_IncomeBar : MonoBehaviour
             MainGameDataManager.Instance.norumas.Add(n);
         }
 
-        //create ui
-        foreach (var n in norumas)
-        {
-            IncomeBarController.Instance.CreateNorumaUI(n);
-        }
-
         //init income bar event
         IncomeBarController.Instance.InitEvent();
 

@@ -62,6 +62,21 @@ public class MainGameDataManager : MonoBehaviour
         }
     }
 
+    public float PassNorumaTarget
+    {
+        get
+        {
+            foreach (var n in norumas)
+            {
+                if (n.name == "hugou")
+                {
+                    return n.target;
+                }
+            }
+            return GreatestNoruma.target;
+        }
+    }
+
     public void Init()
     {
 

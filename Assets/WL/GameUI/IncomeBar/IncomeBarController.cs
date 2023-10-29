@@ -8,9 +8,10 @@ using UnityEngine.UI;
 
 /// <summary>
 /// income and expense
-/// start update
-/// is finish
-/// create noruma
+/// 
+/// update money value
+/// update money gauge
+/// update noruma hint
 /// </summary>
 public class IncomeBarController : MonoBehaviour
 {
@@ -26,12 +27,16 @@ public class IncomeBarController : MonoBehaviour
         get { return instance; }
     }
 
-    public GameObject norumaUIPrefab;
-    public RectTransform norumaBar;
-    public RectTransform norumaHint;
-    public Gradient gradient;
+    //money number
+    public RectTransform moneyNumber;
+    public RectTransform passMoneyNumber;
+
+    //money gauge
     public Transform currentMoneyBar;
     public Transform delayMoneyBar;
+
+    //noruma hint
+    public RectTransform norumaHint;
 
     //public WLProperty<float> targetMoney=new WLProperty<float>();
     //public WLProperty<float> currentMoney=new WLProperty<float>();
@@ -39,27 +44,32 @@ public class IncomeBarController : MonoBehaviour
     public void InitEvent()
     {
         //add event to property 'money'
-        MainGameDataManager.Instance.money.OnValueChange += (float cur, float next) =>
+        MainGameDataManager.Instance.money.OnValueChange += (float oldMoney, float newMoney) =>
         {
             //check now noruma
             CheckNoruma();
 
             //change slider length
-            if (cur > next)
+            if (oldMoney > newMoney)
             {
                 StartShorter();
             }
-            else if (cur < next)
+            else if (oldMoney < newMoney)
             {
                 StartLonger();
             }
+
+            //change money nuber
+            float passMoney = MainGameDataManager.Instance.PassNorumaTarget;
+            ChangeMoneyNumber(newMoney, passMoney);
         };
 
 
         //add event to property 'nowNoruma'
         MainGameDataManager.Instance.nowNoruma.OnValueChange += (Noruma cur, Noruma next) =>
         {
-            currentMoneyBar.GetComponent<Image>().DOColor(next.color, 1);
+            currentMoneyBar.GetComponent<Image>().material.SetColor("_MainColor", next.color);
+            currentMoneyBar.GetComponent<Image>().material.SetColor("_SubColor", next.color);
             currentMoneyBar.DOShakePosition(1, 10, 20, 90, true, true);
             norumaHint.DOPunchScale(new Vector3(2, 2, 2), 2, 3, 1);
             norumaHint.GetComponentInChildren<TMP_Text>().text = next.name;
@@ -107,22 +117,18 @@ public class IncomeBarController : MonoBehaviour
             //set now noruma
             MainGameDataManager.Instance.NowNoruma = MainGameDataManager.Instance.GreatestNoruma;
         }
-
     }
 
-    public void CreateNorumaUI(Noruma noruma)
+    void ChangeMoneyNumber(float newMoney,float passMoney)
     {
-        //create
-        GameObject go = Instantiate(norumaUIPrefab, norumaBar);
-        NorumaUI ui = go.GetComponent<NorumaUI>();
+        //set text
+        TMP_Text moneyText = moneyNumber.GetComponent<TMP_Text>();
+        TMP_Text passText = passMoneyNumber.GetComponent<TMP_Text>();
+        moneyText.text = "" + newMoney;
+        passText.text = "/"+ passMoney;
 
-        //set ui name
-        ui.SetNorumaName(noruma.name);
-
-        //set ui position
-        float barLength = norumaBar.rect.width;
-        float target = noruma.target;
-        float max = MainGameDataManager.Instance.GreatestNorumaTarget;
-        ui.SetRatioPosition(barLength, target, max);
+        //set anime
+        moneyNumber.DOShakeScale(1);
+        passMoneyNumber.DOShakeScale(1);
     }
 }
