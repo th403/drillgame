@@ -30,30 +30,32 @@ public class GrabPointCtrl : MonoBehaviour
         layerMask = ~layerMask;
 
         RaycastHit hit;
-        // Does the ray intersect any objects excluding the player layer
-        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, Mathf.Infinity, layerMask))
-        {
-            Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * hit.distance, Color.yellow);
-            Debug.Log("Did Hit");
-        }
-        else
-        {
-            Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * 1000, Color.white);
-            Debug.Log("Did not Hit");
-        }
-        Vector3 fwd = transform.TransformDirection(Vector3.forward);
-        Vector3 down = transform.position - new Vector3(0, 1.0f, 0);
 
-        if (Physics.Raycast(transform.position, down, 2))
-            print("There is something under the object!");
+        //// Does the ray intersect any objects excluding the player layer
+        //if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, Mathf.Infinity, layerMask))
+        //{
+        //    Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * hit.distance, Color.yellow);
+        //    Debug.Log("Did Hit");
+        //}
+        //else
+        //{
+        //    Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * 1000, Color.white);
+        //    Debug.Log("Did not Hit");
+        //}
+        //Vector3 fwd = transform.TransformDirection(Vector3.forward);
+
+        //if (Physics.Raycast(transform.position, -transform.up, 2))
+        //{
+        //    Debug.DrawRay(transform.position, -transform.up * 2, Color.green);
+        //    print("There is something under the object!");
+
+        //}
+
+        if (Physics.Raycast(transform.position, transform.forward, 0.2f))
+        {
+            FundsCtrl.AddFunds(1);
+        }
+        Debug.DrawRay(transform.position, transform.forward * 0.2f, Color.black);
     }
 
-    //private void OnTriggerEnter(Collider other)
-    //{
-    //    if (other.tag == "Terrain")
-    //    {
-    //        FundsCtrl.AddFunds(1);
-    //    }
-
-    //}
 }
