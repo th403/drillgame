@@ -24,7 +24,7 @@ public class ChatManager : MonoBehaviour
 
     public void ReadFile(string fileName)
     {
-        CSVToolKit.LoadFile(Application.streamingAssetsPath + "/../WL/ExcelTool/"+ fileName, a =>
+        CSVToolKit.LoadFile(Application.streamingAssetsPath + "/../01_Script/Tou/ExcelTool/"+ fileName, a =>
         {
             foreach (var row in a)
             {

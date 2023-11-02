@@ -2,12 +2,16 @@ using DG.Tweening;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 /// <summary>
 /// income and expense
-/// start update
-/// is finish
+/// 
+/// update money value
+/// update money gauge
+/// update noruma hint
 /// </summary>
 public class IncomeBarController : MonoBehaviour
 {
@@ -23,50 +27,114 @@ public class IncomeBarController : MonoBehaviour
         get { return instance; }
     }
 
+    //money number
+    public RectTransform moneyNumber;
+    public RectTransform passMoneyNumber;
+
+    //money gauge
     public Transform currentMoneyBar;
     public Transform delayMoneyBar;
+    public Transform gaugeColor;
 
-    public WLProperty<float> targetMoney=new WLProperty<float>();
-    public WLProperty<float> currentMoney=new WLProperty<float>();
+    //noruma hint
+    public RectTransform norumaHint;
 
-    private void Start()
+    //public WLProperty<float> targetMoney=new WLProperty<float>();
+    //public WLProperty<float> currentMoney=new WLProperty<float>();
+
+    public void InitEvent()
     {
-        currentMoney.OnValueChange += (float cur, float next) =>
-          {
-              if(cur>next)
-              {
-                  StartShorter();
-              }
-              else if(cur <next)
-              {
-                  StartLonger();
-              }
-          };
+        //add event to property 'money'
+        MainGameDataManager.Instance.money.OnValueChange += (float oldMoney, float newMoney) =>
+        {
+            //check now noruma
+            CheckNoruma();
+
+            //change slider length
+            if (oldMoney > newMoney)
+            {
+                StartShorter();
+            }
+            else if (oldMoney < newMoney)
+            {
+                StartLonger();
+            }
+
+            //change money nuber
+            float passMoney = MainGameDataManager.Instance.PassNorumaTarget;
+            ChangeMoneyNumber(newMoney, passMoney);
+        };
+
+
+        //add event to property 'nowNoruma'
+        MainGameDataManager.Instance.nowNoruma.OnValueChange += (Noruma cur, Noruma next) =>
+        {
+            Debug.Log("change gauge color");
+            gaugeColor.GetComponent<Image>().DOColor(next.color, 0.5f);
+            norumaHint.GetComponentInChildren<TMP_Text>().text = next.name;
+            norumaHint.localScale = Vector3.one * 2;
+            norumaHint.DOScale(Vector3.one, 1).SetEase(Ease.InOutElastic);
+        };
     }
 
     float MoneyRate
     {
-        get { return currentMoney.Value / targetMoney.Value; }
+        get
+        {
+            float rate = MainGameDataManager.Instance.Money /
+              MainGameDataManager.Instance.PassNorumaTarget;
+            //MainGameDataManager.Instance.GreatestNorumaTarget;
+            return Mathf.Min(1, rate);
+        }
     }
 
-    public bool IsFinishTarget
+    void StartShorter()
     {
-        get { return currentMoney.Value >= targetMoney.Value; }
-    }
-
-    public void StartShorter()
-    {
-        currentMoneyBar.localScale = new Vector3(MoneyRate, 1, 1);
+        currentMoneyBar.localScale = new Vector3(1,MoneyRate, 1);
 
         delayMoneyBar.DOKill();
-        delayMoneyBar.DOScale(new Vector3(MoneyRate, 1, 1), 1).SetEase(Ease.OutSine);
+        delayMoneyBar.DOScale(new Vector3(1, MoneyRate, 1), 1).SetEase(Ease.OutSine);
     }
 
-    public void StartLonger()
+    void StartLonger()
     {
-        delayMoneyBar.localScale = new Vector3(MoneyRate, 1, 1);
+        delayMoneyBar.localScale = new Vector3(1,MoneyRate, 1);
 
         currentMoneyBar.DOKill();
-        currentMoneyBar.DOScale(new Vector3(MoneyRate, 1, 1), 1).SetEase(Ease.OutSine);
+        currentMoneyBar.DOScale(new Vector3(1,MoneyRate, 1), 1).SetEase(Ease.OutSine);
+    }
+
+    void CheckNoruma()
+    {
+        //check now noruma
+        float money = MainGameDataManager.Instance.Money;
+        for (int i = 0; i < MainGameDataManager.Instance.norumas.Count; i++) 
+        {
+            Noruma nrm= MainGameDataManager.Instance.norumas[i];
+            if (money < nrm.target)
+            {
+                //set now noruma
+                MainGameDataManager.Instance.NowNoruma = MainGameDataManager.Instance.norumas[i - 1];
+                break;
+            }
+        }
+        if(money>=MainGameDataManager.Instance.GreatestNorumaTarget)
+        {
+            //set now noruma
+            MainGameDataManager.Instance.NowNoruma = MainGameDataManager.Instance.GreatestNoruma;
+        }
+    }
+
+    void ChangeMoneyNumber(float newMoney,float passMoney)
+    {
+        //set text
+        TMP_Text moneyText = moneyNumber.GetComponent<TMP_Text>();
+        TMP_Text passText = passMoneyNumber.GetComponent<TMP_Text>();
+        moneyText.text = "" + newMoney;
+        passText.text = "/"+ passMoney;
+
+        //set anime
+        moneyNumber.localScale = Vector3.one * 2;
+        moneyNumber.DOScale(Vector3.one, 1).SetEase(Ease.OutElastic);
     }
 }
