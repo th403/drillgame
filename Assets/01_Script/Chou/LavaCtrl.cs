@@ -37,7 +37,7 @@ public class LavaCtrl : MonoBehaviour
         }
         else if(use&&Value<=0)
         {
-            this.GetComponent<Renderer>().material.color *= 0;
+            //this.GetComponent<Renderer>().material.color *= 0;
         }
 
     }
@@ -47,7 +47,7 @@ public class LavaCtrl : MonoBehaviour
         if (!use && other.tag == "Player")
         {
             use = true;
-            this.GetComponent<Renderer>().material.color *= 2;
+            //this.GetComponent<Renderer>().material.color *= 2;
             Mark.SetActive(false);
         }
 
