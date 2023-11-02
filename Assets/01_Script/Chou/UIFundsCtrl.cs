@@ -25,6 +25,14 @@ public class UIFundsCtrl : MonoBehaviour
         FundsText.text = "FUNDS:Åè" + StartFunds;
         //FundsText.text = Funds.ToString();
 
+#if UNITY_EDITOR
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            StartFunds += 10000;
+        }
+#endif
+
+
     }
 
     public bool AddFunds(int GetFunds)

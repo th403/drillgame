@@ -13,7 +13,6 @@ using UnityEngine;
         //public GameObject Player;
         public GameObject Effect;
         //public GameObject DirtAndSpace;
-        public float length = 1.0f;
         public GameObject DiggerMasterRuntimeObj;
         private Digger.Modules.Runtime.Sources.DiggerMasterRuntime DMR;
 
@@ -25,7 +24,7 @@ using UnityEngine;
 
         public BrushType brush;
         public ActionType action;
-        private int textureIndex = 3;
+        public int textureIndex = 3;
         public float opacity = 1;
         public float size = 2;
         public float stalagmiteHeight = 8f;
@@ -47,135 +46,129 @@ using UnityEngine;
             DMR = DiggerMasterRuntimeObj.GetComponent<Digger.Modules.Runtime.Sources.DiggerMasterRuntime>();
         }
 
-        // Update is called once per frame
-        void Update()
-        {
-            if(DoDigging)
-            {
-                time += Time.deltaTime;
+    // Update is called once per frame
+    void Update()
+    {
+        time += Time.deltaTime;
 
-                //深さよりテクスチャ変更
-                textureIndex = 3;
-                if (transform.position.y < 10)
-                {
-                    textureIndex = 5;
-                }
-                else if (transform.position.y < 100)
+        //深さよりテクスチャ変更
+        textureIndex = 3;
+        if (transform.position.y < -10)
+        {
+            textureIndex = 1;
+            if (transform.position.y < -20)
+            {
+                textureIndex = 5;
+                if (transform.position.y < -50)
                 {
                     textureIndex = 4;
                 }
+            }
+        }
 
-                //Vector3 direction = -(Camera.transform.position - Player.transform.position);
-                //this.transform.position = Player.transform.position + direction.normalized * length;
-                //if (Input.GetMouseButtonDown(0))
-                //{
-                //    GameObject clone = Instantiate(DirtAndSpace, transform.position, transform.rotation);
-                //    if (Effect)
-                //    {
-                //        Instantiate(Effect, transform.position, transform.rotation);
-                //    }
 
-                //}
-
-                ////コライダー自動////////////////////////////////////////
-                if (AutoDig)
+        ////コライダー自動////////////////////////////////////////
+        if (AutoDig)
+        {
+            if (DoDigging)
+            {
+                if (transform.position.y < 10 && time >= DiggingCooldown)
                 {
-                    if (transform.position.y < 10 && time >= DiggingCooldown)
+                    time = 0;
+                    //DoDigging = false;
+                    //(Vector3 position, BrushType brush, ActionType action, int textureIndex, float opacity,
+                    //float size, float stalagmiteHeight = 8f, bool stalagmiteUpsideDown = false,
+                    //bool opacityIsTarget = false)
+                    DMR.Modify(transform.position, brush, action, textureIndex, opacity,
+                    size, stalagmiteHeight, stalagmiteUpsideDown, opacityIsTarget);
+                    //DMR.Modify(transform.position, brush2, action2, textureIndex2, opacity2,
+                    //size2, stalagmiteHeight2, stalagmiteUpsideDown2, opacityIsTarget2);
+                    if (Effect)
                     {
-                        time = 0;
-                        //DoDigging = false;
-                        //(Vector3 position, BrushType brush, ActionType action, int textureIndex, float opacity,
-                        //float size, float stalagmiteHeight = 8f, bool stalagmiteUpsideDown = false,
-                        //bool opacityIsTarget = false)
-                        DMR.Modify(transform.position, brush, action, textureIndex, opacity,
-                        size, stalagmiteHeight, stalagmiteUpsideDown, opacityIsTarget);
-                        //DMR.Modify(transform.position, brush2, action2, textureIndex2, opacity2,
-                        //size2, stalagmiteHeight2, stalagmiteUpsideDown2, opacityIsTarget2);
-                        if (Effect)
-                        {
-                            Instantiate(Effect, transform.position, transform.rotation);
-                        }
+                        Instantiate(Effect, transform.position, transform.rotation);
                     }
                 }
-                /////////////////////////////////////////////////
+            }
+        }
+        /////////////////////////////////////////////////
 
-                else
+        else
+        {
+            ////全自動////////////////////////////////////////
+            if (Input.GetMouseButton(0))
+            {
+                if (time >= DiggingCooldown)
                 {
-                    ////全自動////////////////////////////////////////
-                    if (Input.GetMouseButton(0))
+                    time = 0;
+                    //(Vector3 position, BrushType brush, ActionType action, int textureIndex, float opacity,
+                    //float size, float stalagmiteHeight = 8f, bool stalagmiteUpsideDown = false,
+                    //bool opacityIsTarget = false)
+                    DMR.Modify(transform.position, brush, action, textureIndex, opacity,
+                    size, stalagmiteHeight, stalagmiteUpsideDown, opacityIsTarget);
+                    //DMR.Modify(transform.position, brush2, action2, textureIndex2, opacity2,
+                    //size2, stalagmiteHeight2, stalagmiteUpsideDown2, opacityIsTarget2);
+                    if (Effect)
                     {
-                        if (time >= DiggingCooldown)
-                        {
-                            time = 0;
-                            //(Vector3 position, BrushType brush, ActionType action, int textureIndex, float opacity,
-                            //float size, float stalagmiteHeight = 8f, bool stalagmiteUpsideDown = false,
-                            //bool opacityIsTarget = false)
-                            DMR.Modify(transform.position, brush, action, textureIndex, opacity,
-                            size, stalagmiteHeight, stalagmiteUpsideDown, opacityIsTarget);
-                            //DMR.Modify(transform.position, brush2, action2, textureIndex2, opacity2,
-                            //size2, stalagmiteHeight2, stalagmiteUpsideDown2, opacityIsTarget2);
-                            if (Effect)
-                            {
-                                Instantiate(Effect, transform.position, transform.rotation);
-                            }
-                        }
+                        Instantiate(Effect, transform.position, transform.rotation);
                     }
-                    /////////////////////////////////////////////////
+                }
+            }
+            /////////////////////////////////////////////////
 
-                    ////半自動///////////////////////////////////////
-                    if (Input.GetMouseButtonDown(1))
-                    {
-                        //(Vector3 position, BrushType brush, ActionType action, int textureIndex, float opacity,
-                        //float size, float stalagmiteHeight = 8f, bool stalagmiteUpsideDown = false,
-                        //bool opacityIsTarget = false)
-                        DMR.Modify(transform.position, brush, action, textureIndex, opacity,
-                        size, stalagmiteHeight, stalagmiteUpsideDown, opacityIsTarget);
+            ////半自動///////////////////////////////////////
+            if (Input.GetMouseButtonDown(1))
+            {
+                //(Vector3 position, BrushType brush, ActionType action, int textureIndex, float opacity,
+                //float size, float stalagmiteHeight = 8f, bool stalagmiteUpsideDown = false,
+                //bool opacityIsTarget = false)
+                DMR.Modify(transform.position, brush, action, textureIndex, opacity,
+                size, stalagmiteHeight, stalagmiteUpsideDown, opacityIsTarget);
 
-                        if (Effect)
-                        {
-                            Instantiate(Effect, transform.position, transform.rotation);
-                        }
-
-                    }
-                    ///////////////////////////////////////////////
-
-                    ////手動///////////////////////////////////////
-                    //if (Input.GetMouseButtonDown(1))
-                    //{
-                    //    if (time >= DiggingCooldown)
-                    //    {
-                    //        time = 0;
-                    //        //(Vector3 position, BrushType brush, ActionType action, int textureIndex, float opacity,
-                    //        //float size, float stalagmiteHeight = 8f, bool stalagmiteUpsideDown = false,
-                    //        //bool opacityIsTarget = false)
-                    //        DMR.Modify(transform.position, brush, action, textureIndex, opacity,
-                    //        size, stalagmiteHeight, stalagmiteUpsideDown, opacityIsTarget);
-
-                    //        if (Effect)
-                    //        {
-                    //            Instantiate(Effect, transform.position, transform.rotation);
-                    //        }
-
-                    //    }
-
-                    //}
-                    ///////////////////////////////////////////////
+                if (Effect)
+                {
+                    Instantiate(Effect, transform.position, transform.rotation);
                 }
 
             }
+            ///////////////////////////////////////////////
 
+            ////手動///////////////////////////////////////
+            //if (Input.GetMouseButtonDown(1))
+            //{
+            //    if (time >= DiggingCooldown)
+            //    {
+            //        time = 0;
+            //        //(Vector3 position, BrushType brush, ActionType action, int textureIndex, float opacity,
+            //        //float size, float stalagmiteHeight = 8f, bool stalagmiteUpsideDown = false,
+            //        //bool opacityIsTarget = false)
+            //        DMR.Modify(transform.position, brush, action, textureIndex, opacity,
+            //        size, stalagmiteHeight, stalagmiteUpsideDown, opacityIsTarget);
+
+            //        if (Effect)
+            //        {
+            //            Instantiate(Effect, transform.position, transform.rotation);
+            //        }
+
+            //    }
+
+            //}
+            ///////////////////////////////////////////////
         }
 
-        //private void OnTriggerEnter(Collider other)
-        //{
-        //    if (other.tag == "Terrain")
-        //    {
-        //        DoDigging = true;
-        //    }
+    }
 
-        //}
 
-        public void SetDiggingOn(bool use)
+
+    //private void OnTriggerEnter(Collider other)
+    //{
+    //    if (other.tag == "Terrain")
+    //    {
+    //        DoDigging = true;
+    //    }
+
+    //}
+
+    public void SetDiggingOn(bool use)
         {
             DoDigging = use;
         }

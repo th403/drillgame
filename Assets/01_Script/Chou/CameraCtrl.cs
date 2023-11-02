@@ -15,25 +15,27 @@ using UnityEngine;
         private DrillerRobo drillerRobo;
 
         public GameObject FundsText;
+        public GameObject DrillerText;
         private UIFundsCtrl UIFunds;
+        private UIDrillerCtrl UIDrillers;
 
-        // Start is called before the first frame update
-        void Start()
+    // Start is called before the first frame update
+    void Start()
         {
             camera_Player.enabled = true;
             camera_Driller.enabled = false;
             drillerRobo = driller.GetComponent<DrillerRobo>();
             driller.gameObject.SetActive(false);
             UIFunds = FundsText.GetComponent<UIFundsCtrl>();
-
-        }
+            UIDrillers = DrillerText.GetComponent<UIDrillerCtrl>();
+    }
 
         // Update is called once per frame
         void Update()
         {
             if (Input.GetKeyDown(KeyCode.F))
             {
-                if((!driller.gameObject.activeSelf && UIFunds.AddFunds(-10000))
+                if((!driller.gameObject.activeSelf && UIFunds.AddFunds(-10000) && UIDrillers.AddDrillers(-1))
                     || (driller.gameObject.activeSelf))
                 {
                     ChangeCamera();
@@ -45,7 +47,7 @@ using UnityEngine;
         {
             driller.gameObject.SetActive(!driller.gameObject.activeSelf);
             driller.transform.position = player.transform.position;
-            driller.transform.rotation = camera_Player.transform.rotation;
+            driller.transform.rotation = player.transform.rotation;
             camera_Player.enabled = !camera_Player.enabled;
 
             camera_Driller.enabled = !camera_Driller.enabled;

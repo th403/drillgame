@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class LavaCtrl : MonoBehaviour
 {
     public GameObject FundsText;
+    public GameObject Mark;
     private UIFundsCtrl UIFunds;
 
     public float Value=50000;
@@ -47,6 +48,7 @@ public class LavaCtrl : MonoBehaviour
         {
             use = true;
             this.GetComponent<Renderer>().material.color *= 2;
+            Mark.SetActive(false);
         }
 
     }
