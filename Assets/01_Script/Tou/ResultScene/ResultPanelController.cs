@@ -103,7 +103,25 @@ public class ResultPanelController : MonoBehaviour
 
     public void StartShowResult()
     {
-        HidePanel();
+        //set item index
+        for (int i = 0; i < items.Count; i++)
+        {
+            items[i].itemTrsIndex = -i - 1;
+        }
+
+        //set pos
+        //base items
+        Vector3 startPos = itemTrss[0].localPosition;
+        startPos = new Vector3(hidePosX, startPos.y, startPos.z);
+        for (int i = 0; i < items.Count; i++)
+        {
+            items[i].transform.localPosition = startPos;
+        }
+        //total score and rank
+        totalScoreResultTrs.localPosition = new Vector3(hidePosX, totalScoreResultPos.y, totalScoreResultPos.z);
+        rankResultTrs.localPosition = new Vector3(hidePosX, rankResultPos.y, rankResultPos.z);
+
+
 
         //show panel
         panel.SetActive(true);
@@ -133,25 +151,9 @@ public class ResultPanelController : MonoBehaviour
         });
     }
 
-    void HidePanel()
+    public void HidePanel()
     {
-        //set item index
-        for (int i = 0; i < items.Count; i++)
-        {
-            items[i].itemTrsIndex = -i - 1;
-        }
-
-        //set pos
-        //base items
-        Vector3 startPos = itemTrss[0].localPosition;
-        startPos = new Vector3(hidePosX, startPos.y, startPos.z);
-        for (int i = 0; i < items.Count; i++)
-        {
-            items[i].transform.localPosition = startPos;
-        }
-        //total score and rank
-        totalScoreResultTrs.localPosition = new Vector3(hidePosX, totalScoreResultPos.y, totalScoreResultPos.z);
-        rankResultTrs.localPosition = new Vector3(hidePosX, rankResultPos.y, rankResultPos.z);
+        panel.SetActive(false);
     }
 
     void MoveItems(TweenCallback OnComplete)

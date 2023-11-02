@@ -24,5 +24,9 @@ public class Test_ResultPanel : MonoBehaviour
         {
             ResultPanelController.Instance.StartShowResult();
         }
+        if (Input.GetKeyDown(KeyCode.K))
+        {
+            ResultPanelController.Instance.HidePanel();
+        }
     }
 }
