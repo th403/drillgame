@@ -47,7 +47,7 @@ using UnityEngine;
         {
             driller.gameObject.SetActive(!driller.gameObject.activeSelf);
             driller.transform.position = player.transform.position;
-            driller.transform.rotation = camera_Player.transform.rotation;
+            driller.transform.rotation = player.transform.rotation;
             camera_Player.enabled = !camera_Player.enabled;
 
             camera_Driller.enabled = !camera_Driller.enabled;

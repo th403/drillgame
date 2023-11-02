@@ -24,6 +24,12 @@ public class UIDrillerCtrl : MonoBehaviour
         }
         DrillerText.text = "ƒhƒŠƒ‹c‚èF" + StartDrillers;
         //FundsText.text = Funds.ToString();
+#if UNITY_EDITOR
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            StartDrillers += 1;
+        }
+#endif
 
     }
 
