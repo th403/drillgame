@@ -40,7 +40,7 @@ public class ClockController : MonoBehaviour
               sector.DORotate(angle, 0.5f).SetEase(Ease.OutSine);
 
               //set text
-              text.text = "" + newTime;
+              text.text = "" + (max - newTime);
           };
     }
 
@@ -57,6 +57,14 @@ public class ClockController : MonoBehaviour
         if (!canCount) return;
 
         float time = Time.time - startTimeStamp;
+        float max = MainGameDataManager.Instance.timeLimit.Value;
+
+        if (time>max)
+        {
+            time = max;
+            canCount = false;
+        }
+
         MainGameDataManager.Instance.time.Value = time;
     }
 }
