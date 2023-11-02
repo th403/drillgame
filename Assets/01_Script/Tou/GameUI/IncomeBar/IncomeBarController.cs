@@ -34,6 +34,7 @@ public class IncomeBarController : MonoBehaviour
     //money gauge
     public Transform currentMoneyBar;
     public Transform delayMoneyBar;
+    public Transform gaugeColor;
 
     //noruma hint
     public RectTransform norumaHint;
@@ -68,34 +69,39 @@ public class IncomeBarController : MonoBehaviour
         //add event to property 'nowNoruma'
         MainGameDataManager.Instance.nowNoruma.OnValueChange += (Noruma cur, Noruma next) =>
         {
-            currentMoneyBar.GetComponent<Image>().material.SetColor("_MainColor", next.color);
-            currentMoneyBar.GetComponent<Image>().material.SetColor("_SubColor", next.color);
-            currentMoneyBar.DOShakePosition(1, 10, 20, 90, true, true);
-            norumaHint.DOPunchScale(new Vector3(2, 2, 2), 2, 3, 1);
+            Debug.Log("change gauge color");
+            gaugeColor.GetComponent<Image>().DOColor(next.color, 0.5f);
             norumaHint.GetComponentInChildren<TMP_Text>().text = next.name;
+            norumaHint.localScale = Vector3.one * 2;
+            norumaHint.DOScale(Vector3.one, 1).SetEase(Ease.InOutElastic);
         };
     }
 
     float MoneyRate
     {
-        get { return MainGameDataManager.Instance.Money / 
-                MainGameDataManager.Instance.GreatestNorumaTarget; }
+        get
+        {
+            float rate = MainGameDataManager.Instance.Money /
+              MainGameDataManager.Instance.PassNorumaTarget;
+            //MainGameDataManager.Instance.GreatestNorumaTarget;
+            return Mathf.Min(1, rate);
+        }
     }
 
     void StartShorter()
     {
-        currentMoneyBar.localScale = new Vector3(MoneyRate, 1, 1);
+        currentMoneyBar.localScale = new Vector3(1,MoneyRate, 1);
 
         delayMoneyBar.DOKill();
-        delayMoneyBar.DOScale(new Vector3(MoneyRate, 1, 1), 1).SetEase(Ease.OutSine);
+        delayMoneyBar.DOScale(new Vector3(1, MoneyRate, 1), 1).SetEase(Ease.OutSine);
     }
 
     void StartLonger()
     {
-        delayMoneyBar.localScale = new Vector3(MoneyRate, 1, 1);
+        delayMoneyBar.localScale = new Vector3(1,MoneyRate, 1);
 
         currentMoneyBar.DOKill();
-        currentMoneyBar.DOScale(new Vector3(MoneyRate, 1, 1), 1).SetEase(Ease.OutSine);
+        currentMoneyBar.DOScale(new Vector3(1,MoneyRate, 1), 1).SetEase(Ease.OutSine);
     }
 
     void CheckNoruma()
@@ -128,7 +134,7 @@ public class IncomeBarController : MonoBehaviour
         passText.text = "/"+ passMoney;
 
         //set anime
-        moneyNumber.DOShakeScale(1);
-        passMoneyNumber.DOShakeScale(1);
+        moneyNumber.localScale = Vector3.one * 2;
+        moneyNumber.DOScale(Vector3.one, 1).SetEase(Ease.OutElastic);
     }
 }

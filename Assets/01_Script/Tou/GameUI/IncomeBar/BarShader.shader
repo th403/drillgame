@@ -2,23 +2,51 @@ Shader "Custom/BarShader"
 {
     Properties
     {
-        _MainTex ("Texture", 2D) = "white" {}
+        //[PerRendererData] _MainTex("Sprite Texture", 2D) = "white" { }
+        _MainTex("Texture", 2D) = "white" {}
         _Value ("Value", Range(0, 1)) = 0.5
         _WaveFrequency ("Wave Frequency", Range(0, 10)) = 0.1
         _WaveHeight ("Wave Height", Range(0, 1)) = 0.1
         _WaveSpeed ("Wave Speed", Range(0, 10)) = 0.1
         _WaveOffset("Wave Offset", Range(0, 10)) = 0.1
 
-        _MainColor ("Main Color", Color) = (1, 1, 1, 1)
+        _MainColor("Main Color",Color) = (1, 1, 1, 1)
         _SubColor ("Sub Color", Color) = (1, 1, 1, 1)
+
+        _StencilComp("Stencil Comparison", Float) = 8
+        _Stencil("Stencil ID", Float) = 0
+        _StencilOp("Stencil Operation", Float) = 0
+        _StencilWriteMask("Stencil Write Mask", Float) = 255
+        _StencilReadMask("Stencil Read Mask", Float) = 255
+        _ColorMask("Color Mask", Float) = 15
+        [Toggle(UNITY_UI_ALPHACLIP)]  _UseUIAlphaClip("Use Alpha Clip", Float) = 0.000000
     }
+
     SubShader
     {
-        Tags { "RenderType"="Opaque" }
+
+            //Tags{"TYPE"="Opaque"}
+        Tags { "QUEUE" = "Transparent"  "RenderType" = "Transparent" }  
         LOD 100
+            //Name "Default"
+            //Tags { "QUEUE" = "Transparent" "IGNOREPROJECTOR" = "true" "RenderType" = "Transparent" "CanUseSpriteAtlas" = "true" "PreviewType" = "Plane" }
 
         Pass
         {
+           ZTest[unity_GUIZTestMode]
+            ZWrite Off
+            Cull Off
+            Stencil {
+             Ref[_Stencil]
+             ReadMask[_StencilReadMask]
+             WriteMask[_StencilWriteMask]
+             Comp[_StencilComp]
+             Pass[_StencilOp]
+            }
+            //Blend One OneMinusSrcAlpha
+            ColorMask[_ColorMask]
+
+
             CGPROGRAM
             #pragma vertex vert
             #pragma fragment frag
@@ -56,27 +84,26 @@ Shader "Custom/BarShader"
 
                 o.uv = TRANSFORM_TEX(v.uv, _MainTex);
 
-                //float wave = sin(v.uv.y * _WaveFrequency + _Time.y * _WaveSpeed) * _WaveHeight;
-                o.uv = v.uv;// +float2(wave, 0);
+                o.uv = v.uv;
 
                 return o;
             }
 
-            fixed4 frag (v2f i) : SV_Target
+            fixed4 frag(v2f i) : SV_Target
             {
-                float wave = sin(i.uv.y * _WaveFrequency + _Time.y * _WaveSpeed+ _WaveOffset) * _WaveHeight;
-            i.uv = i.uv + float2(wave, 0);
+                float wave = sin(i.uv.x * _WaveFrequency + _Time.y * _WaveSpeed + _WaveOffset) * _WaveHeight + _WaveHeight;
+                i.uv = i.uv + float2(0, wave);
 
 
                 // sample the texture
                 fixed4 col = tex2D(_MainTex, i.uv);
 
-                if (i.uv.x > _Value)
+                if (i.uv.y > _Value)
 				{
 					discard;
 				}
 
-                col *= lerp(_MainColor, _SubColor, 0.1);
+                col = _MainColor;
 
                 return col;
             }

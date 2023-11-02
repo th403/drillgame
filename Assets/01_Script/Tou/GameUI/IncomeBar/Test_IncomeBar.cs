@@ -21,6 +21,9 @@ public class Test_IncomeBar : MonoBehaviour
         {
             MainGameDataManager.Instance.norumas.Add(n);
         }
+        
+        //init data
+        MainGameDataManager.Instance.Init();
 
         //init income bar event
         IncomeBarController.Instance.InitEvent();

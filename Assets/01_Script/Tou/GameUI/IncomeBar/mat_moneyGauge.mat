@@ -27,6 +27,7 @@ Material:
   m_Shader: {fileID: 4800000, guid: fb44504383686b54fb3cd250796b6ffa, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords:
+  - UNITY_UI_ALPHACLIP
   - _DISABLE_SSR_TRANSPARENT
   - _NORMALMAP_TANGENT_SPACE
   m_LightmapFlags: 4
@@ -84,7 +85,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 516eadeb98d204df8a7c362b386a639b, type: 3}
+        m_Texture: {fileID: 10307, guid: 0000000000000000f000000000000000, type: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MaskMap:
@@ -154,6 +155,7 @@ Material:
     - _Anisotropy: 0
     - _BlendMode: 0
     - _CoatMask: 0
+    - _ColorMask: 15
     - _CullMode: 2
     - _CullModeForward: 2
     - _Cutoff: 0.5
@@ -215,11 +217,15 @@ Material:
     - _SpecularAAThreshold: 0.2
     - _SpecularOcclusionMode: 1
     - _SrcBlend: 1
+    - _Stencil: 0
+    - _StencilComp: 8
+    - _StencilOp: 0
+    - _StencilReadMask: 255
     - _StencilRef: 0
     - _StencilRefDepth: 8
     - _StencilRefGBuffer: 10
     - _StencilRefMV: 40
-    - _StencilWriteMask: 6
+    - _StencilWriteMask: 255
     - _StencilWriteMaskDepth: 8
     - _StencilWriteMaskGBuffer: 14
     - _StencilWriteMaskMV: 40
@@ -242,7 +248,8 @@ Material:
     - _UVEmissive: 0
     - _UseEmissiveIntensity: 0
     - _UseShadowThreshold: 0
-    - _Value: 1
+    - _UseUIAlphaClip: 1
+    - _Value: 0.954
     - _WaveFrequency: 4.52
     - _WaveHeight: 0.019
     - _WaveOffset: 2.08
@@ -262,9 +269,9 @@ Material:
     - _EmissiveColorLDR: {r: 0, g: 0, b: 0, a: 1}
     - _InvPrimScale: {r: 1, g: 1, b: 0, a: 0}
     - _IridescenceThicknessRemap: {r: 0, g: 1, b: 0, a: 0}
-    - _MainColor: {r: 0.17647058, g: 1, b: 0.8539776, a: 1}
+    - _MainColor: {r: 0.39607847, g: 1, b: 0.1764706, a: 1}
     - _SpecularColor: {r: 1, g: 1, b: 1, a: 1}
-    - _SubColor: {r: 0.17647058, g: 1, b: 0.8539776, a: 1}
+    - _SubColor: {r: 0.39607847, g: 1, b: 0.1764706, a: 1}
     - _ThicknessRemap: {r: 0, g: 1, b: 0, a: 0}
     - _TransmittanceColor: {r: 1, g: 1, b: 1, a: 1}
     - _UVDetailsMappingMask: {r: 1, g: 0, b: 0, a: 0}
