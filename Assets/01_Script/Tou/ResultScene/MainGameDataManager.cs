@@ -37,7 +37,9 @@ public class MainGameDataManager : MonoBehaviour
     public WLProperty<float> timeLimit;
 
     //result
-    public WLProperty<float> score;
+    //noruma result
+    public WLProperty<Noruma> lastNoruma;
+    //alphabet result
     public List<RankStandard> rankStandards;
     public WLProperty<RankStandard> nowRankStandard;
     public List<WLProperty<int>> rankTop3;
