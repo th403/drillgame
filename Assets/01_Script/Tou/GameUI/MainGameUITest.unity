@@ -1524,7 +1524,7 @@ MonoBehaviour:
     target: 100
     color: {r: 0.95908934, g: 1, b: 0.07058823, a: 1}
   inputMoney: 95
-  test: 0
+  test: 1
   money: 95
   maxMoney: 0
 --- !u!21 &415726953
@@ -3072,7 +3072,7 @@ MonoBehaviour:
   hidePosX: 1600
   itemInTime: 0.5
   showTime: 1.2
-  showScoreTime: 2.4
+  showScoreTime: 4.2
   moneyResultPos: {x: 0, y: 0, z: 0}
   timeResultPos: {x: 0, y: 0, z: 0}
   energyCountResultPos: {x: 0, y: 0, z: 0}
@@ -3679,7 +3679,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: A
+  m_text: supinkan
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -3706,8 +3706,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 148.1
-  m_fontSizeBase: 148.1
+  m_fontSize: 40
+  m_fontSizeBase: 40
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -6167,7 +6167,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   money:
-    value: 95
+    value: 85
   norumas: []
   energyGots:
   - value: 0
@@ -6183,8 +6183,11 @@ MonoBehaviour:
       color: {r: 0, g: 0, b: 0, a: 0}
   timeLimit:
     value: 100
-  score:
-    value: 0
+  lastNoruma:
+    value:
+      name: 
+      target: 0
+      color: {r: 0, g: 0, b: 0, a: 0}
   rankStandards:
   - name: D
     color: {r: 0.3584906, g: 0.038892854, b: 0.038892854, a: 1}
@@ -6253,8 +6256,8 @@ RectTransform:
   m_GameObject: {fileID: 1650747876}
   m_LocalRotation: {x: -0.17216265, y: -0.12854324, z: -0.022665653, w: 0.97638255}
   m_LocalPosition: {x: 0, y: 0, z: -27}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 2.35, y: 2.35, z: 2.35}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 935067335}
   m_Father: {fileID: 1528975544}
@@ -6262,7 +6265,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: -20, y: -15, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 166, y: 404}
+  m_AnchoredPosition: {x: -32, y: 72}
   m_SizeDelta: {x: 200, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1650747878

@@ -189,4 +189,17 @@ public class ResultPanelController : MonoBehaviour
         //rankResultTrs.DOLocalRotate(new Vector3(0,0,45.0f),0.5f).SetEase(Ease.InOutBounce);
         //rankResultTrs.DOFlip();
     }
+
+    public void ChangeRankNoruma(string norumaName)
+    {
+        rankResult.text = norumaName;
+        rankResultTrs.DOKill();
+        rankResultTrs.localEulerAngles = new Vector3(-20, -15, 0);
+        rankResultTrs.localPosition = rankResultPos;
+        rankResultTrs.DOPunchRotation(Vector3.forward * 60.0f, 0.4f);
+        rankResultTrs.DOPunchPosition(Vector3.up * 50.0f, 0.4f);
+        //rankResultTrs.DOKill();
+        //rankResultTrs.DOLocalRotate(new Vector3(0,0,45.0f),0.5f).SetEase(Ease.InOutBounce);
+        //rankResultTrs.DOFlip();
+    }
 }
