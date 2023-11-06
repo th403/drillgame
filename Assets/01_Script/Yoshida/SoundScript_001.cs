@@ -29,29 +29,29 @@ public class SoundScript_001 : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Q))
-        {
-            //audioSource1.Stop();
-            audioSource2.Stop();
-            audioSource1.PlayOneShot(audioClip1);
-            Debug.Log("bbb");
+        //if (Input.GetKeyDown(KeyCode.Q))
+        //{
+        //    //audioSource1.Stop();
+        //    audioSource2.Stop();
+        //    audioSource1.PlayOneShot(audioClip1);
+        //    Debug.Log("bbb");
 
 
-            //audioSource1.Stop(audioClip1);
-            //audioSource2.Stop(audioClip2);
-        }
+        //    //audioSource1.Stop(audioClip1);
+        //    //audioSource2.Stop(audioClip2);
+        //}
 
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            audioSource1.Stop();
-            //audioSource2.Stop();
-            audioSource2.PlayOneShot(audioClip2);
-            Debug.Log("aaa");
+        //if (Input.GetKeyDown(KeyCode.E))
+        //{
+        //    audioSource1.Stop();
+        //    //audioSource2.Stop();
+        //    audioSource2.PlayOneShot(audioClip2);
+        //    Debug.Log("aaa");
 
-            //audioSource1.Stop(audioClip1);
-            //audioSource2.Stop(audioClip2);
+        //    //audioSource1.Stop(audioClip1);
+        //    //audioSource2.Stop(audioClip2);
 
-        }
+        //}
     }
 
 

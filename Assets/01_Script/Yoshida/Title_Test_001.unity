@@ -228,7 +228,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1358853423}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: PAUSE_001, Assembly-CSharp
         m_MethodName: OnOption
         m_Mode: 1
@@ -535,7 +535,7 @@ PrefabInstance:
     - target: {fileID: 5850247520206037163, guid: d75154ceae0de3a46ab7e4c8f866d70d, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1358853423}
+      objectReference: {fileID: 0}
     - target: {fileID: 5850247520206037163, guid: d75154ceae0de3a46ab7e4c8f866d70d, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: OnBack
@@ -1198,17 +1198,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1204429046}
   m_CullTransparentMesh: 1
---- !u!114 &1358853423 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8264266627142208730, guid: 04fb07fab46041940804271f3d250cd9, type: 3}
-  m_PrefabInstance: {fileID: 246363675}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 996120857}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d47a194003e32d5449c851f2a2c933ed, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1358853425 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4455882722047374311, guid: 04fb07fab46041940804271f3d250cd9, type: 3}
@@ -1333,7 +1322,7 @@ PrefabInstance:
     - target: {fileID: 2076990014507737826, guid: b2e9d2bce7632034ead8006ee9aabfe7, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1358853423}
+      objectReference: {fileID: 0}
     - target: {fileID: 2076990014507737826, guid: b2e9d2bce7632034ead8006ee9aabfe7, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
@@ -1369,7 +1358,7 @@ PrefabInstance:
     - target: {fileID: 8598418924385705857, guid: b2e9d2bce7632034ead8006ee9aabfe7, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1358853423}
+      objectReference: {fileID: 0}
     - target: {fileID: 8598418924385705857, guid: b2e9d2bce7632034ead8006ee9aabfe7, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
@@ -1480,7 +1469,7 @@ PrefabInstance:
     - target: {fileID: 1378642231263615822, guid: a0070a7db795a83478f8707c5e51605d, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1358853423}
+      objectReference: {fileID: 0}
     - target: {fileID: 1378642231263615822, guid: a0070a7db795a83478f8707c5e51605d, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: OnRetryDialogue
@@ -1492,7 +1481,7 @@ PrefabInstance:
     - target: {fileID: 1378642231473406959, guid: a0070a7db795a83478f8707c5e51605d, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1358853423}
+      objectReference: {fileID: 0}
     - target: {fileID: 1378642231473406959, guid: a0070a7db795a83478f8707c5e51605d, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: OnBack
@@ -1596,7 +1585,7 @@ PrefabInstance:
     - target: {fileID: 1378642232592934498, guid: a0070a7db795a83478f8707c5e51605d, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1358853423}
+      objectReference: {fileID: 0}
     - target: {fileID: 1378642232592934498, guid: a0070a7db795a83478f8707c5e51605d, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: OptionBack
@@ -1701,7 +1690,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1358853423}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: PAUSE_001, Assembly-CSharp
         m_MethodName: OnRetryDialogue
         m_Mode: 1
