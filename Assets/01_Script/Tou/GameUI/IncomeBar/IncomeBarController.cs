@@ -61,7 +61,8 @@ public class IncomeBarController : MonoBehaviour
             }
 
             //change money nuber
-            float passMoney = MainGameDataManager.Instance.PassNorumaTarget;
+            //float passMoney = MainGameDataManager.Instance.PassNorumaTarget;
+            float passMoney = MainGameDataManager.Instance.GreatestNorumaTarget;
             ChangeMoneyNumber(newMoney, passMoney);
         };
 
@@ -82,8 +83,8 @@ public class IncomeBarController : MonoBehaviour
         get
         {
             float rate = MainGameDataManager.Instance.Money /
-              MainGameDataManager.Instance.PassNorumaTarget;
-            //MainGameDataManager.Instance.GreatestNorumaTarget;
+              //MainGameDataManager.Instance.PassNorumaTarget;
+              MainGameDataManager.Instance.GreatestNorumaTarget;
             return Mathf.Min(1, rate);
         }
     }

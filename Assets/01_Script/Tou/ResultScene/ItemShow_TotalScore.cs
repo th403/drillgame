@@ -26,24 +26,30 @@ public class ItemShow_TotalScore : ItemShowResult
             targetFinishCount = 3;
 
             float period = showTime / targetFinishCount;
-            
+
             //start money bonus
-            float moneyBonus = 50 * MainGameDataManager.Instance.Money / MainGameDataManager.Instance.GreatestNorumaTarget;
+            //float moneyBonus = 50 * MainGameDataManager.Instance.Money / MainGameDataManager.Instance.GreatestNorumaTarget;
+            float moneyBonus = MainGameDataManager.Instance.Money;
             targetScore += moneyBonus;
             transform.DOScale(Vector3.one, period).OnComplete(() =>
             {
                 finishCount++;
 
                 //start time bonus
-                float timeBonus = 30 * Mathf.Max(
-                    (MainGameDataManager.Instance.timeLimit.Value - MainGameDataManager.Instance.time.Value) / MainGameDataManager.Instance.timeLimit.Value, 0);
+                //float timeBonus = 30 * Mathf.Max((MainGameDataManager.Instance.timeLimit.Value - MainGameDataManager.Instance.time.Value) / MainGameDataManager.Instance.timeLimit.Value, 0);
+                float timeBonus =
+                MainGameDataManager.Instance.GreatestNorumaTarget * 0.3f
+                * Mathf.Max((MainGameDataManager.Instance.timeLimit.Value - MainGameDataManager.Instance.time.Value) / MainGameDataManager.Instance.timeLimit.Value, 0);
                 targetScore += timeBonus;
                 transform.DOScale(Vector3.one, period).OnComplete(() =>
                 {
                     finishCount++;
 
                     //start energy count bonus
-                    float energyBonus = 20 * MainGameDataManager.Instance.EnergyCount / MainGameDataManager.Instance.energyGots.Count;
+                    //float energyBonus = 20 * MainGameDataManager.Instance.EnergyCount / MainGameDataManager.Instance.energyGots.Count;
+                    float energyBonus =
+                    MainGameDataManager.Instance.GreatestNorumaTarget * 0.1f
+                    * MainGameDataManager.Instance.EnergyCount / MainGameDataManager.Instance.energyGots.Count;
                     targetScore += energyBonus;
                     transform.DOScale(Vector3.one,period).OnComplete(() =>
                     {
@@ -54,10 +60,14 @@ public class ItemShow_TotalScore : ItemShowResult
         };
 
         //add event to property 'now RankStandard'
-        MainGameDataManager.Instance.nowRankStandard.OnValueChange += (oldStd, newStd) =>
-        {
-            ResultPanelController.Instance.ChangeRank(newStd.name);
-        };
+        //MainGameDataManager.Instance.nowRankStandard.OnValueChange += (oldStd, newStd) =>
+        //{
+        //    ResultPanelController.Instance.ChangeRank(newStd.name);
+        //};
+        MainGameDataManager.Instance.lastNoruma.OnValueChange += (oldNrm, newNrm) =>
+          {
+              ResultPanelController.Instance.ChangeRankNoruma(newNrm.name);
+          };
     }
 
     float PeriodTimeRate()
@@ -79,6 +89,7 @@ public class ItemShow_TotalScore : ItemShowResult
         text.text = "total score:\n" + score + "";
 
         //check rank
+        if(false)
         {
             //check now rank
             int max = MainGameDataManager.Instance.rankStandards.Count;
@@ -99,6 +110,26 @@ public class ItemShow_TotalScore : ItemShowResult
             {
                 //set rank
                 MainGameDataManager.Instance.nowRankStandard.Value = greatestStandard;
+            }
+        }
+        if(true)
+        {
+            //check now noruma
+            float money = score;
+            for (int i = 0; i < MainGameDataManager.Instance.norumas.Count; i++)
+            {
+                Noruma nrm = MainGameDataManager.Instance.norumas[i];
+                if (money < nrm.target)
+                {
+                    //set now noruma
+                    MainGameDataManager.Instance.lastNoruma.Value = MainGameDataManager.Instance.norumas[i - 1];
+                    break;
+                }
+            }
+            if (money >= MainGameDataManager.Instance.GreatestNorumaTarget)
+            {
+                //set now noruma
+                MainGameDataManager.Instance.lastNoruma.Value = MainGameDataManager.Instance.GreatestNoruma;
             }
         }
 
