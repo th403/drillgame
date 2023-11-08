@@ -98,6 +98,13 @@ namespace StarterAssets
         private int _animIDFreeFall;
         private int _animIDMotionSpeed;
 
+        //MyChange
+        public float WalkingTimeMax = 10.0f;
+        private float MoveSpeedMax = 0.0f;
+        private float WalkingTime = 0;
+
+
+
 #if ENABLE_INPUT_SYSTEM 
         private PlayerInput _playerInput;
 #endif
@@ -150,10 +157,24 @@ namespace StarterAssets
             // reset our timeouts on start
             _jumpTimeoutDelta = JumpTimeout;
             _fallTimeoutDelta = FallTimeout;
+
+            MoveSpeedMax = MoveSpeed;
         }
 
         private void Update()
         {
+            if(WalkingTime>0)
+            {
+                WalkingTime -= Time.deltaTime;
+                if(WalkingTime<1)
+                {
+                    MoveSpeed = MoveSpeedMax*(WalkingTime / 1);
+                }
+            }
+            else
+            {
+                MoveSpeed = 0;
+            }
             _hasAnimator = TryGetComponent(out _animator);
 
             JumpAndGravity();
@@ -388,5 +409,18 @@ namespace StarterAssets
                 AudioSource.PlayClipAtPoint(LandingAudioClip, transform.TransformPoint(_controller.center), FootstepAudioVolume);
             }
         }
+
+        //MyChange
+        public void ResetWalkingTime()
+        {
+            WalkingTime = WalkingTimeMax;
+            MoveSpeed = MoveSpeedMax;
+        }
+        //public void ResetWalkingTime(float time)
+        //{
+        //    WalkingTime = WalkingTimeMax * (1 + (time / 2.0f));
+        //    MoveSpeed = MoveSpeedMax;
+        //}
+
     }
 }
