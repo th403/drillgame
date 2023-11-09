@@ -11,6 +11,25 @@ public class RankStandard
     public float target;
 }
 
+
+[Serializable]
+public class Grade
+{
+    public int score;
+    public Noruma rank;
+}
+
+
+[Serializable]
+public class StageInfo
+{
+    public float time;
+    public int energyNum;
+    public List<Noruma> norumas;
+    public List<Grade> gradeRanks;
+}
+
+
 public class MainGameDataManager : MonoBehaviour
 {
     private static MainGameDataManager instance;
