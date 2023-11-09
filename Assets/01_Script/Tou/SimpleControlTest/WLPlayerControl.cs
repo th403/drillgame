@@ -13,13 +13,15 @@ public class WLPlayerControl : MonoBehaviour
 
     public Transform cmrRig;
 
+    public Action OnStop;
     public Action<Vector2> OnMove;
     public Action OnFly;
-
 
     [Header("read only")]
     public Rigidbody rigid;
     public bool isShowCursor = true;
+    public bool canMove=true;
+    public Vector3 lastPos;
 
     private void Awake()
     {
@@ -40,19 +42,30 @@ public class WLPlayerControl : MonoBehaviour
 
     void Move()
     {
+        //check if can move
+        if (canMove == false)
+        {
+            return;
+        }
+
         //get input
         Vector2 vec = new Vector2(
             Input.GetAxis("Horizontal"),
             Input.GetAxis("Vertical"));
 
         //check if need move
-        if (vec == Vector2.zero) return;
+        if (vec == Vector2.zero)
+        {
+            OnStop?.Invoke();
+            return;
+        }
 
         //move by setting transform.position
         Vector3 forward = transform.forward;
         Vector3 right = transform.right;
         vec *= moveSpeed * Time.deltaTime;
         Vector3 move = forward * vec.y + right * vec.x;
+        lastPos = transform.transform.position;
         transform.transform.position += move;
 
         //customize event
