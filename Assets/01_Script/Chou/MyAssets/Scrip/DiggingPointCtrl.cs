@@ -7,44 +7,42 @@ using Unity.Jobs;
 using UnityEngine;
 
 //namespace Digger.Modules.Runtime.Sources
-    public class DiggingPointCtrl : MonoBehaviour
+public class DiggingPointCtrl : MonoBehaviour
 {
-        //public GameObject Camera;
-        //public GameObject Player;
-        public GameObject Effect;
-        //public GameObject DirtAndSpace;
-        public GameObject DiggerMasterRuntimeObj;
-        private Digger.Modules.Runtime.Sources.DiggerMasterRuntime DMR;
+    //public GameObject Camera;
+    //public GameObject Player;
+    public GameObject Effect;
+    //public GameObject DirtAndSpace;
+    public GameObject DiggerMasterRuntimeObj;
+    public float DiggingCooldown = 0.1f;
+    public bool AutoDig = true;
+    public BrushType brush;
+    public ActionType action;
+    public int textureIndex = 3;
+    public float opacity = 1;
+    public float size = 2;
+    public float stalagmiteHeight = 8f;
+    public bool stalagmiteUpsideDown = false;
+    public bool opacityIsTarget = false;
 
-        public float DiggingCooldown = 0.1f;
-        private float time = 0;
-        public bool AutoDig = true;
+    //public BrushType brush2;
+    //public ActionType action2;
+    //public int textureIndex2 = 4;
+    //public float opacity2 = 1;
+    //public float size2 = 2;
+    //public float stalagmiteHeight2 = 8f;
+    //public bool stalagmiteUpsideDown2 = false;
+    //public bool opacityIsTarget2 = false;
+    private bool DoDigging = false;
+    private float ScaleRate = 1;
+    private float time = 0;
+    private Digger.Modules.Runtime.Sources.DiggerMasterRuntime DMR;
 
-        private bool DoDigging = false;
-
-        public BrushType brush;
-        public ActionType action;
-        public int textureIndex = 3;
-        public float opacity = 1;
-        public float size = 2;
-        public float stalagmiteHeight = 8f;
-        public bool stalagmiteUpsideDown = false;
-        public bool opacityIsTarget = false;
-
-        //public BrushType brush2;
-        //public ActionType action2;
-        //public int textureIndex2 = 4;
-        //public float opacity2 = 1;
-        //public float size2 = 2;
-        //public float stalagmiteHeight2 = 8f;
-        //public bool stalagmiteUpsideDown2 = false;
-        //public bool opacityIsTarget2 = false;
-
-        // Start is called before the first frame update
-        void Start()
-        {
-            DMR = DiggerMasterRuntimeObj.GetComponent<Digger.Modules.Runtime.Sources.DiggerMasterRuntime>();
-        }
+    // Start is called before the first frame update
+    void Start()
+    {
+        DMR = DiggerMasterRuntimeObj.GetComponent<Digger.Modules.Runtime.Sources.DiggerMasterRuntime>();
+    }
 
     // Update is called once per frame
     void Update()
@@ -77,12 +75,12 @@ using UnityEngine;
                     time = 0;
                     //DoDigging = false;
                     //(Vector3 position, BrushType brush, ActionType action, int textureIndex, float opacity,
-                    //float size, float stalagmiteHeight = 8f, bool stalagmiteUpsideDown = false,
+                    //float size * ScaleRate, float stalagmiteHeight = 8f, bool stalagmiteUpsideDown = false,
                     //bool opacityIsTarget = false)
                     DMR.Modify(transform.position, brush, action, textureIndex, opacity,
-                    size, stalagmiteHeight, stalagmiteUpsideDown, opacityIsTarget);
+                    size * ScaleRate, stalagmiteHeight, stalagmiteUpsideDown, opacityIsTarget);
                     //DMR.Modify(transform.position, brush2, action2, textureIndex2, opacity2,
-                    //size2, stalagmiteHeight2, stalagmiteUpsideDown2, opacityIsTarget2);
+                    //size2 * ScaleRate, stalagmiteHeight2, stalagmiteUpsideDown2, opacityIsTarget2);
                     if (Effect)
                     {
                         Instantiate(Effect, transform.position, transform.rotation);
@@ -101,12 +99,12 @@ using UnityEngine;
                 {
                     time = 0;
                     //(Vector3 position, BrushType brush, ActionType action, int textureIndex, float opacity,
-                    //float size, float stalagmiteHeight = 8f, bool stalagmiteUpsideDown = false,
+                    //float size * ScaleRate, float stalagmiteHeight = 8f, bool stalagmiteUpsideDown = false,
                     //bool opacityIsTarget = false)
                     DMR.Modify(transform.position, brush, action, textureIndex, opacity,
-                    size, stalagmiteHeight, stalagmiteUpsideDown, opacityIsTarget);
+                    size * ScaleRate, stalagmiteHeight, stalagmiteUpsideDown, opacityIsTarget);
                     //DMR.Modify(transform.position, brush2, action2, textureIndex2, opacity2,
-                    //size2, stalagmiteHeight2, stalagmiteUpsideDown2, opacityIsTarget2);
+                    //size2 * ScaleRate, stalagmiteHeight2, stalagmiteUpsideDown2, opacityIsTarget2);
                     if (Effect)
                     {
                         Instantiate(Effect, transform.position, transform.rotation);
@@ -119,10 +117,10 @@ using UnityEngine;
             if (Input.GetMouseButtonDown(1))
             {
                 //(Vector3 position, BrushType brush, ActionType action, int textureIndex, float opacity,
-                //float size, float stalagmiteHeight = 8f, bool stalagmiteUpsideDown = false,
+                //float size * ScaleRate, float stalagmiteHeight = 8f, bool stalagmiteUpsideDown = false,
                 //bool opacityIsTarget = false)
                 DMR.Modify(transform.position, brush, action, textureIndex, opacity,
-                size, stalagmiteHeight, stalagmiteUpsideDown, opacityIsTarget);
+                size * ScaleRate, stalagmiteHeight, stalagmiteUpsideDown, opacityIsTarget);
 
                 if (Effect)
                 {
@@ -142,7 +140,7 @@ using UnityEngine;
             //        //float size, float stalagmiteHeight = 8f, bool stalagmiteUpsideDown = false,
             //        //bool opacityIsTarget = false)
             //        DMR.Modify(transform.position, brush, action, textureIndex, opacity,
-            //        size, stalagmiteHeight, stalagmiteUpsideDown, opacityIsTarget);
+            //        size * ScaleRate, stalagmiteHeight, stalagmiteUpsideDown, opacityIsTarget);
 
             //        if (Effect)
             //        {
@@ -169,8 +167,13 @@ using UnityEngine;
     //}
 
     public void SetDiggingOn(bool use)
-        {
-            DoDigging = use;
-        }
+    {
+        DoDigging = use;
     }
+    public void SetScaleRate(float ParentScaleRate)
+    {
+        ScaleRate = ParentScaleRate;
+    }
+
+}
 

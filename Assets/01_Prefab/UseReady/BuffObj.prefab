@@ -111,7 +111,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f277ce76882ffd49882d9c497e454d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SetDrillerSpeedWhenCollide: 0
+  DecelerateMode: 0
+  SetSpeedTo: 0
+  DecelerateRate: 0
+  SoundMangerObj: {fileID: 0}
+  DestroyEffect: {fileID: 3594958593639721397, guid: 11555901d28bcb14a91bf80e579c6954, type: 3}
 --- !u!135 &1585995337606444041
 SphereCollider:
   m_ObjectHideFlags: 0

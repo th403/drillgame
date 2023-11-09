@@ -8,6 +8,8 @@ public class UIFundsCtrl : MonoBehaviour
     public int StartFunds = 20000;
     public Text FundsText;
     public GameObject CanvasGameOver;
+    public AudioSource GetFunds;
+    public AudioSource UseFunds;
 
     // Start is called before the first frame update
     void Start()
@@ -35,9 +37,18 @@ public class UIFundsCtrl : MonoBehaviour
 
     }
 
-    public bool AddFunds(int GetFunds)
+    public bool AddFunds(int getFunds)
     {
-        int newFunds = StartFunds + GetFunds;
+        if(getFunds>0)
+        {
+            GetFunds.Play();
+        }
+        else if (getFunds < 0)
+        {
+            UseFunds.Play();
+        }
+
+        int newFunds = StartFunds + getFunds;
         if (newFunds < 0)
         {
             return false;

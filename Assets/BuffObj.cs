@@ -9,11 +9,16 @@ public class BuffObj : MonoBehaviour
     public bool DecelerateMode =false;
     public float SetSpeedTo = 0;
     public float DecelerateRate = 0;
+    public GameObject SoundMangerObj;
+    public GameObject DestroyEffect;
+
+    private SoundManger soundManger;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        SoundMangerObj = GameObject.Find("SoundMangerObj");
+        soundManger = SoundMangerObj.GetComponent<SoundManger>();
     }
 
     // Update is called once per frame
@@ -33,6 +38,11 @@ public class BuffObj : MonoBehaviour
             else
             { 
                 other.GetComponent<DrillerRobo>().SetDiggingSpeed(SetSpeedTo); 
+            }
+            soundManger.PlaySEDestroy();
+            if(DestroyEffect)
+            {
+                GameObject effect=Instantiate(DestroyEffect, transform);
             }
             Destroy(this.gameObject);
         }

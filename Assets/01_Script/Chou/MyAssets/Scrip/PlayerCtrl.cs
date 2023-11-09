@@ -12,7 +12,7 @@ public class PlayerCtrl : MonoBehaviour
     public Transform cam;
     public Transform PlayerTransform;
     public Slider ChargeSlider;
-    public float PipeLength = 5;
+    //public float PipeLength = 5;
     public float PlayerAcceleration = 0.2f;
     //public float RotationSpeed = 0.3f;
     public float MaxRotationX = 85.0f;
@@ -22,11 +22,11 @@ public class PlayerCtrl : MonoBehaviour
     public float MovingDistanceMax = 30;
     public float MovingTimeMax = 3;
     public float ChargeTimeMax = 2;
+    public int PricePerMeter = 100;
 
 
-    private Vector3 LastFundsCheckPos;
+    //private Vector3 LastFundsCheckPos;
     private UIFundsCtrl UIFunds;
-    private Vector3 rot, myRot, myPos;
     private Rigidbody PlayerRigidbody;
     private bool Use = true;
     private bool Moving = false;
@@ -40,7 +40,7 @@ public class PlayerCtrl : MonoBehaviour
     void Start()
     {
         UIFunds = FundsText.GetComponent<UIFundsCtrl>();
-        LastFundsCheckPos = transform.position;
+        //LastFundsCheckPos = transform.position;
         PlayerRigidbody = GetComponent<Rigidbody>();
         RotationEulerAngleVelocity = new Vector3(0, PlayerRotationSpeed, 0);
     }
@@ -48,14 +48,14 @@ public class PlayerCtrl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float distance = Vector3.Distance(gameObject.transform.position, LastFundsCheckPos);
-        if (distance>= PipeLength)
-        {
-            if (UIFunds.AddFunds(-100))
-            {
-                LastFundsCheckPos = gameObject.transform.position;
-            }
-        }
+        //float distance = Vector3.Distance(gameObject.transform.position, LastFundsCheckPos);
+        //if (distance>= PipeLength)
+        //{
+        //    if (UIFunds.AddFunds(-100))
+        //    {
+        //        LastFundsCheckPos = gameObject.transform.position;
+        //    }
+        //}
 
         if (Use)
         {
@@ -117,11 +117,15 @@ public class PlayerCtrl : MonoBehaviour
         if (Input.GetKeyUp(KeyCode.Space) && !Moving)
         {
             //ChargeRate = ChargeTime / ChargeTimeMax;
+            float MovingDistance = MovingDistanceMin + (MovingDistanceMax - MovingDistanceMin) * ChargeRate;
             ChargeTime = 0;
+            if (UIFunds.AddFunds((int)(-PricePerMeter * MovingDistance)))
+            {
+                MovingTime = MovingTimeMin + (MovingTimeMax - MovingTimeMin) * ChargeRate;
+                MovingSpeed = MovingDistance / MovingTime;
+                Moving = true;
+            }
 
-            MovingTime = MovingTimeMin + (MovingTimeMax - MovingTimeMin) * ChargeRate;
-            MovingSpeed = (MovingDistanceMin + (MovingDistanceMax - MovingDistanceMin) * ChargeRate) / MovingTime;
-            Moving = true;
         }
 
         ChargeSlider.value = ChargeRate;
