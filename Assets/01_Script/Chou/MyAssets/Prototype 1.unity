@@ -17292,7 +17292,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 497799674}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 881d08d086a625e46b8e8bba0ad08b87, type: 3}
   m_Name: 
@@ -73459,7 +73459,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CameraRoot: {fileID: 770822627221400355}
   CameraLookAtPoint: {fileID: 517370060}
-  MoveSpeed: 0.02
+  MoveSpeed: 2
 --- !u!114 &2091570786
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -73643,8 +73643,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2091570784}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 6.0900106, y: 2.76, z: -34.607365}
+  m_LocalRotation: {x: -0, y: -0.38268343, z: -0, w: 0.92387956}
+  m_LocalPosition: {x: 8.21133, y: 1.76, z: -30.228685}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -75281,6 +75281,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1124915832139362235, guid: 527ac0c138b37a545939e62ae7b6e6ee, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.5
+      objectReference: {fileID: 0}
     - target: {fileID: 1276299273692277000, guid: 527ac0c138b37a545939e62ae7b6e6ee, type: 3}
       propertyPath: m_Drag
       value: 0.1
@@ -75349,6 +75353,10 @@ PrefabInstance:
       propertyPath: m_OcclusionCulling
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4110096468480213938, guid: 527ac0c138b37a545939e62ae7b6e6ee, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.5
+      objectReference: {fileID: 0}
     - target: {fileID: 4937103535501512762, guid: 527ac0c138b37a545939e62ae7b6e6ee, type: 3}
       propertyPath: m_LocalPosition.z
       value: 0
@@ -75408,6 +75416,14 @@ PrefabInstance:
     - target: {fileID: 6465240110294973204, guid: 527ac0c138b37a545939e62ae7b6e6ee, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6552722183218240644, guid: 527ac0c138b37a545939e62ae7b6e6ee, type: 3}
+      propertyPath: followSpd
+      value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 6552722183218240644, guid: 527ac0c138b37a545939e62ae7b6e6ee, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8269771775086463580, guid: 527ac0c138b37a545939e62ae7b6e6ee, type: 3}
       propertyPath: m_Enabled
