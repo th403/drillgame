@@ -39,8 +39,8 @@ public class StageSelectController : MonoBehaviour
         curHoleStage = null;
         PauseControl();
 
-        cmr.transform.DOMove(mapCameraTrs.position, cameraToHoleTime);
-        cmr.transform.DORotate(mapCameraTrs.eulerAngles, cameraToHoleTime).OnComplete(() =>
+        cmr.transform.DOMove(mapCameraTrs.position, cameraToMapTime);
+        cmr.transform.DORotate(mapCameraTrs.eulerAngles, cameraToMapTime).OnComplete(() =>
         {
             RestartControl();
         });

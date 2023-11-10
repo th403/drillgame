@@ -48,7 +48,7 @@ public class MainGameDataManager : MonoBehaviour
     //play data
     public WLProperty<float> money;
 
-    //target
+    //stage target
     public List<Noruma> norumas;
     public List<WLProperty<bool>> energyGots;//x num
     public WLProperty<float> time;
@@ -66,10 +66,11 @@ public class MainGameDataManager : MonoBehaviour
     [Header("read only")]
     public float passTarget;
 
+    //fast get variable
     public float Money
     {
         get { return money.Value; }
-        set { money.Value = value; }
+        set { money.Value =Mathf.Clamp( value,0,GreatestNorumaTarget); }
     }
 
     public int EnergyCount
@@ -122,8 +123,12 @@ public class MainGameDataManager : MonoBehaviour
         }
     }
 
+    //public function------------------------
+
+    //init
     public void Init()
     {
+        //test:init pass target
         foreach (var n in norumas)
         {
             if (n.name == "hugou")
@@ -135,8 +140,9 @@ public class MainGameDataManager : MonoBehaviour
         //nowRankStandard.Value = null;
         //nowNoruma.Value = null;
     }
-
-    public void DestroyData()
+    
+    //force to destroy this object
+    public void DestroyDataObject()
     {
         Destroy(gameObject);
     }
