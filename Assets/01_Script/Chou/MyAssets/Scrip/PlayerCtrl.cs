@@ -77,33 +77,8 @@ public class PlayerCtrl : MonoBehaviour
 
             //float rotY = transform.localEulerAngles.y;
             //transform.localEulerAngles = new Vector3(rotX, rotY, 0);
-            if (Input.GetKey(KeyCode.A))
-            {
-                Vector3 deltaRotation = RotationEulerAngleVelocity * Time.deltaTime;
-                deltaRotation.y *= -1;
-                PlayerRigidbody.AddTorque(deltaRotation);
-            }
-            if (Input.GetKey(KeyCode.D))
-            {
-                Vector3 deltaRotation = RotationEulerAngleVelocity * Time.deltaTime;
-                PlayerRigidbody.AddTorque(deltaRotation);
-                //PlayerRigidbody.AddForce(transform.right * PlayerAcceleration, ForceMode.Impulse);
-            }
-
-            if (Moving)
-            {
-                ChargeRate *= 0.975f;
-                MovingTime -= Time.deltaTime;
-                transform.position += transform.forward * MovingSpeed * Time.deltaTime;
-
-                if(MovingTime<=0)
-                {
-                    Moving = false;
-                    PlayerRigidbody.AddForce(transform.forward * MovingSpeed* PlayerRigidbody.mass, ForceMode.Impulse);
-                    MovingSpeed = 0;
-                }
-            }
         }
+        ChargeRate *= 0.975f;
 
         if (Input.GetKey(KeyCode.Space)&&!Moving)
         {
@@ -128,7 +103,41 @@ public class PlayerCtrl : MonoBehaviour
 
         }
 
+        if (Moving)
+        {
+            MovingTime -= Time.deltaTime;
+
+            if (MovingTime <= 0)
+            {
+                Moving = false;
+                PlayerRigidbody.AddForce(transform.forward * MovingSpeed * PlayerRigidbody.mass, ForceMode.Impulse);
+                MovingSpeed = 0;
+            }
+        }
+
         ChargeSlider.value = ChargeRate;
     }
 
+    private void FixedUpdate()
+    {
+        if (Input.GetKey(KeyCode.A))
+        {
+            Vector3 deltaRotation = RotationEulerAngleVelocity * Time.deltaTime;
+            deltaRotation.y *= -1;
+            PlayerRigidbody.AddTorque(deltaRotation);
+        }
+        if (Input.GetKey(KeyCode.D))
+        {
+            Vector3 deltaRotation = RotationEulerAngleVelocity * Time.deltaTime;
+            PlayerRigidbody.AddTorque(deltaRotation);
+            //PlayerRigidbody.AddForce(transform.right * PlayerAcceleration, ForceMode.Impulse);
+        }
+        if (Moving)
+        {
+            PlayerRigidbody.velocity = (transform.forward * MovingSpeed);
+        }
+
+
+
+    }
 }

@@ -5,12 +5,16 @@ using UnityEngine;
 public class FollowAss : MonoBehaviour
 {
     public GameObject ass;
-    public GameObject player;
-    public float followSpd=0.4f;
+    public float followSpd=0.02f;
+    public float MinPlayerRotateSpeed = 1.0f;
+    public GameObject Player;
+    private Rigidbody PlayerRigidbody;
 
     // Start is called before the first frame update
     void Start()
     {
+        PlayerRigidbody = Player.GetComponent<Rigidbody>();
+
         transform.parent = null;
     }
 
@@ -18,9 +22,13 @@ public class FollowAss : MonoBehaviour
     void Update()
     {
         //set same position
-        transform.position = player.transform.position;
+        transform.position = Player.transform.position;
+        if (PlayerRigidbody.angularVelocity.y < MinPlayerRotateSpeed && PlayerRigidbody.angularVelocity.y > -MinPlayerRotateSpeed)
+        {
 
-        //get ass world rotation
-        transform.rotation = Quaternion.Lerp(transform.rotation, player.transform.rotation, followSpd);
+            //get ass world rotation
+            transform.rotation = Quaternion.Lerp(transform.rotation, Player.transform.rotation, followSpd);
+
+        }
     }
 }
