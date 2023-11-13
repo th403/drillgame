@@ -5,15 +5,13 @@ using UnityEngine;
 public class MineralCtrl : MonoBehaviour
 {
     public int Value = 1000;
-    //public GameObject Dropping;
-
-    public GameObject FundsText;
-    private UIFundsCtrl UIFunds;
+    public GameObject EventCtrlObj;
+    private EventCtrl eventCtrl;
 
     // Start is called before the first frame update
     void Start()
     {
-        UIFunds = FundsText.GetComponent<UIFundsCtrl>();
+        eventCtrl = EventCtrlObj.GetComponent<EventCtrl>();
     }
 
     // Update is called once per frame
@@ -31,7 +29,7 @@ public class MineralCtrl : MonoBehaviour
 
         if(other.tag == "Player")
         {
-            UIFunds.AddFunds(Value);
+            eventCtrl.PlayerGetMoney(Value);
             Destroy(this.gameObject);
         }
     }
