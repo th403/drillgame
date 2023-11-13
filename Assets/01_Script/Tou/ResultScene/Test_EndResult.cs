@@ -16,7 +16,7 @@ public class Test_EndResult : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            MainGameDataManager.Instance.DestroyData();
+            MainGameDataManager.Instance.DestroyDataObject();
             SceneManager.LoadScene("TestSwitchToResult");
         }
     }
