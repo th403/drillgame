@@ -23,7 +23,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Unbreal_001
+  m_Name: Debuff_001
   m_Shader: {fileID: -6465566751694194690, guid: da5af64114b6b43419441293a543f050, type: 3}
   m_ValidKeywords:
   - _DISABLE_SSR
@@ -48,7 +48,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _Albedo:
-        m_Texture: {fileID: 2800000, guid: 0d73bad9d6d71cf40a1488eaf5d2d58e, type: 3}
+        m_Texture: {fileID: 2800000, guid: 16c7c96172ee6b042909ce1fb844c14d, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _AnisotropyMap:
@@ -116,7 +116,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Nromal:
-        m_Texture: {fileID: 2800000, guid: 93be8babe202b85479bf6ca88e6dc1a1, type: 3}
+        m_Texture: {fileID: 2800000, guid: c76106934a38b124389035c5728ed6e9, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _SpecularColorMap:
@@ -231,7 +231,7 @@ Material:
     - _RefractionModel: 0
     - _RenderQueueType: 1
     - _RequireSplitLighting: 0
-    - _Saturation: 1.68
+    - _Saturation: 1
     - _Smoothness: 0.5
     - _SmoothnessRemapMax: 1
     - _SmoothnessRemapMin: 0
@@ -255,7 +255,7 @@ Material:
     - _TexWorldScale: 1
     - _TexWorldScaleEmissive: 1
     - _Thickness: 1
-    - _Tiling: 1.28
+    - _Tiling: 0.83
     - _TransmissionEnable: 1
     - _TransparentBackfaceEnable: 0
     - _TransparentCullMode: 2
