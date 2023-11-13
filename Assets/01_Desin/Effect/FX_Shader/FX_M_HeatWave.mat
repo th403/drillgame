@@ -24,8 +24,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: FX_M_HeatWave
-  m_Shader: {fileID: -6465566751694194690, guid: 65758d17fc7a9e44396309ad8c71df20,
-    type: 3}
+  m_Shader: {fileID: -6465566751694194690, guid: 65758d17fc7a9e44396309ad8c71df20, type: 3}
   m_ValidKeywords:
   - _SURFACE_TYPE_TRANSPARENT
   - _TRANSPARENT_WRITES_MOTION_VEC
@@ -72,14 +71,14 @@ Material:
     - _CullMode: 2
     - _CullModeForward: 2
     - _DepthOffsetEnable: 0
-    - _Distortion: 0.0909
+    - _Distortion: 0.0036
     - _DoubleSidedEnable: 0
     - _DoubleSidedGIMode: 0
     - _DoubleSidedNormalMode: 2
     - _DstBlend: 10
     - _EnableBlendModePreserveSpecularLighting: 1
     - _EnableFogOnTransparent: 0
-    - _NoiseStrength: 0.015
+    - _NoiseStrength: 0.038
     - _OpaqueCullMode: 2
     - _RayTracing: 0
     - _ReceivesSSR: 1
@@ -113,7 +112,7 @@ Material:
     - _ZTestTransparent: 4
     - _ZWrite: 0
     - _noisespeed: -0.1
-    - _noisesubscale: 4.4
+    - _noisesubscale: 1.68
     - _wave: 0.3
     m_Colors:
     - _DoubleSidedConstants: {r: 1, g: 1, b: 1, a: 0}
