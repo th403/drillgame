@@ -5,29 +5,21 @@ using UnityEngine;
 
 public class WLPlayerControl : MonoBehaviour
 {
-    [Header("edit")]
     public float moveSpeed=5;
     public float flySpeed=5;
-    public float rotateEyeSpeed = 90;
-    public float rotateCharaSpeed = 2;
+    public float rotateSpeed = 5;
     public KeyCode flyKey=KeyCode.Mouse1;
     public KeyCode showCursorKey = KeyCode.Q;
 
     public Transform cmrRig;
-    public Transform charaTrs;
 
-    public Action OnStop;
     public Action<Vector2> OnMove;
     public Action OnFly;
+
 
     [Header("read only")]
     public Rigidbody rigid;
     public bool isShowCursor = true;
-    public bool canMove=true;
-    public bool canFly = true;
-    public bool canRotateChara = true;
-    public bool canRotateEye = true;
-    public Vector3 lastPos;
 
     private void Awake()
     {
@@ -37,42 +29,30 @@ public class WLPlayerControl : MonoBehaviour
     private void FixedUpdate()
     {
         Move();
-        RotateChara();
         Fly();
     }
 
     private void Update()
     {
-        RotateEye();
+        Eye();
         ShowCursor();
     }
 
     void Move()
     {
-        //check if can move
-        if (canMove == false)
-        {
-            return;
-        }
-
         //get input
         Vector2 vec = new Vector2(
             Input.GetAxis("Horizontal"),
             Input.GetAxis("Vertical"));
 
         //check if need move
-        if (vec == Vector2.zero)
-        {
-            OnStop?.Invoke();
-            return;
-        }
+        if (vec == Vector2.zero) return;
 
         //move by setting transform.position
         Vector3 forward = transform.forward;
         Vector3 right = transform.right;
         vec *= moveSpeed * Time.deltaTime;
         Vector3 move = forward * vec.y + right * vec.x;
-        lastPos = transform.transform.position;
         transform.transform.position += move;
 
         //customize event
@@ -81,12 +61,6 @@ public class WLPlayerControl : MonoBehaviour
 
     void Fly()
     {
-        //check if can fly
-        if (canFly == false)
-        {
-            return;
-        }
-
         //check if need fly
         if (Input.GetKey(flyKey) == false) return;
 
@@ -100,14 +74,8 @@ public class WLPlayerControl : MonoBehaviour
         OnFly?.Invoke();
     }
 
-    void RotateEye()
+    void Eye()
     {
-        //check if can rotate eye
-        if (canRotateEye == false)
-        {
-            return;
-        }
-
         //get input
         Vector2 vec = new Vector2(
             Input.GetAxis("Mouse X"),
@@ -118,36 +86,17 @@ public class WLPlayerControl : MonoBehaviour
 
         //rotate horizental
         float rot = vec.x;
-        transform.Rotate(0, rot * rotateEyeSpeed * Time.deltaTime, 0);
+        transform.Rotate(0, rot * rotateSpeed * Time.deltaTime, 0);
 
         //rotate vertical
         var backupRot = cmrRig.rotation;
         int pn = (Vector3.Dot(cmrRig.forward, transform.forward) < 0) ? 1 : -1;
-        cmrRig.Rotate(pn * vec.y * Time.deltaTime * rotateEyeSpeed, 0, 0);
+        cmrRig.Rotate(pn * vec.y * Time.deltaTime * rotateSpeed, 0, 0);
         //if greater than 180, set back value
         if (Vector3.Dot(cmrRig.forward, transform.forward) < 0)
         {
             cmrRig.rotation = backupRot;
         }
-    }
-
-    void RotateChara()
-    { 
-        //check if can rotate eye
-        if (canRotateChara == false)
-        {
-            return;
-        }
-
-        //check if have chara transform
-        if (charaTrs==null)
-        {
-            return;
-        }
-
-        //rotate chara by velocity
-        var veloDir = (transform.position - lastPos).normalized;
-        charaTrs.forward = Vector3.Lerp(charaTrs.forward, veloDir, rotateCharaSpeed * Time.fixedDeltaTime);
     }
 
     void ShowCursor()
