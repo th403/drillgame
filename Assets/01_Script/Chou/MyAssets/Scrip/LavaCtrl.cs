@@ -5,9 +5,10 @@ using UnityEngine.UI;
 
 public class LavaCtrl : MonoBehaviour
 {
-    public GameObject FundsText;
+    //public GameObject FundsText;
     public GameObject Mark;
-    private UIFundsCtrl UIFunds;
+    public GameObject EventCtrlObj;
+    private EventCtrl eventCtrl;
 
     public float Value=50000;
     public int FundsPerSec = 1000;
@@ -18,7 +19,7 @@ public class LavaCtrl : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        UIFunds = FundsText.GetComponent<UIFundsCtrl>();
+        eventCtrl = EventCtrlObj.GetComponent<EventCtrl>();
     }
 
     // Update is called once per frame
@@ -30,7 +31,7 @@ public class LavaCtrl : MonoBehaviour
             if (CountTime>=1)
             {
                 Value -= FundsPerSec;
-                UIFunds.AddFunds(FundsPerSec);
+                eventCtrl.PlayerGetMoney(FundsPerSec);
                 CountTime = 0;
             }
 

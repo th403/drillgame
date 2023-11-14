@@ -9,7 +9,6 @@ public class PlayerCtrl : MonoBehaviour
     //public GameObject Pipe;
     //private int CountPipe = 0;
     public GameObject FundsText;
-    public Transform cam;
     public Transform PlayerTransform;
     public Slider ChargeSlider;
     //public float PipeLength = 5;
@@ -77,35 +76,10 @@ public class PlayerCtrl : MonoBehaviour
 
             //float rotY = transform.localEulerAngles.y;
             //transform.localEulerAngles = new Vector3(rotX, rotY, 0);
-            if (Input.GetKey(KeyCode.A))
-            {
-                Vector3 deltaRotation = RotationEulerAngleVelocity * Time.deltaTime;
-                deltaRotation.y *= -1;
-                PlayerRigidbody.AddTorque(deltaRotation);
-            }
-            if (Input.GetKey(KeyCode.D))
-            {
-                Vector3 deltaRotation = RotationEulerAngleVelocity * Time.deltaTime;
-                PlayerRigidbody.AddTorque(deltaRotation);
-                //PlayerRigidbody.AddForce(transform.right * PlayerAcceleration, ForceMode.Impulse);
-            }
-
-            if (Moving)
-            {
-                ChargeRate *= 0.975f;
-                MovingTime -= Time.deltaTime;
-                transform.position += transform.forward * MovingSpeed * Time.deltaTime;
-
-                if(MovingTime<=0)
-                {
-                    Moving = false;
-                    PlayerRigidbody.AddForce(transform.forward * MovingSpeed* PlayerRigidbody.mass, ForceMode.Impulse);
-                    MovingSpeed = 0;
-                }
-            }
         }
+        ChargeRate *= 0.975f;
 
-        if (Input.GetKey(KeyCode.Space)&&!Moving)
+        if ((Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.JoystickButton0)) && !Moving)
         {
             ChargeTime += Time.deltaTime;
             if(ChargeTime> ChargeTimeMax)
@@ -114,7 +88,7 @@ public class PlayerCtrl : MonoBehaviour
             }
             ChargeRate = ChargeTime / ChargeTimeMax;
         }
-        if (Input.GetKeyUp(KeyCode.Space) && !Moving)
+        if ((Input.GetKeyUp(KeyCode.Space) || Input.GetKeyUp(KeyCode.JoystickButton0)) && !Moving)
         {
             //ChargeRate = ChargeTime / ChargeTimeMax;
             float MovingDistance = MovingDistanceMin + (MovingDistanceMax - MovingDistanceMin) * ChargeRate;
@@ -123,12 +97,54 @@ public class PlayerCtrl : MonoBehaviour
             {
                 MovingTime = MovingTimeMin + (MovingTimeMax - MovingTimeMin) * ChargeRate;
                 MovingSpeed = MovingDistance / MovingTime;
+                PlayerRigidbody.velocity = (transform.forward * MovingSpeed);
                 Moving = true;
             }
 
         }
 
+        if (Moving)
+        {
+            MovingTime -= Time.deltaTime;
+
+            if (MovingTime <= 0)
+            {
+                Moving = false;
+                MovingSpeed = 0;
+            }
+        }
+
         ChargeSlider.value = ChargeRate;
+    }
+
+    private void FixedUpdate()
+    {
+        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.Joystick1Button4))
+        {
+            Vector3 deltaRotation = RotationEulerAngleVelocity * Time.deltaTime;
+            deltaRotation.y *= -1;
+            PlayerRigidbody.AddTorque(deltaRotation);
+        }
+        if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.Joystick1Button5))
+        {
+            Vector3 deltaRotation = RotationEulerAngleVelocity * Time.deltaTime;
+            PlayerRigidbody.AddTorque(deltaRotation);
+            //PlayerRigidbody.AddForce(transform.right * PlayerAcceleration, ForceMode.Impulse);
+        }
+        if (Moving)
+        {
+            Vector3 v = PlayerRigidbody.velocity;
+            v.x = 0;
+            v.z = 0;
+            v += (transform.forward * MovingSpeed);
+            PlayerRigidbody.velocity = v;
+        }
+
+    }
+
+    public bool GetIfMoving()
+    {
+        return Moving;
     }
 
 }

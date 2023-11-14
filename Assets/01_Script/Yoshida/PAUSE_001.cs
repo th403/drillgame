@@ -76,7 +76,8 @@ public class PAUSE_001 : MonoBehaviour
     //ダイアログ内のYesを押したら
     public void OnRetryDialogue()
     {
-        SceneManager.LoadScene("SampleScene");
+         SceneManager.LoadScene("03_StageSelect");
+        // SceneManager.LoadScene("SampleScene");
         Debug.Log("Retry");
     }
     //ダイアログ内のNoを押したら
