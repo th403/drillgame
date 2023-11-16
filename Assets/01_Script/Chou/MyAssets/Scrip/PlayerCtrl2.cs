@@ -6,6 +6,18 @@ using UnityEngine.UI;
 
 public class PlayerCtrl2 : MonoBehaviour
 {
+    private static PlayerCtrl2 instance;
+
+    private void Awake()
+    {
+        instance = this;
+    }
+
+    public static PlayerCtrl2 Instance
+    {
+        get { return instance; }
+    }
+
     public GameObject FundsText;
     public Transform PlayerTransform;
     public Slider ChargeSlider;
@@ -21,6 +33,8 @@ public class PlayerCtrl2 : MonoBehaviour
     public float AngularDrag = 0.02f;
     public int PricePerMeter = 100;
     public CharacterController characterController;
+    public bool ChargeChangeRotateSpeed;
+    public float ChargeChangeRotateSpeedRate = 4.0f;
 
     private UIFundsCtrl UIFunds;
     private bool Use = true;
@@ -30,6 +44,8 @@ public class PlayerCtrl2 : MonoBehaviour
     private float ChargeTime = 0;
     private float ChargeRate = 0;
     private float MovingTime = 0;
+    private float FreezingTime=0;
+
     private Vector3 DeltaRotation;
     private Vector3 DeltaMovement;
     private Vector3 RotationEulerAngleVelocity;
@@ -47,27 +63,76 @@ public class PlayerCtrl2 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //UI
+        ChargeRate *= 0.975f;
+        ChargeSlider.value = ChargeRate;
+
+        //カメラOn
         if (!Use)
         {
             return;
         }
 
+        //制御可能
+        if (FreezingTime>0)
+        {
+            FreezingTime -= Time.deltaTime;
+            //次のアニメ
+            if(FreezingTime<=0)
+            {
+                CharaAnimeController.Instance.StartIdle();
+            }
+
+            //移動慣性保留
+            DeltaMovement *= (0.75f);
+            characterController.Move(DeltaMovement);
+
+            return;
+        }
+
+
     //Move
-        ChargeRate *= 0.975f;
 
         DeltaMovement *= (1 - Drag);
 
-        if ((Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.JoystickButton0)) && !Moving)
+        //Cannot Double Charge
+        //if ((Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.JoystickButton0)) && !Moving)
+        //{
+        //    ChargeTime += Time.deltaTime;
+        //    if(ChargeTime> ChargeTimeMax)
+        //    {
+        //        ChargeTime = ChargeTimeMax;
+        //    }
+        //    ChargeRate = ChargeTime / ChargeTimeMax;
+        //}
+
+        //if ((Input.GetKeyUp(KeyCode.Space) || Input.GetKeyUp(KeyCode.JoystickButton0)) && !Moving)
+        //{
+        //    //ChargeRate = ChargeTime / ChargeTimeMax;
+        //    float MovingDistance = MovingDistanceMin + (MovingDistanceMax - MovingDistanceMin) * ChargeRate;
+        //    ChargeTime = 0;
+        //    if (UIFunds.AddFunds((int)(-PricePerMeter * MovingDistance)))
+        //    {
+        //        MovingTime = MovingTimeMin + (MovingTimeMax - MovingTimeMin) * ChargeRate;
+        //        MovingSpeed = MovingDistance / MovingTime;
+        //        CharaAnimeController.Instance.StartRun();
+        //        Moving = true;
+        //    }
+
+        //}
+
+        //Can Double Charge
+        if ((Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.JoystickButton0)))
         {
             ChargeTime += Time.deltaTime;
-            if(ChargeTime> ChargeTimeMax)
+            if (ChargeTime > ChargeTimeMax)
             {
                 ChargeTime = ChargeTimeMax;
             }
             ChargeRate = ChargeTime / ChargeTimeMax;
         }
 
-        if ((Input.GetKeyUp(KeyCode.Space) || Input.GetKeyUp(KeyCode.JoystickButton0)) && !Moving)
+        if ((Input.GetKeyUp(KeyCode.Space) || Input.GetKeyUp(KeyCode.JoystickButton0)))
         {
             //ChargeRate = ChargeTime / ChargeTimeMax;
             float MovingDistance = MovingDistanceMin + (MovingDistanceMax - MovingDistanceMin) * ChargeRate;
@@ -139,11 +204,19 @@ public class PlayerCtrl2 : MonoBehaviour
             Rotating = true;
         }
 
-        this.transform.Rotate(DeltaRotation, Space.World);
+    //ChargeChangeRotateSpeed
+        if (ChargeChangeRotateSpeed)
+        {
+            //ChargeRotateOn
+            this.transform.Rotate(DeltaRotation * (1 + ChargeRate * ChargeChangeRotateSpeedRate), Space.World);
 
-        //UI
+        }
+        else
+        {
+            //ChargeRotateOff
+            this.transform.Rotate(DeltaRotation, Space.World);
+        }
 
-        ChargeSlider.value = ChargeRate;
     }
 
     private void FixedUpdate()
@@ -168,4 +241,20 @@ public class PlayerCtrl2 : MonoBehaviour
         Quaternion q = Quaternion.AngleAxis(angle, axis);
         source= q * source;
     }
+    public void PlayerGetLava()
+    {
+        FreezingTime = 2.0f;
+
+        //reset
+        MovingTime = 0;
+        Moving = false;
+        MovingSpeed = 0;
+
+        DeltaRotation = new Vector3(0, 0, 0);
+
+        //アニメ
+        CharaAnimeController.Instance.StartStick();
+
+    }
+
 }

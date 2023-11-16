@@ -50,8 +50,8 @@ public class LavaCtrl : MonoBehaviour
             use = true;
             //this.GetComponent<Renderer>().material.color *= 2;
             Mark.SetActive(false);
+            PlayerCtrl2.Instance.PlayerGetLava();
         }
-
     }
 
 }
