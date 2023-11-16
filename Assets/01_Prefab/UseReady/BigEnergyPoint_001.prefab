@@ -4954,7 +4954,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8060141574958997724}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.51, y: 2.52, z: 0.34}
+  m_LocalPosition: {x: -0.25, y: 3.7, z: 0.34}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5178,7 +5178,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5424551177624393932, guid: d3a0a7ac21372084cb532192ff49cd7c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 74.9
+      value: 60.9
       objectReference: {fileID: 0}
     - target: {fileID: 5424551177624393932, guid: d3a0a7ac21372084cb532192ff49cd7c, type: 3}
       propertyPath: m_LocalPosition.z
@@ -5284,7 +5284,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8701579372248437201, guid: dc58562cd37e7b34ebb6e98bcbaa713d, type: 3}
       propertyPath: m_Name
-      value: BigEnergy_001
+      value: BigLava
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dc58562cd37e7b34ebb6e98bcbaa713d, type: 3}
@@ -5337,8 +5337,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Mark: {fileID: 5428507796939232904}
   EventCtrlObj: {fileID: 0}
-  Value: 50000
-  FundsPerSec: 1000
+  Value: 200000
+  FundsPerSec: 2500
 --- !u!4 &6514169686020313371 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7659713165622944010, guid: dc58562cd37e7b34ebb6e98bcbaa713d, type: 3}
@@ -5354,6 +5354,10 @@ PrefabInstance:
     - target: {fileID: 80126464729905512, guid: ebe3f8831aa23b045b3faeb14a89fb1a, type: 3}
       propertyPath: m_Name
       value: FX_vapor 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 80126464729905514, guid: ebe3f8831aa23b045b3faeb14a89fb1a, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.a
+      value: 0.34117648
       objectReference: {fileID: 0}
     - target: {fileID: 80126464729905515, guid: ebe3f8831aa23b045b3faeb14a89fb1a, type: 3}
       propertyPath: m_RootOrder
