@@ -21,7 +21,6 @@ public class PlayerCtrl2 : MonoBehaviour
     public float AngularDrag = 0.02f;
     public int PricePerMeter = 100;
     public CharacterController characterController;
-    public CharaAnimeController AnimeController;
 
     private UIFundsCtrl UIFunds;
     private bool Use = true;
@@ -42,7 +41,7 @@ public class PlayerCtrl2 : MonoBehaviour
         DeltaMovement = new Vector3(0, -9.8f * Time.deltaTime, 0);
         DeltaRotation = new Vector3(0, 0, 0);
         RotationEulerAngleVelocity = new Vector3(0, PlayerRotationSpeed, 0);
-        AnimeController.StartIdle();
+        //CharaAnimeController.Instance.StartIdle();
     }
 
     // Update is called once per frame
@@ -77,7 +76,7 @@ public class PlayerCtrl2 : MonoBehaviour
             {
                 MovingTime = MovingTimeMin + (MovingTimeMax - MovingTimeMin) * ChargeRate;
                 MovingSpeed = MovingDistance / MovingTime;
-                AnimeController.StartRun();
+                CharaAnimeController.Instance.StartRun();
                 Moving = true;
             }
 
@@ -94,7 +93,7 @@ public class PlayerCtrl2 : MonoBehaviour
             {
                 Moving = false;
                 MovingSpeed = 0;
-                AnimeController.StartIdle();
+                CharaAnimeController.Instance.StartIdle();
             }
         }
 
