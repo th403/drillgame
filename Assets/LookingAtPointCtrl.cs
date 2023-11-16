@@ -1,37 +1,78 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class LookingAtPointCtrl : MonoBehaviour
 {
     public GameObject Player;
+    public GameObject CameraTargetRoot;
     public GameObject PlayerCamera;
-    public float Height = 1.0f;
-    public float DistanceChangeRate = 0.5f;
-    public float DistanceChangeSpeed = 1.0f;
+    private PlayerCtrl2 playerCtrl2;
+    public float XRotateSpeed = 0.05f;
+    public float HeightMax = 4.0f;
+    public float HeightMin = -4.0f;
 
-    private Rigidbody PlayerRigidbody;
+    public float Height = 1.0f;
+    public float DistanceChangeRate = 0.1f;
+    public float DistanceChangeSpeed = 1.0f;
+    private FollowAss followAss;
 
     // Start is called before the first frame update
     void Start()
     {
-        PlayerRigidbody = Player.GetComponent<Rigidbody>();
+        playerCtrl2 = Player.GetComponent<PlayerCtrl2>();
+        followAss = CameraTargetRoot.GetComponent<FollowAss>();
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        float TargetZ = PlayerRigidbody.velocity.magnitude* DistanceChangeRate;
-        float NowZ = transform.localPosition.z;
-        transform.localPosition += new Vector3(0, 0, (TargetZ - NowZ) * DistanceChangeSpeed * Time.deltaTime);
 
-        Vector3 DistanceToCamera = PlayerCamera.transform.position - transform.position;
-        DistanceToCamera.y = 0;
-        if (DistanceToCamera.magnitude < transform.localPosition.z)
+        if (!followAss.FPSMode())
         {
-            Vector2 PlayerDistanceToCamera2D = Player.transform.position - PlayerCamera.transform.position;
-            PlayerDistanceToCamera2D.y = 0;
-            transform.localPosition = new Vector3(0, Height, PlayerDistanceToCamera2D.magnitude * 0.5f);
+            
+            //WS
+            float DeltaHeight=0;
+            if (Input.GetKey(KeyCode.W) && transform.localPosition.y < HeightMax)
+            {
+                DeltaHeight += XRotateSpeed;
+            }
+            else if (Input.GetKey(KeyCode.S) && transform.localPosition.y > HeightMin)
+            {
+                DeltaHeight -= XRotateSpeed;
+            }
+
+            //
+            float TargetZ = playerCtrl2.GetSpeed() * DistanceChangeRate;
+
+            float NowZ = transform.localPosition.z;
+            transform.localPosition += new Vector3(0, DeltaHeight, (TargetZ - NowZ) * DistanceChangeSpeed * Time.deltaTime);
+
+            Vector3 DistanceToCamera = PlayerCamera.transform.position - transform.position;
+            DistanceToCamera.y = 0;
+
+
+            //
+            if (DistanceToCamera.magnitude < transform.localPosition.z)
+            {
+                Vector2 PlayerDistanceToCamera2D = Player.transform.position - PlayerCamera.transform.position;
+                PlayerDistanceToCamera2D.y = 0;
+                transform.localPosition = new Vector3(0, Height, PlayerDistanceToCamera2D.magnitude * 0.5f);
+            }
+
+        }
+        else
+        {
+            float TargetZ = 2.0f;
+
+            float NowZ = transform.localPosition.z;
+            transform.localPosition += new Vector3(0, 0, (TargetZ - NowZ) * DistanceChangeSpeed * Time.deltaTime);
+
+            Vector3 DistanceToCamera = PlayerCamera.transform.position - transform.position;
+            DistanceToCamera.y = 0;
+
         }
 
     }

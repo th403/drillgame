@@ -29,12 +29,13 @@ public class PlayerCtrl : MonoBehaviour
     private Rigidbody PlayerRigidbody;
     private bool Use = true;
     private bool Moving = false;
+    private bool Rotating = false;
     private float MovingSpeed;
     private float ChargeTime = 0;
     private float ChargeRate = 0;
     private float MovingTime = 0;
     private Vector3 RotationEulerAngleVelocity;
-
+    private Vector3 normalTerrain;
     // Start is called before the first frame update
     void Start()
     {
@@ -97,7 +98,14 @@ public class PlayerCtrl : MonoBehaviour
             {
                 MovingTime = MovingTimeMin + (MovingTimeMax - MovingTimeMin) * ChargeRate;
                 MovingSpeed = MovingDistance / MovingTime;
-                PlayerRigidbody.velocity = (transform.forward * MovingSpeed);
+
+                //run
+                PlayerRigidbody.AddForce(transform.forward * MovingSpeed * PlayerRigidbody.mass, ForceMode.Impulse);
+
+                //jump
+                //Vector3 ForceDirection = (transform.forward + transform.up).normalized;
+                //PlayerRigidbody.AddForce(ForceDirection * MovingSpeed * PlayerRigidbody.mass, ForceMode.Impulse);
+
                 Moving = true;
             }
 
@@ -119,26 +127,54 @@ public class PlayerCtrl : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.Joystick1Button4))
+        Rotating = false;
+        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.Joystick1Button5))
         {
             Vector3 deltaRotation = RotationEulerAngleVelocity * Time.deltaTime;
             deltaRotation.y *= -1;
             PlayerRigidbody.AddTorque(deltaRotation);
+            Rotating = true;
         }
-        if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.Joystick1Button5))
+
+        if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.Joystick1Button4))
         {
             Vector3 deltaRotation = RotationEulerAngleVelocity * Time.deltaTime;
             PlayerRigidbody.AddTorque(deltaRotation);
+            Rotating = true;
             //PlayerRigidbody.AddForce(transform.right * PlayerAcceleration, ForceMode.Impulse);
         }
+
+        float rotationY = Input.GetAxis("Horizontal");
+        if (rotationY > 1 || rotationY < -1)
+        {
+            Vector3 HorizontalRotation = RotationEulerAngleVelocity * rotationY * Time.deltaTime;
+            PlayerRigidbody.AddTorque(HorizontalRotation);
+            Rotating = true;
+        }
+
+
+        Vector3 v = PlayerRigidbody.velocity;
         if (Moving)
         {
-            Vector3 v = PlayerRigidbody.velocity;
+            float angleFix = Vector3.Angle(normalTerrain,transform.up);
+
             v.x = 0;
             v.z = 0;
-            v += (transform.forward * MovingSpeed);
-            PlayerRigidbody.velocity = v;
+
+            //Quaternion r = Quaternion.AngleAxis(angleFix, Vector3.left);
+
+            v += ((transform.forward) * MovingSpeed);
+            Vector3Rotate(ref v, Vector3.left, angleFix);
+
+            //run
+
+            Debug.DrawLine(transform.position, v, Color.white, 5.0f);
+
+
+            //PlayerRigidbody.velocity = v;
         }
+
+        PlayerRigidbody.AddForce(v * PlayerRigidbody.mass, ForceMode.Force);
 
     }
 
@@ -146,5 +182,24 @@ public class PlayerCtrl : MonoBehaviour
     {
         return Moving;
     }
+    public bool GetIfRotating()
+    {
+        return Rotating;
+    }
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.gameObject.tag== "Terrain")
+        {
+            normalTerrain = collision.contacts[0].normal;
+
+        }
+
+    }
+
+    private static void Vector3Rotate(ref Vector3 source,Vector3 axis, float angle)
+    {
+        Quaternion q = Quaternion.AngleAxis(angle, axis);
+        source= q * source;
+    }
 }
