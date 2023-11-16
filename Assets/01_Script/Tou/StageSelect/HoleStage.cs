@@ -9,13 +9,14 @@ public class HoleStage : MonoBehaviour
     public Transform cmrTrs;
 
     [Header("edit")]
-    public StageInfo info;
+    public int stageID;
 
-
+    //test function-------------------------------
     private void OnTriggerStay(Collider other)
     {
         if(other.CompareTag("Player"))
         {
+            StageSelectController.Instance.InputInfoPanel();
             StageSelectController.Instance.StartCameraToHole(this);
         }
     }

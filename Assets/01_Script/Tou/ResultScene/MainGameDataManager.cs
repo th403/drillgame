@@ -15,7 +15,7 @@ public class RankStandard
 [Serializable]
 public class Grade
 {
-    public int score;
+    public float score;
     public Noruma rank;
 }
 
@@ -23,10 +23,25 @@ public class Grade
 [Serializable]
 public class StageInfo
 {
+    [Header("customize")]
     public float time;
     public int energyNum;
     public List<Noruma> norumas;
-    public List<Grade> gradeRanks;
+
+    [Header("read only")]
+    //give up//public List<Grade> gradeRanks;
+    public int id;
+
+    public float Target
+    {
+        get 
+        {
+            if (norumas.Count == 0) return 0;
+
+            //test
+            return norumas[norumas.Count - 1].target; 
+        }
+    }
 }
 
 
@@ -45,6 +60,7 @@ public class MainGameDataManager : MonoBehaviour
         get { return instance; }
     }
 
+    [Header("read only")]
     //play data
     public WLProperty<float> money;
 
@@ -63,8 +79,12 @@ public class MainGameDataManager : MonoBehaviour
     public WLProperty<RankStandard> nowRankStandard;
     public List<WLProperty<int>> rankTop3;
 
-    [Header("read only")]
-    public float passTarget;
+    //pass target
+    private float passTarget;
+
+    //stage id
+    public int stageID; 
+    
 
     //fast get variable
     public float Money
