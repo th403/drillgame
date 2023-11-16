@@ -11,6 +11,40 @@ public class RankStandard
     public float target;
 }
 
+
+[Serializable]
+public class Grade
+{
+    public float score;
+    public Noruma rank;
+}
+
+
+[Serializable]
+public class StageInfo
+{
+    [Header("customize")]
+    public float time;
+    public int energyNum;
+    public List<Noruma> norumas;
+
+    [Header("read only")]
+    //give up//public List<Grade> gradeRanks;
+    public int id;
+
+    public float Target
+    {
+        get 
+        {
+            if (norumas.Count == 0) return 0;
+
+            //test
+            return norumas[norumas.Count - 1].target; 
+        }
+    }
+}
+
+
 public class MainGameDataManager : MonoBehaviour
 {
     private static MainGameDataManager instance;
@@ -26,10 +60,11 @@ public class MainGameDataManager : MonoBehaviour
         get { return instance; }
     }
 
+    [Header("read only")]
     //play data
     public WLProperty<float> money;
 
-    //target
+    //stage target
     public List<Noruma> norumas;
     public List<WLProperty<bool>> energyGots;//x num
     public WLProperty<float> time;
@@ -44,13 +79,18 @@ public class MainGameDataManager : MonoBehaviour
     public WLProperty<RankStandard> nowRankStandard;
     public List<WLProperty<int>> rankTop3;
 
-    [Header("read only")]
-    public float passTarget;
+    //pass target
+    private float passTarget;
 
+    //stage id
+    public int stageID; 
+    
+
+    //fast get variable
     public float Money
     {
         get { return money.Value; }
-        set { money.Value = value; }
+        set { money.Value =Mathf.Clamp( value,0,GreatestNorumaTarget); }
     }
 
     public int EnergyCount
@@ -103,8 +143,12 @@ public class MainGameDataManager : MonoBehaviour
         }
     }
 
+    //public function------------------------
+
+    //init
     public void Init()
     {
+        //test:init pass target
         foreach (var n in norumas)
         {
             if (n.name == "hugou")
@@ -116,8 +160,9 @@ public class MainGameDataManager : MonoBehaviour
         //nowRankStandard.Value = null;
         //nowNoruma.Value = null;
     }
-
-    public void DestroyData()
+    
+    //force to destroy this object
+    public void DestroyDataObject()
     {
         Destroy(gameObject);
     }
