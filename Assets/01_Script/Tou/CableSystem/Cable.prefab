@@ -388,6 +388,7 @@ GameObject:
   - component: {fileID: 1367946677449557905}
   - component: {fileID: 1367946677449557906}
   - component: {fileID: 4666218845807173744}
+  - component: {fileID: 7741678634702001961}
   m_Layer: 6
   m_Name: Cable
   m_TagString: Untagged
@@ -458,6 +459,22 @@ LODGroup:
     - renderer: {fileID: 1036694160879497468}
     - renderer: {fileID: 9092238117762181722}
   m_Enabled: 1
+--- !u!54 &7741678634702001961
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1367946677449557907}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &1367946677627316659
 GameObject:
   m_ObjectHideFlags: 0
