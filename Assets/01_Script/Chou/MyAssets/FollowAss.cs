@@ -61,7 +61,7 @@ public class FollowAss : MonoBehaviour
                 transform.rotation = Quaternion.Lerp(transform.rotation, Player.transform.rotation, 100 * Time.deltaTime);
 
             }
-            else if (!playerCtrl2.GetIfRotating())
+            else if (!playerCtrl2.GetIfRotating() || playerCtrl2.GetIfMoving())
             {
                 transform.rotation = Quaternion.Lerp(transform.rotation, Player.transform.rotation, followSpdRate * Time.deltaTime);
             }
