@@ -33,7 +33,7 @@ public class CableManager : MonoBehaviour
         AddFirstCable();
     }
 
-    void AddFirstCable()
+    public void AddFirstCable()
     {
         AddCable(catTransform.position);
     }
@@ -57,7 +57,6 @@ public class CableManager : MonoBehaviour
         currentCable.joint.forward = dir;
 
     }
-
     public void AddCable(Vector3 pos)
     {
         var go = Instantiate(cablePrefab);
@@ -67,6 +66,16 @@ public class CableManager : MonoBehaviour
 
         currentCable = go.GetComponent<Cable>();
         currentCable.cat = catTransform;
+    }
+
+    public void Pause()
+    {
+        currentCable.enabled = false;
+    }
+
+    public void Execute()
+    {
+        currentCable.enabled = true;
     }
 
     public int GetCableCount()

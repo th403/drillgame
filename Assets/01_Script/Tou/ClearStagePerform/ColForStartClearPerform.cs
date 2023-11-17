@@ -62,6 +62,10 @@ public class ColForStartClearPerform : MonoBehaviour
                     ResultPanelController.Instance.StartShowResult();
 
                     //pause control?
+
+                    //pause cable
+                    CableManager.Instance.Pause();
+                    
                 });
 
                 //set anime
