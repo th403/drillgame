@@ -4994,6 +4994,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3414706435014592142}
     m_Modifications:
+    - target: {fileID: 30655138652088007, guid: cf5639c5fb8e0f04ebf690db53e0f1fb, type: 3}
+      propertyPath: m_Range
+      value: 5.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 30655138652088007, guid: cf5639c5fb8e0f04ebf690db53e0f1fb, type: 3}
+      propertyPath: m_Intensity
+      value: 691802
+      objectReference: {fileID: 0}
     - target: {fileID: 902671608511506461, guid: cf5639c5fb8e0f04ebf690db53e0f1fb, type: 3}
       propertyPath: m_Name
       value: SmallEnergy_001
@@ -5041,6 +5049,14 @@ PrefabInstance:
     - target: {fileID: 2164001435556124870, guid: cf5639c5fb8e0f04ebf690db53e0f1fb, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3610023506076871225, guid: cf5639c5fb8e0f04ebf690db53e0f1fb, type: 3}
+      propertyPath: m_Intensity
+      value: 22.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6037363158404959567, guid: cf5639c5fb8e0f04ebf690db53e0f1fb, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 10.66
       objectReference: {fileID: 0}
     - target: {fileID: 7959774470247328229, guid: cf5639c5fb8e0f04ebf690db53e0f1fb, type: 3}
       propertyPath: m_Materials.Array.data[0]
