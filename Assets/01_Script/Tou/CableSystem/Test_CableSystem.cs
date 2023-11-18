@@ -8,6 +8,16 @@ public class Test_CableSystem : MonoBehaviour
     public bool onOff;
     private bool startCable;
 
+    private void Start()
+    {
+        Invoke("DelayTurnOnCableMng", 0.2f);
+    }
+
+    void DelayTurnOnCableMng()
+    {
+        onOff = true;
+    }
+
     // Update is called once per frame
     void Update()
     {

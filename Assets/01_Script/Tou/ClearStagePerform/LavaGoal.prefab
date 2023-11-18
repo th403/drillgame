@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 919555941}
   - component: {fileID: 919555940}
   - component: {fileID: 1686724079}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: Col_ForCheckStickPos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -255,6 +255,7 @@ GameObject:
   - component: {fileID: 407424234465381873}
   - component: {fileID: 8829983510346114724}
   - component: {fileID: 523220090}
+  - component: {fileID: 7900353131906854689}
   m_Layer: 0
   m_Name: Camera
   m_TagString: Untagged
@@ -269,14 +270,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2768563706816356371}
-  m_LocalRotation: {x: 0.12024922, y: -0.48721066, z: 0.06743919, w: 0.8623328}
-  m_LocalPosition: {x: 6.3064766, y: 3.2304623, z: 2.0187507}
+  m_LocalRotation: {x: -0.047402836, y: -0.6481896, z: -0.04096682, w: 0.75889724}
+  m_LocalPosition: {x: 5.6, y: 2.4, z: 8.23}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2729623635201208288}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -7.184, y: -81, z: -0.042}
 --- !u!20 &407424234465381873
 Camera:
   m_ObjectHideFlags: 0
@@ -302,7 +303,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 104.4
+  field of view: 81
   orthographic: 0
   orthographic size: 5
   m_Depth: 0
@@ -453,6 +454,19 @@ MonoBehaviour:
       enableFptlForForwardOpaque: 0
       enableBigTilePrepass: 0
       isFptlEnabled: 0
+--- !u!114 &7900353131906854689
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2768563706816356371}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d6b0a22b2192064183d7934f24d7129, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 0}
 --- !u!1 &4920964224367038112
 GameObject:
   m_ObjectHideFlags: 0

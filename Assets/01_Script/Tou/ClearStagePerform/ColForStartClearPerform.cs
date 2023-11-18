@@ -64,8 +64,7 @@ public class ColForStartClearPerform : MonoBehaviour
                     //pause control?
 
                     //pause cable
-                    CableManager.Instance.Pause();
-                    
+                    Cable2Manager.Instance.Pause();
                 });
 
                 //set anime
