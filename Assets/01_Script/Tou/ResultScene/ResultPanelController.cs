@@ -116,6 +116,7 @@ public class ResultPanelController : MonoBehaviour
         for (int i = 0; i < items.Count; i++)
         {
             items[i].transform.localPosition = startPos;
+            items[i].Stop();
         }
         //total score and rank
         totalScoreResultTrs.localPosition = new Vector3(hidePosX, totalScoreResultPos.y, totalScoreResultPos.z);
