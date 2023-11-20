@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Cable : MonoBehaviour
 {
+    [Header("attach")]
     public Transform joint;
     public Transform tail;
 
@@ -21,7 +22,7 @@ public class Cable : MonoBehaviour
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
         //set length
         SetLength();
@@ -29,9 +30,12 @@ public class Cable : MonoBehaviour
         //set toward
         SetToward();
 
+        //important
         //check if need to create new cable
         if (length > CableManager.Instance.unitMaxLength)
         {
+            //set to ground
+            CableManager.Instance.SetUpCable();
             CableManager.Instance.AddCable(tail.position);
             Destroy(this);
         }

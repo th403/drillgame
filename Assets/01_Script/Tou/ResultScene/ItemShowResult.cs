@@ -35,6 +35,12 @@ public abstract class ItemShowResult : MonoBehaviour
         return Mathf.Min(TimeCount() / showTime, 1);
     }
 
+    public void Stop()
+    {
+        isStart = false;
+        transform.DOKill();
+    }
+
     //true: finish, flase: not finish
     protected abstract bool UpdateShow();
 

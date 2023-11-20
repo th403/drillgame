@@ -44,9 +44,14 @@ public class CharaAnimeController : MonoBehaviour
         anim.SetTrigger("Jump");
     }
 
-    public void StartStick()
+    public float StartStick()
     {
-        anim.SetTrigger("StickPipe");
+        //anim.SetTrigger("StickPipe");
+        anim.Play("stick pipe");
+        //var clips = anim.GetCurrentAnimatorClipInfo(0);
+        //int id = anim.GetCurrentAnimatorClipInfoCount(0);
+        AnimatorStateInfo stateInfo = anim.GetCurrentAnimatorStateInfo(0);
+        return stateInfo.length;// stateInfo.length;
     }
 
     public void StartTakeOut()

@@ -113,6 +113,7 @@ public class StageSelectController : MonoBehaviour
         int count = 0;
         //get grade from grade manager
         List<Grade> grades = GradeManager.Instance.GetStageGradeList(info.id);
+        if (grades == null) return;
         foreach(var grade in grades)
         {
             text_ranks[count].text = " " + grade.score;
