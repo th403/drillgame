@@ -36,9 +36,13 @@ public class Cable2 : MonoBehaviour
         //set toward
         SetToward();
 
-
         //important
         //check if need to create new cable
+        if (Cable2Manager.Instance.IsPlayerMove()==false)
+        {
+            rigid.velocity=Vector3.zero;
+            return;
+        }
         if (length > Cable2Manager.Instance.unitMaxLength)
         {
             //set to ground
@@ -46,6 +50,7 @@ public class Cable2 : MonoBehaviour
 
             //start fixed count down
             startFall = true;
+            //rigid.isKinematic = false;
         }
     }
 
@@ -53,7 +58,9 @@ public class Cable2 : MonoBehaviour
     {
         joint.connectedBody = rb;
         this.plug = plug;
-     
+
+        //rigid.isKinematic = true;
+
         //set length
         SetLength();
 

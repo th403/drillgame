@@ -76,8 +76,8 @@ GameObject:
   - component: {fileID: 1077085587923136266}
   - component: {fileID: 1077085587923136269}
   - component: {fileID: 1077085587923136268}
-  - component: {fileID: 1077085587923136267}
-  - component: {fileID: 886718983342469800}
+  - component: {fileID: 3297129908141518091}
+  - component: {fileID: 3466420370565133435}
   m_Layer: 6
   m_Name: PipeModel
   m_TagString: Untagged
@@ -150,21 +150,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &1077085587923136267
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1077085587923136265}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  m_Radius: 0.5000001
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
---- !u!114 &886718983342469800
+--- !u!114 &3297129908141518091
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -177,6 +163,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isGround: 0
+--- !u!136 &3466420370565133435
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1077085587923136265}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 0.51
+  m_Height: 2.000001
+  m_Direction: 1
+  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940712}
 --- !u!1 &1077085588508367053
 GameObject:
   m_ObjectHideFlags: 0
@@ -268,11 +268,11 @@ SphereCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1077085588508367053}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 5bc9a423ed534fc4993009293a80a56a, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.4
+  m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1077085588972543718
 GameObject:
@@ -479,7 +479,7 @@ GameObject:
   - component: {fileID: 6148375102276982879}
   - component: {fileID: 7580148075112242353}
   - component: {fileID: 2280189010516290009}
-  - component: {fileID: 116319844314176606}
+  - component: {fileID: 7681383305088521370}
   m_Layer: 6
   m_Name: TailModel
   m_TagString: Untagged
@@ -552,18 +552,18 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!135 &116319844314176606
+--- !u!135 &7681383305088521370
 SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4532127576349490938}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 5bc9a423ed534fc4993009293a80a56a, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.4
+  m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &5896669725542149044
 GameObject:
@@ -648,7 +648,7 @@ MonoBehaviour:
   tailTrs: {fileID: 607847783981107777}
   tailModel: {fileID: 6148375102276982879}
   joint: {fileID: 1077085588972543736}
-  groundCheck: {fileID: 886718983342469800}
+  groundCheck: {fileID: 3297129908141518091}
   next: {fileID: 0}
   plug: {fileID: 0}
   length: 0

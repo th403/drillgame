@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4790740617951883378}
   - component: {fileID: 2846254656241356425}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: FixedAnchor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -96,7 +96,8 @@ MonoBehaviour:
   cable2Prefab: {fileID: 1077085588972543718, guid: 286c0f4124fdeaf43a6d8f215f1f2e33, type: 3}
   plugTransform: {fileID: 0}
   fixedAnchor: {fileID: 2846254656241356425}
-  unitMaxLength: 1
-  fixedCableVelo: 0.1
+  unitMaxLength: 0.6
+  fixedCableVelo: 0.8
   cable2s: []
-  currentCable2: {fileID: 0}
+  lastCable: {fileID: 0}
+  checkCable: {fileID: 0}

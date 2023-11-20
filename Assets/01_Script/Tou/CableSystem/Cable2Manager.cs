@@ -48,7 +48,7 @@ public class Cable2Manager : MonoBehaviour
         if (lastCable) return;
 
         var go = Instantiate(cable2Prefab);
-        go.transform.position = plugTransform.position;
+        go.transform.position = transform.position;
         go.transform.SetParent(transform);
         cable2s.Add(go.transform);
 
@@ -60,7 +60,7 @@ public class Cable2Manager : MonoBehaviour
     public Cable2 AddCable()
     {
         var go = Instantiate(cable2Prefab);
-        go.transform.position = plugTransform.position;
+        go.transform.position = lastCable.tailTrs.position;
         go.transform.SetParent(transform);
         cable2s.Add(go.transform);
 
@@ -71,6 +71,7 @@ public class Cable2Manager : MonoBehaviour
         cable.StartCable(plugTransform, lastCable ? lastCable.rigid : null);
         
         lastCable = cable;
+        if (checkCable == null) checkCable = cable;
         return cable;
     }
 
@@ -93,5 +94,11 @@ public class Cable2Manager : MonoBehaviour
     public int GetCable2Count()
     {
         return cable2s.Count;
+    }
+
+    public bool IsPlayerMove()
+    {
+        //check by player control or rigidbody
+        return plugTransform.GetComponentInParent<PlayerCtrl2>().GetIfMoving();
     }
 }
