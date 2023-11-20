@@ -53,12 +53,15 @@ MonoBehaviour:
   RotationSpeed: 0.2
   Life: 9
   MaxRotationX: 85
+  MaxScale: 5
   diggingPointCtrl: {fileID: 0}
   diggingPoint: {fileID: 0}
   CameraCtrlObj: {fileID: 0}
   DrillerTransform: {fileID: 0}
   Acceleration: 0.01
+  ScaleChangeRate: 2.5
   DrillerMovingSE: {fileID: 2562874300334506929}
+  DrillerDestroySE: {fileID: 0}
 --- !u!1 &1798182162777836370
 GameObject:
   m_ObjectHideFlags: 0

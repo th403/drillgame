@@ -18,7 +18,7 @@ public class UIDrillerCtrl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (StartDrillers <= 0)
+        if (StartDrillers == 0)
         {
             CanvasGameOver.SetActive(true);
         }
@@ -36,7 +36,7 @@ public class UIDrillerCtrl : MonoBehaviour
     public bool AddDrillers(int GetDrillers)
     {
         int newDrillers = StartDrillers + GetDrillers;
-        if (newDrillers < 0)
+        if (newDrillers == 0)
         {
             return false;
         }

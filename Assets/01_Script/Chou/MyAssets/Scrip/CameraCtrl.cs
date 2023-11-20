@@ -35,7 +35,9 @@ using UnityEngine;
         {
             if (Input.GetKeyDown(KeyCode.F))
             {
-                if((!driller.gameObject.activeSelf && UIFunds.AddFunds(-10000) && UIDrillers.AddDrillers(-1))
+                if((PlayerCtrl2.Instance.CheckCanUseDriller()
+                        &&(!driller.gameObject.activeSelf && UIFunds.AddFunds(-10000) 
+                            && UIDrillers.AddDrillers(-1)))
                     || (driller.gameObject.activeSelf))
                 {
                     ChangeCamera();
@@ -46,7 +48,7 @@ using UnityEngine;
         public void ChangeCamera()
         {
             driller.gameObject.SetActive(!driller.gameObject.activeSelf);
-        driller.transform.position = player.transform.position + player.transform.forward * 3;
+            driller.transform.position = player.transform.position + player.transform.forward * 3;
             driller.transform.rotation = player.transform.rotation;
             camera_Player.enabled = !camera_Player.enabled;
 

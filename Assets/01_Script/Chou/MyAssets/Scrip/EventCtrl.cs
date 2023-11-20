@@ -1,13 +1,27 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class EventCtrl : MonoBehaviour
 {
+    private static EventCtrl instance;
+
+    private void Awake()
+    {
+        instance = this;
+    }
+
+    public static EventCtrl Instance
+    {
+        get { return instance; }
+    }
+
     public GameObject ClockControllerObj;
     public GameObject InOutEffectControllerObj;
     public GameObject IncomeBarControllerObj;
     private IncomeBarController incomeBarController;
+    //public List<GameObject> CheckPoints;
 
     public GameObject Player;
     private ClockController clockController;
@@ -32,14 +46,23 @@ public class EventCtrl : MonoBehaviour
 #endif
         }
 
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+
+        }
+
 
     }
     public void PlayerGetMoney(int num)
     {
         //InOutEffectController.Instance.MakeEffect(Player.transform, num);
         IncomeBarController.Instance.AddMoney(num);
+        SoundManger.Instance.PlaySEGetMoneySE();
+    }
+    public void GetCheckPoint(Vector3 pos)
+    {
 
     }
-
 
 }

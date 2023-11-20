@@ -40,6 +40,7 @@ public class PlayerCtrl2 : MonoBehaviour
     private bool Use = true;
     private bool Moving = false;
     private bool Rotating = false;
+    private bool CanUseDriller = true;
     private float MovingSpeed;
     private float ChargeTime = 0;
     private float ChargeRate = 0;
@@ -49,9 +50,12 @@ public class PlayerCtrl2 : MonoBehaviour
     private Vector3 DeltaRotation;
     private Vector3 DeltaMovement;
     private Vector3 RotationEulerAngleVelocity;
+
+
     // Start is called before the first frame update
     void Start()
     {
+        transform.position = PlayerData.instance.GetRevivePos();
         UIFunds = FundsText.GetComponent<UIFundsCtrl>();
         //LastFundsCheckPos = transform.position;
         DeltaMovement = new Vector3(0, -9.8f * Time.deltaTime, 0);
@@ -236,11 +240,6 @@ public class PlayerCtrl2 : MonoBehaviour
     {
         return MovingSpeed;
     }
-    private static void Vector3Rotate(ref Vector3 source,Vector3 axis, float angle)
-    {
-        Quaternion q = Quaternion.AngleAxis(angle, axis);
-        source= q * source;
-    }
     public void PlayerGetLava()
     {
         FreezingTime = 2.0f;
@@ -255,6 +254,25 @@ public class PlayerCtrl2 : MonoBehaviour
         //ÉAÉjÉÅ
         CharaAnimeController.Instance.StartStick();
 
+    }
+    public bool CheckCanUseDriller()
+    {
+        return CanUseDriller;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "NoDrillerZone")
+        {
+            CanUseDriller = false;
+        }
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.tag == "NoDrillerZone")
+        {
+            CanUseDriller = true;
+        }
     }
 
 }
