@@ -4,7 +4,21 @@ using UnityEngine;
 
 public class SoundManger : MonoBehaviour
 {
-    public AudioSource DestroySE;
+    private static SoundManger instance;
+
+    private void Awake()
+    {
+        instance = this;
+    }
+
+    public static SoundManger Instance
+    {
+        get { return instance; }
+    }
+
+    public AudioSource RockDestroySE;
+    public AudioSource DrillerDestroySE;
+    public AudioSource GetMoneySE;
 
     // Start is called before the first frame update
     void Start()
@@ -18,10 +32,18 @@ public class SoundManger : MonoBehaviour
         
     }
 
-    public void PlaySEDestroy()
+    public void PlaySERockDestroy()
     {
-        DestroySE.pitch = Random.Range(0.33f,1.67f);
-        DestroySE.Play();
+        RockDestroySE.pitch = Random.Range(0.33f,1.67f);
+        RockDestroySE.Play();
+    }
+    public void PlaySEDrillerDestroy()
+    {
+        DrillerDestroySE.Play();
+    }
+    public void PlaySEGetMoneySE()
+    {
+        GetMoneySE.Play();
     }
 
 }

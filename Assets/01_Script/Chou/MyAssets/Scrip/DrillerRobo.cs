@@ -17,6 +17,7 @@ public class DrillerRobo : MonoBehaviour
     public DiggingPointCtrl diggingPointCtrl;
     public GameObject diggingPoint;
     public GameObject CameraCtrlObj;
+    public GameObject DrillerCamera;
     public Transform DrillerTransform;
     //private float Deceleration;
     public float Acceleration = 5.555f;
@@ -29,12 +30,15 @@ public class DrillerRobo : MonoBehaviour
     private float CountLife = 0;
     private float ScaleRate = 0;
     private bool Use = false;
+    private Vector3 DrillerToCamera;
+
     // Start is called before the first frame update
     void Start()
     {
         //DrillerTransform = GetComponent<Transform>();
         //diggingPointCtrl = diggingPoint.GetComponent<DiggingPointCtrl>();
         cameraCtrl = CameraCtrlObj.GetComponent<CameraCtrl>();
+        DrillerToCamera = DrillerCamera.transform.position - transform.position;
     }
 
     // Update is called once per frame
@@ -79,7 +83,7 @@ public class DrillerRobo : MonoBehaviour
                 ScaleRate = DrillerTransform.localScale.x / MaxScale;
                 diggingPointCtrl.SetScaleRate(ScaleRate);
                 DrillerTransform.localScale += new Vector3(ScaleChangeRate * Time.deltaTime,
-                    ScaleChangeRate * Time.deltaTime, ScaleChangeRate * Time.deltaTime);
+                ScaleChangeRate * Time.deltaTime, ScaleChangeRate * Time.deltaTime);
             }
 
             CountLife -= Time.deltaTime;
@@ -87,6 +91,28 @@ public class DrillerRobo : MonoBehaviour
             {
                 cameraCtrl.ChangeCamera();
             }
+
+            //camera
+            Vector3 rayStartPos = transform.position;
+            Quaternion rotation = transform.rotation;
+            Vector3 rayDirection = rotation * DrillerToCamera;
+            RaycastHit hit;
+
+            //Debug
+            Debug.DrawRay(rayStartPos, rayDirection * 100, Color.red);
+
+            if (Physics.Raycast(rayStartPos, rayDirection, out hit))
+            {
+                if (hit.collider.gameObject.tag == "Terrain" && hit.distance < DrillerToCamera.magnitude)
+                {
+                    float PosAdjustmentRate = 0.95f;
+                    DrillerCamera.transform.position = hit.point;
+                    DrillerCamera.transform.localPosition *= PosAdjustmentRate;
+                }
+
+            }
+
+
         }
     }
 
@@ -102,6 +128,7 @@ public class DrillerRobo : MonoBehaviour
         else
         {
             DrillerMovingSE.Pause();
+            SoundManger.Instance.PlaySEDrillerDestroy();
         }
 
         Use = use;
