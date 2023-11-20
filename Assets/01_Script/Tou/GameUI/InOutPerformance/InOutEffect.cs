@@ -57,11 +57,12 @@ public class InOutEffect : MonoBehaviour
     void MakeDigit(string digit)
     {
         //instantiate gameobject and set position
-        Vector3 targetPos = new Vector3(firstPosX - count * digitDistance, digitDistance, 0);
+        Vector3 targetPos = new Vector3(firstPosX - count * digitDistance, digitDistance, 0);// + transform.right * ();
         Vector3 initPos = targetPos + Vector3.down * digitDistance;
         GameObject go = Instantiate(digitPrefab);
         go.transform.SetParent(transform);
         go.transform.localPosition = initPos;
+        go.transform.localEulerAngles = Vector3.zero;
 
         //set content
         TMP_Text text = go.GetComponent<TMP_Text>();
@@ -79,6 +80,8 @@ public class InOutEffect : MonoBehaviour
 
     private void FixedUpdate()
     {
+        transform.forward = Camera.main.transform.forward;
+
         if(Time.time-timeStartStamp>totalEffectTime)
         {
             Destroy(gameObject);

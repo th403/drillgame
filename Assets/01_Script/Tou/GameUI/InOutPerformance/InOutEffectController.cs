@@ -35,8 +35,9 @@ public class InOutEffectController : MonoBehaviour
         //Vector3 pos = WorldToCameraSpace.WorldToScreenSpaceCamera(Camera.main, Camera.main, canvas,target.position);
         Vector3 deltaPos= target.position - Camera.main.transform.position;
         Vector3 pos = target.position + deltaPos.normalized * -1f;
-        go.GetComponent<RectTransform>().localPosition = pos;
-        go.GetComponent<RectTransform>().SetParent(panel);
+        go.transform.position = pos;
+        //go.GetComponent<RectTransform>().SetParent(panel);
+        go.transform.forward = deltaPos.normalized;
 
         //start effect
         InOutEffect effect = go.GetComponent<InOutEffect>();
