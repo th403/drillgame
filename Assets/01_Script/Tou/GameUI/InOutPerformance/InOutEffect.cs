@@ -15,14 +15,19 @@ public class InOutEffect : MonoBehaviour
     public float effectKeepShowTime;
     public float disappearTime;
 
+    public Transform target;
+
     int maxCount;
     int count;
     float firstPosX;
     float digitEffectTime;
     float timeStartStamp;
     float totalEffectTime;
-    public void StartEffect(int num)
+    public void StartEffect(Transform target,int num)
     {
+        //set target for update ui pos
+        this.target = target;
+
         //set timer
         totalEffectTime = effectTime + effectKeepShowTime + disappearTime;
         timeStartStamp = Time.time;
@@ -42,7 +47,8 @@ public class InOutEffect : MonoBehaviour
         //make num digit
         count = 0;
         maxCount = digits.Count + 1;
-        firstPosX = (maxCount / 2 - 0.5f) * digitDistance;
+        float scale = InOutEffectController.Instance.size;
+        firstPosX = (maxCount / 2 - 0.5f) * digitDistance*scale;
         digitEffectTime = (effectTime - effectKeepShowTime) / maxCount;
         for (count = 0; count < maxCount-1; count++) 
         {
@@ -57,12 +63,14 @@ public class InOutEffect : MonoBehaviour
     void MakeDigit(string digit)
     {
         //instantiate gameobject and set position
-        Vector3 targetPos = new Vector3(firstPosX - count * digitDistance, digitDistance, 0);// + transform.right * ();
-        Vector3 initPos = targetPos + Vector3.down * digitDistance;
+        float scale = InOutEffectController.Instance.size;
+        Vector3 targetPos = new Vector3(firstPosX - count * digitDistance* scale, digitDistance, 0);// + transform.right * ();
+        Vector3 initPos = targetPos + Vector3.down * digitDistance * scale;
         GameObject go = Instantiate(digitPrefab);
         go.transform.SetParent(transform);
         go.transform.localPosition = initPos;
         go.transform.localEulerAngles = Vector3.zero;
+        go.transform.localScale = Vector3.one * scale;
 
         //set content
         TMP_Text text = go.GetComponent<TMP_Text>();
@@ -71,18 +79,27 @@ public class InOutEffect : MonoBehaviour
         //make anime
         var seq = DOTween.Sequence();
         text.color = new Color(1, 1, 1, 0);
-        text.DOFade(1, digitEffectTime).SetDelay(digitEffectTime * count);
-        seq.Append(go.transform.DOLocalMove(targetPos, digitEffectTime).SetEase(Ease.OutBack));
-        seq.Append(go.transform.DOShakeScale(effectKeepShowTime + (maxCount - count) * digitEffectTime));
+        seq.Append(text.DOFade(1, digitEffectTime));//.SetDelay(digitEffectTime * count));
+        float showTime = effectKeepShowTime + (maxCount - count) * digitEffectTime;
+        seq.Append(go.transform.DOLocalMove(targetPos, showTime).SetEase(Ease.OutBack));
+        seq.Join(go.transform.DOScale(Vector3.one * scale *1.2f, showTime/3).SetLoops(3,LoopType.Yoyo));
         seq.Append(text.DOFade(0, disappearTime));
         seq.Play().SetDelay(digitEffectTime * count);
     }
 
     private void FixedUpdate()
     {
-        transform.forward = Camera.main.transform.forward;
+        //set ui transform
+        if (Camera.main)
+        {
+            transform.forward = Camera.main.transform.forward;
+            Vector3 deltaPos = target.position - Camera.main.transform.position;
+            Vector3 pos = target.position + deltaPos.normalized * -1f;
+            transform.position = pos;
+        }
 
-        if(Time.time-timeStartStamp>totalEffectTime)
+
+        if (Time.time-timeStartStamp>totalEffectTime)
         {
             Destroy(gameObject);
         }

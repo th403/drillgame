@@ -1218,9 +1218,17 @@ PrefabInstance:
     m_TransformParent: {fileID: 285347769}
     m_Modifications:
     - target: {fileID: 3017214774398168966, guid: d53a1826832e47c4d83f8c00a13e7c39, type: 3}
+      propertyPath: size
+      value: 0.237
+      objectReference: {fileID: 0}
+    - target: {fileID: 3017214774398168966, guid: d53a1826832e47c4d83f8c00a13e7c39, type: 3}
       propertyPath: target
       value: 
       objectReference: {fileID: 7287598195340086198}
+    - target: {fileID: 3017214774398168966, guid: d53a1826832e47c4d83f8c00a13e7c39, type: 3}
+      propertyPath: kariTarget
+      value: 
+      objectReference: {fileID: 1252807509}
     - target: {fileID: 3152085192627366809, guid: d53a1826832e47c4d83f8c00a13e7c39, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -3112,6 +3120,7 @@ MonoBehaviour:
   moneyEffectPrefab: {fileID: 5873053589266046007, guid: bd839326754c47b4985833c30b2979b1, type: 3}
   panel: {fileID: 3085477139719096449}
   canvas: {fileID: 3085477138417198803}
+  size: 1
 --- !u!1 &410805933
 GameObject:
   m_ObjectHideFlags: 0
@@ -5629,6 +5638,10 @@ PrefabInstance:
       propertyPath: m_Constraints
       value: 126
       objectReference: {fileID: 0}
+    - target: {fileID: 3948500493840293108, guid: fe7fd2803acc61642b12fe9f37c7e3e3, type: 3}
+      propertyPath: playerTrs
+      value: 
+      objectReference: {fileID: 7287598195340086153}
     - target: {fileID: 3948500493840293108, guid: fe7fd2803acc61642b12fe9f37c7e3e3, type: 3}
       propertyPath: plugTransform
       value: 
@@ -9563,6 +9576,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8d57cda75493a1d4da139765effc15f8, type: 3}
+--- !u!1 &1252807509 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 878624874710769024, guid: 216df3f0ecde9554c8f288a39cccb262, type: 3}
+  m_PrefabInstance: {fileID: 7630262629357262189}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1264739542
 PrefabInstance:
   m_ObjectHideFlags: 0

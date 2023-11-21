@@ -40,9 +40,14 @@ public class Cable2 : MonoBehaviour
         //check if need to create new cable
         if (Cable2Manager.Instance.IsPlayerMove()==false)
         {
-            rigid.velocity=Vector3.zero;
-            return;
+            rigid.isKinematic=true;
+            //return;
         }
+        else
+        {
+            rigid.isKinematic = false;
+        }
+
         if (length > Cable2Manager.Instance.unitMaxLength)
         {
             //set to ground

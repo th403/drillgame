@@ -22,11 +22,31 @@ public class InOutEffectController : MonoBehaviour
 
     [Header("attach")]
     public GameObject moneyEffectPrefab;
+
+    
+    //if ui canvas
     public RectTransform panel;
     public RectTransform canvas;
 
+    [Header("test only")]
+    //if world object ui
+    [Range(0, 2)]
+    public float size = 1.0f;
+
+    public void Init(float size=1)
+    {
+        //for run time modify
+        this.size = size;
+
+        //set ui size
+        //moneyEffectPrefab.GetComponent<InOutEffect>().digitPrefab.transform.localScale *= size;
+        //moneyEffectPrefab.GetComponent<InOutEffect>().digitDistance *= size;
+    }
+
     public void MakeEffect(Transform target,int num)
     {
+        if (Camera.main == null) return;
+
         //instantiate gameobject and set position
         GameObject go = Instantiate(moneyEffectPrefab);
         //Vector3 pos = Camera.main.WorldToScreenPoint( Camera.main.WorldToViewportPoint(target.position));
@@ -41,6 +61,6 @@ public class InOutEffectController : MonoBehaviour
 
         //start effect
         InOutEffect effect = go.GetComponent<InOutEffect>();
-        effect.StartEffect(num);
+        effect.StartEffect(target,num);
     }
 }
