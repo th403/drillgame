@@ -5147,6 +5147,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!135 &7667184730913715561
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5253455615416689088}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Radius: 28.494734
+  m_Center: {x: -0.7941389, y: 16.558872, z: 2.0078492}
 --- !u!136 &7680486142214015625
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -5181,19 +5194,6 @@ MonoBehaviour:
   RevivePos: {fileID: 8439766339454768404}
   Value: 50000
   FundsPerSec: 1000
---- !u!135 &7667184730913715561
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5253455615416689088}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 28.494734
-  m_Center: {x: -0.7941389, y: 16.558872, z: 2.0078492}
 --- !u!4 &6514169686020313371 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7659713165622944010, guid: dc58562cd37e7b34ebb6e98bcbaa713d, type: 3}
