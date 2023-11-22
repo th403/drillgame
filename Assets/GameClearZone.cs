@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class GameClearZone : MonoBehaviour
 {
+    public string NextScene;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,7 +21,7 @@ public class GameClearZone : MonoBehaviour
         if (other.tag == "Player")
         {
             PlayerCtrl2.Instance.PlayerGetLava();
-            SceneManager.LoadScene("Prototype 1");
+            SceneManager.LoadScene(NextScene);
 
         }
     }
