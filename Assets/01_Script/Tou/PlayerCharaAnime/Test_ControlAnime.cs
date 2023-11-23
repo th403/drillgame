@@ -46,7 +46,8 @@ public class Test_ControlAnime : MonoBehaviour
 
         if(Input.GetKeyDown(stickPipeKey))
         {
-            CharaAnimeController.Instance.StartStick();
+            float duration= CharaAnimeController.Instance.StartStick();
+            Debug.Log(duration);
         }
 
         if (Input.GetKey(digKey))
