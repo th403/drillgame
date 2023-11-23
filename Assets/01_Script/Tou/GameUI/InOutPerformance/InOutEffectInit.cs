@@ -14,6 +14,7 @@ public class InOutEffectInit : MonoBehaviour
 
     void Start()
     {
+        //kari
         MainGameDataManager.Instance.money.OnValueChange += (oldVal,newVal) =>
           {
               float deltaVal = newVal - oldVal;

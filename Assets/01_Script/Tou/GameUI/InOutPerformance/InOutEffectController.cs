@@ -45,7 +45,10 @@ public class InOutEffectController : MonoBehaviour
 
     public void MakeEffect(Transform target,int num)
     {
+        if (target == null) return;
+
         if (Camera.main == null) return;
+
 
         //instantiate gameobject and set position
         GameObject go = Instantiate(moneyEffectPrefab);
