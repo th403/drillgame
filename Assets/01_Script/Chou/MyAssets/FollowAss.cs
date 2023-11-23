@@ -87,8 +87,10 @@ public class FollowAss : MonoBehaviour
 
                 if (hit.collider.gameObject.tag == "Terrain" && hit.distance < RootCTorayStartPos.magnitude)
                 {
+                    float PosAdjustmentRate = 0.95f;
+
                     float r = hit.distance / RootCTorayStartPos.magnitude;
-                    RootC.transform.localPosition = new Vector3(0, PlayerLookingAtPointHeight, 0) + RootCTorayStartPos * r;
+                    RootC.transform.localPosition = new Vector3(0, PlayerLookingAtPointHeight, 0) + RootCTorayStartPos * r * PosAdjustmentRate;
 
                     //RootC.transform.localPosition= new Vector3(0.2f, PlayerLookingAtPointHeight, 0.2f);
                     //FPS = true;

@@ -12,6 +12,7 @@ using UnityEngine;
         public Camera camera_Driller;
         public GameObject player;
         public GameObject driller;
+        public float TakeOutDrillerDelay=2.0f;
         private DrillerRobo drillerRobo;
 
         public GameObject FundsText;
@@ -30,23 +31,32 @@ using UnityEngine;
             UIDrillers = DrillerText.GetComponent<UIDrillerCtrl>();
     }
 
-        // Update is called once per frame
-        void Update()
+    // Update is called once per frame
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.F))
         {
-            if (Input.GetKeyDown(KeyCode.F))
+            if ((PlayerCtrl2.Instance.CheckCanUseDriller()
+                    && (!driller.gameObject.activeSelf && UIFunds.AddFunds(-10000)
+                        && UIDrillers.AddDrillers(-1))))
             {
-                if((!driller.gameObject.activeSelf && UIFunds.AddFunds(-10000) && UIDrillers.AddDrillers(-1))
-                    || (driller.gameObject.activeSelf))
-                {
-                    ChangeCamera();
-                }
+                CharaAnimeController.Instance.StartTakeOut();
+                Invoke("ChangeCamera", TakeOutDrillerDelay);
+                
+
+            }
+            else if (driller.gameObject.activeSelf)
+            {
+                ChangeCamera();
+
             }
         }
+    }
 
-        public void ChangeCamera()
+    public void ChangeCamera()
         {
             driller.gameObject.SetActive(!driller.gameObject.activeSelf);
-        driller.transform.position = player.transform.position + player.transform.forward * 3;
+            driller.transform.position = player.transform.position + player.transform.forward * 3;
             driller.transform.rotation = player.transform.rotation;
             camera_Player.enabled = !camera_Player.enabled;
 
