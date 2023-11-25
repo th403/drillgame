@@ -6215,6 +6215,10 @@ PrefabInstance:
       value: 126
       objectReference: {fileID: 0}
     - target: {fileID: 3948500493840293108, guid: fe7fd2803acc61642b12fe9f37c7e3e3, type: 3}
+      propertyPath: cableMtr
+      value: 
+      objectReference: {fileID: 2100000, guid: ab0dddca8953ce24a8ab83d3761bdada, type: 2}
+    - target: {fileID: 3948500493840293108, guid: fe7fd2803acc61642b12fe9f37c7e3e3, type: 3}
       propertyPath: playerTrs
       value: 
       objectReference: {fileID: 7287598195340086153}
@@ -6222,6 +6226,10 @@ PrefabInstance:
       propertyPath: plugTransform
       value: 
       objectReference: {fileID: 2113883076}
+    - target: {fileID: 3948500493840293108, guid: fe7fd2803acc61642b12fe9f37c7e3e3, type: 3}
+      propertyPath: unitMaxLength
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3948500493840293108, guid: fe7fd2803acc61642b12fe9f37c7e3e3, type: 3}
       propertyPath: fixedCableVelo
       value: 0.1
