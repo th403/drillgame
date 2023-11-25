@@ -24,6 +24,7 @@ public class Cable2Manager : MonoBehaviour
 
     [Header("edit")]
     public float unitMaxLength = 1.0f;
+    public int markCount = 8;
     public float fixedCableVelo = 0.1f;
     public float playerMinMove = 0.01f;
 

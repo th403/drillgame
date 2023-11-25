@@ -18,6 +18,7 @@ public class CharaAnimeController : MonoBehaviour
 
     [Header("attach")]
     public Animator anim;
+    public JumpAnimeController jumpCtrl;
 
     public void Init()
     {
@@ -39,9 +40,9 @@ public class CharaAnimeController : MonoBehaviour
         anim.SetInteger("IdleWalkRun", 0);
     }
 
-    public void StartJump()
+    public bool StartJump()
     {
-        anim.SetTrigger("Jump");
+        return jumpCtrl.StartJump();
     }
 
     public float StartStick()

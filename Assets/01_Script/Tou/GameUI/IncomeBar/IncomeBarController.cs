@@ -136,6 +136,7 @@ public class IncomeBarController : MonoBehaviour
 
         //set anime
         moneyNumber.localScale = Vector3.one * 2;
+        moneyNumber.DOKill();
         moneyNumber.DOScale(Vector3.one, 1).SetEase(Ease.OutElastic);
     }
 
@@ -148,5 +149,9 @@ public class IncomeBarController : MonoBehaviour
     public void SubtractMoney(float sub)
     {
         MainGameDataManager.Instance.Money -= sub;
+    }
+    public void SetMoney(float mny)
+    {
+        MainGameDataManager.Instance.Money = mny;
     }
 }
