@@ -21,11 +21,10 @@ public static class JumpTool
     {
         float g = -Physics.gravity.y;
         float t = jumpTime;
-        float tf = t / 2.0f;
         Vector3 dir = jumpDir;
         float x = jumpLength;// Mathf.Pow(h * 2 / g, 0.5f);// / Time.fixedDeltaTime;
-        float vx = x / t / 2;
-        float vy = g * t;
+        float vx = x / t ;
+        float vy = g * t / 2;
 
         return new Vector3(dir.x * vx, vy, dir.z * vx);
     }

@@ -148,7 +148,9 @@ public class WLPlayerControl : MonoBehaviour
         }
 
         //rotate chara by velocity
-        var veloDir = (transform.position - lastPos).normalized;
+        var veloDir = (transform.position - lastPos);
+        veloDir.y = 0;
+        veloDir.Normalize();
         if (veloDir == Vector3.zero)
         {
             return;
