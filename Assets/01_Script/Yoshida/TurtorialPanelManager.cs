@@ -6,13 +6,15 @@ using UnityEngine.UI;
 public class TurtorialPanelManager : MonoBehaviour
 {
 
-    public TurtorialPlayerCtrl tpc;
+    public TurtorialPlayerCtrl2 tpc;
     public TurtorialMoveScript tms;
+    public TurtorialLaveCtrl tlc;
 
     public GameObject TurtorialCameraPanel, TurtorialMovePanel, TurtorialGeothermalPanel,
         TurtorialCashdownPanel, TurtorialDorilPanel, TurtorialOreBreakPanel, TurtorialGoalPanel;
 
     public int FadeTime = 3;
+    private bool TurtorialDri = false;
 
     void Start()
     {
@@ -21,7 +23,14 @@ public class TurtorialPanelManager : MonoBehaviour
 
     public void Update()
     {
-       
+        if (TurtorialDri == true)
+        {
+            if ((Input.GetKey(KeyCode.Q)))
+            {
+                Invoke("OnturtorialOreBreak", FadeTime);
+            }
+            
+        }
     }
 
     public void OnTurtorialStart()
@@ -81,6 +90,9 @@ public class TurtorialPanelManager : MonoBehaviour
         TurtorialDorilPanel.SetActive(true);          // TurtorialDorilPanelをtrueにする
         TurtorialOreBreakPanel.SetActive(false);      // TurtorialOreBreakPanelをfalseにする
         TurtorialGoalPanel.SetActive(false);          // TurtorialGoalPanelをfalseにする
+
+        TurtorialDri = true;
+
     }
     //ドリルチュートリアルが終わったら(6)
     public void OnturtorialOreBreak()

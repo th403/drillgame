@@ -8,6 +8,7 @@ public class TurtorialPlayerCtrl : MonoBehaviour
 {
 
     public TurtorialPanelManager turtorial;
+    private PlayerKnockback playerKnockback;
 
 
     //public GameObject Pipe;
@@ -52,6 +53,8 @@ public class TurtorialPlayerCtrl : MonoBehaviour
         //LastFundsCheckPos = transform.position;
         PlayerRigidbody = GetComponent<Rigidbody>();
         RotationEulerAngleVelocity = new Vector3(0, PlayerRotationSpeed, 0);
+
+        playerKnockback = GetComponent<PlayerKnockback>();
     }
 
     // Update is called once per frame
@@ -188,6 +191,27 @@ public class TurtorialPlayerCtrl : MonoBehaviour
     private void Oncamera()
     {
         turtorial.OnTurtorialMove();
+    }
+
+
+
+    public void TakeDamage(int damage)
+    {
+        Debug.Log("Player took damage");
+        playerKnockback.Knockback(); // 修正
+        // currentHealth -= damage;
+
+        //if (currentHealth <= 0)
+        //{
+        //    Die();
+        //}
+        //else
+        //{ 
+        // ダメージを受けたらノックバック処理を呼び出す
+            
+           
+
+        //}
     }
 
 }

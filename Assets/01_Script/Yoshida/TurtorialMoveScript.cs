@@ -23,14 +23,14 @@ public class TurtorialMoveScript : MonoBehaviour
         
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
 
-        if (collision.gameObject.tag == "Player")
+        if (other.CompareTag("Player"))
         {
-            Invoke("OnMove", FadeTime);
+            Invoke("OnMove", FadeTime); 
             //Debug.Log("Damage");
-            Destroy(gameObject);
+            
         }
 
     }
@@ -38,5 +38,8 @@ public class TurtorialMoveScript : MonoBehaviour
     private void OnMove()
     {
         turtorial.OnTurtorialGeothermal();
+        //Debug.Log("Damage2");
+        Destroy(gameObject);
+
     }
 }
