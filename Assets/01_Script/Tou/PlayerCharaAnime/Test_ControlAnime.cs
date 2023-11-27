@@ -18,6 +18,8 @@ public class Test_ControlAnime : MonoBehaviour
 
     private void Start()
     {
+        ctrl.canRotateChara = true;
+        
         ctrl.OnStop += () =>
           {
               CharaAnimeController.Instance.StartIdle();
@@ -41,7 +43,10 @@ public class Test_ControlAnime : MonoBehaviour
     {
         if(Input.GetKeyDown(jumpKey))
         {
-            CharaAnimeController.Instance.StartJump();
+            if(CharaAnimeController.Instance.StartJump())
+            {
+                ctrl.rigid.velocity += (Vector3.up * 10);
+            }
         }
 
         if(Input.GetKeyDown(stickPipeKey))

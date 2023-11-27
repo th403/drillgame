@@ -45,13 +45,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   money:
-    value: 85
+    value: 0
   norumas: []
-  energyGots:
-  - value: 0
-  - value: 1
-  - value: 0
-  - value: 1
+  energyGots: []
   time:
     value: 25
   nowNoruma:
@@ -60,35 +56,17 @@ MonoBehaviour:
       target: 0
       color: {r: 0, g: 0, b: 0, a: 0}
   timeLimit:
-    value: 100
+    value: 0
   lastNoruma:
     value:
       name: 
       target: 0
       color: {r: 0, g: 0, b: 0, a: 0}
-  rankStandards:
-  - name: D
-    color: {r: 0.3584906, g: 0.038892854, b: 0.038892854, a: 1}
-    target: 0
-  - name: C
-    color: {r: 0.3962264, g: 0.0504628, b: 0.3198556, a: 1}
-    target: 35
-  - name: B
-    color: {r: 0.13818696, g: 0.0627451, b: 0.34117648, a: 1}
-    target: 50
-  - name: A
-    color: {r: 0.037869357, g: 0.3490566, b: 0.2483929, a: 1}
-    target: 70
-  - name: S
-    color: {r: 1, g: 0.59337157, b: 0.12941176, a: 1}
-    target: 90
+  rankStandards: []
   nowRankStandard:
     value:
       name: 
       color: {r: 0, g: 0, b: 0, a: 0}
       target: 0
-  rankTop3:
-  - value: 0
-  - value: 0
-  - value: 0
-  passTarget: 0
+  rankTop3: []
+  stageID: 0

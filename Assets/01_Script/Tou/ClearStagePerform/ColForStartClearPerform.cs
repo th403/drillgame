@@ -14,7 +14,8 @@ public class ColForStartClearPerform : MonoBehaviour
 
     [Header("edit")]
     public float groundPosY = 0.3f;
-    public int animeFrame = 120;
+    public int jumpFrame = 100;
+    public int clearPerformFrame = 120;
     public float jumpHeight = 2.0f;
     public bool finish = false;
 
@@ -38,7 +39,9 @@ public class ColForStartClearPerform : MonoBehaviour
                 float length = delta.magnitude;
                 float height = jumpHeight;
                 Vector3 jumpDir = new Vector3(delta.x, 0, delta.z).normalized;
-                Vector3 velo = JumpTool.GetJumpVelocity(length, height, jumpDir);
+                //Vector3 velo = JumpTool.GetJumpVelocity(length, height, jumpDir);
+                float jumpTime = jumpFrame * 1.0f / 60.0f;
+                Vector3 velo = JumpTool.GetJumpVelocityByTime(length, jumpTime, jumpDir);
 
                 //exchange camera
                 performCmr.enabled = true;

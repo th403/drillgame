@@ -15,7 +15,7 @@ public class DepthDigitParts : MonoBehaviour
 
         //set rotate anime
         //transform.DOKill();
-        transform.DORotate(new Vector3(-360.0f * (float)(temp) / 10.0f, 0, 0), 0.2f).SetEase(Ease.OutSine);
+        transform.DOLocalRotate(new Vector3(-360.0f * (float)(temp) / 10.0f, 0, 0), 0.2f).SetEase(Ease.OutSine);
         //transform.localEulerAngles =new Vector3( -360.0f * (float)(temp) / 9.0f,0,0);
     }
 }

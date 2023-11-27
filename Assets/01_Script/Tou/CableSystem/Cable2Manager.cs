@@ -20,15 +20,20 @@ public class Cable2Manager : MonoBehaviour
     public GameObject cable2Prefab;
     public Transform plugTransform;
     public Rigidbody fixedAnchor;
+    public Transform playerTrs;
 
     [Header("edit")]
     public float unitMaxLength = 1.0f;
+    public int markCount = 8;
     public float fixedCableVelo = 0.1f;
+    public float playerMinMove = 0.01f;
 
     [Header("read only")]
     public List<Transform> cable2s;
     public Cable2 lastCable;
     public Cable2 checkCable;
+    public Vector3 playerLastPos;
+    public float playerMoveDist;
 
     public void CheckCableFixed()
     {
@@ -48,7 +53,7 @@ public class Cable2Manager : MonoBehaviour
         if (lastCable) return;
 
         var go = Instantiate(cable2Prefab);
-        go.transform.position = plugTransform.position;
+        go.transform.position = transform.position;
         go.transform.SetParent(transform);
         cable2s.Add(go.transform);
 
@@ -60,7 +65,7 @@ public class Cable2Manager : MonoBehaviour
     public Cable2 AddCable()
     {
         var go = Instantiate(cable2Prefab);
-        go.transform.position = plugTransform.position;
+        go.transform.position = lastCable.tailTrs.position;
         go.transform.SetParent(transform);
         cable2s.Add(go.transform);
 
@@ -71,6 +76,7 @@ public class Cable2Manager : MonoBehaviour
         cable.StartCable(plugTransform, lastCable ? lastCable.rigid : null);
         
         lastCable = cable;
+        if (checkCable == null) checkCable = cable;
         return cable;
     }
 
@@ -93,5 +99,16 @@ public class Cable2Manager : MonoBehaviour
     public int GetCable2Count()
     {
         return cable2s.Count;
+    }
+
+    private void FixedUpdate()
+    {
+        playerMoveDist = (playerTrs.position - playerLastPos).magnitude;
+        playerLastPos = playerTrs.position;
+    }
+
+    public bool IsPlayerMove()
+    {
+        return playerMoveDist> playerMinMove;
     }
 }
