@@ -24,7 +24,7 @@ RenderSettings:
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
   m_AmbientIntensity: 1
-  m_AmbientMode: 0
+  m_AmbientMode: 4
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
   m_SkyboxMaterial: {fileID: 0}
   m_HaloStrength: 0.5
@@ -378,31 +378,39 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3279464632276835968, guid: b4d951daddc50e0439665c3e141bf5db, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 3279464632276835968, guid: b4d951daddc50e0439665c3e141bf5db, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.16
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3279464632276835968, guid: b4d951daddc50e0439665c3e141bf5db, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -3.49
+      value: -3
       objectReference: {fileID: 0}
     - target: {fileID: 3279464632276835968, guid: b4d951daddc50e0439665c3e141bf5db, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.99654526
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3279464632276835968, guid: b4d951daddc50e0439665c3e141bf5db, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.08305168
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3279464632276835968, guid: b4d951daddc50e0439665c3e141bf5db, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3279464632276835968, guid: b4d951daddc50e0439665c3e141bf5db, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3279464632276835968, guid: b4d951daddc50e0439665c3e141bf5db, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 9.528
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3951644764774480144, guid: b4d951daddc50e0439665c3e141bf5db, type: 3}
       propertyPath: size
-      value: 5
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 3951644764774480144, guid: b4d951daddc50e0439665c3e141bf5db, type: 3}
       propertyPath: AutoDig
@@ -410,7 +418,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3951644764774480144, guid: b4d951daddc50e0439665c3e141bf5db, type: 3}
       propertyPath: DiggingCooldown
-      value: 0.2
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3951644764774480144, guid: b4d951daddc50e0439665c3e141bf5db, type: 3}
+      propertyPath: stalagmiteHeight
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3951644764774480144, guid: b4d951daddc50e0439665c3e141bf5db, type: 3}
       propertyPath: DiggerMasterRuntimeObj
@@ -16125,18 +16137,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 8648538517460702333, guid: 621f768966392154e8e6ead55e0d1d3c, type: 3}
   m_PrefabInstance: {fileID: 7267797096776034039}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &2078869751550194316
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2078869751550194314}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cb9e6a6ab49b56e459ac1fc60f90fce3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &2078869751550194317 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1996125580220122183, guid: 621f768966392154e8e6ead55e0d1d3c, type: 3}
@@ -16537,7 +16537,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1996125580220122183, guid: 621f768966392154e8e6ead55e0d1d3c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1996125580220122183, guid: 621f768966392154e8e6ead55e0d1d3c, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2046373914576918522, guid: 621f768966392154e8e6ead55e0d1d3c, type: 3}
       propertyPath: m_LocalPosition.y
@@ -16593,7 +16597,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6204946293915658265, guid: 621f768966392154e8e6ead55e0d1d3c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7267797094945896551, guid: 621f768966392154e8e6ead55e0d1d3c, type: 3}
       propertyPath: FundsText

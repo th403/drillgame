@@ -15,7 +15,7 @@ public class DrillerRobo : MonoBehaviour
     public float MaxRotationX = 85.0f;
     public float MaxScale = 5.0f;
     public DiggingPointCtrl diggingPointCtrl;
-    public GameObject diggingPoint;
+    //public GameObject diggingPoint;
     public GameObject CameraCtrlObj;
     public GameObject DrillerCamera;
     public Transform DrillerTransform;
