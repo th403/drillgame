@@ -7,6 +7,20 @@ using UnityEngine.UI;
 public class TurtorialPlayerCtrl : MonoBehaviour
 {
 
+    private static TurtorialPlayerCtrl instance;
+
+    private void Awake()
+    {
+        instance = this;
+    }
+
+    public static TurtorialPlayerCtrl Instance
+    {
+        get { return instance; }
+    }
+
+
+
     public TurtorialPanelManager turtorial;
     private PlayerKnockback playerKnockback;
 
@@ -28,7 +42,7 @@ public class TurtorialPlayerCtrl : MonoBehaviour
     public float ChargeTimeMax = 2;
     public int PricePerMeter = 100;
 
-    public int FadeTime = 3;
+    public int FadeTime = 3;        //チュートリアルの切り替え時間
 
 
     //private Vector3 LastFundsCheckPos;
@@ -37,8 +51,11 @@ public class TurtorialPlayerCtrl : MonoBehaviour
     private bool Use = true;
     private bool Moving = false;
 
+    //チュートリアル
     private bool TurtorialCamera = false;
     private bool CameraOn = false;
+    //ドリル
+    private bool CanUseDriller = true;
 
     private float MovingSpeed;
     private float ChargeTime = 0;
@@ -173,6 +190,8 @@ public class TurtorialPlayerCtrl : MonoBehaviour
             PlayerRigidbody.velocity = v;
         }
 
+
+        //チュートリアル処理
         if(CameraOn == true)
         {
             Invoke("Oncamera", FadeTime);
@@ -188,13 +207,35 @@ public class TurtorialPlayerCtrl : MonoBehaviour
         return Moving;
     }
 
+    //チュートリアル処理
     private void Oncamera()
     {
         turtorial.OnTurtorialMove();
     }
 
+    //ドリル系
+    public bool CheckCanUseDriller()
+    {
+        return CanUseDriller;
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "NoDrillerZone")
+        {
+            CanUseDriller = false;
+        }
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.tag == "NoDrillerZone")
+        {
+            CanUseDriller = true;
+        }
+    }
 
 
+
+    //爆弾岩処理
     public void TakeDamage(int damage)
     {
         Debug.Log("Player took damage");

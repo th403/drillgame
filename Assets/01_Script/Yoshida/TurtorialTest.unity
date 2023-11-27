@@ -1226,6 +1226,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 5333774331365298282, guid: b4d951daddc50e0439665c3e141bf5db, type: 3}
+    - {fileID: 1426255416776937414, guid: b4d951daddc50e0439665c3e141bf5db, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: b4d951daddc50e0439665c3e141bf5db, type: 3}
 --- !u!1 &23931368
 GameObject:
@@ -10961,7 +10962,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 311237056}
-  - component: {fileID: 311237055}
+  - component: {fileID: 311237057}
   m_Layer: 0
   m_Name: CameraCtrl
   m_TagString: Untagged
@@ -10969,25 +10970,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &311237055
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 311237054}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1baf4fcd2cf6e334da676d0a36d862ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  camera_Player: {fileID: 2091570788}
-  camera_Driller: {fileID: 1746022354}
-  player: {fileID: 7287598195340086198}
-  driller: {fileID: 1817601496}
-  TakeOutDrillerDelay: 1.5
-  FundsText: {fileID: 1205357353}
-  DrillerText: {fileID: 88527851}
 --- !u!4 &311237056
 Transform:
   m_ObjectHideFlags: 0
@@ -11003,6 +10985,25 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &311237057
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 311237054}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dee73cf699e00ab459471cc2e292dbc0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  camera_Player: {fileID: 2091570788}
+  camera_Driller: {fileID: 1746022354}
+  player: {fileID: 7287598195340086198}
+  driller: {fileID: 1817601496}
+  TakeOutDrillerDelay: 1.5
+  FundsText: {fileID: 1205357353}
+  DrillerText: {fileID: 88527851}
 --- !u!1 &313077931
 GameObject:
   m_ObjectHideFlags: 16
@@ -16325,6 +16326,11 @@ MonoBehaviour:
     initialized: 0
     min: {x: 0, y: 0, z: 0}
     max: {x: 0, y: 0, z: 0}
+--- !u!82 &488534090 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 2562874300334506929, guid: b4d951daddc50e0439665c3e141bf5db, type: 3}
+  m_PrefabInstance: {fileID: 20316949}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &489211674
 GameObject:
   m_ObjectHideFlags: 0
@@ -63272,6 +63278,31 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1817601496}
   m_Enabled: 1
+--- !u!114 &1817601507
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1817601496}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e96c597ae3b9bd48a4af823c747e993, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DiggingSpeedMax: 11.11
+  RotationSpeed: 0.2
+  Life: 10
+  MaxRotationX: 85
+  MaxScale: 5
+  diggingPointCtrl: {fileID: 447997305}
+  diggingPoint: {fileID: 447997303}
+  TurtorialCameraCtrlObj: {fileID: 311237054}
+  DrillerCamera: {fileID: 510234259}
+  DrillerTransform: {fileID: 1817601500}
+  Acceleration: 5.555
+  ScaleChangeRate: 2.5
+  DrillerMovingSE: {fileID: 488534090}
 --- !u!1 &1820238418
 GameObject:
   m_ObjectHideFlags: 0
@@ -74258,7 +74289,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2091570784}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9d519a614f8aaf5419fa4ebc482e5b69, type: 3}
+  m_Script: {fileID: 11500000, guid: 0cbb46049de75f547b22bf079751ba57, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   CameraRoot: {fileID: 2078869751550194314}
