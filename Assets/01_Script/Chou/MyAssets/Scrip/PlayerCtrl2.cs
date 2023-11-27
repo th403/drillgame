@@ -42,6 +42,8 @@ public class PlayerCtrl2 : MonoBehaviour
     private bool Rotating = false;
     private bool CanUseDriller = true;
     private float MovingSpeed;
+    private float MovingSpeedY=0;
+
     private float ChargeTime = 0;
     private float ChargeRate = 0;
     private float MovingTime = 0;
@@ -58,7 +60,7 @@ public class PlayerCtrl2 : MonoBehaviour
         transform.position = PlayerData.instance.GetRevivePos();
         UIFunds = FundsText.GetComponent<UIFundsCtrl>();
         //LastFundsCheckPos = transform.position;
-        DeltaMovement = new Vector3(0, -9.8f * Time.deltaTime, 0);
+        DeltaMovement = new Vector3(0, 0, 0);
         DeltaRotation = new Vector3(0, 0, 0);
         RotationEulerAngleVelocity = new Vector3(0, PlayerRotationSpeed, 0);
         //CharaAnimeController.Instance.StartIdle();
@@ -78,26 +80,38 @@ public class PlayerCtrl2 : MonoBehaviour
         }
 
         //êßå‰â¬î\
-        if (FreezingTime>0)
+        if (FreezingTime > 0)
         {
             FreezingTime -= Time.deltaTime;
             //éüÇÃÉAÉjÉÅ
-            if(FreezingTime<=0)
+            if (FreezingTime <= 0)
             {
                 CharaAnimeController.Instance.StartIdle();
             }
 
             //à⁄ìÆäµê´ï€óØ
-            DeltaMovement *= (0.75f);
+            DeltaMovement *= 0.75f;
             characterController.Move(DeltaMovement);
 
             return;
         }
 
 
-    //Move
+        //Move
 
-        DeltaMovement *= (1 - Drag);
+        //gravity
+        if (characterController.isGrounded)
+        {
+            MovingSpeedY = -0.001f;
+        }
+        else
+        {
+            MovingSpeedY += (-9.8f * Time.deltaTime);
+        }
+        DeltaMovement.y = MovingSpeedY * Time.deltaTime;
+        //Debug.Log(characterController.isGrounded);
+        //Debug.Log(DeltaMovement.y);
+
 
         //Cannot Double Charge
         //if ((Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.JoystickButton0)) && !Moving)
@@ -155,33 +169,29 @@ public class PlayerCtrl2 : MonoBehaviour
         {
             MovingTime -= Time.deltaTime;
 
-            DeltaMovement = transform.forward * MovingSpeed * Time.deltaTime;
-            
-
             if (MovingTime <= 0)
             {
                 Moving = false;
                 MovingSpeed = 0;
                 CharaAnimeController.Instance.StartIdle();
             }
+            else
+            {
+                DeltaMovement.x = (transform.forward * MovingSpeed * Time.deltaTime).x;
+                DeltaMovement.z = (transform.forward * MovingSpeed * Time.deltaTime).z;
+            }
+
+
         }
 
-        //gravity
-        if (characterController.isGrounded && DeltaMovement.y<0)
-        {
-            DeltaMovement.y = 0;
-        }
-        else
-        {
-            DeltaMovement.y += -9.8f * Time.deltaTime;
-        }
-
+        DeltaMovement *= (1 - Drag);
         characterController.Move(DeltaMovement);
+        Debug.Log(DeltaMovement);
 
-    //rotate
+        //rotate
         DeltaRotation *= (1 - AngularDrag);
 
-        if(DeltaRotation.y<1&& DeltaRotation.y >- 1)
+        if(DeltaRotation.y < 1 && DeltaRotation.y >- 1)
         {
             Rotating = false;
         }
