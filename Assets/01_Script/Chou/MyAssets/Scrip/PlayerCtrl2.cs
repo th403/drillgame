@@ -73,6 +73,16 @@ public class PlayerCtrl2 : MonoBehaviour
         ChargeRate *= 0.975f;
         ChargeSlider.value = ChargeRate;
 
+        //If Moving?
+        if(DeltaMovement.magnitude>0.01f)
+        {
+            Moving = true;
+        }
+        else
+        {
+            Moving = false;
+        }
+
         //ÉJÉÅÉâOn
         if (!Use)
         {
@@ -171,7 +181,7 @@ public class PlayerCtrl2 : MonoBehaviour
 
             if (MovingTime <= 0)
             {
-                Moving = false;
+                //Moving = false;
                 MovingSpeed = 0;
                 CharaAnimeController.Instance.StartIdle();
             }
@@ -256,7 +266,7 @@ public class PlayerCtrl2 : MonoBehaviour
 
         //reset
         MovingTime = 0;
-        Moving = false;
+        //Moving = false;
         MovingSpeed = 0;
 
         DeltaRotation = new Vector3(0, 0, 0);
