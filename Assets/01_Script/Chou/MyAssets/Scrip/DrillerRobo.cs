@@ -24,6 +24,7 @@ public class DrillerRobo : MonoBehaviour
     public float ScaleChangeRate = 2.5f;
     //public GameObject TerrainObj;
     public AudioSource DrillerMovingSE;
+    public bool UseCameraRay = false;
 
     private float DiggingSpeed = 0.0f;
     private CameraCtrl cameraCtrl;
@@ -52,6 +53,12 @@ public class DrillerRobo : MonoBehaviour
 
             DrillerTransform.Rotate(Vector3.up, fMouseX * RotationSpeed, Space.Self);
             DrillerTransform.Rotate(Vector3.right, -fMouseY * RotationSpeed, Space.Self);
+
+            float fGamepadX = Input.GetAxis("Mouse X");
+            float fGamepadY = Input.GetAxis("Mouse Y");
+
+            DrillerTransform.Rotate(Vector3.up, fGamepadX * RotationSpeed, Space.Self);
+            DrillerTransform.Rotate(Vector3.right, -fGamepadY * RotationSpeed, Space.Self);
 
             if (DiggingSpeed < DiggingSpeedMax)
             {
@@ -101,7 +108,7 @@ public class DrillerRobo : MonoBehaviour
             //Debug
             Debug.DrawRay(rayStartPos, rayDirection * 100, Color.red);
 
-            if (Physics.Raycast(rayStartPos, rayDirection, out hit))
+            if (UseCameraRay && Physics.Raycast(rayStartPos, rayDirection, out hit))
             {
                 if (hit.collider.gameObject.tag == "Terrain" && hit.distance < DrillerToCamera.magnitude)
                 {

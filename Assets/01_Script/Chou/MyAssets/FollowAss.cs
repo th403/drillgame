@@ -9,13 +9,13 @@ public class FollowAss : MonoBehaviour
     public GameObject Player;
     public GameObject RootC;
     //public GameObject HitPoint;
-    public float followSpdRate = 0.4f;
+    public float followSpdRate = 5.0f;
     public float RotateSpd = 120f;
     public float MinPlayerRotateSpeed = 1.0f;
     public float ResetDelayMax=2;
-    public float PlayerLookingAtPointHeight = 1.0f;
+    public float PlayerLookingAtPointHeight = 1.25f;
 
-    private PlayerCtrl2 playerCtrl2;
+    //private PlayerCtrl2 playerCtrl2;
     private float ResetDelay;
     private Vector3 RootCTorayStartPos;
     private bool FPS=false;
@@ -23,7 +23,7 @@ public class FollowAss : MonoBehaviour
     void Start()
     {
         ResetDelay = ResetDelayMax;
-        playerCtrl2= Player.GetComponent<PlayerCtrl2>(); 
+        //playerCtrl2= Player.GetComponent<PlayerCtrl2>(); 
         transform.parent = null;
         Vector3 rayStartLocalPos = new Vector3(0, PlayerLookingAtPointHeight, 0);
         RootCTorayStartPos = RootC.transform.localPosition - rayStartLocalPos;
@@ -42,7 +42,7 @@ public class FollowAss : MonoBehaviour
             //AimRotationY = transform.rotation.y;
         }
 
-        if(playerCtrl2.GetIfMoving())
+        if(PlayerCtrl2.Instance.GetIfMoving())
         {
             ResetDelay = 0;
         }
@@ -61,7 +61,7 @@ public class FollowAss : MonoBehaviour
                 transform.rotation = Quaternion.Lerp(transform.rotation, Player.transform.rotation, 100 * Time.deltaTime);
 
             }
-            else if (!playerCtrl2.GetIfRotating() || playerCtrl2.GetIfMoving())
+            else if (!PlayerCtrl2.Instance.GetIfRotating() || PlayerCtrl2.Instance.GetIfMoving())
             {
                 transform.rotation = Quaternion.Lerp(transform.rotation, Player.transform.rotation, followSpdRate * Time.deltaTime);
             }

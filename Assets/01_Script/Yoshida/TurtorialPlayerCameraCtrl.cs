@@ -13,11 +13,11 @@ public class TurtorialPlayerCameraCtrl : MonoBehaviour
 
     private Vector3 TargetPos;
     private FollowAss followAss;
-    private TurtorialPlayerCtrl ptc;
+    private TurtorialPlayerCtrl2 ptc;
     // Start is called before the first frame update
     void Start()
     {
-        ptc = Player.GetComponentInParent<TurtorialPlayerCtrl>();
+        ptc = Player.GetComponentInParent<TurtorialPlayerCtrl2>();
         followAss = CameraRoot.GetComponentInParent<FollowAss>();
         TargetPos = CameraRoot.transform.position;
         if (MinDiatancef <= 0)
@@ -57,7 +57,6 @@ public class TurtorialPlayerCameraCtrl : MonoBehaviour
             transform.position += 4 * MoveSpeed * Time.deltaTime * TargetDistance;
 
         }
-
 
 
         TargetPos = CameraRoot.transform.position;
