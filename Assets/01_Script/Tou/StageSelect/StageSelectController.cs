@@ -13,6 +13,7 @@ public class StageSelectController : MonoBehaviour
 
     private void Awake()
     {
+        DontDestroyOnLoad(gameObject);
         instance = this;
     }
 
@@ -121,15 +122,28 @@ public class StageSelectController : MonoBehaviour
         }
     }
 
-    public void JumpToStage()
-    {
-        JumpToScene("Stage" + (curHoleStage.stageID+1).ToString());
-    }
 
     //for test
     public void JumpToScene(string sceneName)
     {
         SceneManager.LoadScene(sceneName);
+    }
+
+    //public---------------------------------------
+    public void JumpToStage()
+    {
+        JumpToScene("Stage" + (curHoleStage.stageID + 1).ToString());
+    }
+
+    public void JumpToLoadScene()
+    {
+        JumpToScene("LoadStage");
+    }
+
+    //force to destroy this object
+    public void DestroyDataObject()
+    {
+        Destroy(gameObject);
     }
 
     //private function-----------------------------
