@@ -27,20 +27,25 @@ public class IncomeBarController : MonoBehaviour
         get { return instance; }
     }
 
+    [Header("attach")]
     //money number
     public RectTransform moneyNumber;
+    public Image nowNorumaImg;
     public RectTransform passMoneyNumber;
+    public Image nextNorumaTargetImg;
+    public TMP_Text nextNorumaName;
+    public TMP_Text nextNorumaTargetNumber;
 
     //money gauge
     public Transform currentMoneyBar;
     public Transform delayMoneyBar;
     public Transform gaugeColor;
 
-    //noruma hint
-    public RectTransform norumaHint;
-
+    [Header("read only")]
     //public WLProperty<float> targetMoney=new WLProperty<float>();
     //public WLProperty<float> currentMoney=new WLProperty<float>();
+    public Vector3 nowNorumaPos;
+    Sequence seqNowNoruma;
 
     public void InitEvent()
     {
@@ -68,13 +73,50 @@ public class IncomeBarController : MonoBehaviour
 
 
         //add event to property 'nowNoruma'
+        nowNorumaPos = nowNorumaImg.transform.localPosition;
         MainGameDataManager.Instance.nowNoruma.OnValueChange += (Noruma cur, Noruma next) =>
         {
             Debug.Log("change gauge color");
-            gaugeColor.GetComponent<Image>().DOColor(next.color, 0.5f);
-            norumaHint.GetComponentInChildren<TMP_Text>().text = next.name;
-            norumaHint.localScale = Vector3.one * 2;
-            norumaHint.DOScale(Vector3.one, 1).SetEase(Ease.InOutElastic);
+            //gaugeColor.GetComponent<Image>().DOColor(next.color, 0.5f);
+            gaugeColor.GetComponent<MeshRenderer>().material.SetColor("_Color1", next.color1);
+            gaugeColor.GetComponent<MeshRenderer>().material.SetColor("_Color2", next.color2);
+
+            nowNorumaImg.sprite = next.sprite;
+            nowNorumaImg.DOKill();
+            if (seqNowNoruma!=null) seqNowNoruma.Kill();
+            seqNowNoruma = DOTween.Sequence();
+            var pos = new Vector3(
+                0,//nextNorumaTargetImg.transform.localPosition.x,
+                nowNorumaImg.transform.localPosition.y,
+                nowNorumaImg.transform.localPosition.z);
+            nowNorumaImg.transform.localPosition = pos;
+            nowNorumaImg.transform.localScale = new Vector3(50, 0.1f, 4);//nextNorumaTargetImg.transform.localScale;
+            seqNowNoruma.Append(nowNorumaImg.transform.DOScaleX(3, 0.5f).SetEase(Ease.OutSine));
+            seqNowNoruma.Join(nowNorumaImg.transform.DOScaleY(3, 0.2f).SetEase(Ease.OutCirc).SetDelay(0.3f));
+            seqNowNoruma.Append(nowNorumaImg.transform.DOLocalMove(nowNorumaPos, 1).SetEase(Ease.InOutSine));
+            seqNowNoruma.Join(nowNorumaImg.transform.DOScale(Vector3.one, 0.3f));
+            seqNowNoruma.Play();
+        };
+
+
+        //add event to property 'nextNoruma'
+        MainGameDataManager.Instance.nextNoruma.OnValueChange += (Noruma cur, Noruma next) =>
+        {
+            nextNorumaTargetNumber.text ="$" + next.target.ToString("00000000000000");
+            nextNorumaTargetNumber.DOKill();
+            nextNorumaTargetNumber.color = new Color(255, 255, 255, 0);
+            nextNorumaTargetNumber.DOColor(new Color(255, 255, 255, 0.5f), 1);
+
+            //nextNorumaTargetImg.sprite = next.sprite;
+            //nextNorumaTargetImg.DOKill();
+            //nextNorumaTargetImg.color = new Color(255, 255, 255, 0);
+            //nextNorumaTargetImg.DOColor(new Color(255, 255, 255, 0.5f), 1);
+
+
+            nextNorumaName.text = next.name;
+            nextNorumaName.DOKill();
+            nextNorumaName.color = new Color(255, 255, 255, 0);
+            nextNorumaName.DOColor(new Color(255, 255, 255, 0.5f), 1);
         };
     }
 
@@ -116,6 +158,7 @@ public class IncomeBarController : MonoBehaviour
             {
                 //set now noruma
                 MainGameDataManager.Instance.NowNoruma = MainGameDataManager.Instance.norumas[i - 1];
+                MainGameDataManager.Instance.NextNoruma = MainGameDataManager.Instance.norumas[i];
                 break;
             }
         }
@@ -130,14 +173,14 @@ public class IncomeBarController : MonoBehaviour
     {
         //set text
         TMP_Text moneyText = moneyNumber.GetComponent<TMP_Text>();
-        TMP_Text passText = passMoneyNumber.GetComponent<TMP_Text>();
-        moneyText.text = "" + newMoney;
-        passText.text = "/"+ passMoney;
+        //TMP_Text passText = passMoneyNumber.GetComponent<TMP_Text>();
+        moneyText.text = "$ " + newMoney.ToString("00000000000000");
+        //passText.text = passMoney.ToString("0000000000");
 
         //set anime
-        moneyNumber.localScale = Vector3.one * 2;
-        moneyNumber.DOKill();
-        moneyNumber.DOScale(Vector3.one, 1).SetEase(Ease.OutElastic);
+        //moneyNumber.localScale = Vector3.one * 2;
+        //moneyNumber.DOKill();
+        //moneyNumber.DOScale(Vector3.one, 1).SetEase(Ease.OutElastic);
     }
 
     

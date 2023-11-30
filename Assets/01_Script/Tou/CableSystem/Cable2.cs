@@ -10,11 +10,13 @@ public class Cable2 : MonoBehaviour
 {
     [Header("attach")]
     public Rigidbody rigid;
-    public Transform cableTrs;
+    public Transform cableScl;
+    public Transform cableDir;
     public Transform tailTrs;
     public Transform tailModel;
     public CharacterJoint joint;
     public ColOnGround groundCheck;
+    public Renderer pipeRenderer;
 
     [Header("read only")]
     public Cable2 next;//set next cable's joint as null
@@ -64,6 +66,8 @@ public class Cable2 : MonoBehaviour
         joint.connectedBody = rb;
         this.plug = plug;
 
+        Cable2Manager.Instance.CreateMaterial(this);
+
         //rigid.isKinematic = true;
 
         //set length
@@ -101,9 +105,13 @@ public class Cable2 : MonoBehaviour
 
     void SetLength()
     {
-        Vector3 delta = plug.position - cableTrs.position;
+        Vector3 delta = plug.position - cableDir.position;
         length = delta.magnitude;
-        cableTrs.localScale = new Vector3(1, 1, length);
+        cableScl.localScale = new Vector3(1, 1, length);
+
+        //new type 
+        float rate = length / Cable2Manager.Instance.unitMaxLength;
+        pipeRenderer.material.SetFloat("_BlackRate", rate);
 
         //set tail model
         tailModel.position = tailTrs.position;
@@ -111,9 +119,9 @@ public class Cable2 : MonoBehaviour
 
     void SetToward()
     {
-        Vector3 delta = plug.position - cableTrs.position;
+        Vector3 delta = plug.position - cableDir.position;
         if (delta == Vector3.zero) return;
-        cableTrs.forward = delta.normalized;
+        cableDir.forward = delta.normalized;
 
         //set tail model
         tailModel.position = tailTrs.position;
