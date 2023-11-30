@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 262.3369, g: 325.0498, b: 430.21924, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -540,93 +540,147 @@ MonoBehaviour:
     norumas:
     - name: sukanpin
       target: 0
-      color: {r: 0.509434, g: 0.509434, b: 0.509434, a: 1}
+      color1: {r: 0, g: 0, b: 0, a: 0}
+      color2: {r: 0, g: 0, b: 0, a: 0}
+      sprite: {fileID: 0}
     - name: daihinmin
       target: 20000
-      color: {r: 0.7169812, g: 0.43957078, b: 0.1318975, a: 1}
+      color1: {r: 0, g: 0, b: 0, a: 0}
+      color2: {r: 0, g: 0, b: 0, a: 0}
+      sprite: {fileID: 0}
     - name: hinmin
       target: 50000
-      color: {r: 0.735849, g: 0.19784619, b: 0.24879806, a: 1}
+      color1: {r: 0, g: 0, b: 0, a: 0}
+      color2: {r: 0, g: 0, b: 0, a: 0}
+      sprite: {fileID: 0}
     - name: heimin
       target: 70000
-      color: {r: 0.25707927, g: 0.735849, b: 0.24644002, a: 1}
+      color1: {r: 0, g: 0, b: 0, a: 0}
+      color2: {r: 0, g: 0, b: 0, a: 0}
+      sprite: {fileID: 0}
     - name: hugou
       target: 120000
-      color: {r: 0.504717, g: 0.7431703, b: 1, a: 1}
+      color1: {r: 0, g: 0, b: 0, a: 0}
+      color2: {r: 0, g: 0, b: 0, a: 0}
+      sprite: {fileID: 0}
     - name: daihugou
       target: 140000
-      color: {r: 0.17647058, g: 1, b: 0.8539776, a: 1}
+      color1: {r: 0, g: 0, b: 0, a: 0}
+      color2: {r: 0, g: 0, b: 0, a: 0}
+      sprite: {fileID: 0}
     - name: VIP
       target: 160000
-      color: {r: 0.6644654, g: 1, b: 0.5424528, a: 1}
+      color1: {r: 0, g: 0, b: 0, a: 0}
+      color2: {r: 0, g: 0, b: 0, a: 0}
+      sprite: {fileID: 0}
     - name: choujya
       target: 180000
-      color: {r: 0.9622642, g: 0.6173016, b: 0.104396604, a: 1}
+      color1: {r: 0, g: 0, b: 0, a: 0}
+      color2: {r: 0, g: 0, b: 0, a: 0}
+      sprite: {fileID: 0}
     - name: king
       target: 200000
-      color: {r: 0.95908934, g: 1, b: 0.07058823, a: 1}
+      color1: {r: 0, g: 0, b: 0, a: 0}
+      color2: {r: 0, g: 0, b: 0, a: 0}
+      sprite: {fileID: 0}
     id: 0
   - time: 240
     energyNum: 2
     norumas:
     - name: sukanpin
       target: 0
-      color: {r: 0.509434, g: 0.509434, b: 0.509434, a: 1}
+      color1: {r: 0, g: 0, b: 0, a: 0}
+      color2: {r: 0, g: 0, b: 0, a: 0}
+      sprite: {fileID: 0}
     - name: daihinmin
       target: 20000
-      color: {r: 0.7169812, g: 0.43957078, b: 0.1318975, a: 1}
+      color1: {r: 0, g: 0, b: 0, a: 0}
+      color2: {r: 0, g: 0, b: 0, a: 0}
+      sprite: {fileID: 0}
     - name: hinmin
       target: 50000
-      color: {r: 0.735849, g: 0.19784619, b: 0.24879806, a: 1}
+      color1: {r: 0, g: 0, b: 0, a: 0}
+      color2: {r: 0, g: 0, b: 0, a: 0}
+      sprite: {fileID: 0}
     - name: heimin
       target: 70000
-      color: {r: 0.25707927, g: 0.735849, b: 0.24644002, a: 1}
+      color1: {r: 0, g: 0, b: 0, a: 0}
+      color2: {r: 0, g: 0, b: 0, a: 0}
+      sprite: {fileID: 0}
     - name: hugou
       target: 120000
-      color: {r: 0.504717, g: 0.7431703, b: 1, a: 1}
+      color1: {r: 0, g: 0, b: 0, a: 0}
+      color2: {r: 0, g: 0, b: 0, a: 0}
+      sprite: {fileID: 0}
     - name: daihugou
       target: 140000
-      color: {r: 0.17647058, g: 1, b: 0.8539776, a: 1}
+      color1: {r: 0, g: 0, b: 0, a: 0}
+      color2: {r: 0, g: 0, b: 0, a: 0}
+      sprite: {fileID: 0}
     - name: VIP
       target: 160000
-      color: {r: 0.6644654, g: 1, b: 0.5424528, a: 1}
+      color1: {r: 0, g: 0, b: 0, a: 0}
+      color2: {r: 0, g: 0, b: 0, a: 0}
+      sprite: {fileID: 0}
     - name: choujya
       target: 180000
-      color: {r: 0.9622642, g: 0.6173016, b: 0.104396604, a: 1}
+      color1: {r: 0, g: 0, b: 0, a: 0}
+      color2: {r: 0, g: 0, b: 0, a: 0}
+      sprite: {fileID: 0}
     - name: king
       target: 200000
-      color: {r: 0.95908934, g: 1, b: 0.07058823, a: 1}
+      color1: {r: 0, g: 0, b: 0, a: 0}
+      color2: {r: 0, g: 0, b: 0, a: 0}
+      sprite: {fileID: 0}
     id: 0
   - time: 360
     energyNum: 3
     norumas:
     - name: sukanpin
       target: 0
-      color: {r: 0.509434, g: 0.509434, b: 0.509434, a: 1}
+      color1: {r: 0, g: 0, b: 0, a: 0}
+      color2: {r: 0, g: 0, b: 0, a: 0}
+      sprite: {fileID: 0}
     - name: daihinmin
       target: 20000
-      color: {r: 0.7169812, g: 0.43957078, b: 0.1318975, a: 1}
+      color1: {r: 0, g: 0, b: 0, a: 0}
+      color2: {r: 0, g: 0, b: 0, a: 0}
+      sprite: {fileID: 0}
     - name: hinmin
       target: 50000
-      color: {r: 0.735849, g: 0.19784619, b: 0.24879806, a: 1}
+      color1: {r: 0, g: 0, b: 0, a: 0}
+      color2: {r: 0, g: 0, b: 0, a: 0}
+      sprite: {fileID: 0}
     - name: heimin
       target: 70000
-      color: {r: 0.25707927, g: 0.735849, b: 0.24644002, a: 1}
+      color1: {r: 0, g: 0, b: 0, a: 0}
+      color2: {r: 0, g: 0, b: 0, a: 0}
+      sprite: {fileID: 0}
     - name: hugou
       target: 120000
-      color: {r: 0.504717, g: 0.7431703, b: 1, a: 1}
+      color1: {r: 0, g: 0, b: 0, a: 0}
+      color2: {r: 0, g: 0, b: 0, a: 0}
+      sprite: {fileID: 0}
     - name: daihugou
       target: 140000
-      color: {r: 0.17647058, g: 1, b: 0.8539776, a: 1}
+      color1: {r: 0, g: 0, b: 0, a: 0}
+      color2: {r: 0, g: 0, b: 0, a: 0}
+      sprite: {fileID: 0}
     - name: VIP
       target: 160000
-      color: {r: 0.6644654, g: 1, b: 0.5424528, a: 1}
+      color1: {r: 0, g: 0, b: 0, a: 0}
+      color2: {r: 0, g: 0, b: 0, a: 0}
+      sprite: {fileID: 0}
     - name: choujya
       target: 180000
-      color: {r: 0.9622642, g: 0.6173016, b: 0.104396604, a: 1}
+      color1: {r: 0, g: 0, b: 0, a: 0}
+      color2: {r: 0, g: 0, b: 0, a: 0}
+      sprite: {fileID: 0}
     - name: king
       target: 200000
-      color: {r: 0.95908934, g: 1, b: 0.07058823, a: 1}
+      color1: {r: 0, g: 0, b: 0, a: 0}
+      color2: {r: 0, g: 0, b: 0, a: 0}
+      sprite: {fileID: 0}
     id: 0
 --- !u!4 &645414137
 Transform:
@@ -943,6 +997,50 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1029392483
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1029392485}
+  - component: {fileID: 1029392484}
+  m_Layer: 0
+  m_Name: Test_JumpScene
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1029392484
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1029392483}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 311abf5f9b2cca04197aa553b84e4978, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1029392485
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1029392483}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -279.25635, y: 0, z: -69.63112}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1252697327
 PrefabInstance:

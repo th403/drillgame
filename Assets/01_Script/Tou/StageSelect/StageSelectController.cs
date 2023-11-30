@@ -5,7 +5,7 @@ using System;
 using TMPro;
 using UnityEngine.UI;
 using DG.Tweening;
-
+using UnityEngine.SceneManagement;
 
 public class StageSelectController : MonoBehaviour
 {
@@ -119,6 +119,17 @@ public class StageSelectController : MonoBehaviour
             text_ranks[count].text = " " + grade.score;
             count++;
         }
+    }
+
+    public void JumpToStage()
+    {
+        JumpToScene("Stage" + (curHoleStage.stageID+1).ToString());
+    }
+
+    //for test
+    public void JumpToScene(string sceneName)
+    {
+        SceneManager.LoadScene(sceneName);
     }
 
     //private function-----------------------------
