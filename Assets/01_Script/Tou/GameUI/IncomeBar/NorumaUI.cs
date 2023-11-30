@@ -10,7 +10,11 @@ public class Noruma
 {
     public string name;
     public float target;
-    public Color color;
+    [ColorUsage(false, true)]
+    public Color color1;
+    [ColorUsage(false, true)]
+    public Color color2;
+    public Sprite sprite;
 }
 
 public class NorumaUI : MonoBehaviour

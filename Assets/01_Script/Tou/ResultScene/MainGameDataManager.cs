@@ -69,6 +69,7 @@ public class MainGameDataManager : MonoBehaviour
     public List<WLProperty<bool>> energyGots;//x num
     public WLProperty<float> time;
     public WLProperty<Noruma> nowNoruma;
+    public WLProperty<Noruma> nextNoruma;
     public WLProperty<float> timeLimit;
 
     //result
@@ -140,6 +141,18 @@ public class MainGameDataManager : MonoBehaviour
         get
         {
             return passTarget;
+        }
+    }
+
+    public Noruma NextNoruma
+    {
+        get
+        {
+            return nextNoruma.Value;
+        }
+        set
+        {
+            nextNoruma.Value = value;
         }
     }
 

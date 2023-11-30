@@ -21,6 +21,8 @@ public class Cable2Manager : MonoBehaviour
     public Transform plugTransform;
     public Rigidbody fixedAnchor;
     public Transform playerTrs;
+    public Shader cableShader;
+    public Material cableMtr;
 
     [Header("edit")]
     public float unitMaxLength = 1.0f;
@@ -84,6 +86,14 @@ public class Cable2Manager : MonoBehaviour
     {
         fixedAnchor.transform.position = anchorPos;
         cable.joint.connectedBody = fixedAnchor;
+    }
+
+    public Material CreateMaterial(Cable2 cable2)
+    {
+        var sha = Shader.Find("Shader Graphs/sg_Cable.shader");
+        var mtr = new Material(cableMtr);// cableShader);
+        cable2.pipeRenderer.material = mtr;
+        return mtr;
     }
 
     public void Pause()
