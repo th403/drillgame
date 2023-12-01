@@ -15,26 +15,31 @@ public class DrillerRobo : MonoBehaviour
     public float MaxRotationX = 85.0f;
     public float MaxScale = 5.0f;
     public DiggingPointCtrl diggingPointCtrl;
-    public GameObject diggingPoint;
+    //public GameObject diggingPoint;
     public GameObject CameraCtrlObj;
+    public GameObject DrillerCamera;
     public Transform DrillerTransform;
     //private float Deceleration;
     public float Acceleration = 5.555f;
     public float ScaleChangeRate = 2.5f;
     //public GameObject TerrainObj;
     public AudioSource DrillerMovingSE;
+    public bool UseCameraRay = false;
 
     private float DiggingSpeed = 0.0f;
     private CameraCtrl cameraCtrl;
     private float CountLife = 0;
     private float ScaleRate = 0;
     private bool Use = false;
+    private Vector3 DrillerToCamera;
+
     // Start is called before the first frame update
     void Start()
     {
         //DrillerTransform = GetComponent<Transform>();
         //diggingPointCtrl = diggingPoint.GetComponent<DiggingPointCtrl>();
         cameraCtrl = CameraCtrlObj.GetComponent<CameraCtrl>();
+        DrillerToCamera = DrillerCamera.transform.position - transform.position;
     }
 
     // Update is called once per frame
@@ -48,6 +53,12 @@ public class DrillerRobo : MonoBehaviour
 
             DrillerTransform.Rotate(Vector3.up, fMouseX * RotationSpeed, Space.Self);
             DrillerTransform.Rotate(Vector3.right, -fMouseY * RotationSpeed, Space.Self);
+
+            float fGamepadX = Input.GetAxis("Mouse X");
+            float fGamepadY = Input.GetAxis("Mouse Y");
+
+            DrillerTransform.Rotate(Vector3.up, fGamepadX * RotationSpeed, Space.Self);
+            DrillerTransform.Rotate(Vector3.right, -fGamepadY * RotationSpeed, Space.Self);
 
             if (DiggingSpeed < DiggingSpeedMax)
             {
@@ -79,7 +90,7 @@ public class DrillerRobo : MonoBehaviour
                 ScaleRate = DrillerTransform.localScale.x / MaxScale;
                 diggingPointCtrl.SetScaleRate(ScaleRate);
                 DrillerTransform.localScale += new Vector3(ScaleChangeRate * Time.deltaTime,
-                    ScaleChangeRate * Time.deltaTime, ScaleChangeRate * Time.deltaTime);
+                ScaleChangeRate * Time.deltaTime, ScaleChangeRate * Time.deltaTime);
             }
 
             CountLife -= Time.deltaTime;
@@ -87,6 +98,28 @@ public class DrillerRobo : MonoBehaviour
             {
                 cameraCtrl.ChangeCamera();
             }
+
+            //camera
+            Vector3 rayStartPos = transform.position;
+            Quaternion rotation = transform.rotation;
+            Vector3 rayDirection = rotation * DrillerToCamera;
+            RaycastHit hit;
+
+            //Debug
+            Debug.DrawRay(rayStartPos, rayDirection * 100, Color.red);
+
+            if (UseCameraRay && Physics.Raycast(rayStartPos, rayDirection, out hit))
+            {
+                if (hit.collider.gameObject.tag == "Terrain" && hit.distance < DrillerToCamera.magnitude)
+                {
+                    float PosAdjustmentRate = 0.95f;
+                    DrillerCamera.transform.position = hit.point;
+                    DrillerCamera.transform.localPosition *= PosAdjustmentRate;
+                }
+
+            }
+
+
         }
     }
 
@@ -102,6 +135,7 @@ public class DrillerRobo : MonoBehaviour
         else
         {
             DrillerMovingSE.Pause();
+            SoundManger.Instance.PlaySEDrillerDestroy();
         }
 
         Use = use;

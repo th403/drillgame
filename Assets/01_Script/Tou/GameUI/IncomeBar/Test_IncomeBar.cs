@@ -9,6 +9,7 @@ public class Test_IncomeBar : MonoBehaviour
     public float inputChangeValue;
     public bool addMoney;
     public bool subMoney;
+    public bool setMoney;
 
     [Header("read only")]
     public float money;
@@ -34,6 +35,13 @@ public class Test_IncomeBar : MonoBehaviour
         {
             subMoney = false;
             IncomeBarController.Instance.SubtractMoney(inputChangeValue);
+            money = MainGameDataManager.Instance.money.Value;
+        }
+
+        if(setMoney)
+        {
+            setMoney = false;
+            IncomeBarController.Instance.SetMoney(inputChangeValue);
             money = MainGameDataManager.Instance.money.Value;
         }
     }

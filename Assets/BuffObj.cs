@@ -39,7 +39,7 @@ public class BuffObj : MonoBehaviour
             { 
                 other.GetComponent<DrillerRobo>().SetDiggingSpeed(SetSpeedTo); 
             }
-            soundManger.PlaySEDestroy();
+            soundManger.PlaySERockDestroy();
             if(DestroyEffect)
             {
                 GameObject effect=Instantiate(DestroyEffect, transform);

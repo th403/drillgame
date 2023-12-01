@@ -8,6 +8,10 @@ public class LavaCtrl : MonoBehaviour
     //public GameObject FundsText;
     public GameObject Mark;
     public GameObject EventCtrlObj;
+    public bool IsCheckPoint;
+    public int CheckPointNo = -1;
+    public int ReviveStartFunds = 54321;
+    public GameObject RevivePos;
     private EventCtrl eventCtrl;
 
     public float Value=50000;
@@ -50,8 +54,12 @@ public class LavaCtrl : MonoBehaviour
             use = true;
             //this.GetComponent<Renderer>().material.color *= 2;
             Mark.SetActive(false);
+            PlayerCtrl2.Instance.PlayerGetLava();
+            if(IsCheckPoint)
+            {
+                PlayerData.instance.SetRevivePos(RevivePos.transform.position, CheckPointNo);
+            }
         }
-
     }
 
 }

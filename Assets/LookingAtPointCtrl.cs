@@ -59,7 +59,10 @@ public class LookingAtPointCtrl : MonoBehaviour
             {
                 Vector2 PlayerDistanceToCamera2D = Player.transform.position - PlayerCamera.transform.position;
                 PlayerDistanceToCamera2D.y = 0;
-                transform.localPosition = new Vector3(0, Height, PlayerDistanceToCamera2D.magnitude * 0.5f);
+
+                Vector3 newPosition = transform.localPosition;
+                newPosition.z = DistanceToCamera.magnitude;
+                transform.localPosition = newPosition;
             }
 
         }

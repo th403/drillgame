@@ -37,7 +37,7 @@ public class ClockController : MonoBehaviour
               float rotZ = newTime / max * 90.0f;
               Vector3 angle = new Vector3(0,0,rotZ);
               sector.DOKill();
-              sector.DORotate(angle, 0.5f).SetEase(Ease.OutSine);
+              sector.DOLocalRotate(angle, 0.5f).SetEase(Ease.OutSine);
 
               //set text
               text.text = "" + (max - newTime);

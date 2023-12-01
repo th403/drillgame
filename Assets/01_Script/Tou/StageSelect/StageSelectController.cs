@@ -5,7 +5,7 @@ using System;
 using TMPro;
 using UnityEngine.UI;
 using DG.Tweening;
-
+using UnityEngine.SceneManagement;
 
 public class StageSelectController : MonoBehaviour
 {
@@ -13,6 +13,7 @@ public class StageSelectController : MonoBehaviour
 
     private void Awake()
     {
+        DontDestroyOnLoad(gameObject);
         instance = this;
     }
 
@@ -113,11 +114,36 @@ public class StageSelectController : MonoBehaviour
         int count = 0;
         //get grade from grade manager
         List<Grade> grades = GradeManager.Instance.GetStageGradeList(info.id);
+        if (grades == null) return;
         foreach(var grade in grades)
         {
             text_ranks[count].text = " " + grade.score;
             count++;
         }
+    }
+
+
+    //for test
+    public void JumpToScene(string sceneName)
+    {
+        SceneManager.LoadScene(sceneName);
+    }
+
+    //public---------------------------------------
+    public void JumpToStage()
+    {
+        JumpToScene("Stage" + (curHoleStage.stageID + 1).ToString());
+    }
+
+    public void JumpToLoadScene()
+    {
+        JumpToScene("LoadStage");
+    }
+
+    //force to destroy this object
+    public void DestroyDataObject()
+    {
+        Destroy(gameObject);
     }
 
     //private function-----------------------------

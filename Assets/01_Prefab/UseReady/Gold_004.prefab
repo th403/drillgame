@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 3738436050963472324}
   - component: {fileID: 1463900983688276361}
   - component: {fileID: 8679889439066150529}
+  - component: {fileID: 2294704128126716476}
   m_Layer: 0
   m_Name: Gold_004
   m_TagString: Untagged
@@ -130,3 +131,16 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &2294704128126716476
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8688083401766542424}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15649b02012bcee46b587e82a5efaf16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Effect: {fileID: 6883040086318519831, guid: 0e813e43c82109c46abb8528337be755, type: 3}

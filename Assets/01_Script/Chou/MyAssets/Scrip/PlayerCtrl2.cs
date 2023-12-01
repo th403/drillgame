@@ -6,6 +6,18 @@ using UnityEngine.UI;
 
 public class PlayerCtrl2 : MonoBehaviour
 {
+    private static PlayerCtrl2 instance;
+
+    private void Awake()
+    {
+        instance = this;
+    }
+
+    public static PlayerCtrl2 Instance
+    {
+        get { return instance; }
+    }
+
     public GameObject FundsText;
     public Transform PlayerTransform;
     public Slider ChargeSlider;
@@ -21,24 +33,34 @@ public class PlayerCtrl2 : MonoBehaviour
     public float AngularDrag = 0.02f;
     public int PricePerMeter = 100;
     public CharacterController characterController;
+    public bool ChargeChangeRotateSpeed;
+    public float ChargeChangeRotateSpeedRate = 4.0f;
 
     private UIFundsCtrl UIFunds;
     private bool Use = true;
     private bool Moving = false;
     private bool Rotating = false;
+    private bool CanUseDriller = true;
     private float MovingSpeed;
+    private float MovingSpeedY=0;
+
     private float ChargeTime = 0;
     private float ChargeRate = 0;
     private float MovingTime = 0;
+    private float FreezingTime=0;
+
     private Vector3 DeltaRotation;
     private Vector3 DeltaMovement;
     private Vector3 RotationEulerAngleVelocity;
+
+
     // Start is called before the first frame update
     void Start()
     {
+        transform.position = PlayerData.instance.GetRevivePos();
         UIFunds = FundsText.GetComponent<UIFundsCtrl>();
         //LastFundsCheckPos = transform.position;
-        DeltaMovement = new Vector3(0, -9.8f * Time.deltaTime, 0);
+        DeltaMovement = new Vector3(0, 0, 0);
         DeltaRotation = new Vector3(0, 0, 0);
         RotationEulerAngleVelocity = new Vector3(0, PlayerRotationSpeed, 0);
         //CharaAnimeController.Instance.StartIdle();
@@ -47,27 +69,98 @@ public class PlayerCtrl2 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //UI
+        ChargeRate *= 0.975f;
+        ChargeSlider.value = ChargeRate;
+
+        //If Moving?
+        if(DeltaMovement.magnitude>0.01f)
+        {
+            Moving = true;
+        }
+        else
+        {
+            Moving = false;
+        }
+
+        //カメラOn
         if (!Use)
         {
             return;
         }
 
-    //Move
-        ChargeRate *= 0.975f;
+        //制御可能
+        if (FreezingTime > 0)
+        {
+            FreezingTime -= Time.deltaTime;
+            //次のアニメ
+            if (FreezingTime <= 0)
+            {
+                CharaAnimeController.Instance.StartIdle();
+            }
 
-        DeltaMovement *= (1 - Drag);
+            //移動慣性保留
+            DeltaMovement *= 0.75f;
+            characterController.Move(DeltaMovement);
 
-        if ((Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.JoystickButton0)) && !Moving)
+            return;
+        }
+
+
+        //Move
+
+        //gravity
+        if (characterController.isGrounded)
+        {
+            MovingSpeedY = -0.001f;
+        }
+        else
+        {
+            MovingSpeedY += (-9.8f * Time.deltaTime);
+        }
+        DeltaMovement.y = MovingSpeedY * Time.deltaTime;
+        //Debug.Log(characterController.isGrounded);
+        //Debug.Log(DeltaMovement.y);
+
+
+        //Cannot Double Charge
+        //if ((Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.JoystickButton0)) && !Moving)
+        //{
+        //    ChargeTime += Time.deltaTime;
+        //    if(ChargeTime> ChargeTimeMax)
+        //    {
+        //        ChargeTime = ChargeTimeMax;
+        //    }
+        //    ChargeRate = ChargeTime / ChargeTimeMax;
+        //}
+
+        //if ((Input.GetKeyUp(KeyCode.Space) || Input.GetKeyUp(KeyCode.JoystickButton0)) && !Moving)
+        //{
+        //    //ChargeRate = ChargeTime / ChargeTimeMax;
+        //    float MovingDistance = MovingDistanceMin + (MovingDistanceMax - MovingDistanceMin) * ChargeRate;
+        //    ChargeTime = 0;
+        //    if (UIFunds.AddFunds((int)(-PricePerMeter * MovingDistance)))
+        //    {
+        //        MovingTime = MovingTimeMin + (MovingTimeMax - MovingTimeMin) * ChargeRate;
+        //        MovingSpeed = MovingDistance / MovingTime;
+        //        CharaAnimeController.Instance.StartRun();
+        //        Moving = true;
+        //    }
+
+        //}
+
+        //Can Double Charge
+        if ((Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.JoystickButton0)))
         {
             ChargeTime += Time.deltaTime;
-            if(ChargeTime> ChargeTimeMax)
+            if (ChargeTime > ChargeTimeMax)
             {
                 ChargeTime = ChargeTimeMax;
             }
             ChargeRate = ChargeTime / ChargeTimeMax;
         }
 
-        if ((Input.GetKeyUp(KeyCode.Space) || Input.GetKeyUp(KeyCode.JoystickButton0)) && !Moving)
+        if ((Input.GetKeyUp(KeyCode.Space) || Input.GetKeyUp(KeyCode.JoystickButton0)))
         {
             //ChargeRate = ChargeTime / ChargeTimeMax;
             float MovingDistance = MovingDistanceMin + (MovingDistanceMax - MovingDistanceMin) * ChargeRate;
@@ -86,33 +179,29 @@ public class PlayerCtrl2 : MonoBehaviour
         {
             MovingTime -= Time.deltaTime;
 
-            DeltaMovement = transform.forward * MovingSpeed * Time.deltaTime;
-            
-
             if (MovingTime <= 0)
             {
-                Moving = false;
+                //Moving = false;
                 MovingSpeed = 0;
                 CharaAnimeController.Instance.StartIdle();
             }
+            else
+            {
+                DeltaMovement.x = (transform.forward * MovingSpeed * Time.deltaTime).x;
+                DeltaMovement.z = (transform.forward * MovingSpeed * Time.deltaTime).z;
+            }
+
+
         }
 
-        //gravity
-        if (characterController.isGrounded && DeltaMovement.y<0)
-        {
-            DeltaMovement.y = 0;
-        }
-        else
-        {
-            DeltaMovement.y += -9.8f * Time.deltaTime;
-        }
-
+        DeltaMovement *= (1 - Drag);
         characterController.Move(DeltaMovement);
+        Debug.Log(DeltaMovement);
 
-    //rotate
+        //rotate
         DeltaRotation *= (1 - AngularDrag);
 
-        if(DeltaRotation.y<1&& DeltaRotation.y >- 1)
+        if(DeltaRotation.y < 1 && DeltaRotation.y >- 1)
         {
             Rotating = false;
         }
@@ -139,11 +228,19 @@ public class PlayerCtrl2 : MonoBehaviour
             Rotating = true;
         }
 
-        this.transform.Rotate(DeltaRotation, Space.World);
+    //ChargeChangeRotateSpeed
+        if (ChargeChangeRotateSpeed)
+        {
+            //ChargeRotateOn
+            this.transform.Rotate(DeltaRotation * (1 + ChargeRate * ChargeChangeRotateSpeedRate), Space.World);
 
-        //UI
+        }
+        else
+        {
+            //ChargeRotateOff
+            this.transform.Rotate(DeltaRotation, Space.World);
+        }
 
-        ChargeSlider.value = ChargeRate;
     }
 
     private void FixedUpdate()
@@ -163,9 +260,39 @@ public class PlayerCtrl2 : MonoBehaviour
     {
         return MovingSpeed;
     }
-    private static void Vector3Rotate(ref Vector3 source,Vector3 axis, float angle)
+    public void PlayerGetLava()
     {
-        Quaternion q = Quaternion.AngleAxis(angle, axis);
-        source= q * source;
+        FreezingTime = 2.0f;
+
+        //reset
+        MovingTime = 0;
+        //Moving = false;
+        MovingSpeed = 0;
+
+        DeltaRotation = new Vector3(0, 0, 0);
+
+        //アニメ
+        CharaAnimeController.Instance.StartStick();
+
     }
+    public bool CheckCanUseDriller()
+    {
+        return CanUseDriller;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "NoDrillerZone")
+        {
+            CanUseDriller = false;
+        }
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.tag == "NoDrillerZone")
+        {
+            CanUseDriller = true;
+        }
+    }
+
 }

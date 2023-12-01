@@ -28,9 +28,11 @@ public class WLPlayerControl : MonoBehaviour
     public bool canRotateChara = true;
     public bool canRotateEye = true;
     public Vector3 lastPos;
+    public Vector2 inputHV;
 
     private void Awake()
     {
+        lastPos = transform.position;
         rigid = GetComponent<Rigidbody>();
     }
 
@@ -56,12 +58,12 @@ public class WLPlayerControl : MonoBehaviour
         }
 
         //get input
-        Vector2 vec = new Vector2(
+        inputHV = new Vector2(
             Input.GetAxis("Horizontal"),
             Input.GetAxis("Vertical"));
 
         //check if need move
-        if (vec == Vector2.zero)
+        if (inputHV == Vector2.zero)
         {
             OnStop?.Invoke();
             return;
@@ -70,10 +72,10 @@ public class WLPlayerControl : MonoBehaviour
         //move by setting transform.position
         Vector3 forward = transform.forward;
         Vector3 right = transform.right;
-        vec *= moveSpeed * Time.deltaTime;
-        Vector3 move = forward * vec.y + right * vec.x;
-        lastPos = transform.transform.position;
-        transform.transform.position += move;
+        inputHV *= moveSpeed * Time.deltaTime;
+        Vector3 move = forward * inputHV.y + right * inputHV.x;
+        lastPos = transform.position;
+        transform.position += move;
 
         //customize event
         OnMove?.Invoke(move);
@@ -140,14 +142,29 @@ public class WLPlayerControl : MonoBehaviour
         }
 
         //check if have chara transform
-        if (charaTrs==null)
+        if (charaTrs == null) 
         {
             return;
         }
 
         //rotate chara by velocity
-        var veloDir = (transform.position - lastPos).normalized;
-        charaTrs.forward = Vector3.Lerp(charaTrs.forward, veloDir, rotateCharaSpeed * Time.fixedDeltaTime);
+        var veloDir = (transform.position - lastPos);
+        veloDir.y = 0;
+        veloDir.Normalize();
+        if (veloDir == Vector3.zero)
+        {
+            return;
+        }
+        if(veloDir==new Vector3(0,0,1))
+        {
+            veloDir = new Vector3(0.0001f,0, 1);
+        }
+        if (veloDir == new Vector3(0, 0, -1))
+        {
+            veloDir = new Vector3(0.0001f,0,-1f);
+        }
+        Vector3 pos = charaTrs.position + veloDir;
+        charaTrs.LookAt(pos);
     }
 
     void ShowCursor()
