@@ -23,7 +23,6 @@ public class InOutEffectController : MonoBehaviour
     [Header("attach")]
     public GameObject moneyEffectPrefab;
 
-    
     //if ui canvas
     public RectTransform panel;
     public RectTransform canvas;
@@ -54,16 +53,16 @@ public class InOutEffectController : MonoBehaviour
         GameObject go = Instantiate(moneyEffectPrefab);
         //Vector3 pos = Camera.main.WorldToScreenPoint( Camera.main.WorldToViewportPoint(target.position));
         //Vector3 pos = Camera.main.WorldToScreenPoint(target.position);
+        Vector3 pos = Camera.main.WorldToScreenPoint(target.position);
 
         //Vector3 pos = WorldToCameraSpace.WorldToScreenSpaceCamera(Camera.main, Camera.main, canvas,target.position);
-        Vector3 deltaPos= target.position - Camera.main.transform.position;
-        Vector3 pos = target.position + deltaPos.normalized * -1f;
-        go.transform.position = pos;
+        //Vector3 deltaPos= target.position - Camera.main.transform.position;
+        //go.transform.localPosition = Vector3.zero;
         //go.GetComponent<RectTransform>().SetParent(panel);
-        go.transform.forward = deltaPos.normalized;
+        //go.transform.forward = deltaPos.normalized;
 
         //start effect
-        InOutEffect effect = go.GetComponent<InOutEffect>();
+        InOutEffect2 effect = go.GetComponent<InOutEffect2>();
         effect.StartEffect(target,num);
     }
 }

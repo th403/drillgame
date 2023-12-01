@@ -91,13 +91,13 @@ public class InOutEffect : MonoBehaviour
     private void FixedUpdate()
     {
         //set ui transform
-        if (Camera.main)
-        {
-            transform.forward = Camera.main.transform.forward;
-            Vector3 deltaPos = target.position - Camera.main.transform.position;
-            Vector3 pos = target.position + deltaPos.normalized * -1f;
-            transform.position = pos;
-        }
+        //if (Camera.main)
+        //{
+        //    transform.forward = Camera.main.transform.forward;
+        //    Vector3 deltaPos = target.position - Camera.main.transform.position;
+        //    Vector3 pos = target.position + deltaPos.normalized * -1f;
+        //    transform.position = pos;
+        //}
 
 
         if (Time.time-timeStartStamp>totalEffectTime)
