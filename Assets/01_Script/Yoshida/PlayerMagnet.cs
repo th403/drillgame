@@ -11,7 +11,7 @@ public class PlayerMagnet : MonoBehaviour
 
     void Start()
     {
-        // 磁石を見つける（仮に"Magnet"タグを持つオブジェクトを磁石としています）
+        // 磁石を見つける
         magnets = GameObject.FindGameObjectsWithTag("Magnet");
     }
 
