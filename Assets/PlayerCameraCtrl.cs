@@ -21,12 +21,12 @@ public class PlayerCameraCtrl : MonoBehaviour
         TargetPos = CameraRoot.transform.position;
         if(MinDiatancef<=0)
         {
-            Vector3 rootPosition = CameraRoot.transform.position;
-            Vector3 playerPosition = Player.transform.position;
+            Vector3 rootPosition = CameraRoot.transform.localPosition;
+            //Vector3 playerPosition = Player.transform.position;
             rootPosition.y = 0;
-            playerPosition.y = 0;
-            Vector3 minDiatance = rootPosition - playerPosition;
-            MinDiatancef = minDiatance.magnitude;
+            //playerPosition.y = 0;
+            //Vector3 minDiatance = rootPosition;
+            MinDiatancef = rootPosition.magnitude;
 
         }
     }
