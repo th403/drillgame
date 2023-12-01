@@ -6,29 +6,32 @@ using Digger.Modules.Core.Sources.Operations;
 using Unity.Jobs;
 using UnityEngine;
 
-    public class CameraCtrl : MonoBehaviour
-    {
-        public Camera camera_Player;
-        public Camera camera_Driller;
-        public GameObject player;
-        public GameObject driller;
-        public float TakeOutDrillerDelay=2.0f;
-        private DrillerRobo drillerRobo;
+public class CameraCtrl : MonoBehaviour
+{
+    public Camera camera_Player;
+    public Camera camera_Driller;
+    public GameObject player;
+    public GameObject driller;
+    public GameObject FadeInEffect;
 
-        public GameObject FundsText;
-        public GameObject DrillerText;
-        private UIFundsCtrl UIFunds;
-        private UIDrillerCtrl UIDrillers;
+    public float TakeOutDrillerDelay = 2.0f;
+    private DrillerRobo drillerRobo;
 
+    public GameObject FundsText;
+    public GameObject DrillerText;
+    private UIFundsCtrl UIFunds;
+    private UIDrillerCtrl UIDrillers;
+    private FadeInEffectCtrl fadeInEffectCtrl;
     // Start is called before the first frame update
     void Start()
-        {
-            camera_Player.enabled = true;
-            camera_Driller.enabled = false;
-            drillerRobo = driller.GetComponent<DrillerRobo>();
-            driller.gameObject.SetActive(false);
-            UIFunds = FundsText.GetComponent<UIFundsCtrl>();
-            UIDrillers = DrillerText.GetComponent<UIDrillerCtrl>();
+    {
+        camera_Player.enabled = true;
+        camera_Driller.enabled = false;
+        drillerRobo = driller.GetComponent<DrillerRobo>();
+        driller.gameObject.SetActive(false);
+        UIFunds = FundsText.GetComponent<UIFundsCtrl>();
+        UIDrillers = DrillerText.GetComponent<UIDrillerCtrl>();
+        fadeInEffectCtrl= FadeInEffect.GetComponent<FadeInEffectCtrl>();
     }
 
     // Update is called once per frame
@@ -41,8 +44,9 @@ using UnityEngine;
                         && UIDrillers.AddDrillers(-1))))
             {
                 CharaAnimeController.Instance.StartTakeOut();
-                Invoke("ChangeCamera", TakeOutDrillerDelay);
-                
+                Invoke("StartFadeIn", TakeOutDrillerDelay);
+                Invoke("ChangeCamera", TakeOutDrillerDelay + fadeInEffectCtrl.Life); 
+
 
             }
             else if (driller.gameObject.activeSelf)
@@ -54,14 +58,20 @@ using UnityEngine;
     }
 
     public void ChangeCamera()
-        {
-            driller.gameObject.SetActive(!driller.gameObject.activeSelf);
-            driller.transform.position = player.transform.position + player.transform.forward * 3;
-            driller.transform.rotation = player.transform.rotation;
-            camera_Player.enabled = !camera_Player.enabled;
+    {
+        driller.gameObject.SetActive(!driller.gameObject.activeSelf);
+        driller.transform.position = player.transform.position + player.transform.forward * 3;
+        driller.transform.rotation = player.transform.rotation;
+        camera_Player.enabled = !camera_Player.enabled;
 
-            camera_Driller.enabled = !camera_Driller.enabled;
-            drillerRobo.SetUse(camera_Driller.enabled);
-        }
-
+        camera_Driller.enabled = !camera_Driller.enabled;
+        drillerRobo.SetUse(camera_Driller.enabled);
     }
+    public void StartFadeIn()
+    {
+        fadeInEffectCtrl.StartFadeIn();
+    }
+
+}
+
+
