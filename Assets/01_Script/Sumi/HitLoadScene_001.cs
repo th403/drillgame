@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class HitLoadScene_001 : MonoBehaviour
 {
+    public string NextScene;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -21,7 +23,7 @@ public class HitLoadScene_001 : MonoBehaviour
     {
         if (c.gameObject.tag == "Player")
         {
-            SceneManager.LoadScene("05_end");
+            SceneManager.LoadScene(NextScene);
         }
     }
 

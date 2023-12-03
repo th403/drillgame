@@ -7,16 +7,15 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Rock_001
-  m_Shader: {fileID: 4800000, guid: 6e4ae4064600d784cac1e41a9e6f2e59, type: 3}
+  m_Name: DamageRock_001
+  m_Shader: {fileID: -6465566751694194690, guid: c425e6e330a9e0041a8804a3279f136c, type: 3}
   m_ValidKeywords:
   - _DISABLE_SSR_TRANSPARENT
+  m_InvalidKeywords:
   - _EMISSIVE_COLOR_MAP
-  - _ENABLE_GEOMETRIC_SPECULAR_AA
   - _MASKMAP
   - _NORMALMAP
   - _NORMALMAP_TANGENT_SPACE
-  m_InvalidKeywords: []
   m_LightmapFlags: 1
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -224,7 +223,7 @@ Material:
     - _RefractionModel: 0
     - _RenderQueueType: 1
     - _RequireSplitLighting: 0
-    - _Saturation: 6.25
+    - _Saturation: 10.95
     - _Smoothness: 0.5
     - _SmoothnessRemapMax: 0
     - _SmoothnessRemapMin: 0
