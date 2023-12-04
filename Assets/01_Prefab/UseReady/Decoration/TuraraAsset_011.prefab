@@ -12,9 +12,7 @@ GameObject:
   - component: {fileID: 4146674557732970222}
   - component: {fileID: 2667036251491799018}
   - component: {fileID: 8706088251389589874}
-  - component: {fileID: 7232682942900637733}
   - component: {fileID: 6077656825942460115}
-  - component: {fileID: -4345631825506639448}
   m_Layer: 0
   m_Name: TuraraAsset_011
   m_TagString: Untagged
@@ -101,19 +99,6 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 6700434577230787145, guid: a1fc3261918a1c84aa7e92bc9887f9e2, type: 3}
---- !u!135 &7232682942900637733
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7595753681578137701}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.57809746
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &6077656825942460115
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -121,22 +106,9 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7595753681578137701}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 29b673e3a67d27e4281463c9a1ac1756, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Effect: {fileID: 3594958593639721397, guid: 11555901d28bcb14a91bf80e579c6954, type: 3}
---- !u!114 &-4345631825506639448
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7595753681578137701}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 15649b02012bcee46b587e82a5efaf16, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Effect: {fileID: 3594958593639721397, guid: 11555901d28bcb14a91bf80e579c6954, type: 3}
+  Effect: {fileID: 4864829505824933517, guid: dab52ddb8f79a5244a72b749cb91fce7, type: 3}
