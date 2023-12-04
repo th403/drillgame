@@ -19,7 +19,7 @@ public class SoundManger : MonoBehaviour
     public AudioSource RockDestroySE;
     public AudioSource DrillerDestroySE;
     public AudioSource GetMoneySE;
-
+    public AudioSource HitGroundSE;
     // Start is called before the first frame update
     void Start()
     {
@@ -44,6 +44,10 @@ public class SoundManger : MonoBehaviour
     public void PlaySEGetMoneySE()
     {
         GetMoneySE.Play();
+    }
+    public void PlaySEHitGroundSE()
+    {
+        HitGroundSE.Play();
     }
 
 }
