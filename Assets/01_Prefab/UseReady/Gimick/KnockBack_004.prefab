@@ -13,8 +13,8 @@ GameObject:
   - component: {fileID: 1597369501202144307}
   - component: {fileID: 1765527057206016727}
   - component: {fileID: 7174209136140980341}
-  - component: {fileID: 3543461658932399125}
   - component: {fileID: 9123266167768552642}
+  - component: {fileID: 3543461658932399125}
   m_Layer: 0
   m_Name: KnockBack_004
   m_TagString: Untagged
@@ -115,6 +115,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Value: -5000
   EventCtrlObj: {fileID: 0}
+--- !u!114 &9123266167768552642
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7801730429386757526}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15649b02012bcee46b587e82a5efaf16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Effect: {fileID: 2158408890764623839, guid: f2aa94ff6a2e0c644b6e9fc3bb59da99, type: 3}
 --- !u!54 &3543461658932399125
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -131,16 +144,3 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &9123266167768552642
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7801730429386757526}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 15649b02012bcee46b587e82a5efaf16, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Effect: {fileID: 2158408890764623839, guid: f2aa94ff6a2e0c644b6e9fc3bb59da99, type: 3}

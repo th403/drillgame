@@ -1,5 +1,5 @@
 {
-    "m_SGVersion": 2,
+    "m_SGVersion": 3,
     "m_Type": "UnityEditor.ShaderGraph.GraphData",
     "m_ObjectId": "bc9fed92dcb446308827927962c63311",
     "m_Properties": [
@@ -11,6 +11,12 @@
         }
     ],
     "m_Keywords": [],
+    "m_Dropdowns": [],
+    "m_CategoryData": [
+        {
+            "m_Id": "4b20fa12c2bb4ac0b471d625fd281bce"
+        }
+    ],
     "m_Nodes": [
         {
             "m_Id": "2e409a049c5a43f5bbec649fec7e7ae2"
@@ -154,11 +160,12 @@
         "serializedMesh": {
             "m_SerializedMesh": "{\"mesh\":{\"instanceID\":0}}",
             "m_Guid": ""
-        }
+        },
+        "preventRotation": false
     },
     "m_Path": "Sub Graphs",
-    "m_ConcretePrecision": 0,
-    "m_PreviewMode": 2,
+    "m_GraphPrecision": 0,
+    "m_PreviewMode": 1,
     "m_OutputNode": {
         "m_Id": "2e409a049c5a43f5bbec649fec7e7ae2"
     },
@@ -398,7 +405,7 @@
     "m_Type": "UnityEditor.ShaderGraph.Vector1MaterialSlot",
     "m_ObjectId": "378d68fef8b2471b90c60269b0b765f5",
     "m_Id": 0,
-    "m_DisplayName": "Size",
+    "m_DisplayName": "Threshold",
     "m_SlotType": 1,
     "m_Hidden": false,
     "m_ShaderOutputName": "Out",
@@ -416,9 +423,13 @@
         "m_GuidSerialized": "e295fb2f-9c0a-4f6b-9678-43e110149325"
     },
     "m_Name": "Size",
+    "m_DefaultRefNameVersion": 0,
+    "m_RefNameGeneratedByDisplayName": "",
     "m_DefaultReferenceName": "Vector1_44b040976e8745eb884b8d9c0e34ed6f",
     "m_OverrideReferenceName": "",
     "m_GeneratePropertyBlock": true,
+    "m_UseCustomSlotLabel": false,
+    "m_CustomSlotLabel": "",
     "m_Precision": 0,
     "overrideHLSLDeclaration": false,
     "hlslDeclarationOverride": 0,
@@ -492,10 +503,25 @@
 
 {
     "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.CategoryData",
+    "m_ObjectId": "4b20fa12c2bb4ac0b471d625fd281bce",
+    "m_Name": "",
+    "m_ChildObjectList": [
+        {
+            "m_Id": "44b040976e8745eb884b8d9c0e34ed6f"
+        },
+        {
+            "m_Id": "f14fef3db5bd4aa7919533900d2fe20b"
+        }
+    ]
+}
+
+{
+    "m_SGVersion": 0,
     "m_Type": "UnityEditor.ShaderGraph.Vector1MaterialSlot",
     "m_ObjectId": "681f63856d4343079332926d0eb0ee98",
     "m_Id": 0,
-    "m_DisplayName": "Threshold",
+    "m_DisplayName": "Size",
     "m_SlotType": 1,
     "m_Hidden": false,
     "m_ShaderOutputName": "Out",
@@ -838,9 +864,13 @@
         "m_GuidSerialized": "54cf2d08-6c67-442e-9f62-f0bf6adfecdc"
     },
     "m_Name": "Threshold",
+    "m_DefaultRefNameVersion": 0,
+    "m_RefNameGeneratedByDisplayName": "",
     "m_DefaultReferenceName": "Vector1_f14fef3db5bd4aa7919533900d2fe20b",
     "m_OverrideReferenceName": "",
     "m_GeneratePropertyBlock": true,
+    "m_UseCustomSlotLabel": false,
+    "m_CustomSlotLabel": "",
     "m_Precision": 0,
     "overrideHLSLDeclaration": false,
     "hlslDeclarationOverride": 0,

@@ -13,8 +13,8 @@ GameObject:
   - component: {fileID: 3147403414482491318}
   - component: {fileID: 5592694866658050016}
   - component: {fileID: 6138572669020799846}
-  - component: {fileID: 10008119865017103}
   - component: {fileID: 4653331426279329161}
+  - component: {fileID: 10008119865017103}
   m_Layer: 0
   m_Name: Gold_002
   m_TagString: Untagged
@@ -115,6 +115,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Value: 10000
   EventCtrlObj: {fileID: 0}
+--- !u!114 &4653331426279329161
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1861617281228202449}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15649b02012bcee46b587e82a5efaf16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Effect: {fileID: 176898824730867945, guid: 65ff0fb59c642a04ba18af502e916d4d, type: 3}
 --- !u!54 &10008119865017103
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -131,16 +144,3 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &4653331426279329161
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1861617281228202449}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 15649b02012bcee46b587e82a5efaf16, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Effect: {fileID: 6883040086318519831, guid: 0e813e43c82109c46abb8528337be755, type: 3}
