@@ -19,6 +19,9 @@ public class PlayerCtrl2 : MonoBehaviour
     }
 
     public GameObject FundsText;
+    public GameObject RunningEffectPosObj;
+    public GameObject RunningEffect;
+    public GameObject HitGroundEffect;
     public Transform PlayerTransform;
     public Slider ChargeSlider;
     public float PlayerAcceleration = 0.2f;
@@ -35,12 +38,15 @@ public class PlayerCtrl2 : MonoBehaviour
     public CharacterController characterController;
     public bool ChargeChangeRotateSpeed;
     public float ChargeChangeRotateSpeedRate = 4.0f;
+    public bool CanJump;
+    public float JumpSpeed = 1.0f;
 
     private UIFundsCtrl UIFunds;
     private bool Use = true;
     private bool Moving = false;
     private bool Rotating = false;
     private bool CanUseDriller = true;
+    private bool InTheAir = false;
     private float MovingSpeed;
     private float MovingSpeedY=0;
 
@@ -74,7 +80,7 @@ public class PlayerCtrl2 : MonoBehaviour
         ChargeSlider.value = ChargeRate;
 
         //If Moving?
-        if(DeltaMovement.magnitude>0.01f)
+        if(DeltaMovement.magnitude>0.1f)
         {
             Moving = true;
         }
@@ -82,7 +88,6 @@ public class PlayerCtrl2 : MonoBehaviour
         {
             Moving = false;
         }
-
         //ÉJÉÅÉâOn
         if (!Use)
         {
@@ -112,10 +117,24 @@ public class PlayerCtrl2 : MonoBehaviour
         //gravity
         if (characterController.isGrounded)
         {
+            if (InTheAir)
+            {
+                CreateHitGroundEffect(RunningEffectPosObj.transform.position);
+            }
+
+            InTheAir = false;
             MovingSpeedY = -0.001f;
+
+            //Jump
+            if (CanJump && Input.GetKeyDown(KeyCode.J))
+            {
+                MovingSpeedY = JumpSpeed;
+            }
         }
         else
         {
+
+            InTheAir = true;
             MovingSpeedY += (-9.8f * Time.deltaTime);
         }
         DeltaMovement.y = MovingSpeedY * Time.deltaTime;
@@ -177,6 +196,10 @@ public class PlayerCtrl2 : MonoBehaviour
 
         if (Moving)
         {
+            if (characterController.isGrounded)
+            {
+                CreateRunningEffect(RunningEffectPosObj.transform.position);
+            }
             MovingTime -= Time.deltaTime;
 
             if (MovingTime <= 0)
@@ -294,5 +317,15 @@ public class PlayerCtrl2 : MonoBehaviour
             CanUseDriller = true;
         }
     }
+    public void CreateRunningEffect(Vector3 pos)
+    {
+        Instantiate(RunningEffect, pos, transform.rotation);
+    }
+    public void CreateHitGroundEffect(Vector3 pos)
+    {
+        Instantiate(HitGroundEffect, pos, transform.rotation);
+        SoundManger.Instance.PlaySEHitGroundSE();
+    }
 
+    
 }
