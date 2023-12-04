@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8882078537650798533}
-  - component: {fileID: 8170338790247086043}
+  - component: {fileID: 3595749487248279231}
   m_Layer: 5
   m_Name: InOutUIEffect 1
   m_TagString: Untagged
@@ -37,7 +37,7 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &8170338790247086043
+--- !u!114 &3595749487248279231
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -46,11 +46,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 4829702074961122012}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3c1f7282dbc066e488615bb4c3d2219b, type: 3}
+  m_Script: {fileID: 11500000, guid: 91e2081c041f8044f90c4935ea478cbd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  digitDistance: 1
+  digitDistance: 40
   digitPrefab: {fileID: 249119588269092224, guid: b433174c0d8f7984e8cb4eebe0c19da2, type: 3}
-  effectTime: 1.5
-  effectKeepShowTime: 1
-  disappearTime: 0.5
+  effectTime: 0.8
+  effectKeepShowTime: 0.4
+  disappearTime: 0.2
