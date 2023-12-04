@@ -11,12 +11,11 @@ GameObject:
   - component: {fileID: 5761331167062989069}
   - component: {fileID: 7862993187043645737}
   - component: {fileID: 7169617181170352241}
-  - component: {fileID: 6235574075784591881}
   - component: {fileID: 3826983931705689196}
-  - component: {fileID: 1585995337606444041}
   - component: {fileID: 8004487271772829350}
+  - component: {fileID: 7650728928868049569}
   m_Layer: 0
-  m_Name: BuffObj
+  m_Name: BuffObj_001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -88,19 +87,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &6235574075784591881
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3372446367843165646}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &3826983931705689196
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -118,19 +104,6 @@ MonoBehaviour:
   DecelerateRate: 0.5
   SoundMangerObj: {fileID: 0}
   DestroyEffect: {fileID: 3594958593639721397, guid: 11555901d28bcb14a91bf80e579c6954, type: 3}
---- !u!135 &1585995337606444041
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3372446367843165646}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 8.85
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &8004487271772829350
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -144,6 +117,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Effect: {fileID: 5015531522334260436, guid: 62ce0fac5cdfa6149a00a7f2aa4d3405, type: 3}
+--- !u!64 &7650728928868049569
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3372446367843165646}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -3506477042023218477, guid: fc886eefb7199654c94576f40f5bcf8b, type: 3}
 --- !u!1 &7488704516547331976
 GameObject:
   m_ObjectHideFlags: 0
@@ -155,10 +142,6 @@ GameObject:
   - component: {fileID: 273571292983197203}
   - component: {fileID: 3830951393935643220}
   - component: {fileID: 511180896701612999}
-  - component: {fileID: 6106658955200957894}
-  - component: {fileID: 6506338810250873752}
-  - component: {fileID: 2948404510879360686}
-  - component: {fileID: 473696960556464161}
   m_Layer: 8
   m_Name: BuffObj_Rader
   m_TagString: Untagged
@@ -231,59 +214,3 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &6106658955200957894
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7488704516547331976}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &6506338810250873752
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7488704516547331976}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f277ce76882ffd49882d9c497e454d2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  DecelerateMode: 0
-  SetSpeedTo: 0.01
-  DecelerateRate: 0.5
-  SoundMangerObj: {fileID: 0}
-  DestroyEffect: {fileID: 3594958593639721397, guid: 11555901d28bcb14a91bf80e579c6954, type: 3}
---- !u!135 &2948404510879360686
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7488704516547331976}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 8.85
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &473696960556464161
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7488704516547331976}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 15649b02012bcee46b587e82a5efaf16, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Effect: {fileID: 5015531522334260436, guid: 62ce0fac5cdfa6149a00a7f2aa4d3405, type: 3}
