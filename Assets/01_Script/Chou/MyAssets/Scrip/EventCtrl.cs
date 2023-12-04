@@ -60,9 +60,5 @@ public class EventCtrl : MonoBehaviour
         IncomeBarController.Instance.AddMoney(num);
         SoundManger.Instance.PlaySEGetMoneySE();
     }
-    public void GetCheckPoint(Vector3 pos)
-    {
-
-    }
 
 }

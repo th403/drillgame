@@ -48,7 +48,6 @@ public class PlayerCtrl2 : MonoBehaviour
     private bool CanUseDriller = true;
     private bool InTheAir = false;
     private float MovingSpeed;
-    private float MovingSpeedY=0;
 
     private float ChargeTime = 0;
     private float ChargeRate = 0;
@@ -111,9 +110,6 @@ public class PlayerCtrl2 : MonoBehaviour
             return;
         }
 
-
-        //Move
-
         //gravity
         if (characterController.isGrounded)
         {
@@ -121,25 +117,29 @@ public class PlayerCtrl2 : MonoBehaviour
             {
                 CreateHitGroundEffect(RunningEffectPosObj.transform.position);
             }
-
             InTheAir = false;
-            MovingSpeedY = -0.001f;
+
+            DeltaMovement.y = -0.001f;
+
+            if (Moving)
+                CreateRunningEffect(RunningEffectPosObj.transform.position);
 
             //Jump
             if (CanJump && Input.GetKeyDown(KeyCode.J))
             {
-                MovingSpeedY = JumpSpeed;
+                InTheAir = true;
+                DeltaMovement.y = JumpSpeed;
             }
         }
         else
         {
-
             InTheAir = true;
-            MovingSpeedY += (-9.8f * Time.deltaTime);
+            DeltaMovement.y += (-9.8f * Time.deltaTime * Time.deltaTime);
         }
-        DeltaMovement.y = MovingSpeedY * Time.deltaTime;
-        //Debug.Log(characterController.isGrounded);
-        //Debug.Log(DeltaMovement.y);
+
+        //Move
+
+        Debug.Log(characterController.isGrounded);
 
 
         //Cannot Double Charge
@@ -183,7 +183,9 @@ public class PlayerCtrl2 : MonoBehaviour
         {
             //ChargeRate = ChargeTime / ChargeTimeMax;
             float MovingDistance = MovingDistanceMin + (MovingDistanceMax - MovingDistanceMin) * ChargeRate;
+
             ChargeTime = 0;
+
             if (UIFunds.AddFunds((int)(-PricePerMeter * MovingDistance)))
             {
                 MovingTime = MovingTimeMin + (MovingTimeMax - MovingTimeMin) * ChargeRate;
@@ -192,14 +194,13 @@ public class PlayerCtrl2 : MonoBehaviour
                 Moving = true;
             }
 
+            //Safity
+            //DeltaMovement.y = 0.001f;
+
         }
 
-        if (Moving)
+        if(MovingTime>0)
         {
-            if (characterController.isGrounded)
-            {
-                CreateRunningEffect(RunningEffectPosObj.transform.position);
-            }
             MovingTime -= Time.deltaTime;
 
             if (MovingTime <= 0)
@@ -214,12 +215,13 @@ public class PlayerCtrl2 : MonoBehaviour
                 DeltaMovement.z = (transform.forward * MovingSpeed * Time.deltaTime).z;
             }
 
-
         }
+
+
 
         DeltaMovement *= (1 - Drag);
         characterController.Move(DeltaMovement);
-        Debug.Log(DeltaMovement);
+        //Debug.Log(DeltaMovement);
 
         //rotate
         DeltaRotation *= (1 - AngularDrag);
@@ -296,6 +298,8 @@ public class PlayerCtrl2 : MonoBehaviour
 
         //ƒAƒjƒ
         CharaAnimeController.Instance.StartStick();
+        SoundManger.Instance.PlaySESetPipe();
+
 
     }
     public bool CheckCanUseDriller()
@@ -327,5 +331,4 @@ public class PlayerCtrl2 : MonoBehaviour
         SoundManger.Instance.PlaySEHitGroundSE();
     }
 
-    
 }
