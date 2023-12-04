@@ -20,6 +20,7 @@ public class Cable2Manager : MonoBehaviour
     public GameObject cable2Prefab;
     public Transform plugTransform;
     public Rigidbody fixedAnchor;
+    public Rigidbody fixedAnchorToCat;
     public Transform playerTrs;
     public Shader cableShader;
     public Material cableMtr;
@@ -29,6 +30,8 @@ public class Cable2Manager : MonoBehaviour
     public int markCount = 8;
     public float fixedCableVelo = 0.1f;
     public float playerMinMove = 0.01f;
+    public int checkCableId = 0;
+    public int checkFrameDuration = 120;
 
     [Header("read only")]
     public List<Transform> cable2s;
@@ -36,6 +39,7 @@ public class Cable2Manager : MonoBehaviour
     public Cable2 checkCable;
     public Vector3 playerLastPos;
     public float playerMoveDist;
+    public int checkFrameCount = 0;
 
     public void CheckCableFixed()
     {
@@ -43,10 +47,23 @@ public class Cable2Manager : MonoBehaviour
 
         if (!checkCable.startFall) return;
 
-        if(checkCable.IsGround()||checkCable.IsFreeze(fixedCableVelo))
+        if (cable2s.Count - checkCableId <= 3) return;
+
+        //update check time
+        checkFrameCount--;
+
+        if(checkCable.IsGround()||
+            checkCable.IsFreeze(fixedCableVelo)||
+            checkFrameCount<=0)
         {
             FixedCable(checkCable.tailTrs.position, checkCable.next);
             checkCable = checkCable.CleanObject();
+
+            //count now checkCable's id
+            checkCableId++;
+
+            //reset check time
+            checkFrameCount = checkFrameDuration;
         }
     }
 
@@ -74,7 +91,19 @@ public class Cable2Manager : MonoBehaviour
         var cable = go.GetComponentInChildren<Cable2>();
 
         //connect 2 cables
-        if(lastCable)lastCable.SetNext(cable);
+        if (lastCable)
+        {
+            //connect cable
+            lastCable.SetNext(cable);
+
+            //set show joint
+            int modelID = 0;
+            if(cable2s.Count%markCount==0)
+            {
+                modelID = 1;
+            }
+            lastCable.StartShowJoint(modelID);
+        }
         cable.StartCable(plugTransform, lastCable ? lastCable.rigid : null);
         
         lastCable = cable;
@@ -92,7 +121,7 @@ public class Cable2Manager : MonoBehaviour
     {
         var sha = Shader.Find("Shader Graphs/sg_Cable.shader");
         var mtr = new Material(cableMtr);// cableShader);
-        cable2.pipeRenderer.material = mtr;
+        //cable2.pipeRenderer.material = mtr;
         return mtr;
     }
 

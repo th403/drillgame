@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 6761202445063773971}
   - component: {fileID: 7576120109633601178}
   - component: {fileID: 2709040480545735332}
-  - component: {fileID: 1710302999294095936}
   - component: {fileID: 7874076400716156980}
+  - component: {fileID: 6211686684220450861}
   m_Layer: 0
   m_Name: RockMesh_002
   m_TagString: Untagged
@@ -85,19 +85,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &1710302999294095936
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1513719934953929822}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
-  serializedVersion: 2
-  m_Size: {x: 20.808168, y: 16.05153, z: 15.802602}
-  m_Center: {x: -0.00000095367426, y: 0, z: 0.00000047683713}
 --- !u!64 &7874076400716156980
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -112,3 +99,16 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -1790058728406196013, guid: fc886eefb7199654c94576f40f5bcf8b, type: 3}
+--- !u!114 &6211686684220450861
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1513719934953929822}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29b673e3a67d27e4281463c9a1ac1756, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Effect: {fileID: 4864829505824933517, guid: dab52ddb8f79a5244a72b749cb91fce7, type: 3}
