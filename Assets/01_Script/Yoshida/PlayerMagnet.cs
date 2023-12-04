@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class PlayerMagnet : MonoBehaviour
 {
-    public float attractionDistance = 2f; // 磁石にくっつく距離
-    public float magnetForce = 10f; // 磁石にくっつく力
+    public float attractionDistance = 2f;   // 磁石にくっつく距離
+  //public float magnetForce = 10f;         // 磁石にくっつく力
+    public float lerpSpeed = 2f;            // オブジェクトが磁石に近づく速さ
 
     private GameObject[] magnets;
 
@@ -30,7 +31,7 @@ public class PlayerMagnet : MonoBehaviour
                 //GetComponent<Rigidbody>().AddForce(direction.normalized * magnetForce, ForceMode.Force);
 
                 //磁石に直接くっつける処理
-                transform.position = magnet.transform.position;
+                transform.position = Vector3.Lerp(transform.position, magnet.transform.position, Time.deltaTime * lerpSpeed);
             }
         }
     }
