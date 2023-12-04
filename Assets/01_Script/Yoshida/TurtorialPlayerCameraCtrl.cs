@@ -59,7 +59,10 @@ public class TurtorialPlayerCameraCtrl : MonoBehaviour
         }
 
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 8dad3b15c365899020a4fea8a3cb4b755b950c39
         TargetPos = CameraRoot.transform.position;
         transform.LookAt(CameraLookAtPoint.transform.position);
 

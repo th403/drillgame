@@ -27,6 +27,7 @@ public class InOutEffect : MonoBehaviour
     {
         //set target for update ui pos
         this.target = target;
+        transform.SetParent(target);
 
         //set timer
         totalEffectTime = effectTime + effectKeepShowTime + disappearTime;
@@ -48,7 +49,7 @@ public class InOutEffect : MonoBehaviour
         count = 0;
         maxCount = digits.Count + 1;
         float scale = InOutEffectController.Instance.size;
-        firstPosX = (maxCount / 2 - 0.5f) * digitDistance*scale;
+        firstPosX = (maxCount - 0.5f) * digitDistance*scale;
         digitEffectTime = (effectTime - effectKeepShowTime) / maxCount;
         for (count = 0; count < maxCount-1; count++) 
         {

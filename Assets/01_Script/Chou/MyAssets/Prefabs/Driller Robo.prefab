@@ -31,9 +31,9 @@ Transform:
   m_Children:
   - {fileID: 2544442742640083140}
   - {fileID: 4430399358489539741}
-  - {fileID: 3082487426073452869}
   - {fileID: 3279464632276835968}
   - {fileID: 4447784331200701599}
+  - {fileID: 3082487426073452869}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -57,11 +57,11 @@ MonoBehaviour:
   diggingPointCtrl: {fileID: 0}
   diggingPoint: {fileID: 0}
   CameraCtrlObj: {fileID: 0}
+  DrillerCamera: {fileID: 0}
   DrillerTransform: {fileID: 0}
   Acceleration: 0.01
   ScaleChangeRate: 2.5
   DrillerMovingSE: {fileID: 2562874300334506929}
-  DrillerDestroySE: {fileID: 0}
 --- !u!1 &1798182162777836370
 GameObject:
   m_ObjectHideFlags: 0
@@ -92,7 +92,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 442044}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!82 &2562874300334506929
 AudioSource:
@@ -305,7 +305,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 442044}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 38.634, y: 0, z: 0}
 --- !u!20 &829901072234192566
 Camera:
@@ -583,13 +583,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 442044}
     m_Modifications:
+    - target: {fileID: 7165886148555578397, guid: 163988c60c91811499641d27e68716ce, type: 3}
+      propertyPath: brush
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 9082303489091384382, guid: 163988c60c91811499641d27e68716ce, type: 3}
       propertyPath: m_Name
       value: DiggingPoint
       objectReference: {fileID: 0}
     - target: {fileID: 9179014977012450376, guid: 163988c60c91811499641d27e68716ce, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 9179014977012450376, guid: 163988c60c91811499641d27e68716ce, type: 3}
       propertyPath: m_LocalScale.x
@@ -613,7 +617,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9179014977012450376, guid: 163988c60c91811499641d27e68716ce, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.081
+      value: 0.08
       objectReference: {fileID: 0}
     - target: {fileID: 9179014977012450376, guid: 163988c60c91811499641d27e68716ce, type: 3}
       propertyPath: m_LocalRotation.w

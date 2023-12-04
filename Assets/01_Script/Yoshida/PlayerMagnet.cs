@@ -15,7 +15,7 @@ public class PlayerMagnet : MonoBehaviour
         magnets = GameObject.FindGameObjectsWithTag("Magnet");
     }
 
-    void FixedUpdate()
+    void Update()
     {
         foreach (GameObject magnet in magnets)
         {
@@ -25,9 +25,12 @@ public class PlayerMagnet : MonoBehaviour
             // 一定の距離内に磁石がいる場合、プレイヤーが磁石にくっつく
             if (distanceToMagnet < attractionDistance)
             {
-                // プレイヤーを磁石にくっつける処理（例：力を加える）
-                Vector3 direction = magnet.transform.position - transform.position;
-                GetComponent<Rigidbody>().AddForce(direction.normalized * magnetForce, ForceMode.Force);
+                //// プレイヤーを磁石にくっつける処理（例：力を加える）
+                //Vector3 direction = magnet.transform.position - transform.position;
+                //GetComponent<Rigidbody>().AddForce(direction.normalized * magnetForce, ForceMode.Force);
+
+                //磁石に直接くっつける処理
+                transform.position = magnet.transform.position;
             }
         }
     }
