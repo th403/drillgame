@@ -21,7 +21,7 @@ MonoBehaviour:
     m_Value: 0
   exposure:
     m_OverrideState: 1
-    m_Value: 76.5
+    m_Value: 14.6
   multiplier:
     m_OverrideState: 0
     m_Value: 1
@@ -136,22 +136,22 @@ MonoBehaviour:
   active: 1
   quality:
     m_OverrideState: 0
-    m_Value: 1
+    m_Value: 3
   enabled:
     m_OverrideState: 1
     m_Value: 1
   colorMode:
     m_OverrideState: 1
-    m_Value: 1
+    m_Value: 0
   color:
-    m_OverrideState: 0
-    m_Value: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+    m_OverrideState: 1
+    m_Value: {r: 271396.16, g: 499615.62, b: 429710.56, a: 1}
   tint:
     m_OverrideState: 1
-    m_Value: {r: 2.5283015, g: 2.300122, b: 1.6943592, a: 1}
+    m_Value: {r: 51.49471, g: 91.73847, b: 85.72071, a: 1}
   maxFogDistance:
     m_OverrideState: 1
-    m_Value: 5000
+    m_Value: 2555
   mipFogMaxMip:
     m_OverrideState: 0
     m_Value: 0.5
@@ -163,19 +163,19 @@ MonoBehaviour:
     m_Value: 1000
   baseHeight:
     m_OverrideState: 1
-    m_Value: 300
+    m_Value: 282
   maximumHeight:
-    m_OverrideState: 0
-    m_Value: 12694.2
+    m_OverrideState: 1
+    m_Value: 18779
   meanFreePath:
     m_OverrideState: 1
-    m_Value: 422.6
+    m_Value: 847.9
   enableVolumetricFog:
-    m_OverrideState: 1
-    m_Value: 1
+    m_OverrideState: 0
+    m_Value: 0
   albedo:
     m_OverrideState: 1
-    m_Value: {r: 0.5896226, g: 0.99212444, b: 1, a: 1}
+    m_Value: {r: 1, g: 1, b: 1, a: 1}
   globalLightProbeDimmer:
     m_OverrideState: 1
     m_Value: 1
@@ -186,20 +186,20 @@ MonoBehaviour:
     m_OverrideState: 0
     m_Value: 2
   anisotropy:
-    m_OverrideState: 0
-    m_Value: 0
+    m_OverrideState: 1
+    m_Value: 1
   sliceDistributionUniformity:
     m_OverrideState: 0
     m_Value: 0.75
   m_FogControlMode:
-    m_OverrideState: 0
-    m_Value: 0
+    m_OverrideState: 1
+    m_Value: 1
   screenResolutionPercentage:
-    m_OverrideState: 0
-    m_Value: 12.5
+    m_OverrideState: 1
+    m_Value: 50
   volumeSliceCount:
-    m_OverrideState: 0
-    m_Value: 64
+    m_OverrideState: 1
+    m_Value: 386
   m_VolumetricFogBudget:
     m_OverrideState: 0
     m_Value: 0.33
@@ -207,8 +207,8 @@ MonoBehaviour:
     m_OverrideState: 0
     m_Value: 0.666
   directionalLightsOnly:
-    m_OverrideState: 0
-    m_Value: 0
+    m_OverrideState: 1
+    m_Value: 1
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -331,16 +331,16 @@ MonoBehaviour:
     m_OverrideState: 0
     m_Value: 55261.973
   aerosolDensity:
-    m_OverrideState: 1
+    m_OverrideState: 0
     m_Value: 0.563
   aerosolTint:
-    m_OverrideState: 1
+    m_OverrideState: 0
     m_Value: {r: 0.9, g: 0.9, b: 0.9, a: 1}
   aerosolMaximumAltitude:
     m_OverrideState: 0
     m_Value: 8289.296
   aerosolAnisotropy:
-    m_OverrideState: 1
+    m_OverrideState: 0
     m_Value: 0
   numberOfBounces:
     m_OverrideState: 1
