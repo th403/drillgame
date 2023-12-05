@@ -57,8 +57,6 @@ public class EventCtrl : MonoBehaviour
 
         }
 
-
-
     }
     public void PlayerGetMoney(int num)
     {
