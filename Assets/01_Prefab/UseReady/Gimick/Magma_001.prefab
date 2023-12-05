@@ -192,7 +192,7 @@ ParticleSystem:
       m_RotationOrder: 4
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
-  scalingMode: 1
+  scalingMode: 0
   randomSeed: 0
   InitialModule:
     serializedVersion: 3
@@ -4938,12 +4938,24 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3062777627410936192, guid: 7235749edf8254f4d82b97f945f271f3, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3062777627410936192, guid: 7235749edf8254f4d82b97f945f271f3, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3062777627410936192, guid: 7235749edf8254f4d82b97f945f271f3, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3062777627410936192, guid: 7235749edf8254f4d82b97f945f271f3, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1.1
       objectReference: {fileID: 0}
     - target: {fileID: 3062777627410936192, guid: 7235749edf8254f4d82b97f945f271f3, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.4
+      value: 8.6
       objectReference: {fileID: 0}
     - target: {fileID: 3062777627410936192, guid: 7235749edf8254f4d82b97f945f271f3, type: 3}
       propertyPath: m_LocalPosition.z
@@ -4975,6 +4987,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3062777627410936192, guid: 7235749edf8254f4d82b97f945f271f3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3062777627410936193, guid: 7235749edf8254f4d82b97f945f271f3, type: 3}
+      propertyPath: scalingMode
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3062777627410936195, guid: 7235749edf8254f4d82b97f945f271f3, type: 3}

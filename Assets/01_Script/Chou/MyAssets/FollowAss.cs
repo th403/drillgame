@@ -78,7 +78,7 @@ public class FollowAss : MonoBehaviour
 
         //Debug
         Debug.DrawRay(rayStartPos, rayDirection * 100, Color.red);
-        if(!FPS)
+        if (!FPS)
         {
             if (Physics.Raycast(rayStartPos, rayDirection, out hit))
             {

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 /// <summary>
 /// connect to player's plug
@@ -16,7 +17,7 @@ public class Cable2 : MonoBehaviour
     public Transform tailModel;
     public CharacterJoint joint;
     public ColOnGround groundCheck;
-    public Renderer pipeRenderer;
+    public List< GameObject> jointModels;
 
     [Header("read only")]
     public Cable2 next;//set next cable's joint as null
@@ -42,8 +43,8 @@ public class Cable2 : MonoBehaviour
         //check if need to create new cable
         if (Cable2Manager.Instance.IsPlayerMove()==false)
         {
-            rigid.isKinematic=true;
-            //return;
+            //rigid.isKinematic=true;
+            return;
         }
         else
         {
@@ -66,7 +67,7 @@ public class Cable2 : MonoBehaviour
         joint.connectedBody = rb;
         this.plug = plug;
 
-        Cable2Manager.Instance.CreateMaterial(this);
+        //Cable2Manager.Instance.CreateMaterial(this);
 
         //rigid.isKinematic = true;
 
@@ -111,10 +112,13 @@ public class Cable2 : MonoBehaviour
 
         //new type 
         float rate = length / Cable2Manager.Instance.unitMaxLength;
-        pipeRenderer.material.SetFloat("_BlackRate", rate);
+        rate = Mathf.Clamp(rate, 0, 1);
+        //pipeRenderer.material.SetFloat("_BlackRate", rate);
 
         //set tail model
         tailModel.position = tailTrs.position;
+        tailModel.forward = tailTrs.forward;
+        //tailModel.localScale = rate * Vector3.one;
     }
 
     void SetToward()
@@ -125,5 +129,26 @@ public class Cable2 : MonoBehaviour
 
         //set tail model
         tailModel.position = tailTrs.position;
+        tailModel.forward = tailTrs.forward;
+    }
+
+    /// <summary>
+    /// for manager
+    /// </summary>
+    /// <param name="modelID">0:normal,1:arrow</param>
+    public void StartShowJoint(int modelID)
+    {
+        for(int i=0 ;i<jointModels.Count ;i++ )
+        {
+            if(i==modelID)
+            {
+                jointModels[i].SetActive(true);
+            }
+            else
+            {
+                Destroy(jointModels[i]);
+            }
+        }
+        tailModel.DOScale(Vector3.one, 0.8f).SetEase(Ease.OutBack);
     }
 }
