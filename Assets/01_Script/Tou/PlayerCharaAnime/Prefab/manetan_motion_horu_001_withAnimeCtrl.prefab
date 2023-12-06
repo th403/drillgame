@@ -1763,8 +1763,10 @@ MonoBehaviour:
   fakePos: {fileID: 2425887709864775977}
   toFakePosFrameMax: 124
   toNormalPosFrameMax: 58
+  moveMin: 0.01
   nowNormalPlug: 1
-  frameCount: 0
+  moveDist: 0
+  lastPos: {x: 0, y: 0, z: 0}
 --- !u!1 &3293152068863029096
 GameObject:
   m_ObjectHideFlags: 0

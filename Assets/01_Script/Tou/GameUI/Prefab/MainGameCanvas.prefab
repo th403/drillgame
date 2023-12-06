@@ -554,7 +554,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2015562948}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -11.1, y: 0.1, z: -93.8}
+  m_LocalPosition: {x: -11.1, y: 0.1, z: -97.4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -619,11 +619,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   clearColorMode: 1
-  backgroundColorHDR: {r: 0.015625, g: 0.015625, b: 0.015625, a: 0}
+  backgroundColorHDR: {r: 0, g: 0, b: 0, a: 0}
   clearDepth: 1
   volumeLayerMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 129
   volumeAnchorOverride: {fileID: 0}
   antialiasing: 1
   SMAAQuality: 2
@@ -7113,7 +7113,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8911968070765779619, guid: 60c1cb442302bf540bb45c73614f8820, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.6
+      value: -4.399996
       objectReference: {fileID: 0}
     - target: {fileID: 8911968070765779619, guid: 60c1cb442302bf540bb45c73614f8820, type: 3}
       propertyPath: m_LocalPosition.y
@@ -7230,7 +7230,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8911968070765779619, guid: 60c1cb442302bf540bb45c73614f8820, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -0.8
       objectReference: {fileID: 0}
     - target: {fileID: 8911968070765779619, guid: 60c1cb442302bf540bb45c73614f8820, type: 3}
       propertyPath: m_LocalPosition.y
@@ -7347,7 +7347,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8911968070765779619, guid: 60c1cb442302bf540bb45c73614f8820, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -7.4
+      value: -7.8999977
       objectReference: {fileID: 0}
     - target: {fileID: 8911968070765779619, guid: 60c1cb442302bf540bb45c73614f8820, type: 3}
       propertyPath: m_LocalPosition.y

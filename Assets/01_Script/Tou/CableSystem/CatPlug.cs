@@ -28,7 +28,7 @@ public class CatPlug : MonoBehaviour
         return moveDist > moveMin;
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
         //set to different plug's pos
         if(nowNormalPlug)

@@ -41,6 +41,7 @@ public class Cable2 : MonoBehaviour
 
         //important
         //check if need to create new cable
+        //player isn't moving
         if (Cable2Manager.Instance.IsPlayerMove()==false)
         {
             if (length > Cable2Manager.Instance.unitMaxLength)
@@ -48,6 +49,7 @@ public class Cable2 : MonoBehaviour
                 rigid.isKinematic = true;
             }
         }
+        //player is moving
         else
         {
             rigid.isKinematic = false;
