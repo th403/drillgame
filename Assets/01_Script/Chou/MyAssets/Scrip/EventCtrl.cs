@@ -41,6 +41,11 @@ public class EventCtrl : MonoBehaviour
 #if UNITY_EDITOR
             UnityEditor.EditorApplication.isPlaying = false;
 
+            if (Input.GetKeyDown(KeyCode.X))
+            {
+                PlayerCtrl2.Instance.SetSpeed(new Vector3(5, 10, 0));
+            }
+
 #else
        Application.Quit();
 #endif
@@ -51,7 +56,6 @@ public class EventCtrl : MonoBehaviour
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
 
         }
-
 
     }
     public void PlayerGetMoney(int num)
