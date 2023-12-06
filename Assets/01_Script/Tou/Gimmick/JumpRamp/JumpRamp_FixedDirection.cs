@@ -49,8 +49,13 @@ public class JumpRamp_FixedDirection : MonoBehaviour
 
     void Shoot(GameObject player)
     {
-        var rb=player.GetComponent<Rigidbody>();
-        playerSpeed = rb.velocity.magnitude;
-        rb.velocity = power * jumpDir.up * playerSpeed;
+        //rigid body jump
+        //var rb=player.GetComponent<Rigidbody>();
+        //playerSpeed = rb.velocity.magnitude;
+        //rb.velocity = power * jumpDir.up * playerSpeed;
+
+        //playerctrl2 jump
+        var playerCtrl = player.GetComponent<PlayerCtrl2>();
+        //playerSpeed=playerCtrl.
     }
 }
