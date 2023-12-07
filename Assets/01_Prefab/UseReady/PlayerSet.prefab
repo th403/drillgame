@@ -2253,6 +2253,21 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3304982572101891495, guid: 0aa6f9b5cf11e6b47b906df15c187d0f, type: 3}
   m_PrefabInstance: {fileID: 2960558539736977967}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2960558539013735320 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1466716599, guid: 0aa6f9b5cf11e6b47b906df15c187d0f, type: 3}
+  m_PrefabInstance: {fileID: 2960558539736977967}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &2960558539150527813 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1595187050, guid: 0aa6f9b5cf11e6b47b906df15c187d0f, type: 3}
+  m_PrefabInstance: {fileID: 2960558539736977967}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &2960558539248411252 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 627257435, guid: 0aa6f9b5cf11e6b47b906df15c187d0f, type: 3}
+  m_PrefabInstance: {fileID: 2960558539736977967}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2960558540057549035
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2943,6 +2958,22 @@ PrefabInstance:
       propertyPath: camera_Driller
       value: 
       objectReference: {fileID: 2491162322369214027}
+    - target: {fileID: 7396576743646721770, guid: 4c9a85800fb3b974e95974e23a7ebbce, type: 3}
+      propertyPath: Player
+      value: 
+      objectReference: {fileID: 5491220264579194974}
+    - target: {fileID: 7396576743646721770, guid: 4c9a85800fb3b974e95974e23a7ebbce, type: 3}
+      propertyPath: ClockControllerObj
+      value: 
+      objectReference: {fileID: 2960558539013735320}
+    - target: {fileID: 7396576743646721770, guid: 4c9a85800fb3b974e95974e23a7ebbce, type: 3}
+      propertyPath: IncomeBarControllerObj
+      value: 
+      objectReference: {fileID: 2960558539248411252}
+    - target: {fileID: 7396576743646721770, guid: 4c9a85800fb3b974e95974e23a7ebbce, type: 3}
+      propertyPath: InOutEffectControllerObj
+      value: 
+      objectReference: {fileID: 2960558539150527813}
     - target: {fileID: 7396576745186192000, guid: 4c9a85800fb3b974e95974e23a7ebbce, type: 3}
       propertyPath: Player
       value: 
