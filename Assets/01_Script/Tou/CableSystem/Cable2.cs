@@ -57,11 +57,7 @@ public class Cable2 : MonoBehaviour
             if (length > Cable2Manager.Instance.unitMaxLength)
             {
                 //set to ground
-                Cable2Manager.Instance.AddCable();
-
-                //start fixed count down
-                startFall = true;
-                //rigid.isKinematic = false;
+               var cable=  Cable2Manager.Instance.AddCable();
             }
         }
     }

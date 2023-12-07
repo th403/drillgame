@@ -71,12 +71,12 @@ public class Cable2Manager : MonoBehaviour
         if (lastCable) return;
 
         var go = Instantiate(cable2Prefab);
-        go.transform.position = transform.position;
         go.transform.SetParent(transform);
+        go.transform.localPosition = Vector3.zero;
         cable2s.Add(go.transform);
 
         lastCable = go.GetComponentInChildren<Cable2>();
-        lastCable.StartCable(plugTransform, null);
+        lastCable.StartCable(plugTransform, fixedAnchor);
         checkCable = lastCable;
     }
 
@@ -102,6 +102,9 @@ public class Cable2Manager : MonoBehaviour
                 modelID = 1;
             }
             lastCable.StartShowJoint(modelID);
+
+            //set physical fall
+            lastCable.startFall = true;
         }
         cable.StartCable(plugTransform, lastCable ? lastCable.rigid : null);
         
