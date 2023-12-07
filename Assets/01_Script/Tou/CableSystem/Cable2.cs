@@ -41,24 +41,28 @@ public class Cable2 : MonoBehaviour
 
         //important
         //check if need to create new cable
+        //player isn't moving
         if (Cable2Manager.Instance.IsPlayerMove()==false)
         {
-            //rigid.isKinematic=true;
-            return;
+            if (length > Cable2Manager.Instance.unitMaxLength)
+            {
+                rigid.isKinematic = true;
+            }
         }
+        //player is moving
         else
         {
             rigid.isKinematic = false;
-        }
 
-        if (length > Cable2Manager.Instance.unitMaxLength)
-        {
-            //set to ground
-            Cable2Manager.Instance.AddCable();
+            if (length > Cable2Manager.Instance.unitMaxLength)
+            {
+                //set to ground
+                Cable2Manager.Instance.AddCable();
 
-            //start fixed count down
-            startFall = true;
-            //rigid.isKinematic = false;
+                //start fixed count down
+                startFall = true;
+                //rigid.isKinematic = false;
+            }
         }
     }
 
@@ -149,6 +153,7 @@ public class Cable2 : MonoBehaviour
                 Destroy(jointModels[i]);
             }
         }
+        tailModel.localScale = Vector3.one * 1.5f;
         tailModel.DOScale(Vector3.one, 0.8f).SetEase(Ease.OutBack);
     }
 }

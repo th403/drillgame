@@ -19,6 +19,7 @@ public class CharaAnimeController : MonoBehaviour
     [Header("attach")]
     public Animator anim;
     public JumpAnimeController jumpCtrl;
+    public CatPlug plugCtrl;
 
     public void Init()
     {
@@ -49,6 +50,7 @@ public class CharaAnimeController : MonoBehaviour
     {
         //anim.SetTrigger("StickPipe");
         anim.Play("stick pipe");
+        plugCtrl.StartFakePlug();
         //var clips = anim.GetCurrentAnimatorClipInfo(0);
         //int id = anim.GetCurrentAnimatorClipInfoCount(0);
         AnimatorStateInfo stateInfo = anim.GetCurrentAnimatorStateInfo(0);
