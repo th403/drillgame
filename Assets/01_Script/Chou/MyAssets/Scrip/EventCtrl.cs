@@ -25,6 +25,7 @@ public class EventCtrl : MonoBehaviour
 
     public GameObject Player;
     private ClockController clockController;
+    private int Income=0;
     // Start is called before the first frame update
     void Start()
     {
@@ -57,12 +58,26 @@ public class EventCtrl : MonoBehaviour
 
         }
 
+
+        if(Income!=0)
+        {
+            float getMoney = Income * 0.1f;
+            if (getMoney>0&&getMoney < 1) getMoney = 1;
+            else if (getMoney < 0 && getMoney > -1) getMoney = -1;
+
+            IncomeBarController.Instance.AddMoney((int)getMoney);
+            Income -= (int)getMoney;
+        }
     }
     public void PlayerGetMoney(int num)
     {
         //InOutEffectController.Instance.MakeEffect(Player.transform, num);
-        IncomeBarController.Instance.AddMoney(num);
-        SoundManger.Instance.PlaySEGetMoneySE();
+        Income += num;
+        if(num>0)
+        {
+            SoundManger.Instance.PlaySEGetMoneySE();
+        }
+
     }
 
 }

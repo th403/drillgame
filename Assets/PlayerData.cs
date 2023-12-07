@@ -7,7 +7,7 @@ public class PlayerData : MonoBehaviour
     public static PlayerData instance;
     private Vector3 RevivePos;
     public GameObject Player;
-    public int LastCheckPointNomber = 0;
+    public int LastCheckPointNomber;
 
     private int StartFunds = 200000;
     private void Awake()
@@ -16,6 +16,7 @@ public class PlayerData : MonoBehaviour
         {
             instance = this;
             RevivePos = Player.transform.position;
+            LastCheckPointNomber = 0;
         }
         else
         {

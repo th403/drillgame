@@ -43,6 +43,8 @@ public class CameraCtrl : MonoBehaviour
                     && (!driller.gameObject.activeSelf && UIFunds.AddFunds(-10000)
                         && UIDrillers.AddDrillers(-1))))
             {
+                EventCtrl.Instance.PlayerGetMoney(-10000);
+
                 CharaAnimeController.Instance.StartTakeOut();
                 Invoke("StartFadeIn", TakeOutDrillerDelay);
                 Invoke("ChangeCamera", TakeOutDrillerDelay + fadeInEffectCtrl.Life); 

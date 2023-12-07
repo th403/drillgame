@@ -5192,7 +5192,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5824504563458700615, guid: 79a3c7987991d75439f400836d3029de, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -12.09
+      value: -7.21
       objectReference: {fileID: 0}
     - target: {fileID: 5824504563458700615, guid: 79a3c7987991d75439f400836d3029de, type: 3}
       propertyPath: m_LocalRotation.w
@@ -13758,7 +13758,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5824504563458700615, guid: 79a3c7987991d75439f400836d3029de, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -12.232
+      value: -6.8
       objectReference: {fileID: 0}
     - target: {fileID: 5824504563458700615, guid: 79a3c7987991d75439f400836d3029de, type: 3}
       propertyPath: m_LocalRotation.w
@@ -13820,6 +13820,38 @@ PrefabInstance:
     - target: {fileID: 8616514159865387333, guid: 0141bfa92466fb146be31fee2e3f0673, type: 3}
       propertyPath: m_Name
       value: IncomeBarInit
+      objectReference: {fileID: 0}
+    - target: {fileID: 8616514159865387334, guid: 0141bfa92466fb146be31fee2e3f0673, type: 3}
+      propertyPath: norumas.Array.data[1].target
+      value: 100000
+      objectReference: {fileID: 0}
+    - target: {fileID: 8616514159865387334, guid: 0141bfa92466fb146be31fee2e3f0673, type: 3}
+      propertyPath: norumas.Array.data[2].target
+      value: 200000
+      objectReference: {fileID: 0}
+    - target: {fileID: 8616514159865387334, guid: 0141bfa92466fb146be31fee2e3f0673, type: 3}
+      propertyPath: norumas.Array.data[3].target
+      value: 500000
+      objectReference: {fileID: 0}
+    - target: {fileID: 8616514159865387334, guid: 0141bfa92466fb146be31fee2e3f0673, type: 3}
+      propertyPath: norumas.Array.data[4].target
+      value: 1000000
+      objectReference: {fileID: 0}
+    - target: {fileID: 8616514159865387334, guid: 0141bfa92466fb146be31fee2e3f0673, type: 3}
+      propertyPath: norumas.Array.data[5].target
+      value: 1500000
+      objectReference: {fileID: 0}
+    - target: {fileID: 8616514159865387334, guid: 0141bfa92466fb146be31fee2e3f0673, type: 3}
+      propertyPath: norumas.Array.data[6].target
+      value: 2000000
+      objectReference: {fileID: 0}
+    - target: {fileID: 8616514159865387334, guid: 0141bfa92466fb146be31fee2e3f0673, type: 3}
+      propertyPath: norumas.Array.data[7].target
+      value: 3000000
+      objectReference: {fileID: 0}
+    - target: {fileID: 8616514159865387334, guid: 0141bfa92466fb146be31fee2e3f0673, type: 3}
+      propertyPath: norumas.Array.data[8].target
+      value: 5000000
       objectReference: {fileID: 0}
     - target: {fileID: 8616514159865387335, guid: 0141bfa92466fb146be31fee2e3f0673, type: 3}
       propertyPath: m_RootOrder
@@ -20560,11 +20592,11 @@ PrefabInstance:
       objectReference: {fileID: 1205357353}
     - target: {fileID: 524657109214440020, guid: 621f768966392154e8e6ead55e0d1d3c, type: 3}
       propertyPath: JumpSpeed
-      value: 1
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 524657109214440020, guid: 621f768966392154e8e6ead55e0d1d3c, type: 3}
       propertyPath: AngularDrag
-      value: 0.02
+      value: 3.5
       objectReference: {fileID: 0}
     - target: {fileID: 524657109214440020, guid: 621f768966392154e8e6ead55e0d1d3c, type: 3}
       propertyPath: ChargeSlider
@@ -20600,7 +20632,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 524657109214440020, guid: 621f768966392154e8e6ead55e0d1d3c, type: 3}
       propertyPath: PlayerRotationSpeed
-      value: 3
+      value: 6.667
       objectReference: {fileID: 0}
     - target: {fileID: 524657109214440020, guid: 621f768966392154e8e6ead55e0d1d3c, type: 3}
       propertyPath: ChargeChangeRotateSpeed
@@ -20854,6 +20886,10 @@ PrefabInstance:
       propertyPath: camera_Driller
       value: 
       objectReference: {fileID: 1746022354}
+    - target: {fileID: 7396576743489559129, guid: 6b7928615365e9e4f90463bf3fb05d93, type: 3}
+      propertyPath: TakeOutDrillerDelay
+      value: 0.75
+      objectReference: {fileID: 0}
     - target: {fileID: 7396576743646721770, guid: 6b7928615365e9e4f90463bf3fb05d93, type: 3}
       propertyPath: Player
       value: 
@@ -20870,6 +20906,14 @@ PrefabInstance:
       propertyPath: InOutEffectControllerObj
       value: 
       objectReference: {fileID: 778131336}
+    - target: {fileID: 7396576743705443028, guid: 6b7928615365e9e4f90463bf3fb05d93, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 60.67
+      objectReference: {fileID: 0}
+    - target: {fileID: 7396576743705443028, guid: 6b7928615365e9e4f90463bf3fb05d93, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -26.67
+      objectReference: {fileID: 0}
     - target: {fileID: 7396576745074194455, guid: 6b7928615365e9e4f90463bf3fb05d93, type: 3}
       propertyPath: m_PlayOnAwake
       value: 0
