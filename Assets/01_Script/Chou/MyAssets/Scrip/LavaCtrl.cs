@@ -24,6 +24,7 @@ public class LavaCtrl : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
         MoneyPerSec = (int)(Value / EffectTime);
     }
 
@@ -53,6 +54,7 @@ public class LavaCtrl : MonoBehaviour
             if(IsCheckPoint)
             {
                 PlayerData.instance.SetRevivePos(RevivePos.transform.position, CheckPointNo);
+                PlayerData.instance.SetReviveFunds(ReviveStartFunds);
             }
         }
     }

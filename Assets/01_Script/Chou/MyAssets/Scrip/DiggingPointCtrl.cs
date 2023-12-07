@@ -174,6 +174,11 @@ public class DiggingPointCtrl : MonoBehaviour
     {
         ScaleRate = ParentScaleRate;
     }
+    public void StartDig(float strength)
+    {
+        DMR.Modify(transform.position, brush, action, textureIndex, opacity,
+        strength * ScaleRate, stalagmiteHeight, stalagmiteUpsideDown, opacityIsTarget);
+    }
 
 }
 

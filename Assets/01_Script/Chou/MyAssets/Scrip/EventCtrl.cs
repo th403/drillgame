@@ -20,18 +20,22 @@ public class EventCtrl : MonoBehaviour
     public GameObject ClockControllerObj;
     public GameObject InOutEffectControllerObj;
     public GameObject IncomeBarControllerObj;
-    private IncomeBarController incomeBarController;
+    public GameObject GameOverUI;
+    //private IncomeBarController incomeBarController;
     //public List<GameObject> CheckPoints;
 
     public GameObject Player;
     private ClockController clockController;
     private int Income=0;
+    private bool GameOver = false;
     // Start is called before the first frame update
     void Start()
     {
         clockController = ClockControllerObj.GetComponent<ClockController>();
         clockController.StartClock();
-        incomeBarController = IncomeBarControllerObj.GetComponent<IncomeBarController>();
+        //incomeBarController = IncomeBarControllerObj.GetComponent<IncomeBarController>();
+        IncomeBarController.Instance.SetMoney(PlayerData.instance.GetReviveFunds());
+
     }
 
     // Update is called once per frame
@@ -68,6 +72,11 @@ public class EventCtrl : MonoBehaviour
             IncomeBarController.Instance.AddMoney((int)getMoney);
             Income -= (int)getMoney;
         }
+
+        if(GameOver)
+        {
+            GameOverUI.SetActive(true);
+        }
     }
     public void PlayerGetMoney(int num)
     {
@@ -78,6 +87,10 @@ public class EventCtrl : MonoBehaviour
             SoundManger.Instance.PlaySEGetMoneySE();
         }
 
+    }
+    public bool CheckGameOver()
+    {
+        return GameOver;
     }
 
 }

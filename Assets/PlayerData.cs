@@ -12,7 +12,7 @@ public class PlayerData : MonoBehaviour
     private int StartFunds = 200000;
     private void Awake()
     {
-        if(instance == null)
+        if (instance == null)
         {
             instance = this;
             RevivePos = Player.transform.position;
@@ -29,27 +29,44 @@ public class PlayerData : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
-    public void SetRevivePos(Vector3 pos,int checkPointNomber)
+    public void SetRevivePos(Vector3 pos, int checkPointNomber)
     {
-        if(checkPointNomber> LastCheckPointNomber)
+        if (checkPointNomber > LastCheckPointNomber)
         {
             RevivePos = pos;
             LastCheckPointNomber = checkPointNomber;
         }
     }
+    public void SetReviveFunds(int funds)
+    {
+        StartFunds = funds;
+    }
+
+    public int GetReviveFunds()
+    {
+        return StartFunds;
+    }
 
     public Vector3 GetRevivePos()
     {
         return RevivePos;
+    }
+    public int GetLastCheckPointNomber()
+    {
+        return LastCheckPointNomber;
+    }
+    public void RestartLevel()
+    {
+        Destroy(gameObject);
     }
 
 }

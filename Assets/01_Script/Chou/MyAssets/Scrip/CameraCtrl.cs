@@ -10,15 +10,20 @@ public class CameraCtrl : MonoBehaviour
 {
     public Camera camera_Player;
     public Camera camera_Driller;
+    public GameObject PlayerDiggingPoint;
     public GameObject player;
     public GameObject driller;
     public GameObject FadeInEffect;
-
+    public int DrillerPrice=10000;
+    public float DrillerOutImpactStrength = 2;
+    public float DrillerDistanceToPlayer = 1.0f;
     public float TakeOutDrillerDelay = 2.0f;
     private DrillerRobo drillerRobo;
 
-    public GameObject FundsText;
-    public GameObject DrillerText;
+    //public GameObject FundsText;
+    //public GameObject DrillerText;
+    private DiggingPointCtrl PlayerDiggingPointCtrl;
+
     private UIFundsCtrl UIFunds;
     private UIDrillerCtrl UIDrillers;
     private FadeInEffectCtrl fadeInEffectCtrl;
@@ -29,9 +34,10 @@ public class CameraCtrl : MonoBehaviour
         camera_Driller.enabled = false;
         drillerRobo = driller.GetComponent<DrillerRobo>();
         driller.gameObject.SetActive(false);
-        UIFunds = FundsText.GetComponent<UIFundsCtrl>();
-        UIDrillers = DrillerText.GetComponent<UIDrillerCtrl>();
+        //UIFunds = FundsText.GetComponent<UIFundsCtrl>();
+        //UIDrillers = DrillerText.GetComponent<UIDrillerCtrl>();
         fadeInEffectCtrl= FadeInEffect.GetComponent<FadeInEffectCtrl>();
+        PlayerDiggingPointCtrl = PlayerDiggingPoint.GetComponent<DiggingPointCtrl>();
     }
 
     // Update is called once per frame
@@ -40,11 +46,10 @@ public class CameraCtrl : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.F)||Input.GetKeyDown(KeyCode.Joystick1Button2))
         {
             if ((PlayerCtrl2.Instance.CheckCanUseDriller()
-                    && (!driller.gameObject.activeSelf && UIFunds.AddFunds(-10000)
-                        && UIDrillers.AddDrillers(-1))))
+                    && !driller.gameObject.activeSelf))
             {
-                EventCtrl.Instance.PlayerGetMoney(-10000);
-
+                EventCtrl.Instance.PlayerGetMoney(-DrillerPrice);
+                PlayerDiggingPointCtrl.StartDig(DrillerOutImpactStrength);
                 CharaAnimeController.Instance.StartTakeOut();
                 Invoke("StartFadeIn", TakeOutDrillerDelay);
                 Invoke("ChangeCamera", TakeOutDrillerDelay + fadeInEffectCtrl.Life); 
@@ -62,7 +67,7 @@ public class CameraCtrl : MonoBehaviour
     public void ChangeCamera()
     {
         driller.gameObject.SetActive(!driller.gameObject.activeSelf);
-        driller.transform.position = player.transform.position + player.transform.forward * 3;
+        driller.transform.position = player.transform.position + player.transform.forward * DrillerDistanceToPlayer;
         driller.transform.rotation = player.transform.rotation;
         camera_Player.enabled = !camera_Player.enabled;
 
