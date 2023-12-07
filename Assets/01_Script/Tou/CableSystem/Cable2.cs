@@ -153,6 +153,7 @@ public class Cable2 : MonoBehaviour
                 Destroy(jointModels[i]);
             }
         }
+        tailModel.localScale = Vector3.one * 1.5f;
         tailModel.DOScale(Vector3.one, 0.8f).SetEase(Ease.OutBack);
     }
 }

@@ -30,6 +30,7 @@ public class Cable2Manager : MonoBehaviour
     public float plugMinMove = 0.01f;
     public int checkCableId = 0;
     public int checkFrameDuration = 120;
+    public int canMoveCableNum = 10;
 
     [Header("read only")]
     public List<Transform> cable2s;
@@ -45,7 +46,7 @@ public class Cable2Manager : MonoBehaviour
 
         if (!checkCable.startFall) return;
 
-        if (cable2s.Count - checkCableId <= 3) return;
+        if (cable2s.Count - checkCableId <= canMoveCableNum) return;
 
         //update check time
         checkFrameCount--;

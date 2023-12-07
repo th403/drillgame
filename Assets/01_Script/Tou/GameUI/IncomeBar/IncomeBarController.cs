@@ -185,16 +185,19 @@ public class IncomeBarController : MonoBehaviour
 
     
     //for changing money
-    public void AddMoney(float add)
+    public bool AddMoney(float add)
     {
         MainGameDataManager.Instance.Money += add;
+        return MainGameDataManager.Instance.Money < MainGameDataManager.Instance.GreatestNorumaTarget;
     }
-    public void SubtractMoney(float sub)
+    public bool SubtractMoney(float sub)
     {
         MainGameDataManager.Instance.Money -= sub;
+        return MainGameDataManager.Instance.Money > 0;
     }
-    public void SetMoney(float mny)
+    public bool SetMoney(float mny)
     {
         MainGameDataManager.Instance.Money = mny;
+        return MainGameDataManager.Instance.Money>0&&MainGameDataManager.Instance.Money< MainGameDataManager.Instance.GreatestNorumaTarget;
     }
 }
