@@ -71,7 +71,6 @@ public class IncomeBarController : MonoBehaviour
             ChangeMoneyNumber(newMoney, passMoney);
         };
 
-
         //add event to property 'nowNoruma'
         nowNorumaPos = nowNorumaImg.transform.localPosition;
         MainGameDataManager.Instance.nowNoruma.OnValueChange += (Noruma cur, Noruma next) =>

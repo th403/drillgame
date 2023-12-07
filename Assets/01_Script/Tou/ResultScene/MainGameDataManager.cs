@@ -51,8 +51,15 @@ public class MainGameDataManager : MonoBehaviour
 
     private void Awake()
     {
-        DontDestroyOnLoad(gameObject);
-        instance = this;
+        if (instance == null)
+        {
+            //DontDestroyOnLoad(gameObject);
+            instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
 
     public static MainGameDataManager Instance

@@ -2,15 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Test_CableSystem : MonoBehaviour
+public class CableSystemInit : MonoBehaviour
 {
+    [Header("attach")]
+    public GameObject player;
+
     [Header("button")]
     public bool onOff;
     private bool startCable;
 
     private void Start()
     {
-        Invoke("DelayTurnOnCableMng", 0.2f);
+        Invoke("DelayTurnOnCableMng", 0.5f);
     }
 
     void DelayTurnOnCableMng()
@@ -27,6 +30,7 @@ public class Test_CableSystem : MonoBehaviour
             {
                 startCable = true;
 
+                Cable2Manager.Instance.transform.position = player.transform.forward * (-1) + player.transform.position;
                 Cable2Manager.Instance.AddFirstCable();
                 Cable2Manager.Instance.Execute();
             }
