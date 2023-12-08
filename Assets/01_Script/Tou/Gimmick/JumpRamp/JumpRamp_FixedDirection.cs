@@ -10,6 +10,7 @@ public class JumpRamp_FixedDirection : MonoBehaviour
     [Header("edit")]
     public float power=1;
     public float maxChargeCount=30;
+    public float jumpDelay = 0.1f;
     public float maxCdCount=50;
     public float minPlayerSpeed = 5;
     public float maxPlayerSpeed = 10;
@@ -64,7 +65,6 @@ public class JumpRamp_FixedDirection : MonoBehaviour
             {
                 Shoot(other.gameObject);
                 cdCount = maxCdCount;
-                playerSpeed = 0;
                 player = null;
             }
         }
@@ -78,8 +78,9 @@ public class JumpRamp_FixedDirection : MonoBehaviour
         //rb.velocity = power * jumpDir.up * playerSpeed;
 
         //playerctrl2 jump
-        var playerCtrl = player.GetComponent<PlayerCtrl2>();
-        playerCtrl.SetSpeed(power * jumpDir.up * playerSpeed);
+        var jumpVelo = power* jumpDir.up* playerSpeed;
+        CharaAnimeController.Instance.StartJump(jumpVelo);
+        playerSpeed = 0;
         //playerSpeed=playerCtrl.
     }
 }

@@ -1320,12 +1320,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   modelRoot: {fileID: 1663939116600519499}
   anime: {fileID: 6577149093598766757}
-  startGroundAnimeHeight: 1
-  jumpPower: 10
-  upFrame: 14
+  startGroundAnimeHeight: 0.5
+  jumpFrame: 14
+  upFrame: 12
   landFrame: 58
   state: 0
   lastPos: {x: 0, y: 0, z: 0}
+  jumpVelo: {x: 0, y: 0, z: 0}
 --- !u!1 &2046654883431966305
 GameObject:
   m_ObjectHideFlags: 0
