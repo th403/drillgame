@@ -9,6 +9,8 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: smoke_001_2_soft_nom
   m_Shader: {fileID: -6465566751694194690, guid: 3307029e969381b409e77646c0fbc302, type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
   m_ValidKeywords:
   - _ENABLE_FOG_ON_TRANSPARENT
   - _SURFACE_TYPE_TRANSPARENT
@@ -25,6 +27,7 @@ Material:
   - TransparentDepthPostpass
   - TransparentBackface
   - MOTIONVECTORS
+  m_LockedProperties: 
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
@@ -64,17 +67,18 @@ Material:
     - _Edge: 1
     - _EnableBlendModePreserveSpecularLighting: 0
     - _EnableFogOnTransparent: 1
+    - _ExcludeFromTUAndAA: 0
     - _OpaqueCullMode: 2
     - _RenderQueueType: 4
     - _SrcBlend: 1
     - _StencilRef: 0
-    - _StencilRefDepth: 0
+    - _StencilRefDepth: 1
     - _StencilRefDistortionVec: 4
-    - _StencilRefMV: 32
+    - _StencilRefMV: 33
     - _StencilWriteMask: 6
-    - _StencilWriteMaskDepth: 8
+    - _StencilWriteMaskDepth: 9
     - _StencilWriteMaskDistortionVec: 4
-    - _StencilWriteMaskMV: 42
+    - _StencilWriteMaskMV: 43
     - _Step1: -1.5
     - _Step2: 1
     - _SurfaceType: 1
@@ -105,7 +109,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da692e001514ec24dbc4cca1949ff7e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  version: 12
+  version: 13
   hdPluginSubTargetMaterialVersions:
     m_Keys: []
     m_Values: 
