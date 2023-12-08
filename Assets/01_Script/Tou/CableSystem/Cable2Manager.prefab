@@ -96,20 +96,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cable2Prefab: {fileID: 1077085588972543718, guid: 286c0f4124fdeaf43a6d8f215f1f2e33, type: 3}
   plugTransform: {fileID: 0}
+  plugCtrl: {fileID: 0}
   fixedAnchor: {fileID: 2846254656241356425}
   fixedAnchorToCat: {fileID: 4856965079258755922}
-  playerTrs: {fileID: 0}
   unitMaxLength: 0.6
   markCount: 8
   fixedCableVelo: 0.8
-  playerMinMove: 0.01
+  plugMinMove: 0.08
   checkCableId: 0
   checkFrameDuration: 120
   cable2s: []
   lastCable: {fileID: 0}
   checkCable: {fileID: 0}
-  playerLastPos: {x: 0, y: 0, z: 0}
-  playerMoveDist: 0
+  plugLastPos: {x: 0, y: 0, z: 0}
+  plugMoveDist: 0
   checkFrameCount: 0
 --- !u!1 &8947706503312678194
 GameObject:

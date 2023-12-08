@@ -30,6 +30,7 @@ public class Cable2Manager : MonoBehaviour
     public float plugMinMove = 0.01f;
     public int checkCableId = 0;
     public int checkFrameDuration = 120;
+    public int canMoveCableNum = 10;
 
     [Header("read only")]
     public List<Transform> cable2s;
@@ -45,7 +46,7 @@ public class Cable2Manager : MonoBehaviour
 
         if (!checkCable.startFall) return;
 
-        if (cable2s.Count - checkCableId <= 3) return;
+        if (cable2s.Count - checkCableId <= canMoveCableNum) return;
 
         //update check time
         checkFrameCount--;
@@ -70,12 +71,12 @@ public class Cable2Manager : MonoBehaviour
         if (lastCable) return;
 
         var go = Instantiate(cable2Prefab);
-        go.transform.position = transform.position;
         go.transform.SetParent(transform);
+        go.transform.localPosition = Vector3.zero;
         cable2s.Add(go.transform);
 
         lastCable = go.GetComponentInChildren<Cable2>();
-        lastCable.StartCable(plugTransform, null);
+        lastCable.StartCable(plugTransform, fixedAnchor);
         checkCable = lastCable;
     }
 
@@ -101,6 +102,9 @@ public class Cable2Manager : MonoBehaviour
                 modelID = 1;
             }
             lastCable.StartShowJoint(modelID);
+
+            //set physical fall
+            lastCable.startFall = true;
         }
         cable.StartCable(plugTransform, lastCable ? lastCable.rigid : null);
         

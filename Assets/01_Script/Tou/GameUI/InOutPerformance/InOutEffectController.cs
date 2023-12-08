@@ -26,20 +26,30 @@ public class InOutEffectController : MonoBehaviour
     //if ui canvas
     public RectTransform panel;
     public RectTransform canvas;
+    public Transform showMoneyChangePos;
 
     [Header("test only")]
     //if world object ui
     [Range(0, 2)]
     public float size = 1.0f;
 
-    public void Init(float size=1)
+    public void Init(float size=1,Transform target=null)
     {
         //for run time modify
         this.size = size;
+        //showMoneyChangePos = target;
 
         //set ui size
         //moneyEffectPrefab.GetComponent<InOutEffect>().digitPrefab.transform.localScale *= size;
         //moneyEffectPrefab.GetComponent<InOutEffect>().digitDistance *= size;
+
+
+        //kari show on bar
+        MainGameDataManager.Instance.money.OnValueChange += (oldVal, newVal) =>
+        {
+            float deltaVal = newVal - oldVal;
+            MakeEffectOnBar((int)deltaVal);
+        };
     }
 
     public void MakeEffect(Transform target,int num)
@@ -64,5 +74,16 @@ public class InOutEffectController : MonoBehaviour
         //start effect
         InOutEffect2 effect = go.GetComponent<InOutEffect2>();
         effect.StartEffect(target,num);
+    }
+
+
+    public void MakeEffectOnBar(int num)
+    {
+        if (Camera.main == null) return;
+
+        //instantiate gameobject and set position
+        GameObject go = Instantiate(moneyEffectPrefab);
+        InOutEffect2 effect = go.GetComponent<InOutEffect2>();
+        effect.StartEffect(showMoneyChangePos, num);
     }
 }
