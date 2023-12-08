@@ -38,6 +38,9 @@
         },
         {
             "m_Id": "350a50f01e8b46f0be0921c54dce34b8"
+        },
+        {
+            "m_Id": "732fbee986fd4c1489b325f1d02dd9f6"
         }
     ],
     "m_Keywords": [],
@@ -197,6 +200,12 @@
         },
         {
             "m_Id": "e18da61cf2f34d4a9c74167e743f23cd"
+        },
+        {
+            "m_Id": "5cacff7f836445bf80e6fcd36cd9e825"
+        },
+        {
+            "m_Id": "955e6874b17a49f1ae27045f90dc7692"
         }
     ],
     "m_GroupDatas": [
@@ -218,6 +227,20 @@
                     "m_Id": "998fe4f3a3cb4807a002199ff129a8a3"
                 },
                 "m_SlotId": 1
+            }
+        },
+        {
+            "m_OutputSlot": {
+                "m_Node": {
+                    "m_Id": "0cc70cbf8ccb4984b21ef51ffdde9085"
+                },
+                "m_SlotId": 2
+            },
+            "m_InputSlot": {
+                "m_Node": {
+                    "m_Id": "5cacff7f836445bf80e6fcd36cd9e825"
+                },
+                "m_SlotId": 0
             }
         },
         {
@@ -900,6 +923,9 @@
             },
             {
                 "m_Id": "e18da61cf2f34d4a9c74167e743f23cd"
+            },
+            {
+                "m_Id": "5cacff7f836445bf80e6fcd36cd9e825"
             }
         ]
     },
@@ -1771,6 +1797,36 @@
 
 {
     "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.ColorRGBMaterialSlot",
+    "m_ObjectId": "28d77aeda642433a8ae9f4ec53681f4b",
+    "m_Id": 0,
+    "m_DisplayName": "Specular Color",
+    "m_SlotType": 0,
+    "m_Hidden": false,
+    "m_ShaderOutputName": "Specular",
+    "m_StageCapability": 2,
+    "m_Value": {
+        "x": 0.5,
+        "y": 0.5,
+        "z": 0.5
+    },
+    "m_DefaultValue": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+    },
+    "m_Labels": [],
+    "m_ColorMode": 0,
+    "m_DefaultColor": {
+        "r": 0.5,
+        "g": 0.5,
+        "b": 0.5,
+        "a": 1.0
+    }
+}
+
+{
+    "m_SGVersion": 0,
     "m_Type": "UnityEditor.ShaderGraph.Vector3MaterialSlot",
     "m_ObjectId": "294f460eaec24b61bcfc838c225bacd1",
     "m_Id": 2,
@@ -1966,6 +2022,9 @@
         },
         {
             "m_Id": "350a50f01e8b46f0be0921c54dce34b8"
+        },
+        {
+            "m_Id": "732fbee986fd4c1489b325f1d02dd9f6"
         }
     ]
 }
@@ -1993,6 +2052,31 @@
     ],
     "m_CustomEditorGUI": "",
     "m_SupportVFX": false
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.Vector4MaterialSlot",
+    "m_ObjectId": "34f4df699a0c4fe8a311573cff0af3c3",
+    "m_Id": 0,
+    "m_DisplayName": "SpecularColror",
+    "m_SlotType": 1,
+    "m_Hidden": false,
+    "m_ShaderOutputName": "Out",
+    "m_StageCapability": 3,
+    "m_Value": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
+        "w": 0.0
+    },
+    "m_DefaultValue": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
+        "w": 0.0
+    },
+    "m_Labels": []
 }
 
 {
@@ -3073,6 +3157,39 @@
 
 {
     "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.BlockNode",
+    "m_ObjectId": "5cacff7f836445bf80e6fcd36cd9e825",
+    "m_Group": {
+        "m_Id": ""
+    },
+    "m_Name": "SurfaceDescription.Specular",
+    "m_DrawState": {
+        "m_Expanded": true,
+        "m_Position": {
+            "serializedVersion": "2",
+            "x": 0.0,
+            "y": 0.0,
+            "width": 0.0,
+            "height": 0.0
+        }
+    },
+    "m_Slots": [
+        {
+            "m_Id": "28d77aeda642433a8ae9f4ec53681f4b"
+        }
+    ],
+    "synonyms": [],
+    "m_Precision": 0,
+    "m_PreviewExpanded": true,
+    "m_PreviewMode": 0,
+    "m_CustomColors": {
+        "m_SerializableColors": []
+    },
+    "m_SerializedDescriptor": "SurfaceDescription.Specular"
+}
+
+{
+    "m_SGVersion": 0,
     "m_Type": "UnityEditor.ShaderGraph.MultiplyNode",
     "m_ObjectId": "5d301edfcfc443009396cb2b3a7dfbac",
     "m_Group": {
@@ -3624,6 +3741,35 @@
 }
 
 {
+    "m_SGVersion": 3,
+    "m_Type": "UnityEditor.ShaderGraph.Internal.ColorShaderProperty",
+    "m_ObjectId": "732fbee986fd4c1489b325f1d02dd9f6",
+    "m_Guid": {
+        "m_GuidSerialized": "bcda29b6-7815-4b6f-b670-d6dda27f36b7"
+    },
+    "m_Name": "SpecularColror",
+    "m_DefaultRefNameVersion": 1,
+    "m_RefNameGeneratedByDisplayName": "SpecularColror",
+    "m_DefaultReferenceName": "_SpecularColror",
+    "m_OverrideReferenceName": "",
+    "m_GeneratePropertyBlock": true,
+    "m_UseCustomSlotLabel": false,
+    "m_CustomSlotLabel": "",
+    "m_Precision": 0,
+    "overrideHLSLDeclaration": false,
+    "hlslDeclarationOverride": 0,
+    "m_Hidden": false,
+    "m_Value": {
+        "r": 0.0,
+        "g": 0.0,
+        "b": 0.0,
+        "a": 0.0
+    },
+    "isMainColor": false,
+    "m_ColorMode": 0
+}
+
+{
     "m_SGVersion": 0,
     "m_Type": "UnityEditor.ShaderGraph.PropertyNode",
     "m_ObjectId": "735faa7a17c640bf9ceaad71962c5651",
@@ -4160,6 +4306,41 @@
         "y": 0.0,
         "z": 0.0,
         "w": 0.0
+    }
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.PropertyNode",
+    "m_ObjectId": "955e6874b17a49f1ae27045f90dc7692",
+    "m_Group": {
+        "m_Id": ""
+    },
+    "m_Name": "Property",
+    "m_DrawState": {
+        "m_Expanded": true,
+        "m_Position": {
+            "serializedVersion": "2",
+            "x": 601.0,
+            "y": 705.0000610351563,
+            "width": 155.0,
+            "height": 34.0
+        }
+    },
+    "m_Slots": [
+        {
+            "m_Id": "34f4df699a0c4fe8a311573cff0af3c3"
+        }
+    ],
+    "synonyms": [],
+    "m_Precision": 0,
+    "m_PreviewExpanded": true,
+    "m_PreviewMode": 0,
+    "m_CustomColors": {
+        "m_SerializableColors": []
+    },
+    "m_Property": {
+        "m_Id": "732fbee986fd4c1489b325f1d02dd9f6"
     }
 }
 
@@ -5992,7 +6173,7 @@
     "m_Type": "UnityEditor.Rendering.HighDefinition.ShaderGraph.HDLitData",
     "m_ObjectId": "f9a1b3d22bfe4b4b9086e0255c2e75b0",
     "m_RayTracing": false,
-    "m_MaterialType": 0,
+    "m_MaterialType": 4,
     "m_RefractionModel": 0,
     "m_SSSTransmission": true,
     "m_EnergyConservingSpecular": true,
