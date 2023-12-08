@@ -14,6 +14,9 @@ public class Test_ControlAnime : MonoBehaviour
     public KeyCode clearKey = KeyCode.M;
     public KeyCode runKey = KeyCode.RightShift;
     public KeyCode takeOutDrillKey = KeyCode.T;
+
+    public KeyCode turnLeftKey = KeyCode.A;
+    public KeyCode turnRightKey = KeyCode.D;
     public int digFrame=90;
 
     private void Start()
@@ -43,7 +46,7 @@ public class Test_ControlAnime : MonoBehaviour
     {
         if(Input.GetKeyDown(jumpKey))
         {
-            if(CharaAnimeController.Instance.StartJump())
+            if(CharaAnimeController.Instance.StartJump(Vector3.up * 10))
             {
                 ctrl.rigid.velocity += (Vector3.up * 10);
             }
@@ -73,6 +76,16 @@ public class Test_ControlAnime : MonoBehaviour
         if (Input.GetKeyDown(takeOutDrillKey))
         {
             CharaAnimeController.Instance.StartTakeOut();
+        }
+
+        if(Input.GetKey(turnLeftKey))
+        {
+            CharaAnimeController.Instance.StartTurnLeft();
+        }
+
+        if(Input.GetKey(turnRightKey))
+        {
+            CharaAnimeController.Instance.StartTurnRight();
         }
     }
 
