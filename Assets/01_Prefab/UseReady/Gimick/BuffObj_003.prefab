@@ -95,7 +95,6 @@ GameObject:
   - component: {fileID: 4473411540767872403}
   - component: {fileID: 3491888863358864587}
   - component: {fileID: 7356096867872377046}
-  - component: {fileID: 4332340241952160284}
   - component: {fileID: 4118242587946233371}
   m_Layer: 0
   m_Name: BuffObj_003
@@ -187,19 +186,6 @@ MonoBehaviour:
   DecelerateRate: 0.5
   SoundMangerObj: {fileID: 0}
   DestroyEffect: {fileID: 3594958593639721397, guid: 11555901d28bcb14a91bf80e579c6954, type: 3}
---- !u!114 &4332340241952160284
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9063319041586669940}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 15649b02012bcee46b587e82a5efaf16, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Effect: {fileID: 5015531522334260436, guid: 62ce0fac5cdfa6149a00a7f2aa4d3405, type: 3}
 --- !u!64 &4118242587946233371
 MeshCollider:
   m_ObjectHideFlags: 0
