@@ -1,32 +1,19 @@
 using UnityEngine;
 using System.Collections;
+// ’Ç‰Á
 using UnityEngine.SceneManagement;
 //using UnityStandardAssets.Characters.PLAYER;
-using UnityEngine.UI;
-using UnityEngine.Audio;
 
 public class PAUSE_001 : MonoBehaviour
 {
-    public AudioMixer audioMixer;
-    public Slider bGMSlider;
-    public Slider sESlider;
-    public AudioClip audioClipSE_001;      //SE(OPTION•Â‚¶‚½)
-    private AudioSource audioSourceSE1;     //SE(OPTION•Â‚¶‚½)
 
     //public GameObject player;
     public GameObject PausePanel_Pause_001, UnPausePanel_Pause_001, OptionPanel_Pause_001,RetryDialoguePanel_Pause_001;
     private bool pauseGame = false;
-    private bool ONOPTION = false;
 
     void Start()
     {
         OnUnPause();
-
-        audioSourceSE1 = gameObject.GetComponent<AudioSource>();
-        audioMixer.GetFloat("BGM_Volume", out float bgmVolume);
-        bGMSlider.value = bgmVolume;
-        audioMixer.GetFloat("SE_Volume", out float seVolume);
-        sESlider.value = seVolume;
     }
 
     public void Update()
@@ -44,20 +31,6 @@ public class PAUSE_001 : MonoBehaviour
                 OnUnPause();
             }
         }
-
-
-        if (ONOPTION == true)
-        {
-            if (Input.GetKeyDown(KeyCode.B))
-            {
-                OnUnPause();
-                audioSourceSE1.PlayOneShot(audioClipSE_001);
-                ONOPTION = false;
-            }
-
-        }
-
-
     }
 
     public void OnPausePanel()
@@ -122,17 +95,12 @@ public class PAUSE_001 : MonoBehaviour
         UnPausePanel_Pause_001.SetActive(false);        // UnPause‚ðfalse‚É‚·‚é
         RetryDialoguePanel_Pause_001.SetActive(false);      // RetryDialogue‚ðfalse‚É‚·‚é
         OptionPanel_Pause_001.SetActive(true);          // OptionPause‚ðfalse‚É‚·‚é
-
-        ONOPTION = true;
-        
     }
     //Backƒ{ƒ^ƒ“‰Ÿ‚µ‚½‚ç
     public void OnBack()
     {
         OnUnPause();
     }
-
-    
     //PauseBackButton‰Ÿ‚µ‚½‚ç
     public void OptionBack()
     {
@@ -140,15 +108,5 @@ public class PAUSE_001 : MonoBehaviour
         UnPausePanel_Pause_001.SetActive(false);     // UnPause‚ðfalse‚É‚·‚é
         RetryDialoguePanel_Pause_001.SetActive(false);      // RetryDialogue‚ðfalse‚É‚·‚é
         OptionPanel_Pause_001.SetActive(false);     // OptionPause‚ðfalse‚É‚·‚é
-    }
-
-    public void SetBGM(float volume)
-    {
-        audioMixer.SetFloat("BGM_Volume", volume);
-    }
-
-    public void SetSE(float volume)
-    {
-        audioMixer.SetFloat("SE_Volume", volume);
     }
 }
