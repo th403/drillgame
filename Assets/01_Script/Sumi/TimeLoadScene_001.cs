@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class TimeLoadScene_001 : MonoBehaviour
 {
     private float step_time;    // 経過時間カウント用
+    public float SceneChangeTime = 5;
 
     // Start is called before the first frame update
     void Start()
@@ -20,7 +21,7 @@ public class TimeLoadScene_001 : MonoBehaviour
         step_time += Time.deltaTime;
 
         // 3秒後に画面遷移（scene2へ移動）
-        if (step_time >= 5.0f)
+        if (step_time >= SceneChangeTime)
         {
             SceneManager.LoadScene("05_end");
         }

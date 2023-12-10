@@ -44,7 +44,7 @@ public class TurtorialPlayerCtrl2 : MonoBehaviour
     private bool Moving = false;
     private bool Rotating = false;
     private bool CanUseDriller = true;
-    private float MovingSpeed;
+    public float MovingSpeed;
     private float ChargeTime = 0;
     private float ChargeRate = 0;
     private float MovingTime = 0;

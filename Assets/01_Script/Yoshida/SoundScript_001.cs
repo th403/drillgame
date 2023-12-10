@@ -14,6 +14,7 @@ public class SoundScript_001 : MonoBehaviour
     public AudioClip audioClip2;
     private AudioSource audioSource1;
     private AudioSource audioSource2;
+    private bool isAudioEnd;
 
 
     void Start()
@@ -25,11 +26,14 @@ public class SoundScript_001 : MonoBehaviour
 
         audioSource1 = gameObject.GetComponent<AudioSource>();
         audioSource2 = gameObject.GetComponent<AudioSource>();
+
+        audioSource1.PlayOneShot(audioClip1);
+        isAudioEnd = true;
     }
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Q))
+        /*if (Input.GetKeyDown(KeyCode.Q))
         {
             //audioSource1.Stop();
             audioSource2.Stop();
@@ -39,12 +43,10 @@ public class SoundScript_001 : MonoBehaviour
 
             //audioSource1.Stop(audioClip1);
             //audioSource2.Stop(audioClip2);
-        }
+        }*/
 
-        if (Input.GetKeyDown(KeyCode.E))
+        if (!audioSource1.isPlaying && isAudioEnd)
         {
-            audioSource1.Stop();
-            //audioSource2.Stop();
             audioSource2.PlayOneShot(audioClip2);
             Debug.Log("aaa");
 
