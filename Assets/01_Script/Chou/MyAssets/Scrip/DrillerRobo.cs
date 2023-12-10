@@ -10,7 +10,8 @@ using UnityEngine;
 public class DrillerRobo : MonoBehaviour
 {
     public float DiggingSpeedMax = 11.11f;
-    public float RotationSpeed = 0.3f;
+    public float RotationSpeedMouse = 0.3f;
+    public float RotationSpeedPad = 0.3f;
     public float Life = 9.0f;
     public float MaxRotationX = 85.0f;
     public float MaxScale = 5.0f;
@@ -51,14 +52,14 @@ public class DrillerRobo : MonoBehaviour
             float fMouseX = Input.GetAxis("Mouse X");
             float fMouseY = Input.GetAxis("Mouse Y");
 
-            DrillerTransform.Rotate(Vector3.up, fMouseX * RotationSpeed, Space.Self);
-            DrillerTransform.Rotate(Vector3.right, -fMouseY * RotationSpeed, Space.Self);
+            DrillerTransform.Rotate(Vector3.up, fMouseX * RotationSpeedMouse * (Mathf.Cos(transform.rotation.x)), Space.Self);
+            DrillerTransform.Rotate(Vector3.right, -fMouseY * RotationSpeedMouse , Space.Self);
 
-            float fGamepadX = Input.GetAxis("Mouse X");
-            float fGamepadY = Input.GetAxis("Mouse Y");
+            float fGamepadX = Input.GetAxis("Horizontal");
+            float fGamepadY = Input.GetAxis("Vertical");
 
-            DrillerTransform.Rotate(Vector3.up, fGamepadX * RotationSpeed, Space.Self);
-            DrillerTransform.Rotate(Vector3.right, -fGamepadY * RotationSpeed, Space.Self);
+            DrillerTransform.Rotate(Vector3.up, fGamepadX * RotationSpeedPad * (Mathf.Cos(transform.rotation.x)), Space.Self);
+            DrillerTransform.Rotate(Vector3.right, -fGamepadY * RotationSpeedPad, Space.Self);
 
             if (DiggingSpeed < DiggingSpeedMax)
             {

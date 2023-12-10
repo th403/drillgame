@@ -19,6 +19,7 @@ public class CharaAnimeController : MonoBehaviour
     [Header("attach")]
     public Animator anim;
     public JumpAnimeController jumpCtrl;
+    public CatPlug plugCtrl;
 
     public void Init()
     {
@@ -28,6 +29,16 @@ public class CharaAnimeController : MonoBehaviour
     public void StartRun()
     {
         anim.SetInteger("IdleWalkRun",2);
+    }
+
+    public void StartTurnRight()
+    {
+        anim.SetInteger("IdleWalkRun", 4);
+    }
+
+    public void StartTurnLeft()
+    {
+        anim.SetInteger("IdleWalkRun", 3);
     }
 
     public void StartWalk()
@@ -40,15 +51,17 @@ public class CharaAnimeController : MonoBehaviour
         anim.SetInteger("IdleWalkRun", 0);
     }
 
-    public bool StartJump()
+    public bool StartJump(Vector3 jump)
     {
-        return jumpCtrl.StartJump();
+        print("check one jump");
+        return jumpCtrl.StartJump(jump);
     }
 
     public float StartStick()
     {
         //anim.SetTrigger("StickPipe");
         anim.Play("stick pipe");
+        plugCtrl.StartFakePlug();
         //var clips = anim.GetCurrentAnimatorClipInfo(0);
         //int id = anim.GetCurrentAnimatorClipInfoCount(0);
         AnimatorStateInfo stateInfo = anim.GetCurrentAnimatorStateInfo(0);

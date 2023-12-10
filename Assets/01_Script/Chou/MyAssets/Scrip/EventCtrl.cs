@@ -41,6 +41,11 @@ public class EventCtrl : MonoBehaviour
 #if UNITY_EDITOR
             UnityEditor.EditorApplication.isPlaying = false;
 
+            if (Input.GetKeyDown(KeyCode.X))
+            {
+                PlayerCtrl2.Instance.SetSpeed(new Vector3(5, 10, 0));
+            }
+
 #else
        Application.Quit();
 #endif
@@ -52,17 +57,12 @@ public class EventCtrl : MonoBehaviour
 
         }
 
-
     }
     public void PlayerGetMoney(int num)
     {
         //InOutEffectController.Instance.MakeEffect(Player.transform, num);
         IncomeBarController.Instance.AddMoney(num);
         SoundManger.Instance.PlaySEGetMoneySE();
-    }
-    public void GetCheckPoint(Vector3 pos)
-    {
-
     }
 
 }

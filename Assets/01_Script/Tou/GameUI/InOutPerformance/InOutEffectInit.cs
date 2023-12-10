@@ -14,13 +14,12 @@ public class InOutEffectInit : MonoBehaviour
 
     void Start()
     {
-        //kari
-        MainGameDataManager.Instance.money.OnValueChange += (oldVal,newVal) =>
-          {
-              float deltaVal = newVal - oldVal;
-              InOutEffectController.Instance.MakeEffect(kariTarget.transform, (int)deltaVal);
-          };
+        //Invoke("DelayInit",0.2f);
+        InOutEffectController.Instance.Init(size);
+    }
 
+    void DelayInit()
+    {
         InOutEffectController.Instance.Init(size);
     }
 }

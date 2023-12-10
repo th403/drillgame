@@ -26,20 +26,20 @@ public class PlayerCtrl2 : MonoBehaviour
     public Slider ChargeSlider;
     public float PlayerAcceleration = 0.2f;
     public float MaxRotationX = 85.0f;
-    public float PlayerRotationSpeed = 30.0f;
-    public float MovingDistanceMin = 5;
+    public float PlayerRotationSpeed = 5.0f;
+    public float MovingDistanceMin = 10;
     public float MovingTimeMin = 1;
-    public float MovingDistanceMax = 30;
-    public float MovingTimeMax = 3;
-    public float ChargeTimeMax = 2;
-    public float Drag = 0.02f;
-    public float AngularDrag = 0.02f;
+    public float MovingDistanceMax = 80;
+    public float MovingTimeMax = 5;
+    public float ChargeTimeMax = 1.5f;
+    public float xzDrag = 3.5f;
+    public float AngularDrag = 3.5f;
     public int PricePerMeter = 100;
     public CharacterController characterController;
     public bool ChargeChangeRotateSpeed;
     public float ChargeChangeRotateSpeedRate = 4.0f;
     public bool CanJump;
-    public float JumpSpeed = 1.0f;
+    public float JumpSpeed = 10.0f;
 
     private UIFundsCtrl UIFunds;
     private bool Use = true;
@@ -48,7 +48,6 @@ public class PlayerCtrl2 : MonoBehaviour
     private bool CanUseDriller = true;
     private bool InTheAir = false;
     private float MovingSpeed;
-    private float MovingSpeedY=0;
 
     private float ChargeTime = 0;
     private float ChargeRate = 0;
@@ -57,6 +56,7 @@ public class PlayerCtrl2 : MonoBehaviour
 
     private Vector3 DeltaRotation;
     private Vector3 DeltaMovement;
+    private Vector3 DeltaSpeed;
     private Vector3 RotationEulerAngleVelocity;
 
 
@@ -66,6 +66,7 @@ public class PlayerCtrl2 : MonoBehaviour
         transform.position = PlayerData.instance.GetRevivePos();
         UIFunds = FundsText.GetComponent<UIFundsCtrl>();
         //LastFundsCheckPos = transform.position;
+        DeltaSpeed = new Vector3(0, 0, 0);
         DeltaMovement = new Vector3(0, 0, 0);
         DeltaRotation = new Vector3(0, 0, 0);
         RotationEulerAngleVelocity = new Vector3(0, PlayerRotationSpeed, 0);
@@ -80,7 +81,7 @@ public class PlayerCtrl2 : MonoBehaviour
         ChargeSlider.value = ChargeRate;
 
         //If Moving?
-        if(DeltaMovement.magnitude>0.1f)
+        if(DeltaSpeed.magnitude>0.5f)
         {
             Moving = true;
         }
@@ -94,7 +95,7 @@ public class PlayerCtrl2 : MonoBehaviour
             return;
         }
 
-        //制御可能
+        //制御可能?
         if (FreezingTime > 0)
         {
             FreezingTime -= Time.deltaTime;
@@ -105,41 +106,48 @@ public class PlayerCtrl2 : MonoBehaviour
             }
 
             //移動慣性保留
-            DeltaMovement *= 0.75f;
+            DeltaSpeed *= 0.75f;
+
+            DeltaMovement += DeltaSpeed * Time.deltaTime;
             characterController.Move(DeltaMovement);
+            DeltaMovement = new Vector3(0, 0, 0);
 
             return;
         }
 
 
-        //Move
-
+        ////Move///
         //gravity
         if (characterController.isGrounded)
         {
             if (InTheAir)
             {
                 CreateHitGroundEffect(RunningEffectPosObj.transform.position);
+                InTheAir = false;
             }
 
-            InTheAir = false;
-            MovingSpeedY = -0.001f;
+            if (DeltaSpeed.y < -0.001f)
+            {
+                DeltaSpeed.y = -0.001f;
+            }
+
+            if (Moving)
+                CreateRunningEffect(RunningEffectPosObj.transform.position);
 
             //Jump
             if (CanJump && Input.GetKeyDown(KeyCode.J))
             {
-                MovingSpeedY = JumpSpeed;
+                InTheAir = true;
+                DeltaSpeed.y = JumpSpeed;
             }
         }
         else
         {
-
             InTheAir = true;
-            MovingSpeedY += (-9.8f * Time.deltaTime);
+            DeltaSpeed.y += (-9.8f * Time.deltaTime);
         }
-        DeltaMovement.y = MovingSpeedY * Time.deltaTime;
-        //Debug.Log(characterController.isGrounded);
-        //Debug.Log(DeltaMovement.y);
+
+        Debug.Log(characterController.isGrounded);
 
 
         //Cannot Double Charge
@@ -183,7 +191,9 @@ public class PlayerCtrl2 : MonoBehaviour
         {
             //ChargeRate = ChargeTime / ChargeTimeMax;
             float MovingDistance = MovingDistanceMin + (MovingDistanceMax - MovingDistanceMin) * ChargeRate;
+
             ChargeTime = 0;
+
             if (UIFunds.AddFunds((int)(-PricePerMeter * MovingDistance)))
             {
                 MovingTime = MovingTimeMin + (MovingTimeMax - MovingTimeMin) * ChargeRate;
@@ -192,14 +202,13 @@ public class PlayerCtrl2 : MonoBehaviour
                 Moving = true;
             }
 
+            //Safity
+            //DeltaMovement.y = 0.001f;
+
         }
 
-        if (Moving)
+        if(MovingTime>0)
         {
-            if (characterController.isGrounded)
-            {
-                CreateRunningEffect(RunningEffectPosObj.transform.position);
-            }
             MovingTime -= Time.deltaTime;
 
             if (MovingTime <= 0)
@@ -208,21 +217,27 @@ public class PlayerCtrl2 : MonoBehaviour
                 MovingSpeed = 0;
                 CharaAnimeController.Instance.StartIdle();
             }
-            else
+            else if(!InTheAir)
             {
-                DeltaMovement.x = (transform.forward * MovingSpeed * Time.deltaTime).x;
-                DeltaMovement.z = (transform.forward * MovingSpeed * Time.deltaTime).z;
+                DeltaSpeed.x = (transform.forward * MovingSpeed).x;
+                DeltaSpeed.z = (transform.forward * MovingSpeed).z;
             }
-
 
         }
 
-        DeltaMovement *= (1 - Drag);
+        if (!InTheAir)
+        {
+            DeltaSpeed.x *= (1 - xzDrag * Time.deltaTime);
+            DeltaSpeed.z *= (1 - xzDrag * Time.deltaTime);
+        }
+
+        DeltaMovement += DeltaSpeed * Time.deltaTime;
         characterController.Move(DeltaMovement);
-        Debug.Log(DeltaMovement);
+        DeltaMovement = new Vector3(0, 0, 0);
+        //Debug.Log(DeltaSpeed);
 
         //rotate
-        DeltaRotation *= (1 - AngularDrag);
+        DeltaRotation *= (1 - AngularDrag * Time.deltaTime);
 
         if(DeltaRotation.y < 1 && DeltaRotation.y >- 1)
         {
@@ -279,23 +294,36 @@ public class PlayerCtrl2 : MonoBehaviour
     {
         return Rotating;
     }
-    public float GetSpeed()
+    public float GetSpeedf()
     {
         return MovingSpeed;
     }
+    public void SetSpeed(Vector3 newSpeed)
+    {
+        DeltaSpeed = newSpeed;
+        MovingTime = 0;
+        MovingSpeed = 0;
+        DeltaRotation = new Vector3(0, 0, 0);
+        CharaAnimeController.Instance.StartIdle();
+    }
+    public Vector3 GetSpeed()
+    {
+        return DeltaSpeed;
+    }
+
     public void PlayerGetLava()
     {
         FreezingTime = 2.0f;
 
         //reset
         MovingTime = 0;
-        //Moving = false;
         MovingSpeed = 0;
-
         DeltaRotation = new Vector3(0, 0, 0);
 
         //アニメ
         CharaAnimeController.Instance.StartStick();
+        SoundManger.Instance.PlaySESetPipe();
+
 
     }
     public bool CheckCanUseDriller()
@@ -327,5 +355,4 @@ public class PlayerCtrl2 : MonoBehaviour
         SoundManger.Instance.PlaySEHitGroundSE();
     }
 
-    
 }

@@ -45,7 +45,7 @@ public class LookingAtPointCtrl : MonoBehaviour
             }
 
             //
-            float TargetZ = playerCtrl2.GetSpeed() * DistanceChangeRate;
+            float TargetZ = playerCtrl2.GetSpeedf() * DistanceChangeRate;
 
             float NowZ = transform.localPosition.z;
             transform.localPosition += new Vector3(0, DeltaHeight, (TargetZ - NowZ) * DistanceChangeSpeed * Time.deltaTime);
