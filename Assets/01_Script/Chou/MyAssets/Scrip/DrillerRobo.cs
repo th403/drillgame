@@ -11,7 +11,7 @@ public class DrillerRobo : MonoBehaviour
 {
     public float DiggingSpeedMax = 11.11f;
     public float RotationSpeedMouse = 0.3f;
-    public float RotationSpeedPad = 0.3f;
+    public float RotationSpeedPad = 3f;
     public float Life = 9.0f;
     public float MaxRotationX = 85.0f;
     public float MaxScale = 5.0f;

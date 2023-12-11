@@ -45,7 +45,7 @@ public class CameraCtrl : MonoBehaviour
     {
         if (EventCtrl.Instance.CheckGameOver()) return;
 
-        if (Input.GetKeyDown(KeyCode.F)||Input.GetKeyDown(KeyCode.Joystick1Button3))
+        if (Input.GetKeyDown(KeyCode.F)||Input.GetKeyDown(KeyCode.Joystick1Button2))
         {
             if ((PlayerCtrl2.Instance.CheckCanUseDriller()
                     && !driller.gameObject.activeSelf))
@@ -70,6 +70,7 @@ public class CameraCtrl : MonoBehaviour
     {
         driller.gameObject.SetActive(!driller.gameObject.activeSelf);
         driller.transform.position = player.transform.position + player.transform.forward * DrillerDistanceToPlayer;
+        //driller.transform.position = PlayerDiggingPoint
         driller.transform.rotation = player.transform.rotation;
         camera_Player.enabled = !camera_Player.enabled;
 
