@@ -326,6 +326,21 @@ public class PlayerCtrl2 : MonoBehaviour
 
 
     }
+
+    public void PlayerClearPerform()
+    {
+        FreezingTime = 2.0f;
+
+        //reset
+        MovingTime = 0;
+        MovingSpeed = 0;
+        DeltaRotation = new Vector3(0, 0, 0);
+
+        //ââèo
+        ClearPerformController.Instance.StartPerform();
+        SoundManger.Instance.PlaySESetPipe();
+    }
+
     public bool CheckCanUseDriller()
     {
         return CanUseDriller;
