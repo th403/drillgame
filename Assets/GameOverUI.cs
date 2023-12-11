@@ -10,7 +10,7 @@ public class GameOverUI : MonoBehaviour
     public GameObject   ImageRestartLevel;
     public GameObject   ImageReturn;
     public string       TitleSceneName;
-    public float        DelayMax = 0.15f;
+    public float        DelayMax = 0.75f;
     private float       CountDelay;
     // Start is called before the first frame update
     void Start()
@@ -27,7 +27,7 @@ public class GameOverUI : MonoBehaviour
             CountDelay -= Time.deltaTime;
         }
 
-        if (CountDelay <=0 && (dy > 0.1f || dy < -0.1f))
+        if (CountDelay <=0 && (dy > 0.5f || dy < -0.5f))
         {
             CountDelay = DelayMax;
         }
@@ -53,7 +53,7 @@ public class GameOverUI : MonoBehaviour
 
         //}
 
-        if (Input.GetKeyDown(KeyCode.S) || (CountDelay == DelayMax && dy < -0.1f))
+        if (Input.GetKeyDown(KeyCode.S) || (CountDelay == DelayMax && dy > 0.5f))
         {
             SoundManger.Instance.PlaySEUISelect();
 
@@ -63,7 +63,7 @@ public class GameOverUI : MonoBehaviour
                 Chose = 1;
             }
         }
-        else if (Input.GetKeyDown(KeyCode.W) || (CountDelay == DelayMax && dy > 0.1f))
+        else if (Input.GetKeyDown(KeyCode.W) || (CountDelay == DelayMax && dy < -0.5f))
         {
             SoundManger.Instance.PlaySEUISelect();
 
