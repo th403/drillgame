@@ -46,6 +46,7 @@ public class DrillerRobo : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (EventCtrl.Instance.CheckGameOver()) return;
 
         if (Use)
         {

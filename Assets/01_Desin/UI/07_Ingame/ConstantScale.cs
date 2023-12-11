@@ -17,7 +17,8 @@ public class ConstantScale : MonoBehaviour
     {
         this.transform.localScale = this.baseScale * this.GetDistance();
 
-        Vector3 p = Camera.main.transform.position;
+        if (Camera.current == null) return;
+        Vector3 p = Camera.current.transform.position;
         p.x= transform.position.x;
         transform.LookAt(p);
     }
@@ -25,7 +26,18 @@ public class ConstantScale : MonoBehaviour
     // ƒJƒƒ‰‚©‚ç‚Ì‹——£‚ğæ“¾
     float GetDistance()
     {
-        return (this.transform.position - Camera.main.transform.position).magnitude;
+        if(Camera.main)
+        {
+            return (this.transform.position - Camera.main.transform.position).magnitude;
+        }
+        if(Camera.current)
+        {
+            return (this.transform.position - Camera.current.transform.position).magnitude;
+        }
+        else
+        {
+            return 1.0f;
+        }
     }
 
 

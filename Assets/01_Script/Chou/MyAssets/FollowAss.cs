@@ -36,7 +36,7 @@ public class FollowAss : MonoBehaviour
         transform.position = Player.transform.position;
         ResetDelay -= Time.deltaTime;
 
-        if(Input.GetAxis("4thHorizontal") !=0)
+        if(Input.GetAxis("4thHorizontal") !=0 || Input.GetKey(KeyCode.Q)|| Input.GetKey(KeyCode.E))
         {
             ResetDelay = ResetDelayMax;
             //AimRotationY = transform.rotation.y;
@@ -49,7 +49,15 @@ public class FollowAss : MonoBehaviour
 
         if (ResetDelay > 0)
         {
-            float rotationY = Input.GetAxis("4thHorizontal") * RotateSpd * Time.deltaTime; ;
+            float rotationY = Input.GetAxis("4thHorizontal") * RotateSpd * Time.deltaTime; 
+            if(Input.GetKey(KeyCode.Q))
+            {
+                rotationY += RotateSpd * Time.deltaTime;
+            }
+            if (Input.GetKey(KeyCode.E))
+            {
+                rotationY -= RotateSpd * Time.deltaTime;
+            }
 
             transform.Rotate(0, rotationY , 0, Space.Self);
 

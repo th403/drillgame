@@ -10,12 +10,6 @@ public class SoundScript_001 : MonoBehaviour
     public Slider bGMSlider;
     public Slider sESlider;
 
-    public AudioClip audioClip1;
-    public AudioClip audioClip2;
-    private AudioSource audioSource1;
-    private AudioSource audioSource2;
-
-
     void Start()
     {
         audioMixer.GetFloat("BGM_Volume", out float bgmVolume);
@@ -23,38 +17,9 @@ public class SoundScript_001 : MonoBehaviour
         audioMixer.GetFloat("SE_Volume", out float seVolume);
         sESlider.value = seVolume;
 
-        audioSource1 = gameObject.GetComponent<AudioSource>();
-        audioSource2 = gameObject.GetComponent<AudioSource>();
+        
     }
-
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Q))
-        {
-            //audioSource1.Stop();
-            audioSource2.Stop();
-            audioSource1.PlayOneShot(audioClip1);
-            Debug.Log("bbb");
-
-
-            //audioSource1.Stop(audioClip1);
-            //audioSource2.Stop(audioClip2);
-        }
-
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            audioSource1.Stop();
-            //audioSource2.Stop();
-            audioSource2.PlayOneShot(audioClip2);
-            Debug.Log("aaa");
-
-            //audioSource1.Stop(audioClip1);
-            //audioSource2.Stop(audioClip2);
-
-        }
-    }
-
-
+    
     public void SetBGM(float volume)
     {
         audioMixer.SetFloat("BGM_Volume", volume);

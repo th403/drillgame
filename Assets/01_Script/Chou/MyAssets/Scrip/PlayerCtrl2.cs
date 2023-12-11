@@ -32,6 +32,7 @@ public class PlayerCtrl2 : MonoBehaviour
     public float MovingDistanceMax = 80;
     public float MovingTimeMax = 5;
     public float ChargeTimeMax = 1.5f;
+    public int OneChargePrice = 5000;
     public float xzDrag = 3.5f;
     public float AngularDrag = 3.5f;
     public int PricePerMeter = 100;
@@ -41,7 +42,7 @@ public class PlayerCtrl2 : MonoBehaviour
     public bool CanJump;
     public float JumpSpeed = 10.0f;
 
-    private UIFundsCtrl UIFunds;
+    //private UIFundsCtrl UIFunds;
     private bool Use = true;
     private bool Moving = false;
     private bool Rotating = false;
@@ -52,7 +53,7 @@ public class PlayerCtrl2 : MonoBehaviour
     private float ChargeTime = 0;
     private float ChargeRate = 0;
     private float MovingTime = 0;
-    private float FreezingTime=0;
+    private float FreezingTime = 0;
 
     private Vector3 DeltaRotation;
     private Vector3 DeltaMovement;
@@ -64,7 +65,7 @@ public class PlayerCtrl2 : MonoBehaviour
     void Start()
     {
         transform.position = PlayerData.instance.GetRevivePos();
-        UIFunds = FundsText.GetComponent<UIFundsCtrl>();
+        //UIFunds = FundsText.GetComponent<UIFundsCtrl>();
         //LastFundsCheckPos = transform.position;
         DeltaSpeed = new Vector3(0, 0, 0);
         DeltaMovement = new Vector3(0, 0, 0);
@@ -76,12 +77,14 @@ public class PlayerCtrl2 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (EventCtrl.Instance.CheckGameOver()) return;
+
         //UI
         ChargeRate *= 0.975f;
         ChargeSlider.value = ChargeRate;
 
         //If Moving?
-        if(DeltaSpeed.magnitude>0.5f)
+        if (DeltaSpeed.magnitude>0.5f)
         {
             Moving = true;
         }
@@ -144,7 +147,7 @@ public class PlayerCtrl2 : MonoBehaviour
         else
         {
             InTheAir = true;
-            DeltaSpeed.y += (-9.8f * Time.deltaTime);
+            DeltaSpeed.y += (-15f * Time.deltaTime);
         }
 
         Debug.Log(characterController.isGrounded);
@@ -194,8 +197,10 @@ public class PlayerCtrl2 : MonoBehaviour
 
             ChargeTime = 0;
 
-            if (UIFunds.AddFunds((int)(-PricePerMeter * MovingDistance)))
+            //if (UIFunds.AddFunds((int)(-PricePerMeter * MovingDistance)))
             {
+                EventCtrl.Instance.PlayerGetMoney(-OneChargePrice);
+
                 MovingTime = MovingTimeMin + (MovingTimeMax - MovingTimeMin) * ChargeRate;
                 MovingSpeed = MovingDistance / MovingTime;
                 CharaAnimeController.Instance.StartRun();
@@ -326,8 +331,28 @@ public class PlayerCtrl2 : MonoBehaviour
 
 
     }
+
+    public void PlayerClearPerform()
+    {
+        FreezingTime = 2.0f;
+
+        //reset
+        MovingTime = 0;
+        MovingSpeed = 0;
+        DeltaRotation = new Vector3(0, 0, 0);
+
+        //‰‰o
+        ClearPerformController.Instance.StartPerform();
+        SoundManger.Instance.PlaySESetPipe();
+    }
+
     public bool CheckCanUseDriller()
     {
+        if (Moving || FreezingTime > 0 || ChargeRate > 0.1f)
+        {
+            return false;
+        }
+
         return CanUseDriller;
     }
 
