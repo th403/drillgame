@@ -91,7 +91,7 @@ public class GameOverUI : MonoBehaviour
 
         }
 
-        if (Input.GetKeyDown(KeyCode.Return))
+        if (Input.GetKeyDown(KeyCode.Return) || Input.GetKey(KeyCode.Joystick1Button1))
         {
             switch (Chose)
             {
