@@ -20,9 +20,9 @@ Material:
   - _NORMALMAP
   - _NORMALMAP_TANGENT_SPACE
   m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 1
-  m_CustomRenderQueue: 3000
+  m_EnableInstancingVariants: 1
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: 2750
   stringTagMap:
     MotionVector: User
     RenderType: Transparent
@@ -160,7 +160,7 @@ Material:
     - _AlphaToMaskInspectorValue: 0
     - _Anisotropy: 0
     - _BlendMode: 0
-    - _Brigtness: 0.33
+    - _Brigtness: 0.06
     - _CoatMask: 0
     - _ConservativeDepthOffsetEnable: 0
     - _CullMode: 0
@@ -176,7 +176,7 @@ Material:
     - _DisplacementLockTilingScale: 1
     - _DisplacementMode: 0
     - _DoubleSidedEnable: 1
-    - _DoubleSidedGIMode: 0
+    - _DoubleSidedGIMode: 2
     - _DoubleSidedNormalMode: 1
     - _DstBlend: 10
     - _EmissiveColorMode: 1
@@ -205,7 +205,7 @@ Material:
     - _Metallic: 0
     - _MetallicRemapMax: 0.91598713
     - _MetallicRemapMin: 0
-    - _MetalnessAdjust: 2.1
+    - _MetalnessAdjust: 0
     - _NormalMapSpace: 0
     - _NormalScale: 1
     - _OpaqueCullMode: 2
@@ -218,12 +218,12 @@ Material:
     - _ReceivesSSR: 0
     - _ReceivesSSRTransparent: 1
     - _RefractionModel: 0
-    - _RenderQueueType: 4
+    - _RenderQueueType: 3
     - _RequireSplitLighting: 0
-    - _RimWhith: 0.39
-    - _Saturation: 1.12
+    - _RimWhith: 0.45
+    - _Saturation: 1
     - _Smoothness: 0.5
-    - _SmoothnessMulti: 0
+    - _SmoothnessMulti: 0.11
     - _SmoothnessRemapMax: 1
     - _SmoothnessRemapMin: 0
     - _SpecularAAScreenSpaceVariance: 0.1
@@ -276,8 +276,9 @@ Material:
     - _EmmisiveColor: {r: 4760.5933, g: 4760.5933, b: 4760.5933, a: 0}
     - _InvPrimScale: {r: 1, g: 1, b: 0, a: 0}
     - _IridescenceThicknessRemap: {r: 0, g: 1, b: 0, a: 0}
-    - _RimColor: {r: 0.41714135, g: 0.78813374, b: 0.8113208, a: 0}
+    - _RimColor: {r: 1, g: 1, b: 1, a: 0}
     - _SpecularColor: {r: 1, g: 1, b: 1, a: 1}
+    - _SpecularColror: {r: 1, g: 1, b: 1, a: 0}
     - _ThicknessRemap: {r: 0, g: 1, b: 0, a: 0}
     - _TransmittanceColor: {r: 1, g: 1, b: 1, a: 1}
     - _UVDetailsMappingMask: {r: 1, g: 0, b: 0, a: 0}

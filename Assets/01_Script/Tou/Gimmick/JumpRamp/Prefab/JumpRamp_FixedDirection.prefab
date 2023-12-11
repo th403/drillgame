@@ -50,10 +50,14 @@ MonoBehaviour:
   jumpDir: {fileID: 2398017393574416102}
   power: 5
   maxChargeCount: 30
+  jumpDelay: 0.15
   maxCdCount: 50
+  minPlayerSpeed: 5
+  maxPlayerSpeed: 10
   chargeCount: 0
   cdCount: 0
   playerSpeed: 0
+  player: {fileID: 0}
 --- !u!33 &2398017392573521741
 MeshFilter:
   m_ObjectHideFlags: 0

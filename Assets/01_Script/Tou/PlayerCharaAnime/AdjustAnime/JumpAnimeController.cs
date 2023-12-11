@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -19,30 +20,43 @@ public class JumpAnimeController : MonoBehaviour
 
     [Header("eidt")]
     public float startGroundAnimeHeight = 1.0f;
-    public float jumpPower = 10.0f;
-
-    public float upFrame = 60.0f;
+    public float jumpFrame = 14.0f;
+    public float upFrame = 14.0f;
     public float landFrame = 60.0f;
+
+    public Action OnJump;
+    public Action OnLandStart;
+    public Action OnLandEnd;
 
     [Header("read only")]
     public JumpState state = JumpState.WaitJump;
     public Vector3 lastPos;
+    public Vector3 jumpVelo;
 
     private void Start()
     {
         lastPos = modelRoot.position;
     }
 
-    public bool StartJump()
+    public bool StartJump(Vector3 jump)
     {
         //can't jump
         if (state!=JumpState.WaitJump) return false;
 
         //start jump
         anime.SetTrigger("Jump");
-        state = JumpState.Up;
-        Invoke("StartFall", upFrame * 1.0f / 60.0f);
+
+        //prepare up
+        jumpVelo = jump;
+        Invoke("StartUp", upFrame * 1.0f / 60.0f);
+        Invoke("StartFall", jumpFrame * 1.0f / 60.0f);
         return true;
+    }
+
+    public void StartUp()
+    {
+        PlayerCtrl2.Instance.SetSpeed(jumpVelo);
+        state = JumpState.Up;
     }
 
     public void StartFall()
@@ -68,6 +82,9 @@ public class JumpAnimeController : MonoBehaviour
         RaycastHit hit;
         if(Physics.Raycast(ray,out hit,startGroundAnimeHeight,layer))
         {
+            //check fall
+            if ((modelRoot.position - lastPos).y >= 0) return;
+
             anime.SetTrigger("FallToGround");
             state = JumpState.Land;
 

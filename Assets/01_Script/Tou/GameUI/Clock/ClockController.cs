@@ -94,8 +94,10 @@ public class ClockController : MonoBehaviour
         float max = MainGameDataManager.Instance.timeLimit.Value;
 
         var lastCount = count;
-        count = Mathf.FloorToInt(time / max * 60.0f);
-        if(count!=lastCount)
+        count = Mathf.FloorToInt(time / max * pieceMax);
+        if(count!=lastCount&& 
+            lastCount<pieceMax&&
+            lastCount>=0)
         {
             pieces[lastCount].TurnOff();
         }

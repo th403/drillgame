@@ -43,10 +43,8 @@ GameObject:
   - component: {fileID: 1034939038109393327}
   - component: {fileID: 4677945287953811305}
   - component: {fileID: 3979963100264306827}
-  - component: {fileID: 4731468415140020839}
   - component: {fileID: 7813121427393854284}
-  - component: {fileID: 296940393036544287}
-  - component: {fileID: 3287128658794410333}
+  - component: {fileID: 4320589923179147655}
   m_Layer: 0
   m_Name: BoneMesh_001
   m_TagString: Untagged
@@ -119,19 +117,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!135 &4731468415140020839
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4207210318896750254}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 4.67
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!64 &7813121427393854284
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -146,20 +131,7 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -2075468477395905726, guid: f37e101e52f75ef41afad9577c998572, type: 3}
---- !u!114 &296940393036544287
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4207210318896750254}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 29b673e3a67d27e4281463c9a1ac1756, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Effect: {fileID: 3594958593639721397, guid: 11555901d28bcb14a91bf80e579c6954, type: 3}
---- !u!114 &3287128658794410333
+--- !u!114 &4320589923179147655
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -168,7 +140,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 4207210318896750254}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 15649b02012bcee46b587e82a5efaf16, type: 3}
+  m_Script: {fileID: 11500000, guid: 4c61b550c8b359048b16184905813cc0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Effect: {fileID: 3594958593639721397, guid: 11555901d28bcb14a91bf80e579c6954, type: 3}
+  Effect: {fileID: 4864829505824933517, guid: dab52ddb8f79a5244a72b749cb91fce7, type: 3}

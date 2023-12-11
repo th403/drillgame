@@ -13,12 +13,12 @@ GameObject:
   - component: {fileID: 944168049894695082}
   - component: {fileID: 278202740352788021}
   - component: {fileID: 4086055679339482279}
-  - component: {fileID: 2779274345084127721}
   - component: {fileID: 2759557888359358281}
   - component: {fileID: 8163857058440958140}
+  - component: {fileID: 6198819779945485374}
   m_Layer: 0
   m_Name: Magnet_002
-  m_TagString: Untagged
+  m_TagString: Magnet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -119,19 +119,6 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -1790058728406196013, guid: fc886eefb7199654c94576f40f5bcf8b, type: 3}
---- !u!114 &2779274345084127721
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9043385232924473544}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 29b673e3a67d27e4281463c9a1ac1756, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Effect: {fileID: 4864829505824933517, guid: dab52ddb8f79a5244a72b749cb91fce7, type: 3}
 --- !u!198 &2759557888359358281
 ParticleSystem:
   m_ObjectHideFlags: 0
@@ -4911,6 +4898,19 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!114 &6198819779945485374
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9043385232924473544}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c61b550c8b359048b16184905813cc0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Effect: {fileID: 4864829505824933517, guid: dab52ddb8f79a5244a72b749cb91fce7, type: 3}
 --- !u!1001 &7083478350879528075
 PrefabInstance:
   m_ObjectHideFlags: 0
