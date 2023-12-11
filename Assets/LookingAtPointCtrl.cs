@@ -36,11 +36,11 @@ public class LookingAtPointCtrl : MonoBehaviour
             
             //WS
             float DeltaHeight=0;
-            if (Input.GetKey(KeyCode.W) && transform.localPosition.y < HeightMax)
+            if ((Input.GetKey(KeyCode.W) || Input.GetAxis("Vertical") > 0) && transform.localPosition.y < HeightMax)
             {
                 DeltaHeight += XRotateSpeed;
             }
-            else if (Input.GetKey(KeyCode.S) && transform.localPosition.y > HeightMin)
+            else if (Input.GetKey(KeyCode.S) || Input.GetAxis("Vertical") < 0 && transform.localPosition.y > HeightMin)
             {
                 DeltaHeight -= XRotateSpeed;
             }

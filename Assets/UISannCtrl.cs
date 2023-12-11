@@ -5,6 +5,7 @@ using UnityEngine;
 public class UISannCtrl : MonoBehaviour
 {
     public float AnmTime = 0.5f;
+    public float RotateTime = 0.3f;
     private float CountTime = 0;
     public float DropDistance = 800.0f;
     private float DropSpeed;
@@ -17,6 +18,7 @@ public class UISannCtrl : MonoBehaviour
     void Start()
     {
         rectTransform = GetComponent<RectTransform>();
+        rectTransform.localPosition += new Vector3(0, DropDistance, 0);
         DropSpeed = DropDistance / AnmTime;
     }
 
@@ -34,25 +36,25 @@ public class UISannCtrl : MonoBehaviour
             }
             else
             {
-                StartRotateObj();
+                StartRotateObj(true);
             }
             if (RotateOn)
             {
-                RotateSpeed += -360.0f * Time.deltaTime;
+                RotateSpeed += -720.0f * Time.deltaTime;
                 rectTransform.Rotate(new Vector3(0, 0, RotateSpeed * Time.deltaTime));
 
-                if (rectTransform.localRotation.z < -30.0f)
+                if (CountTime > AnmTime+RotateTime)
                 {
                     AnmOn = false;
                 }
-
+                
             }
-
+            
         }
 
     }
 
-    void StartRotateObj()
+    void StartRotateObj(bool on)
     {
         RotateOn = true;
     }

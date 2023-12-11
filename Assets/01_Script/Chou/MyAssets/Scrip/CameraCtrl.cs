@@ -45,7 +45,7 @@ public class CameraCtrl : MonoBehaviour
     {
         if (EventCtrl.Instance.CheckGameOver()) return;
 
-        if (Input.GetKeyDown(KeyCode.F)||Input.GetKeyDown(KeyCode.Joystick1Button2))
+        if (Input.GetKeyDown(KeyCode.F)||Input.GetKeyDown(KeyCode.Joystick1Button3))
         {
             if ((PlayerCtrl2.Instance.CheckCanUseDriller()
                     && !driller.gameObject.activeSelf))

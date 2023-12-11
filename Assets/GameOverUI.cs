@@ -6,11 +6,12 @@ using UnityEngine.SceneManagement;
 public class GameOverUI : MonoBehaviour
 {
     private int Chose = 1;
-    public GameObject ImageRestartCheckPoint;
-    public GameObject ImageRestartLevel;
-    public GameObject ImageReturn;
-
-
+    public GameObject   ImageRestartCheckPoint;
+    public GameObject   ImageRestartLevel;
+    public GameObject   ImageReturn;
+    public string       TitleSceneName;
+    public float        DelayMax = 0.15f;
+    private float       CountDelay;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,16 +21,52 @@ public class GameOverUI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.S))
+        float dy = Input.GetAxis("Vertical");
+        if(CountDelay>0)
         {
+            CountDelay -= Time.deltaTime;
+        }
+
+        if (CountDelay <=0 && (dy > 0.1f || dy < -0.1f))
+        {
+            CountDelay = DelayMax;
+        }
+
+        //if (PlayerCtrl2.Instance.GetIfMoving())
+        //{
+        //    ResetDelay = 0;
+        //}
+
+        //if (ResetDelay > 0)
+        //{
+        //    float rotationY = Input.GetAxis("4thHorizontal") * RotateSpd * Time.deltaTime;
+        //    if (Input.GetKey(KeyCode.Q))
+        //    {
+        //        rotationY += RotateSpd * Time.deltaTime;
+        //    }
+        //    if (Input.GetKey(KeyCode.E))
+        //    {
+        //        rotationY -= RotateSpd * Time.deltaTime;
+        //    }
+
+        //    transform.Rotate(0, rotationY, 0, Space.Self);
+
+        //}
+
+        if (Input.GetKeyDown(KeyCode.S) || (CountDelay == DelayMax && dy < -0.1f))
+        {
+            SoundManger.Instance.PlaySEUISelect();
+
             Chose += 1;
             if (Chose > 3)
             {
                 Chose = 1;
             }
         }
-        else if (Input.GetKeyDown(KeyCode.W))
+        else if (Input.GetKeyDown(KeyCode.W) || (CountDelay == DelayMax && dy > 0.1f))
         {
+            SoundManger.Instance.PlaySEUISelect();
+
             Chose -= 1;
             if (Chose < 1)
             {
@@ -54,8 +91,6 @@ public class GameOverUI : MonoBehaviour
 
         }
 
-
-
         if (Input.GetKeyDown(KeyCode.Return))
         {
             switch (Chose)
@@ -68,7 +103,7 @@ public class GameOverUI : MonoBehaviour
                     SceneManager.LoadScene(SceneManager.GetActiveScene().name);
                     break;
                 case 3:
-                    SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+                    SceneManager.LoadScene(TitleSceneName);
                     break;
 
             }

@@ -14,7 +14,8 @@ public class UITouCtrl : MonoBehaviour
     void Start()
     {
         rectTransform = GetComponent<RectTransform>();
-         DropSpeed = DropDistance / AnmTime;
+        rectTransform.localPosition += new Vector3(0, DropDistance, 0);
+        DropSpeed = DropDistance / AnmTime;
     }
 
     // Update is called once per frame
