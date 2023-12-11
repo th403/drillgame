@@ -31,6 +31,16 @@ public class CharaAnimeController : MonoBehaviour
         anim.SetInteger("IdleWalkRun",2);
     }
 
+    public void StartTurnRight()
+    {
+        anim.SetInteger("IdleWalkRun", 4);
+    }
+
+    public void StartTurnLeft()
+    {
+        anim.SetInteger("IdleWalkRun", 3);
+    }
+
     public void StartWalk()
     {
         anim.SetInteger("IdleWalkRun", 1);
@@ -41,9 +51,10 @@ public class CharaAnimeController : MonoBehaviour
         anim.SetInteger("IdleWalkRun", 0);
     }
 
-    public bool StartJump()
+    public bool StartJump(Vector3 jump)
     {
-        return jumpCtrl.StartJump();
+        print("check one jump");
+        return jumpCtrl.StartJump(jump);
     }
 
     public float StartStick()
@@ -65,6 +76,11 @@ public class CharaAnimeController : MonoBehaviour
     public void StartClear()
     {
         anim.SetTrigger("Clear");
+    }
+
+    public void StartClearOver()
+    {
+        anim.SetTrigger("ClearOver");
     }
 
     public void StartDig()
