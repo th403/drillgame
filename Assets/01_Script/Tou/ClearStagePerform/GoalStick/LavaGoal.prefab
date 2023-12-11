@@ -165,7 +165,8 @@ MonoBehaviour:
   mainCmr: {fileID: 0}
   cmrRig: {fileID: 2729623635201208288}
   groundPosY: 0.3
-  animeFrame: 120
+  jumpFrame: 100
+  clearPerformFrame: 120
   jumpHeight: 5
   finish: 0
 --- !u!33 &1788607924
@@ -309,7 +310,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 3839
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0

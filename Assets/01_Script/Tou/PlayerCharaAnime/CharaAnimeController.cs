@@ -78,6 +78,11 @@ public class CharaAnimeController : MonoBehaviour
         anim.SetTrigger("Clear");
     }
 
+    public void StartClearOver()
+    {
+        anim.SetTrigger("ClearOver");
+    }
+
     public void StartDig()
     {
         anim.SetBool("Dig", true);

@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class TimeLoadScene_001 : MonoBehaviour
 {
+    public string NextScene;
     private float step_time;    // 経過時間カウント用
     public float SceneChangeTime = 5;
 
@@ -23,7 +24,8 @@ public class TimeLoadScene_001 : MonoBehaviour
         // 3秒後に画面遷移（scene2へ移動）
         if (step_time >= SceneChangeTime)
         {
-            SceneManager.LoadScene("05_end");
+         //    SceneManager.LoadScene("05_end");
+            SceneManager.LoadScene(NextScene);
         }
     }
 }
