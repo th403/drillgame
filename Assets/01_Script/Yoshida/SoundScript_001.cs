@@ -49,10 +49,6 @@ public class SoundScript_001 : MonoBehaviour
         {
             audioSource2.PlayOneShot(audioClip2);
             Debug.Log("aaa");
-
-            //audioSource1.Stop(audioClip1);
-            //audioSource2.Stop(audioClip2);
-
         }
     }
 
