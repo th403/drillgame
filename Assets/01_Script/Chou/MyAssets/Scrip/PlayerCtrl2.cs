@@ -77,12 +77,14 @@ public class PlayerCtrl2 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (EventCtrl.Instance.CheckGameOver()) return;
+
         //UI
         ChargeRate *= 0.975f;
         ChargeSlider.value = ChargeRate;
 
         //If Moving?
-        if(DeltaSpeed.magnitude>0.5f)
+        if (DeltaSpeed.magnitude>0.5f)
         {
             Moving = true;
         }

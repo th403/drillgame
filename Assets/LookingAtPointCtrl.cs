@@ -29,6 +29,7 @@ public class LookingAtPointCtrl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (EventCtrl.Instance.CheckGameOver()) return;
 
         if (!followAss.FPSMode())
         {

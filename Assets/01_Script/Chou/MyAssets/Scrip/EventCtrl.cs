@@ -69,8 +69,14 @@ public class EventCtrl : MonoBehaviour
             if (getMoney>0&&getMoney < 1) getMoney = 1;
             else if (getMoney < 0 && getMoney > -1) getMoney = -1;
 
-            IncomeBarController.Instance.AddMoney((int)getMoney);
-            Income -= (int)getMoney;
+            if(IncomeBarController.Instance.SubtractMoney((int)-getMoney))
+            {
+                Income -= (int)getMoney;
+            }
+            else
+            {
+                GameOver = true;
+            }
         }
 
         if(GameOver)

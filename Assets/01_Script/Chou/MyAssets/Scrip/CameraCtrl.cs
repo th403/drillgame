@@ -43,6 +43,8 @@ public class CameraCtrl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (EventCtrl.Instance.CheckGameOver()) return;
+
         if (Input.GetKeyDown(KeyCode.F)||Input.GetKeyDown(KeyCode.Joystick1Button2))
         {
             if ((PlayerCtrl2.Instance.CheckCanUseDriller()
