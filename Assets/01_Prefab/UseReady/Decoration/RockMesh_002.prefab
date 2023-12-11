@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7576120109633601178}
   - component: {fileID: 2709040480545735332}
   - component: {fileID: 7874076400716156980}
-  - component: {fileID: 6211686684220450861}
+  - component: {fileID: -1107146300125269019}
   m_Layer: 0
   m_Name: RockMesh_002
   m_TagString: Untagged
@@ -99,7 +99,7 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -1790058728406196013, guid: fc886eefb7199654c94576f40f5bcf8b, type: 3}
---- !u!114 &6211686684220450861
+--- !u!114 &-1107146300125269019
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -108,7 +108,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1513719934953929822}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 29b673e3a67d27e4281463c9a1ac1756, type: 3}
+  m_Script: {fileID: 11500000, guid: 4c61b550c8b359048b16184905813cc0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Effect: {fileID: 4864829505824933517, guid: dab52ddb8f79a5244a72b749cb91fce7, type: 3}

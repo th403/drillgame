@@ -11,12 +11,12 @@ GameObject:
   - component: {fileID: 6475300728914254807}
   - component: {fileID: 4983634885209651328}
   - component: {fileID: 3734760624362191839}
-  - component: {fileID: 7870432660698643490}
-  - component: {fileID: -5308832608271233922}
   - component: {fileID: 2716670320862667301}
   - component: {fileID: 4164572134853657678}
   - component: {fileID: 1533574604295640413}
   - component: {fileID: 6593863872788432967}
+  - component: {fileID: 5869897735885112917}
+  - component: {fileID: 4027887763889195917}
   m_Layer: 0
   m_Name: Magma_001
   m_TagString: Untagged
@@ -91,33 +91,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &7870432660698643490
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2018016585198390802}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4a3b40ede9ad20144b93a671a664252c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Value: -5000
-  EventCtrlObj: {fileID: 0}
---- !u!114 &-5308832608271233922
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2018016585198390802}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 29b673e3a67d27e4281463c9a1ac1756, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Effect: {fileID: 4864829505824933517, guid: b13022878e18bab43a81f877f426d259, type: 3}
 --- !u!198 &2716670320862667301
 ParticleSystem:
   m_ObjectHideFlags: 0
@@ -4927,6 +4900,33 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!114 &5869897735885112917
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2018016585198390802}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c61b550c8b359048b16184905813cc0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Effect: {fileID: 4864829505824933517, guid: b13022878e18bab43a81f877f426d259, type: 3}
+--- !u!114 &4027887763889195917
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2018016585198390802}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 125b1f7ed0d0d37459a8009d836668c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Value: -5000
+  EventCtrlObj: {fileID: 0}
 --- !u!1 &9102359625095243311
 GameObject:
   m_ObjectHideFlags: 0

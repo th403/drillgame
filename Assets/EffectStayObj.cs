@@ -23,7 +23,6 @@ public class EffectStayObj : MonoBehaviour
         if (other.tag=="Driller" && Effect)
         {
             Instantiate(Effect, transform.position, transform.rotation);
-            Destroy(this.gameObject);
         }
 
     }
