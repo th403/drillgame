@@ -48,6 +48,7 @@ public class ColForStartClearPerform : MonoBehaviour
                 mainCmr.enabled = false;
                 cmrRig.forward = -jumpDir;
 
+                //set perform
                 //other.gameObject.GetComponent<Rigidbody>().velocity = velo;
                 other.gameObject.GetComponent<PlayerCtrl2>().enabled = false;
                 var move= other.gameObject.AddComponent<PlayerJumpMoveClip>();
@@ -71,10 +72,11 @@ public class ColForStartClearPerform : MonoBehaviour
                 });
 
                 //set anime
-                CharaAnimeController.Instance.StartStick();
+                CharaAnimeController.Instance.StartClear();
 
+                //set finish
                 finish = true;
-                GetComponent<Collider>().enabled = false;
+                //GetComponent<Collider>().enabled = false;
             }
         }
     }

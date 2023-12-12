@@ -21,6 +21,9 @@ public class SoundManger : MonoBehaviour
     public AudioSource GetMoneySE;
     public AudioSource HitGroundSE;
     public AudioSource SetPipeSE;
+    public AudioSource UISelectSE;
+    public AudioSource UICancelSE;
+
     public float SetPipeDelay = 1.0f;
     // Start is called before the first frame update
     void Start()
@@ -60,6 +63,14 @@ public class SoundManger : MonoBehaviour
     {
         SetPipeSE.Play();
     }
+    public void PlaySEUISelect()
+    {
+        UISelectSE.Play();
+    }
+    public void PlaySEUICancel()
+    {
+        UICancelSE.Play();
+    }
 
-
+    
 }
