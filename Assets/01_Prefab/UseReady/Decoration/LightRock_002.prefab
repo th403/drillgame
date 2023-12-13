@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5389507205421651335}
   - component: {fileID: 4338801223311546072}
   - component: {fileID: 83649714283467774}
-  - component: {fileID: 8338578414694401757}
+  - component: {fileID: -3699728025288086104}
   m_Layer: 0
   m_Name: LightRock_002
   m_TagString: Untagged
@@ -100,7 +100,7 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -1790058728406196013, guid: fc886eefb7199654c94576f40f5bcf8b, type: 3}
---- !u!114 &8338578414694401757
+--- !u!114 &-3699728025288086104
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -109,7 +109,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1433097812008133397}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 29b673e3a67d27e4281463c9a1ac1756, type: 3}
+  m_Script: {fileID: 11500000, guid: 4c61b550c8b359048b16184905813cc0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Effect: {fileID: 7414909698952189764, guid: 7a8da21a35ccf7e47b734b669ab461d8, type: 3}

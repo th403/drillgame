@@ -29,17 +29,18 @@ public class LookingAtPointCtrl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (EventCtrl.Instance.CheckGameOver()) return;
 
         if (!followAss.FPSMode())
         {
             
             //WS
             float DeltaHeight=0;
-            if (Input.GetKey(KeyCode.W) && transform.localPosition.y < HeightMax)
+            if ((Input.GetKey(KeyCode.W) || Input.GetAxis("Vertical") > 1.0f) && transform.localPosition.y < HeightMax)
             {
                 DeltaHeight += XRotateSpeed;
             }
-            else if (Input.GetKey(KeyCode.S) && transform.localPosition.y > HeightMin)
+            else if (Input.GetKey(KeyCode.S) || Input.GetAxis("Vertical") < -1.0f && transform.localPosition.y > HeightMin)
             {
                 DeltaHeight -= XRotateSpeed;
             }

@@ -136,6 +136,7 @@ MonoBehaviour:
   MovingDistanceMax: 30
   MovingTimeMax: 3
   ChargeTimeMax: 2
+  OneChargePrice: 5000
   xzDrag: 3.5
   AngularDrag: 0.02
   PricePerMeter: 100
@@ -1157,11 +1158,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9179014977012450376, guid: 163988c60c91811499641d27e68716ce, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.75
+      value: 1.25
       objectReference: {fileID: 0}
     - target: {fileID: 9179014977012450376, guid: 163988c60c91811499641d27e68716ce, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1
+      value: 1.25
       objectReference: {fileID: 0}
     - target: {fileID: 9179014977012450376, guid: 163988c60c91811499641d27e68716ce, type: 3}
       propertyPath: m_LocalRotation.w

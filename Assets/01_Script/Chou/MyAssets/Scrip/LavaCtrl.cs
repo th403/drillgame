@@ -12,18 +12,20 @@ public class LavaCtrl : MonoBehaviour
     public int CheckPointNo = -1;
     public int ReviveStartFunds = 54321;
     public GameObject RevivePos;
-    private EventCtrl eventCtrl;
 
-    public float Value=50000;
-    public int FundsPerSec = 1000;
+    public int Value=50000;
+    //public int FundsPerSec = 1000;
 
     private bool use=false;
-    private float CountTime=0;
+    public float EffectTime=2.0f;
+    //private float CountTime = 0.0f;
+    private int MoneyPerSec = 0;
 
     // Start is called before the first frame update
     void Start()
     {
-        eventCtrl = EventCtrlObj.GetComponent<EventCtrl>();
+
+        MoneyPerSec = (int)(Value / EffectTime);
     }
 
     // Update is called once per frame
@@ -31,19 +33,13 @@ public class LavaCtrl : MonoBehaviour
     {
         if (use && Value>0)
         {
-            CountTime += Time.deltaTime;
-            if (CountTime>=1)
-            {
-                Value -= FundsPerSec;
-                eventCtrl.PlayerGetMoney(FundsPerSec);
-                CountTime = 0;
-            }
+            EventCtrl.Instance.PlayerGetMoney(GetMoney((int)(MoneyPerSec * Time.deltaTime)));
 
         }
-        else if(use&&Value<=0)
-        {
+        //else if(use&&Value<=0)
+        //{
             //this.GetComponent<Renderer>().material.color *= 0;
-        }
+        //}
 
     }
 
@@ -58,8 +54,26 @@ public class LavaCtrl : MonoBehaviour
             if(IsCheckPoint)
             {
                 PlayerData.instance.SetRevivePos(RevivePos.transform.position, CheckPointNo);
+                PlayerData.instance.SetReviveFunds(ReviveStartFunds);
             }
         }
     }
+
+    private int GetMoney(int money)
+    {
+        int lastValue = Value;
+        Value -= money;
+        if (Value>=0)
+        {
+            return money;
+        }
+        else
+        {
+            Value = 0;
+            return lastValue;
+
+        }
+    }
+
 
 }
