@@ -50,6 +50,15 @@ public class ResultPanelController : MonoBehaviour
     public Vector3 energyCountResultPos;
     public Vector3 totalScoreResultPos;
     public Vector3 rankResultPos;
+    public enum State
+    {
+        WaitShow,
+        Show,
+        WaitHide,
+        Hide
+    }
+    public State state=State.WaitShow;
+
 
     public void Init()
     {
@@ -96,6 +105,10 @@ public class ResultPanelController : MonoBehaviour
                 showTotalScoreResult.ReStart(showScoreTime);
             });
         };
+        showTotalScoreResult.OnFinish += () =>
+          {
+              state = State.WaitHide;
+          };
 
         //hide panel
         panel.SetActive(false);
@@ -103,6 +116,10 @@ public class ResultPanelController : MonoBehaviour
 
     public void StartShowResult()
     {
+        //check state can show and set state
+        if (state != State.WaitShow) return;
+        state = State.Show;
+
         //set item index
         for (int i = 0; i < items.Count; i++)
         {
@@ -144,8 +161,6 @@ public class ResultPanelController : MonoBehaviour
             //move items
             MoveItems(()=>
             {
-                print("start money show");
-
                 //show money result
                 showMoneyResult.ReStart(showTime);
             });
@@ -154,7 +169,30 @@ public class ResultPanelController : MonoBehaviour
 
     public void HidePanel()
     {
-        panel.SetActive(false);
+        //check state can hide and set state
+        if (state != State.WaitHide) return;
+        state = State.Hide;
+
+        //start hide anime
+        float hideTime = 1.0f;
+        var seq = DOTween.Sequence();
+        seq.Append(background.DOColor(new Color(1, 1, 1, 0), hideTime));
+        //move anime
+        Vector3 startPos = itemTrss[0].localPosition;
+        startPos.x = hidePosX;
+        seq.Join(rankResultTrs.DOLocalMove(new Vector3(startPos.x, rankResultTrs.localPosition.y,startPos.z), hideTime).SetEase(Ease.InBack));
+        seq.Join(totalScoreResultTrs.DOLocalMove(new Vector3(startPos.x, totalScoreResultTrs.localPosition.y, startPos.z), hideTime).SetEase(Ease.InBack));
+        for (int i = 0; i < items.Count; i++)
+        {
+            items[i].Stop();
+            seq.Join(items[i].transform.DOLocalMove(new Vector3(startPos.x, items[i].transform.localPosition.y,startPos.z), hideTime).SetEase(Ease.InBack));
+        }
+        seq.OnComplete(() =>
+        {
+            state = State.WaitShow;
+            panel.SetActive(false);
+        });
+        seq.Play();
     }
 
     void MoveItems(TweenCallback OnComplete)
