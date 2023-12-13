@@ -769,7 +769,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_FirstSelected: {fileID: 0}
+  m_FirstSelected: {fileID: 2093434339}
   m_sendNavigationEvents: 1
   m_DragThreshold: 10
 --- !u!4 &68230913
@@ -2037,6 +2037,36 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 209144474}
   m_Mesh: {fileID: 7187801968074014597, guid: 42b26f4c7d510274fa36e8fde4c1c26e, type: 3}
+--- !u!1 &222048599 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5774853856468268055, guid: 325138357b451e847a0a42518eeafe5a, type: 3}
+  m_PrefabInstance: {fileID: 966128549}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &222048600
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 222048599}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d47a194003e32d5449c851f2a2c933ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioMixer: {fileID: 24100000, guid: 16990643c1bf99d44a46dfae119f4fed, type: 2}
+  bGMSlider: {fileID: 128120694}
+  sESlider: {fileID: 914563144}
+  audioClipBGM1: {fileID: 0}
+  audioClipBGM2: {fileID: 0}
+  audioClipSE_001: {fileID: 8300000, guid: ba8825479cc3c7b4ab9afb11558bc17b, type: 3}
+  bgm1MixerGroup: {fileID: 0}
+  PausePanel_Pause_001: {fileID: 1568771105}
+  UnPausePanel_Pause_001: {fileID: 2087514825}
+  OptionPanel_Pause_001: {fileID: 674627002}
+  RetryDialoguePanel_Pause_001: {fileID: 5683179000941159912, guid: b2e9d2bce7632034ead8006ee9aabfe7, type: 3}
+  UnPauseUI: {fileID: 2087514825}
+  OptionUI: {fileID: 2093434339}
 --- !u!1 &222417578
 GameObject:
   m_ObjectHideFlags: 0
@@ -8017,6 +8047,68 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5144590380301910457, guid: ccb3cd9ac1bd34045a1605ddbe4d9624, type: 3}
   m_PrefabInstance: {fileID: 1216516088}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &966128549
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 5774853856468268052, guid: 325138357b451e847a0a42518eeafe5a, type: 3}
+      propertyPath: OptionPanel_Pause_001
+      value: 
+      objectReference: {fileID: 674627002}
+    - target: {fileID: 5774853856468268053, guid: 325138357b451e847a0a42518eeafe5a, type: 3}
+      propertyPath: m_RootOrder
+      value: 26
+      objectReference: {fileID: 0}
+    - target: {fileID: 5774853856468268053, guid: 325138357b451e847a0a42518eeafe5a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 445.2058
+      objectReference: {fileID: 0}
+    - target: {fileID: 5774853856468268053, guid: 325138357b451e847a0a42518eeafe5a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 241.25043
+      objectReference: {fileID: 0}
+    - target: {fileID: 5774853856468268053, guid: 325138357b451e847a0a42518eeafe5a, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5774853856468268053, guid: 325138357b451e847a0a42518eeafe5a, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5774853856468268053, guid: 325138357b451e847a0a42518eeafe5a, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5774853856468268053, guid: 325138357b451e847a0a42518eeafe5a, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5774853856468268053, guid: 325138357b451e847a0a42518eeafe5a, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5774853856468268053, guid: 325138357b451e847a0a42518eeafe5a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5774853856468268053, guid: 325138357b451e847a0a42518eeafe5a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5774853856468268053, guid: 325138357b451e847a0a42518eeafe5a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5774853856468268055, guid: 325138357b451e847a0a42518eeafe5a, type: 3}
+      propertyPath: m_Name
+      value: GameSelectPanelManager
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 501201828140030154, guid: 325138357b451e847a0a42518eeafe5a, type: 3}
+  m_SourcePrefab: {fileID: 100100000, guid: 325138357b451e847a0a42518eeafe5a, type: 3}
 --- !u!1001 &968752799
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15516,6 +15608,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameManager
       objectReference: {fileID: 0}
+    - target: {fileID: 9058348644962246344, guid: 04fb07fab46041940804271f3d250cd9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9058348644962246346, guid: 04fb07fab46041940804271f3d250cd9, type: 3}
       propertyPath: m_RootOrder
       value: 24
@@ -18089,6 +18185,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2087514825}
   m_CullTransparentMesh: 1
+--- !u!1 &2093434339 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8944081415709892325, guid: d75154ceae0de3a46ab7e4c8f866d70d, type: 3}
+  m_PrefabInstance: {fileID: 147715712}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2108464274
 GameObject:
   m_ObjectHideFlags: 0
@@ -24248,7 +24349,7 @@ MonoBehaviour:
   ReviveStartFunds: 54321
   RevivePos: {fileID: 0}
   Value: 50000
-  FundsPerSec: 1000
+  EffectTime: 2
 --- !u!114 &3531437691946160676
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24268,7 +24369,7 @@ MonoBehaviour:
   ReviveStartFunds: 54321
   RevivePos: {fileID: 0}
   Value: 50000
-  FundsPerSec: 1000
+  EffectTime: 2
 --- !u!4 &3537400477597862798
 Transform:
   m_ObjectHideFlags: 0
@@ -25935,7 +26036,7 @@ MonoBehaviour:
   ReviveStartFunds: 54321
   RevivePos: {fileID: 0}
   Value: 50000
-  FundsPerSec: 1000
+  EffectTime: 2
 --- !u!4 &8416439127033569002
 Transform:
   m_ObjectHideFlags: 0
