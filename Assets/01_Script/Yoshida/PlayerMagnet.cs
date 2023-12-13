@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerMagnet : MonoBehaviour
 {
 
-    public TurtorialPlayerCtrl2 tpc;
+    public PlayerCtrl2 tpc;
 
     public float attractionDistance = 2f;   // ¥Î‚É‚­‚Á‚Â‚­‹——£
   //public float magnetForce = 10f;         // ¥Î‚É‚­‚Á‚Â‚­—Í
