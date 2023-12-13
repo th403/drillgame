@@ -41,9 +41,6 @@ public class PlayerCtrl2 : MonoBehaviour
     public float ChargeChangeRotateSpeedRate = 4.0f;
     public bool CanJump;
     public float JumpSpeed = 10.0f;
-    //–‚‰ü‘¢
-    public float MovingSpeed;
-
 
     //private UIFundsCtrl UIFunds;
     private bool Use = true;
@@ -51,7 +48,7 @@ public class PlayerCtrl2 : MonoBehaviour
     private bool Rotating = false;
     private bool CanUseDriller = true;
     private bool InTheAir = false;
-    //private float MovingSpeed;
+    private float MovingSpeed;
 
     private float ChargeTime = 0;
     private float ChargeRate = 0;
