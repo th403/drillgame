@@ -22,7 +22,6 @@ public class GameClearZone : MonoBehaviour
         {
             PlayerCtrl2.Instance.PlayerGetLava();
             SceneManager.LoadScene(NextScene);
-
         }
     }
 

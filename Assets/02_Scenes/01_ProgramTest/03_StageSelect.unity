@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 1865.2617, g: 2311.2383, b: 3059.1133, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -4636,7 +4636,7 @@ GameObject:
   - component: {fileID: 596307498}
   - component: {fileID: 596307497}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: OptionCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -24425,7 +24425,7 @@ MonoBehaviour:
   ReviveStartFunds: 54321
   RevivePos: {fileID: 0}
   Value: 50000
-  FundsPerSec: 1000
+  EffectTime: 2
 --- !u!114 &3531437691946160676
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24445,7 +24445,7 @@ MonoBehaviour:
   ReviveStartFunds: 54321
   RevivePos: {fileID: 0}
   Value: 50000
-  FundsPerSec: 1000
+  EffectTime: 2
 --- !u!4 &3537400477597862798
 Transform:
   m_ObjectHideFlags: 0
@@ -26112,7 +26112,7 @@ MonoBehaviour:
   ReviveStartFunds: 54321
   RevivePos: {fileID: 0}
   Value: 50000
-  FundsPerSec: 1000
+  EffectTime: 2
 --- !u!4 &8416439127033569002
 Transform:
   m_ObjectHideFlags: 0

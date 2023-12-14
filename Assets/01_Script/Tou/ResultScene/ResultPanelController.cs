@@ -59,6 +59,13 @@ public class ResultPanelController : MonoBehaviour
     }
     public State state=State.WaitShow;
 
+    private void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.B))
+        {
+            HidePanel();
+        }
+    }
 
     public void Init()
     {
