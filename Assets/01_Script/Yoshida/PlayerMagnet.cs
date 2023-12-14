@@ -36,7 +36,7 @@ public class PlayerMagnet : MonoBehaviour
             float distanceToMagnet = Vector3.Distance(transform.position, magnet.transform.position);
 
             // 一定の距離内に磁石がいる場合、プレイヤーが磁石にくっつく
-            if (distanceToMagnet <= attractionDistance && isMagnet == true)
+            if (distanceToMagnet < attractionDistance && isMagnet == true)
             {
                 //// プレイヤーを磁石にくっつける処理（例：力を加える）
                 //Vector3 direction = magnet.transform.position - transform.position;
@@ -46,7 +46,7 @@ public class PlayerMagnet : MonoBehaviour
                 //transform.position = Vector3.Lerp(transform.position, magnet.transform.position, Time.deltaTime * lerpSpeed);
                 //transform.position = magnet.transform.position;
                 //transform.position += new Vector3(0, 2.0f, 0);
-                PlayerCtrl2.Instance.SetPlayerPosition(magnet.transform.position);
+                PlayerCtrl2.Instance.WarpToPosition(magnet.transform.position);
                 
 
                 //tpc.MovingTime = 0;
@@ -61,7 +61,7 @@ public class PlayerMagnet : MonoBehaviour
 
 
 
-            if (distanceToMagnet <= attractionDistance)
+            if (distanceToMagnet < attractionDistance)
             {
                 isAnyMagnetClose = true;
 
