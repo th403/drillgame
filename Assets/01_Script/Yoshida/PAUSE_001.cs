@@ -17,8 +17,10 @@ public class PAUSE_001 : MonoBehaviour
     private AudioSource audioSourceBGM1;    //BGM1
     private AudioSource audioSourceBGM2;    //BGM2
     private AudioSource audioSourceSE1;     //SE(OPTION閉じた)
-    public AudioMixerGroup bgm1MixerGroup; // BGM2用のAudioMixerGroupをUnityエディタ上で設定
+    public AudioMixerGroup seMixerGroup;   // SE用のAudioMixerGroupをUnityエディタ上で設定
+    public AudioMixerGroup bgm1MixerGroup;  // BGM2用のAudioMixerGroupをUnityエディタ上で設定
     
+
 
 
     //public GameObject player;
@@ -48,14 +50,21 @@ public class PAUSE_001 : MonoBehaviour
         audioSourceBGM2 = gameObject.GetComponent<AudioSource>();
 
         audioSourceBGM1.PlayOneShot(audioClipBGM1);
-        audioSourceBGM2.clip = audioClipBGM2;
+        //audioSourceBGM2.clip = audioClipBGM2;
         isAudioEnd = true;
 
+        if (seMixerGroup != null)
+        {
+            audioSourceSE1.outputAudioMixerGroup = seMixerGroup;
+            Debug.Log("bbb");
+        }
         if (bgm1MixerGroup != null)
         {
             audioSourceBGM1.outputAudioMixerGroup = bgm1MixerGroup;
             audioSourceBGM2.outputAudioMixerGroup = bgm1MixerGroup;
+            Debug.Log("bbb");
         }
+        
 
     }
 
@@ -64,8 +73,8 @@ public class PAUSE_001 : MonoBehaviour
         if (!audioSourceBGM1.isPlaying && isAudioEnd)
         {
             
-            audioSourceBGM2.loop = true;
-            audioSourceBGM2.Play();
+            //audioSourceBGM2.loop = true;
+            audioSourceBGM2.PlayOneShot(audioClipBGM2);
             Debug.Log("aaa");
 
         }
@@ -121,8 +130,8 @@ public class PAUSE_001 : MonoBehaviour
     {
         // 最初のUIをアクティブにし、初期選択を設定
         
-        UnPauseUI.SetActive(true);
-        OptionUI.SetActive(false);
+        //UnPauseUI.SetActive(true);
+        //OptionUI.SetActive(false);
         EventSystem.current.SetSelectedGameObject(UnPauseUI);
 
 
@@ -173,8 +182,8 @@ public class PAUSE_001 : MonoBehaviour
     public void OnOption()
     {
         // 切り替えたいUIをアクティブにし、初期選択を設定
-        UnPauseUI.SetActive(false);
-        OptionUI.SetActive(true);
+        //UnPauseUI.SetActive(false);
+        //OptionUI.SetActive(true);
         EventSystem.current.SetSelectedGameObject(OptionUI);
 
         PausePanel_Pause_001.SetActive(false);          // PausePanelをtrueにする
