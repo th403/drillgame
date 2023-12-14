@@ -44,26 +44,26 @@ public class EventCtrl : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape))
         {
 #if UNITY_EDITOR
-            UnityEditor.EditorApplication.isPlaying = false;
+            //UnityEditor.EditorApplication.isPlaying = false;
 
             if (Input.GetKeyDown(KeyCode.X))
             {
                 PlayerCtrl2.Instance.SetSpeed(new Vector3(5, 10, 0));
             }
+            if (Input.GetKeyDown(KeyCode.R))
+            {
+                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+
+            }
 
 #else
-       Application.Quit();
+       //Application.Quit();
 #endif
         }
 
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-
-        }
 
 
-        if(Income!=0)
+        if (Income!=0)
         {
             float getMoney = Income * 0.1f;
             if (getMoney>0&&getMoney < 1) getMoney = 1;

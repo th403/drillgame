@@ -23,6 +23,7 @@ public class SoundManger : MonoBehaviour
     public AudioSource SetPipeSE;
     public AudioSource UISelectSE;
     public AudioSource UICancelSE;
+    public AudioSource LavaDropSE;
 
     public float SetPipeDelay = 1.0f;
     // Start is called before the first frame update
@@ -72,5 +73,9 @@ public class SoundManger : MonoBehaviour
         UICancelSE.Play();
     }
 
-    
+    public void PlaySELavaDrop()
+    {
+        LavaDropSE.Play();
+    }
+
 }

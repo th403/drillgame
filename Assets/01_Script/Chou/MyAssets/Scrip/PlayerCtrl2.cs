@@ -22,7 +22,7 @@ public class PlayerCtrl2 : MonoBehaviour
     public GameObject RunningEffectPosObj;
     public GameObject RunningEffect;
     public GameObject HitGroundEffect;
-    public Transform PlayerTransform;
+    //public Transform PlayerTransform;
     public Slider ChargeSlider;
     public float PlayerAcceleration = 0.2f;
     public float MaxRotationX = 85.0f;
@@ -48,7 +48,7 @@ public class PlayerCtrl2 : MonoBehaviour
     private bool Rotating = false;
     private bool CanUseDriller = true;
     private bool InTheAir = false;
-    private float MovingSpeed;
+    public float MovingSpeed;
 
     private float ChargeTime = 0;
     private float ChargeRate = 0;
@@ -378,6 +378,10 @@ public class PlayerCtrl2 : MonoBehaviour
     {
         Instantiate(HitGroundEffect, pos, transform.rotation);
         SoundManger.Instance.PlaySEHitGroundSE();
+    }
+    public void SetPlayerPosition(Vector3 pos)
+    {
+        transform.position = pos;
     }
 
 }
