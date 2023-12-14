@@ -243,7 +243,10 @@ public class PlayerCtrl2 : MonoBehaviour
         }
 
         DeltaMovement += DeltaSpeed * Time.deltaTime;
-        characterController.Move(DeltaMovement);
+        if (WarpPosition != Vector3.zero)
+        {
+            characterController.Move(DeltaMovement);
+        }
         DeltaMovement = new Vector3(0, 0, 0);
         //Debug.Log(DeltaSpeed);
 
