@@ -22,7 +22,7 @@ public class PlayerCtrl2 : MonoBehaviour
     public GameObject RunningEffectPosObj;
     public GameObject RunningEffect;
     public GameObject HitGroundEffect;
-    public Transform PlayerTransform;
+    //public Transform PlayerTransform;
     public Slider ChargeSlider;
     public float PlayerAcceleration = 0.2f;
     public float MaxRotationX = 85.0f;
@@ -48,7 +48,7 @@ public class PlayerCtrl2 : MonoBehaviour
     private bool Rotating = false;
     private bool CanUseDriller = true;
     private bool InTheAir = false;
-    private float MovingSpeed;
+    public float MovingSpeed;
 
     private float ChargeTime = 0;
     private float ChargeRate = 0;
@@ -59,10 +59,11 @@ public class PlayerCtrl2 : MonoBehaviour
     private Vector3 DeltaMovement;
     private Vector3 DeltaSpeed;
     private Vector3 RotationEulerAngleVelocity;
+    private Vector3 WarpPosition = Vector3.zero;
 
 
-    // Start is called before the first frame update
-    void Start()
+        // Start is called before the first frame update
+        void Start()
     {
         transform.position = PlayerData.instance.GetRevivePos();
         //UIFunds = FundsText.GetComponent<UIFundsCtrl>();
@@ -211,8 +212,13 @@ public class PlayerCtrl2 : MonoBehaviour
             //DeltaMovement.y = 0.001f;
 
         }
+        if (Input.GetKeyUp(KeyCode.T))
+        {
+            //WarpToPosition(transform.position + new Vector3(0, 2.0f, 0));
 
-        if(MovingTime>0)
+        }
+
+        if (MovingTime>0)
         {
             MovingTime -= Time.deltaTime;
 
@@ -284,6 +290,14 @@ public class PlayerCtrl2 : MonoBehaviour
             this.transform.Rotate(DeltaRotation, Space.World);
         }
 
+    }
+    void LateUpdate()
+    {
+        if (WarpPosition != Vector3.zero)
+        {
+            transform.position = WarpPosition;
+            WarpPosition = Vector3.zero;
+        }
     }
 
     private void FixedUpdate()
@@ -378,6 +392,10 @@ public class PlayerCtrl2 : MonoBehaviour
     {
         Instantiate(HitGroundEffect, pos, transform.rotation);
         SoundManger.Instance.PlaySEHitGroundSE();
+    }
+    public void WarpToPosition(Vector3 newPosition)
+    {
+        WarpPosition = newPosition;
     }
 
 }

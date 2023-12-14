@@ -15,8 +15,9 @@ public class CameraCtrl : MonoBehaviour
     public GameObject driller;
     public GameObject FadeInEffect;
     public int DrillerPrice=10000;
-    public float DrillerOutImpactStrength = 2;
-    public float DrillerDistanceToPlayer = 1.0f;
+    public float DrillerOutImpactStrength = 10;
+    public float DrillerOutImpactSize = 2;
+    //public float DrillerDistanceToPlayer = 1.0f;
     public float TakeOutDrillerDelay = 2.0f;
     private DrillerRobo drillerRobo;
 
@@ -51,7 +52,7 @@ public class CameraCtrl : MonoBehaviour
                     && !driller.gameObject.activeSelf))
             {
                 EventCtrl.Instance.PlayerGetMoney(-DrillerPrice);
-                PlayerDiggingPointCtrl.StartDig(DrillerOutImpactStrength);
+                PlayerDiggingPointCtrl.StartDig(DrillerOutImpactStrength, DrillerOutImpactSize);
                 CharaAnimeController.Instance.StartTakeOut();
                 Invoke("StartFadeIn", TakeOutDrillerDelay);
                 Invoke("ChangeCamera", TakeOutDrillerDelay + fadeInEffectCtrl.Life); 
@@ -69,11 +70,10 @@ public class CameraCtrl : MonoBehaviour
     public void ChangeCamera()
     {
         driller.gameObject.SetActive(!driller.gameObject.activeSelf);
-        driller.transform.position = player.transform.position + player.transform.forward * DrillerDistanceToPlayer;
-        //driller.transform.position = PlayerDiggingPoint
+        //driller.transform.position = player.transform.position + player.transform.forward * DrillerDistanceToPlayer;
+        driller.transform.position = PlayerDiggingPoint.transform.position;
         driller.transform.rotation = player.transform.rotation;
         camera_Player.enabled = !camera_Player.enabled;
-
         camera_Driller.enabled = !camera_Driller.enabled;
         drillerRobo.SetUse(camera_Driller.enabled);
     }
