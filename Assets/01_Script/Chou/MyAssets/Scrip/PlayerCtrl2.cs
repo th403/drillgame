@@ -379,5 +379,9 @@ public class PlayerCtrl2 : MonoBehaviour
         Instantiate(HitGroundEffect, pos, transform.rotation);
         SoundManger.Instance.PlaySEHitGroundSE();
     }
+    public void SetPlayerPosition(Vector3 pos)
+    {
+        transform.position = pos;
+    }
 
 }
