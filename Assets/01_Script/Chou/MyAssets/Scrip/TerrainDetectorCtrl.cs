@@ -22,11 +22,13 @@ public class TerrainDetectorCtrl : MonoBehaviour
     {
         if (other.tag == "Terrain")
         {
-            DiggingEffect.SetActive(true);
+            if(DiggingEffect)
+                DiggingEffect.SetActive(true);
         }
         else
         {
-            DiggingEffect.SetActive(false);
+            if (DiggingEffect)
+                DiggingEffect.SetActive(false);
 
         }
     }
