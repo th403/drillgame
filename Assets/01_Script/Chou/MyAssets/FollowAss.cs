@@ -50,11 +50,11 @@ public class FollowAss : MonoBehaviour
         if (ResetDelay > 0)
         {
             float rotationY = Input.GetAxis("4thHorizontal") * RotateSpd * Time.deltaTime; 
-            if(Input.GetKey(KeyCode.Q))
+            if(Input.GetKey(KeyCode.E))
             {
                 rotationY += RotateSpd * Time.deltaTime;
             }
-            if (Input.GetKey(KeyCode.E))
+            if (Input.GetKey(KeyCode.Q))
             {
                 rotationY -= RotateSpd * Time.deltaTime;
             }
