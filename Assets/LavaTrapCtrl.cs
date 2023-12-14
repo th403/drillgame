@@ -13,7 +13,8 @@ public class LavaTrapCtrl : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        switchObj = SwitchObject.GetComponent<SwitchObj>();
+        if (switchObj)
+            switchObj = SwitchObject.GetComponent<SwitchObj>();
 
     }
 
