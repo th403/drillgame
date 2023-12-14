@@ -48,7 +48,7 @@ MonoBehaviour:
   priority: 0
   blendDistance: 0
   weight: 1
-  sharedProfile: {fileID: 11400000, guid: 307d1b9226add01408f1068efd1bea8c, type: 2}
+  sharedProfile: {fileID: 11400000, guid: 476c0fccbdaa2e74fb98845a930f59ca, type: 2}
 --- !u!1 &5195887521265612451
 GameObject:
   m_ObjectHideFlags: 0
@@ -97,7 +97,7 @@ MonoBehaviour:
   priority: 0
   blendDistance: 0
   weight: 1
-  sharedProfile: {fileID: 11400000, guid: 4979240310507e44fb958ed680a4f1fd, type: 2}
+  sharedProfile: {fileID: 11400000, guid: f6ba6cead863db041b0e33644a1b93fb, type: 2}
 --- !u!1 &6227774049953173074
 GameObject:
   m_ObjectHideFlags: 0
@@ -108,6 +108,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1379657700321110130}
   - component: {fileID: 8593590512690149423}
+  - component: {fileID: 688721807}
   m_Layer: 0
   m_Name: Sky and Fog Global Volume
   m_TagString: Untagged
@@ -123,8 +124,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6227774049953173074}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -43.36954, y: -8.31526, z: 15.354473}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -624, y: -8.31526, z: 155}
+  m_LocalScale: {x: 1462.3864, y: 388.949, z: 415.97723}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6426331564178546598}
@@ -146,7 +147,20 @@ MonoBehaviour:
   priority: 0
   blendDistance: 0
   weight: 1
-  sharedProfile: {fileID: 11400000, guid: 04eface3dfa01aa48a6ea6306b7d3605, type: 2}
+  sharedProfile: {fileID: 11400000, guid: 31c0ebf3c1e4e1b4f8743274d48aa6bd, type: 2}
+--- !u!65 &688721807
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6227774049953173074}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &7764199593222528146
 GameObject:
   m_ObjectHideFlags: 0
