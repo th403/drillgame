@@ -59,7 +59,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1484674492617232371}
-  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: -4137465739538299447, guid: af7a6289b09cf134597e52a81a71fbe4, type: 3}
 --- !u!23 &8356911061323357451
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -80,7 +80,8 @@ MeshRenderer:
   m_RenderingLayerMask: 257
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: aaa588738ecfd9347a207f61c34f27c3, type: 2}
+  - {fileID: 2100000, guid: c9ab51eee83018e48976e0eb58cc44c5, type: 2}
+  - {fileID: 2100000, guid: bfb600cef92825f44b26138853e50196, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -114,7 +115,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51e247ce0a3994648a9faf8784c98152, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Effect: {fileID: 5279268202241106106, guid: 30c9565361100174b9ebaeb266cb6160, type: 3}
+  Effect: {fileID: 2158408890764623839, guid: f2aa94ff6a2e0c644b6e9fc3bb59da99, type: 3}
+  Damage: 3000
 --- !u!135 &8130281913185695574
 SphereCollider:
   m_ObjectHideFlags: 0
