@@ -5,17 +5,20 @@ using UnityEngine;
 public class PlayerMagnet : MonoBehaviour
 {
 
-    public PlayerCtrl2 tpc;
+
+    //public TurtorialPlayerCtrl2 tpc;
+    public PlayerCtrl2 pc;
 
     public float attractionDistance = 2f;   // 磁石にくっつく距離
-  //public float magnetForce = 10f;         // 磁石にくっつく力
+
     public float lerpSpeed = 2f;            // オブジェクトが磁石に近づく速さ
-    public float OnMagnetTime = 3f;
-    public float OffMagnetTime = 5f;
-    private float CountTime = 0;
+    public float OnMagnetTime = 5f;
+
     public bool isMagnet = true;
 
+
     private GameObject[] magnets;
+
 
     void Start()
     {
@@ -25,6 +28,8 @@ public class PlayerMagnet : MonoBehaviour
 
     void Update()
     {
+        bool isAnyMagnetClose = false;
+
         foreach (GameObject magnet in magnets)
         {
             // プレイヤーと磁石の距離を計算
@@ -33,57 +38,43 @@ public class PlayerMagnet : MonoBehaviour
             // 一定の距離内に磁石がいる場合、プレイヤーが磁石にくっつく
             if (distanceToMagnet < attractionDistance && isMagnet == true)
             {
-                OnMagnet();
-
                 //// プレイヤーを磁石にくっつける処理（例：力を加える）
                 //Vector3 direction = magnet.transform.position - transform.position;
                 //GetComponent<Rigidbody>().AddForce(direction.normalized * magnetForce, ForceMode.Force);
-                Vector3 newPos = transform.position;
-                newPos += (magnet.transform.position - transform.position) * 0.2f * Time.deltaTime;
-                PlayerCtrl2.Instance.WarpToPosition(newPos);
 
                 //磁石に直接くっつける処理
                 //transform.position = Vector3.Lerp(transform.position, magnet.transform.position, Time.deltaTime * lerpSpeed);
                 //transform.position = magnet.transform.position;
-                //PlayerCtrl2.Instance.WarpToPosition(magnet.transform.position);
+                //transform.position += new Vector3(0, 2.0f, 0);
+                PlayerCtrl2.Instance.WarpToPosition(magnet.transform.position);
+                
 
                 //tpc.MovingTime = 0;
                 //tpc.ChargeRate = 0;
+                pc.MovingSpeed = 0;
                 //tpc.MovingSpeed = 0;
-                //isMagnet = false;
+                isMagnet = false;
 
-                //Invoke("OffMagnet", OnMagnetTime);
+
 
             }
 
-            if(isMagnet == false)
+
+
+            if (distanceToMagnet < attractionDistance)
             {
-                //tpc.MovingSpeed = 0;
+                isAnyMagnetClose = true;
+
             }
 
-            if(distanceToMagnet > attractionDistance)
-            {
-                isMagnet = true;
-                //Invoke("OnMagnet", OnMagnetTime);
-            }
+
+        }
+
+        if (!isAnyMagnetClose && Vector3.Distance(transform.position, magnets[0].transform.position) > attractionDistance)
+        {
+            isMagnet = true;
         }
     }
 
-    public void OnMagnet()
-    {
-        isMagnet = true;
-        Invoke("OffMagnet", OnMagnetTime);
-        //Debug.Log("qqq");
-    }
-    public void OffMagnet()
-    {
-        //isMagnet = false;
-        //tpc.MovingTime = 0;
-        //tpc.ChargeRate = 0;
-        isMagnet = false;
-        Invoke("OnMagnet", OffMagnetTime);
 
-        Debug.Log("zzz");
-
-    }
 }
