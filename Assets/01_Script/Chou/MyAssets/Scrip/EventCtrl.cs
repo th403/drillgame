@@ -63,20 +63,28 @@ public class EventCtrl : MonoBehaviour
 
 
 
-        if (Income!=0)
-        {
-            float getMoney = Income * 0.1f;
-            if (getMoney>0&&getMoney < 1) getMoney = 1;
-            else if (getMoney < 0 && getMoney > -1) getMoney = -1;
+        //chou
+        //if (Income!=0)
+        //{
+        //    float getMoney = Income * 0.1f;
+        //    if (getMoney>0&&getMoney < 1) getMoney = 1;
+        //    else if (getMoney < 0 && getMoney > -1) getMoney = -1;
 
-            if(IncomeBarController.Instance.SubtractMoney((int)-getMoney))
-            {
-                Income -= (int)getMoney;
-            }
-            else
-            {
-                GameOver = true;
-            }
+        //    if(IncomeBarController.Instance.SubtractMoney((int)-getMoney))
+        //    {
+        //        Income -= (int)getMoney;
+        //    }
+        //    else
+        //    {
+        //        GameOver = true;
+        //    }
+        //}
+
+        //tou
+        //check game over
+        if(IncomeBarController.Instance.IsGameOver())
+        {
+            GameOver = true;
         }
 
         if(GameOver)
@@ -87,8 +95,15 @@ public class EventCtrl : MonoBehaviour
     public void PlayerGetMoney(int num)
     {
         //InOutEffectController.Instance.MakeEffect(Player.transform, num);
-        Income += num;
-        if(num>0)
+
+        //chou
+        //Income += num;
+
+        //tou
+        //set money
+        IncomeBarController.Instance.AddMoney(num);
+
+        if (num>0)
         {
             SoundManger.Instance.PlaySEGetMoneySE();
         }

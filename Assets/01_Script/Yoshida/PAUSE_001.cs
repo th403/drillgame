@@ -132,6 +132,7 @@ public class PAUSE_001 : MonoBehaviour
         
         //UnPauseUI.SetActive(true);
         //OptionUI.SetActive(false);
+        if(EventSystem.current)
         EventSystem.current.SetSelectedGameObject(UnPauseUI);
 
 
