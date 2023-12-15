@@ -27,7 +27,6 @@ public class LavaObjForTrap : MonoBehaviour
             {
                 Instantiate(Effect, transform.position, transform.rotation);
             }
-            SoundManger.Instance.PlaySELavaDrop();
             Destroy(this.gameObject);
         }
         if (other.tag == "Player")
@@ -38,7 +37,6 @@ public class LavaObjForTrap : MonoBehaviour
                 clone.transform.localScale = transform.localScale;
             }
             EventCtrl.Instance.PlayerGetMoney(-Damage);
-            SoundManger.Instance.PlaySELavaDrop();
             Destroy(this.gameObject);
         }
 
