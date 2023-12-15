@@ -74,8 +74,12 @@ MonoBehaviour:
   UnPausePanel_Pause_001: {fileID: 8456015446203037344, guid: 1f1da35ceefefc64db688d03fa59e461, type: 3}
   OptionPanel_Pause_001: {fileID: 5850247521581399678, guid: d75154ceae0de3a46ab7e4c8f866d70d, type: 3}
   RetryDialoguePanel_Pause_001: {fileID: 5683179000941159912, guid: b2e9d2bce7632034ead8006ee9aabfe7, type: 3}
+  TitleDialoguePanel_Pause_001: {fileID: 0}
   UnPauseUI: {fileID: 0}
   OptionUI: {fileID: 0}
+  RetryDialogueUI: {fileID: 0}
+  TitleDialogueUI: {fileID: 0}
+  PauseUI: {fileID: 0}
 --- !u!82 &5603654941218060235
 AudioSource:
   m_ObjectHideFlags: 0
@@ -182,7 +186,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: -4576396356286259205, guid: 16990643c1bf99d44a46dfae119f4fed, type: 2}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 5cf729ae32310aa4d90a2a8154df97cd, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -278,7 +282,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: -8231922340941597365, guid: 16990643c1bf99d44a46dfae119f4fed, type: 2}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 89345a7b89df77b49932b49ecdde9372, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
