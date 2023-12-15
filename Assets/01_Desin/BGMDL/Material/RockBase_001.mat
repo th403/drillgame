@@ -119,6 +119,14 @@ Material:
         m_Texture: {fileID: 2800000, guid: fc0fdd7c91c87284cbdedcbd4beb354e, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_02812d55696b46d7931a1cd5f9fba961_Texture_1:
+        m_Texture: {fileID: 2800000, guid: 1553a19848c49b94ca17a9b2360fbbd4, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_3e9ff53527b54bd0a46a7492bdc1ff6f_Texture_1:
+        m_Texture: {fileID: 2800000, guid: 1553a19848c49b94ca17a9b2360fbbd4, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _SpecularColorMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -143,8 +151,40 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _Triplanar_616f2f0d0a03415ca31d8af3236f1930_Texture_1:
+        m_Texture: {fileID: 2800000, guid: 467ef154853b9644f904799ea22165ed, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Triplanar_6c9d536a5faa43389f3e81b5de0f640f_Texture_1:
+        m_Texture: {fileID: 2800000, guid: 1553a19848c49b94ca17a9b2360fbbd4, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Triplanar_8a81ec57f1474f33b8a1e3a86db675b6_Texture_1:
+        m_Texture: {fileID: 2800000, guid: 1553a19848c49b94ca17a9b2360fbbd4, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _Triplanar_9f945f29833e44de94bf88459241c672_Texture_1:
         m_Texture: {fileID: 10300, guid: 0000000000000000f000000000000000, type: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Triplanar_b12dd86a558444b289dd7e45a86784b8_Texture_1:
+        m_Texture: {fileID: 2800000, guid: 1553a19848c49b94ca17a9b2360fbbd4, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Triplanar_b21077290ec14b2885c07d3e8cd6b066_Texture_1:
+        m_Texture: {fileID: 2800000, guid: fb6ec68df82e1ab4f9983b648c831df6, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Triplanar_c1478991095e4e98b58e5b49ed4efad9_Texture_1:
+        m_Texture: {fileID: 2800000, guid: 1553a19848c49b94ca17a9b2360fbbd4, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Triplanar_edd4f5ac59634d24ae918aa32f7ddd58_Texture_1:
+        m_Texture: {fileID: 2800000, guid: 1553a19848c49b94ca17a9b2360fbbd4, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Triplanar_fd4e03c275564f909d9d5d497c15a4fc_Texture_1:
+        m_Texture: {fileID: 2800000, guid: 1553a19848c49b94ca17a9b2360fbbd4, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:
@@ -218,6 +258,12 @@ Material:
     - _IridescenceMask: 1
     - _IridescenceThickness: 1
     - _LinkDetailsWithBase: 1
+    - _MaskTiling1: 0.44
+    - _MaskTiling2: 0.28
+    - _MaskTiling3: -0.09
+    - _MaskTiling3_1: 1.4
+    - _MaskTiling4: -0.13
+    - _MaskTiling5: 0.01
     - _MaterialID: 1
     - _Metallic: 0
     - _MetallicRemapMax: 1
@@ -236,7 +282,8 @@ Material:
     - _RefractionModel: 0
     - _RenderQueueType: 1
     - _RequireSplitLighting: 0
-    - _Saturation: 1.51
+    - _RockMode: 1
+    - _Saturation: 1.3
     - _Smoothness: 0.5
     - _SmoothnessRemapMax: 1
     - _SmoothnessRemapMin: 0
@@ -260,7 +307,10 @@ Material:
     - _TexWorldScale: 1
     - _TexWorldScaleEmissive: 1
     - _Thickness: 1
-    - _Tiling: -0.13
+    - _Tiling: 0.17
+    - _Tiling2: 0.17
+    - _Tiling3: -0.01
+    - _Tiling4: 0.03
     - _TransmissionEnable: 1
     - _TransparentBackfaceEnable: 0
     - _TransparentCullMode: 2
@@ -278,6 +328,7 @@ Material:
     - _ZTestGBuffer: 4
     - _ZTestTransparent: 4
     - _ZWrite: 1
+    - _testmult: 1
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _BaseColorMap_MipInfo: {r: 0, g: 0, b: 0, a: 0}
@@ -290,10 +341,14 @@ Material:
     - _EmmisiveColor: {r: 0, g: 0, b: 0, a: 0}
     - _InvPrimScale: {r: 1, g: 1, b: 0, a: 0}
     - _IridescenceThicknessRemap: {r: 0, g: 1, b: 0, a: 0}
+    - _MaskPostion1: {r: 25.12, g: 14.15, b: 13.7, a: 0}
+    - _MaskPostion2: {r: 23.2, g: 19.3, b: -13.3, a: 0}
+    - _MaskPostion3: {r: 26.62, g: 38.3, b: -17, a: 0}
     - _SpecularColor: {r: 1, g: 1, b: 1, a: 1}
     - _ThicknessRemap: {r: 0, g: 1, b: 0, a: 0}
     - _TransmittanceColor: {r: 1, g: 1, b: 1, a: 1}
     - _UVDetailsMappingMask: {r: 1, g: 0, b: 0, a: 0}
     - _UVMappingMask: {r: 1, g: 0, b: 0, a: 0}
     - _UVMappingMaskEmissive: {r: 1, g: 0, b: 0, a: 0}
+    - _Vector3: {r: 5.31, g: 5.48, b: 55.75, a: 0}
   m_BuildTextureStacks: []

@@ -143,6 +143,26 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _Triplanar_616f2f0d0a03415ca31d8af3236f1930_Texture_1:
+        m_Texture: {fileID: 2800000, guid: 467ef154853b9644f904799ea22165ed, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Triplanar_b21077290ec14b2885c07d3e8cd6b066_Texture_1:
+        m_Texture: {fileID: 2800000, guid: fb6ec68df82e1ab4f9983b648c831df6, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Triplanar_c1478991095e4e98b58e5b49ed4efad9_Texture_1:
+        m_Texture: {fileID: 2800000, guid: 1553a19848c49b94ca17a9b2360fbbd4, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Triplanar_edd4f5ac59634d24ae918aa32f7ddd58_Texture_1:
+        m_Texture: {fileID: 2800000, guid: 1553a19848c49b94ca17a9b2360fbbd4, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Triplanar_fd4e03c275564f909d9d5d497c15a4fc_Texture_1:
+        m_Texture: {fileID: 2800000, guid: 1553a19848c49b94ca17a9b2360fbbd4, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -199,6 +219,7 @@ Material:
     - _EnableFogOnTransparent: 1
     - _EnableGeometricSpecularAA: 0
     - _EnergyConservingSpecularColor: 1
+    - _Float: 2.5
     - _HeightAmplitude: 0.02
     - _HeightCenter: 0.5
     - _HeightMapParametrization: 0
@@ -213,6 +234,9 @@ Material:
     - _IridescenceMask: 1
     - _IridescenceThickness: 1
     - _LinkDetailsWithBase: 1
+    - _MaskTiling1: 3.41
+    - _MaskTiling2: 3.25
+    - _MaskTiling3: 1.37
     - _MaterialID: 1
     - _Metallic: 0
     - _MetallicRemapMax: 1
@@ -256,6 +280,7 @@ Material:
     - _TexWorldScaleEmissive: 1
     - _Thickness: 1
     - _Tiling: 0.31
+    - _Tiling2: 1
     - _TransmissionEnable: 1
     - _TransparentBackfaceEnable: 0
     - _TransparentCullMode: 2
@@ -273,6 +298,7 @@ Material:
     - _ZTestGBuffer: 4
     - _ZTestTransparent: 4
     - _ZWrite: 1
+    - _testmult: 1
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _BaseColorMap_MipInfo: {r: 0, g: 0, b: 0, a: 0}
@@ -285,6 +311,9 @@ Material:
     - _EmmisiveColor: {r: 0, g: 0, b: 0, a: 0}
     - _InvPrimScale: {r: 1, g: 1, b: 0, a: 0}
     - _IridescenceThicknessRemap: {r: 0, g: 1, b: 0, a: 0}
+    - _MaskPostion1: {r: 0, g: 0, b: 0, a: 0}
+    - _MaskPostion2: {r: 0, g: 0, b: 0, a: 0}
+    - _MaskPostion3: {r: 0, g: 0, b: 0, a: 0}
     - _SpecularColor: {r: 1, g: 1, b: 1, a: 1}
     - _ThicknessRemap: {r: 0, g: 1, b: 0, a: 0}
     - _TransmittanceColor: {r: 1, g: 1, b: 1, a: 1}
