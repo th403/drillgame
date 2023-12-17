@@ -11,19 +11,19 @@ public class TurtorialMoveScript : MonoBehaviour
 
     public int FadeTime = 3;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    //// Start is called before the first frame update
+    //void Start()
+    //{
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    //}
 
-    private void OnTriggerEnter(Collider other)
+    //// Update is called once per frame
+    //void Update()
+    //{
+
+    //}
+
+    public void OnTriggerEnter(Collider other)
     {
 
         if (other.CompareTag("Player"))
@@ -35,7 +35,7 @@ public class TurtorialMoveScript : MonoBehaviour
 
     }
 
-    private void OnMove()
+    public void OnMove()
     {
         turtorial.OnTurtorialGeothermal();
         //Debug.Log("Damage2");

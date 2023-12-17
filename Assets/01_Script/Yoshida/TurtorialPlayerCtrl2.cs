@@ -22,7 +22,7 @@ public class TurtorialPlayerCtrl2 : MonoBehaviour
     public GameObject RunningEffectPosObj;
     public GameObject RunningEffect;
     public GameObject HitGroundEffect;
-    public Transform PlayerTransform;
+    //public Transform PlayerTransform;
     public Slider ChargeSlider;
     public float PlayerAcceleration = 0.2f;
     public float MaxRotationX = 85.0f;
@@ -355,7 +355,7 @@ public class TurtorialPlayerCtrl2 : MonoBehaviour
     {
         return Rotating;
     }
-    public float GetSpeed()
+    public float GetSpeedf()
     {
         return MovingSpeed;
     }
@@ -367,10 +367,10 @@ public class TurtorialPlayerCtrl2 : MonoBehaviour
         DeltaRotation = new Vector3(0, 0, 0);
         CharaAnimeController.Instance.StartIdle();
     }
-    //public Vector3 GetSpeed()
-    //{
-    //    return DeltaSpeed;
-    //}
+    public Vector3 GetSpeed()
+    {
+        return DeltaSpeed;
+    }
     public void PlayerGetLava()
     {
         FreezingTime = 2.0f;
