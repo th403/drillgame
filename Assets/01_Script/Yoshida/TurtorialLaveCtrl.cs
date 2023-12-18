@@ -58,6 +58,7 @@ public class TurtorialLaveCtrl : MonoBehaviour
         if (!use && other.tag == "Player")
         {
             Invoke("OnTurtorialGeothermal", FadeTime);
+            Debug.Log("Damage2");
             use = true;
             //this.GetComponent<Renderer>().material.color *= 2;
             Mark.SetActive(false);
@@ -77,7 +78,7 @@ public class TurtorialLaveCtrl : MonoBehaviour
     private void OnTurtorialGeothermal()
     {
         turtorial.OnturtorialCashdown();
-        //Debug.Log("Damage2");
+        
         Invoke("OnturtorialCashdown", FadeTime2);
     }
 
