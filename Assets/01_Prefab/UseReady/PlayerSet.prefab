@@ -1623,6 +1623,76 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &4175512924849234099
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8585645605117177652}
+  - component: {fileID: 5082463049363377197}
+  m_Layer: 0
+  m_Name: tutorial
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8585645605117177652
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4175512924849234099}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5491220264579194977}
+  m_RootOrder: 13
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5082463049363377197
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4175512924849234099}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9ac1940e8f38c34996e993f935b322c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  turtorial: {fileID: 0}
+  FundsText: {fileID: 0}
+  RunningEffectPosObj: {fileID: 0}
+  RunningEffect: {fileID: 0}
+  HitGroundEffect: {fileID: 0}
+  PlayerTransform: {fileID: 0}
+  ChargeSlider: {fileID: 0}
+  PlayerAcceleration: 0.2
+  MaxRotationX: 85
+  PlayerRotationSpeed: 5
+  MovingDistanceMin: 10
+  MovingTimeMin: 1
+  MovingDistanceMax: 80
+  MovingTimeMax: 5
+  ChargeTimeMax: 1.5
+  OneChargePrice: 5000
+  xzDrag: 3.5
+  AngularDrag: 3.5
+  PricePerMeter: 100
+  characterController: {fileID: 0}
+  ChargeChangeRotateSpeed: 0
+  ChargeChangeRotateSpeedRate: 4
+  CanJump: 0
+  JumpSpeed: 10
+  FadeTime: 3
+  MovingSpeed: 0
 --- !u!1 &7208071029069042885
 GameObject:
   m_ObjectHideFlags: 0
@@ -2370,6 +2440,18 @@ PrefabInstance:
       propertyPath: startTimeStamp
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2015562949, guid: 0aa6f9b5cf11e6b47b906df15c187d0f, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -11.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 2015562950, guid: 0aa6f9b5cf11e6b47b906df15c187d0f, type: 3}
+      propertyPath: volumeLayerMask.m_Bits
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2015562952, guid: 0aa6f9b5cf11e6b47b906df15c187d0f, type: 3}
+      propertyPath: orthographic size
+      value: 22.1
+      objectReference: {fileID: 0}
     - target: {fileID: 2978852906618588343, guid: 0aa6f9b5cf11e6b47b906df15c187d0f, type: 3}
       propertyPath: m_RootOrder
       value: 8
@@ -2482,6 +2564,26 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3085477139478010799, guid: 0aa6f9b5cf11e6b47b906df15c187d0f, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2.8179119
+      objectReference: {fileID: 0}
+    - target: {fileID: 3085477139478010799, guid: 0aa6f9b5cf11e6b47b906df15c187d0f, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2.8179119
+      objectReference: {fileID: 0}
+    - target: {fileID: 3085477139478010799, guid: 0aa6f9b5cf11e6b47b906df15c187d0f, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 2.8179119
+      objectReference: {fileID: 0}
+    - target: {fileID: 3085477139478010799, guid: 0aa6f9b5cf11e6b47b906df15c187d0f, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 806
+      objectReference: {fileID: 0}
+    - target: {fileID: 3085477139478010799, guid: 0aa6f9b5cf11e6b47b906df15c187d0f, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -498
+      objectReference: {fileID: 0}
     - target: {fileID: 3304982572101891495, guid: 0aa6f9b5cf11e6b47b906df15c187d0f, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -2511,6 +2613,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   disableTime: 8
 --- !u!114 &3256843057633371537
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 272420851615950728}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59df83a794351b9489c71afa381f452b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  disableTime: 8
+--- !u!114 &7205760373134953946
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3301,15 +3416,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 143790838587420030, guid: 621f768966392154e8e6ead55e0d1d3c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -62.14
+      value: -202.71
       objectReference: {fileID: 0}
     - target: {fileID: 143790838587420030, guid: 621f768966392154e8e6ead55e0d1d3c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 11.08
+      value: 3.95
       objectReference: {fileID: 0}
     - target: {fileID: 143790838587420030, guid: 621f768966392154e8e6ead55e0d1d3c, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 44.52
+      value: 53.564133
       objectReference: {fileID: 0}
     - target: {fileID: 143790838587420030, guid: 621f768966392154e8e6ead55e0d1d3c, type: 3}
       propertyPath: m_LocalRotation.w
@@ -3958,6 +4073,10 @@ PrefabInstance:
     - target: {fileID: 1217624369647797008, guid: e332264b382e5074ba9cd36de8eb5925, type: 3}
       propertyPath: m_Name
       value: IngamePauseUI
+      objectReference: {fileID: 0}
+    - target: {fileID: 1217624369647797008, guid: e332264b382e5074ba9cd36de8eb5925, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1217624369647797011, guid: e332264b382e5074ba9cd36de8eb5925, type: 3}
       propertyPath: m_RootOrder
