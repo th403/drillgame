@@ -49,6 +49,7 @@ MonoBehaviour:
   RunningEffectPosObj: {fileID: 0}
   RunningEffect: {fileID: 0}
   HitGroundEffect: {fileID: 0}
+  PlayerTransform: {fileID: 0}
   ChargeSlider: {fileID: 0}
   PlayerAcceleration: 0.2
   MaxRotationX: 85
@@ -1671,6 +1672,7 @@ MonoBehaviour:
   RunningEffectPosObj: {fileID: 0}
   RunningEffect: {fileID: 0}
   HitGroundEffect: {fileID: 0}
+  PlayerTransform: {fileID: 0}
   ChargeSlider: {fileID: 0}
   PlayerAcceleration: 0.2
   MaxRotationX: 85
@@ -2450,10 +2452,6 @@ PrefabInstance:
       propertyPath: orthographic size
       value: 22.1
       objectReference: {fileID: 0}
-    - target: {fileID: 2487294350256261844, guid: 0aa6f9b5cf11e6b47b906df15c187d0f, type: 3}
-      propertyPath: m_RootOrder
-      value: 11
-      objectReference: {fileID: 0}
     - target: {fileID: 2978852906618588343, guid: 0aa6f9b5cf11e6b47b906df15c187d0f, type: 3}
       propertyPath: m_RootOrder
       value: 8
@@ -2461,10 +2459,6 @@ PrefabInstance:
     - target: {fileID: 3085477138361500674, guid: 0aa6f9b5cf11e6b47b906df15c187d0f, type: 3}
       propertyPath: m_IsActive
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3085477138361500675, guid: 0aa6f9b5cf11e6b47b906df15c187d0f, type: 3}
-      propertyPath: m_RootOrder
-      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3085477138589645365, guid: 0aa6f9b5cf11e6b47b906df15c187d0f, type: 3}
       propertyPath: m_IsActive
