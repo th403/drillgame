@@ -63,7 +63,7 @@ public class JumpRamp_FixedDirection : MonoBehaviour
                 other.transform.position,
                 jumpPos.position,
                 chargeCount / maxChargeCount);
-            //other.transform.position = jumpPos.position;
+            other.transform.position = jumpPos.position;
 
             //check shoot
             if (chargeCount>=maxChargeCount)
