@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
+using UnityEngine.InputSystem;
 
 public class TurtorialPanelManager : MonoBehaviour
 {
@@ -23,15 +25,19 @@ public class TurtorialPanelManager : MonoBehaviour
 
     public void Update()
     {
-        if (TurtorialDri == true)
+
+        if ((Input.GetKeyUp(KeyCode.Q) || Input.GetKeyUp(KeyCode.JoystickButton1)))
         {
-            if ((Input.GetKey(KeyCode.Q)))
+            Debug.Log("Damage26");
+            if (TurtorialDri == true)
             {
                 Invoke("OnturtorialOreBreak", FadeTime);
             }
-            
+
         }
+
     }
+
 
     public void OnTurtorialStart()
     {
@@ -116,5 +122,16 @@ public class TurtorialPanelManager : MonoBehaviour
         TurtorialOreBreakPanel.SetActive(false);      // TurtorialOreBreakPanel‚ðfalse‚É‚·‚é
         TurtorialGoalPanel.SetActive(true);           // TurtorialGoalPanel‚ðtrue‚É‚·‚é
     }
-    
+
+    //public void OnSubmit(InputValue inputValue)
+    //{
+    //    //Debug.Log("Damage26");
+    //    if (TurtorialDri == true)
+    //    {
+            
+    //        Invoke("OnturtorialOreBreak", FadeTime);
+
+    //    }
+
+    //}
 }
