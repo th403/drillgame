@@ -11,13 +11,14 @@ public class HoleStage : MonoBehaviour
     [Header("edit")]
     public int stageID;
 
-    //test function-------------------------------
-    private void OnTriggerStay(Collider other)
+    //test function: enter to stay-------------------------------
+    private void OnTriggerEnter(Collider other)
     {
         if(other.CompareTag("Player"))
         {
-            StageSelectController.Instance.InputInfoPanel();
             StageSelectController.Instance.StartCameraToHole(this);
+            StageSelectController.Instance.InputInfoPanel();
+            print("in select trigger");
         }
     }
 

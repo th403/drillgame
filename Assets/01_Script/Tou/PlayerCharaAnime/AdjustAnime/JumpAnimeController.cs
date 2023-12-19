@@ -74,24 +74,40 @@ public class JumpAnimeController : MonoBehaviour
 
     void CheckLand()
     {
+        //check fall
         if (state != JumpState.Fall) return;
+        if ((transform.position - lastPos).y > 0) return;
+
+        //make four points check
+        float unit = 0.1f;
+        Vector3[] pts =
+        {
+            modelRoot.position+new Vector3(unit,0,unit),
+            modelRoot.position+new Vector3(-unit,0,unit),
+            modelRoot.position+new Vector3(unit,0,-unit),
+            modelRoot.position+new Vector3(-unit,0,-unit),
+        };
 
         //make ray to check on ground
-        Ray ray = new Ray(modelRoot.position, Vector3.down);
-        LayerMask layer = LayerMask.GetMask("Terrain");
-        RaycastHit hit;
-        if(Physics.Raycast(ray,out hit,startGroundAnimeHeight,layer))
+        for (int i=0;i<4;i++)
         {
-            //check fall
-            if ((modelRoot.position - lastPos).y >= 0) return;
+            Ray ray = new Ray(pts[i], Vector3.down);
+            LayerMask layer = LayerMask.GetMask("Terrain");
+            RaycastHit hit;
+            if (Physics.Raycast(ray, out hit, startGroundAnimeHeight, layer))
+            {
+                //check fall
+                if ((modelRoot.position - lastPos).y >= 0) return;
 
-            anime.SetTrigger("FallToGround");
-            state = JumpState.Land;
+                anime.SetTrigger("FallToGround");
+                state = JumpState.Land;
 
-            float time = landFrame * 1.0f / 60.0f;
-            StopMove();
-            Invoke("StartMove", time);
-            Invoke("StartWaitJump", time);
+                float time = landFrame * 1.0f / 60.0f;
+                StopMove();
+                Invoke("StartMove", time);
+                Invoke("StartWaitJump", time);
+                break;
+            }
         }
     }
 
