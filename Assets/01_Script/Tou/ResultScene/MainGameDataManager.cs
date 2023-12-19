@@ -98,7 +98,7 @@ public class MainGameDataManager : MonoBehaviour
     public float Money
     {
         get { return money.Value; }
-        set { money.Value =Mathf.Clamp( value,0,GreatestNorumaTarget); }
+        set { money.Value = Mathf.Max(value, 0); }//,GreatestNorumaTarget); }
     }
 
     public int EnergyCount

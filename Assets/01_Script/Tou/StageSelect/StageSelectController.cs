@@ -53,7 +53,7 @@ public class StageSelectController : MonoBehaviour
     public void StartCameraToMap()
     {
         curHoleStage = null;
-        PauseControl();
+        //PauseControl();
 
         Sequence seq = DOTween.Sequence();
         //move camera

@@ -101,6 +101,7 @@ public class SaveData_001 : MonoBehaviour
     //JSONファイルの有無を判定するための関数
     public bool FindJsonfile()
     {
+#if UNITY_EDITOR
         string[] assets = AssetDatabase.FindAssets(datapath);
         Debug.Log(assets.Length);
         if (assets.Length != 0)
@@ -114,6 +115,8 @@ public class SaveData_001 : MonoBehaviour
             Debug.Log("Jsonファイルがなかった");
             return false;
         }
+#endif 
+        return false;
     }
 
     //Playerのデータとなるクラスの定義
