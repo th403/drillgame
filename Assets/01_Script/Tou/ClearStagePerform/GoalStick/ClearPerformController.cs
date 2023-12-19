@@ -24,6 +24,8 @@ public class ClearPerformController : MonoBehaviour
     //camera
     public Camera performCmr;
     public Transform effTrs;
+    //bgm
+
 
 
     [Header("edit")]
@@ -40,12 +42,6 @@ public class ClearPerformController : MonoBehaviour
     void Start()
     {
         mainCmr = Camera.main;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     public void StartPerform()
@@ -104,5 +100,11 @@ public class ClearPerformController : MonoBehaviour
             effTrash.Remove(go);
             Destroy(go);
         }
+
+        //play bgm
+        BGMController.Instance.PlayResultBGM();
+
+        //start result
+        ResultPanelController.Instance.StartShowResult();
     }
 }
