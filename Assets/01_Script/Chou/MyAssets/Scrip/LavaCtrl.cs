@@ -33,19 +33,14 @@ public class LavaCtrl : MonoBehaviour
     {
         if (use && Value>0)
         {
-            //chou
-            //EventCtrl.Instance.PlayerGetMoney(GetMoney((int)(MoneyPerSec * Time.deltaTime)));
+            EventCtrl.Instance.PlayerGetMoney(GetMoney((int)(MoneyPerSec * Time.deltaTime)));
 
-            //tou
-            if(GetMoney((int)(MoneyPerSec * Time.deltaTime))>0)
-            {
-                SoundManger.Instance.PlaySEGetMoneySE();
-            }
         }
         //else if(use&&Value<=0)
         //{
-        //this.GetComponent<Renderer>().material.color *= 0;
+            //this.GetComponent<Renderer>().material.color *= 0;
         //}
+
     }
 
     private void OnTriggerEnter(Collider other)
@@ -56,8 +51,7 @@ public class LavaCtrl : MonoBehaviour
             //this.GetComponent<Renderer>().material.color *= 2;
             Mark.SetActive(false);
             PlayerCtrl2.Instance.PlayerGetLava();
-            EventCtrl.Instance.PlayerGetMoney(Value);
-            if (IsCheckPoint)
+            if(IsCheckPoint)
             {
                 PlayerData.instance.SetRevivePos(RevivePos.transform.position, CheckPointNo);
                 PlayerData.instance.SetReviveFunds(ReviveStartFunds);

@@ -558,7 +558,7 @@ MeshRenderer:
   m_RenderingLayerMask: 257
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 402761c46c0d2d74c91d1f893f554468, type: 2}
+  - {fileID: 2100000, guid: bb12d03f08515e746889ee5276acb1ec, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -701,10 +701,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6148375102276982879}
     m_Modifications:
-    - target: {fileID: 1235331072132542038, guid: b704a80156928d34e92aebb8ad7b74cb, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 8be5d58882973b44496d097d9e2aafdc, type: 2}
     - target: {fileID: 2703927221165956852, guid: b704a80156928d34e92aebb8ad7b74cb, type: 3}
       propertyPath: m_Name
       value: CableNomal_001

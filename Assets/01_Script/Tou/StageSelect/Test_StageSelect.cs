@@ -19,7 +19,6 @@ public class Test_StageSelect : MonoBehaviour
         //set event
         StageSelectController.Instance.OnPauseControl += () =>
           {
-              CharaAnimeController.Instance.StartIdle();
               ctrl.canMove = false;
           };
         StageSelectController.Instance.OnRestartControl += () =>

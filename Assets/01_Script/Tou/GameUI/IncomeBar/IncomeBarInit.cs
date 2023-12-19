@@ -20,7 +20,7 @@ public class IncomeBarInit : MonoBehaviour
         MainGameDataManager.Instance.Init();
 
         //init income bar event
-        IncomeBarController.Instance.Init();
+        IncomeBarController.Instance.InitEvent();
 
         //init money
         MainGameDataManager.Instance.Money = startMoney;

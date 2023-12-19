@@ -25,16 +25,17 @@ public class EventCtrl : MonoBehaviour
     //public List<GameObject> CheckPoints;
 
     public GameObject Player;
-    //private ClockController clockController;
+    private ClockController clockController;
     private int Income=0;
     private bool GameOver = false;
     // Start is called before the first frame update
     void Start()
     {
-        //clockController = ClockControllerObj.GetComponent<ClockController>();
-        ClockController.Instance.StartClock();
+        clockController = ClockControllerObj.GetComponent<ClockController>();
+        clockController.StartClock();
         //incomeBarController = IncomeBarControllerObj.GetComponent<IncomeBarController>();
-        //IncomeBarController.Instance.SetMoney(PlayerData.instance.GetReviveFunds());
+        IncomeBarController.Instance.SetMoney(PlayerData.instance.GetReviveFunds());
+
     }
 
     // Update is called once per frame
@@ -62,28 +63,20 @@ public class EventCtrl : MonoBehaviour
 
 
 
-        //chou
-        //if (Income!=0)
-        //{
-        //    float getMoney = Income * 0.1f;
-        //    if (getMoney>0&&getMoney < 1) getMoney = 1;
-        //    else if (getMoney < 0 && getMoney > -1) getMoney = -1;
-
-        //    if(IncomeBarController.Instance.SubtractMoney((int)-getMoney))
-        //    {
-        //        Income -= (int)getMoney;
-        //    }
-        //    else
-        //    {
-        //        GameOver = true;
-        //    }
-        //}
-
-        //tou
-        //check game over
-        if(IncomeBarController.Instance.IsGameOver())
+        if (Income!=0)
         {
-            GameOver = true;
+            float getMoney = Income * 0.1f;
+            if (getMoney>0&&getMoney < 1) getMoney = 1;
+            else if (getMoney < 0 && getMoney > -1) getMoney = -1;
+
+            if(IncomeBarController.Instance.SubtractMoney((int)-getMoney))
+            {
+                Income -= (int)getMoney;
+            }
+            else
+            {
+                GameOver = true;
+            }
         }
 
         if(GameOver)
@@ -94,15 +87,8 @@ public class EventCtrl : MonoBehaviour
     public void PlayerGetMoney(int num)
     {
         //InOutEffectController.Instance.MakeEffect(Player.transform, num);
-
-        //chou
-        //Income += num;
-
-        //tou
-        //set money
-        IncomeBarController.Instance.AddMoney(num);
-
-        if (num>0)
+        Income += num;
+        if(num>0)
         {
             SoundManger.Instance.PlaySEGetMoneySE();
         }

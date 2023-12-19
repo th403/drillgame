@@ -64,7 +64,7 @@ public class InOutEffect2 : MonoBehaviour
         //instantiate gameobject and set position
         float scale = InOutEffectController.Instance.size;
         Vector3 targetPos = new Vector3(firstPosX - count * digitDistance * scale, digitDistance, 0);// + transform.right * ();
-        Vector3 initPos = targetPos + Vector3.down * digitDistance * scale * 2.0f;
+        Vector3 initPos = targetPos + Vector3.down * digitDistance * scale;
         GameObject go = Instantiate(digitPrefab);
         go.transform.SetParent(transform);
         go.transform.localPosition = initPos;
@@ -80,7 +80,7 @@ public class InOutEffect2 : MonoBehaviour
         text.color = new Color(1, 1, 1, 0);
         seq.Append(text.DOFade(1, digitEffectTime));//.SetDelay(digitEffectTime * count));
         float showTime = effectKeepShowTime + (maxCount - count) * digitEffectTime;
-        seq.Join(go.transform.DOLocalMove(targetPos, showTime).SetEase(Ease.OutBack));
+        seq.Append(go.transform.DOLocalMove(targetPos, showTime).SetEase(Ease.OutBack));
         seq.Join(go.transform.DOScale(Vector3.one * scale * 1.2f, showTime / 3).SetLoops(3, LoopType.Yoyo));
         seq.Append(text.DOFade(0, disappearTime));
         seq.Play().SetDelay(digitEffectTime * count);

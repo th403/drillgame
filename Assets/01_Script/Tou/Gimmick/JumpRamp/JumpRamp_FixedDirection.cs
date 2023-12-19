@@ -6,13 +6,11 @@ public class JumpRamp_FixedDirection : MonoBehaviour
 {
   [Header("attach")]
     public Transform jumpDir;
-    public Transform jumpPos;
-    public Animator anime;
 
-    [Header("edit")] 
-    public string animName;
+    [Header("edit")]
     public float power=1;
     public float maxChargeCount=30;
+    public float jumpDelay = 0.1f;
     public float maxCdCount=50;
     public float minPlayerSpeed = 5;
     public float maxPlayerSpeed = 10;
@@ -23,17 +21,18 @@ public class JumpRamp_FixedDirection : MonoBehaviour
     public float playerSpeed;
     public GameObject player;
 
-    private void FixedUpdate()
+    private void Update()
     {
         if( cdCount>0)
         {
             cdCount--;
+            chargeCount = 0;
         }
 
 
         if (player != null)
         {
-            player.transform.position = jumpPos.position;      //Vector3.Lerp( player.transform.position, jumpDir.position, chargeCount / maxChargeCount);
+            player.transform.position = jumpDir.position;      //Vector3.Lerp( player.transform.position, jumpDir.position, chargeCount / maxChargeCount);
         }
     }
 
@@ -47,33 +46,31 @@ public class JumpRamp_FixedDirection : MonoBehaviour
 
             //check speed
             var playerCtrl = other.GetComponent<PlayerCtrl2>();
-            //one time
             if (playerSpeed == 0)
             {
                 playerSpeed = Mathf.Clamp(playerCtrl.GetSpeed().magnitude, minPlayerSpeed, maxPlayerSpeed);
                 playerCtrl.SetSpeed(Vector3.zero);
                 player = other.gameObject;
-
-                //start anime
-                anime.Play(animName, 0);
             }
 
             //set charge
             other.transform.position = Vector3.Lerp(
                 other.transform.position,
-                jumpPos.position,
+                jumpDir.position,
                 chargeCount / maxChargeCount);
-            other.transform.position = jumpPos.position;
+            other.transform.position = jumpDir.position;
 
             //check shoot
             if (chargeCount>=maxChargeCount)
             {
-                Shoot();
+                Shoot(other.gameObject);
+                cdCount = maxCdCount;
+                player = null;
             }
         }
     }
 
-    void Shoot()
+    void Shoot(GameObject player)
     {
         //rigid body jump
         //var rb=player.GetComponent<Rigidbody>();
@@ -82,13 +79,8 @@ public class JumpRamp_FixedDirection : MonoBehaviour
 
         //playerctrl2 jump
         var jumpVelo = power* jumpDir.up* playerSpeed;
-        if(CharaAnimeController.Instance.StartJump(jumpVelo))
-        {
-            playerSpeed = 0;
-            cdCount = maxCdCount;
-            chargeCount = 0;
-            player = null;
-        }
+        CharaAnimeController.Instance.StartJump(jumpVelo);
+        playerSpeed = 0;
         //playerSpeed=playerCtrl.
     }
 }
