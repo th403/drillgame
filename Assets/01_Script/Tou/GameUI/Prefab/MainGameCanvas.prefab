@@ -198,6 +198,7 @@ MonoBehaviour:
   delayMoneyBar: {fileID: 3085477139639489260}
   gaugeColor: {fileID: 765536771763620555}
   nowNorumaPos: {x: 0, y: 0, z: 0}
+  currentShowMoney: 0
 --- !u!1 &729440085
 GameObject:
   m_ObjectHideFlags: 0
@@ -525,7 +526,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3f7bcda64f861a42a947216f116d3e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moneyEffectPrefab: {fileID: 5873053589266046007, guid: bd839326754c47b4985833c30b2979b1, type: 3}
+  moneyEffectPrefab: {fileID: 4829702074961122012, guid: a22053d516b645b40b53c2fd2e2c3786, type: 3}
   panel: {fileID: 3085477138667893062}
   canvas: {fileID: 3085477139434888980}
   showMoneyChangePos: {fileID: 354650892208651944}

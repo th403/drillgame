@@ -25,17 +25,16 @@ public class EventCtrl : MonoBehaviour
     //public List<GameObject> CheckPoints;
 
     public GameObject Player;
-    private ClockController clockController;
+    //private ClockController clockController;
     private int Income=0;
     private bool GameOver = false;
     // Start is called before the first frame update
     void Start()
     {
-        clockController = ClockControllerObj.GetComponent<ClockController>();
-        clockController.StartClock();
+        //clockController = ClockControllerObj.GetComponent<ClockController>();
+        ClockController.Instance.StartClock();
         //incomeBarController = IncomeBarControllerObj.GetComponent<IncomeBarController>();
-        IncomeBarController.Instance.SetMoney(PlayerData.instance.GetReviveFunds());
-
+        //IncomeBarController.Instance.SetMoney(PlayerData.instance.GetReviveFunds());
     }
 
     // Update is called once per frame

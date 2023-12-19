@@ -23,6 +23,6 @@ public class IncomeBarInit : MonoBehaviour
         IncomeBarController.Instance.Init();
 
         //init money
-        //MainGameDataManager.Instance.Money = startMoney;
+        MainGameDataManager.Instance.Money = startMoney;
     }
 }
