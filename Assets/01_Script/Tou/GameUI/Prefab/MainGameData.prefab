@@ -47,7 +47,12 @@ MonoBehaviour:
   money:
     value: 1
   norumas: []
-  energyGots: []
+  energyGots:
+  - value: 0
+  - value: 0
+  - value: 0
+  energyCount:
+    value: 0
   time:
     value: 25
   nowNoruma:
