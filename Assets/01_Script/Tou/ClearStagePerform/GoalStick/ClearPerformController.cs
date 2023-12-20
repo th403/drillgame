@@ -21,18 +21,20 @@ public class ClearPerformController : MonoBehaviour
     public GameObject eff1;
     public GameObject eff2;
     public GameObject eff3;
-    //camera
-    public Camera performCmr;
-    public Transform effTrs;
+    //bgm
+
 
 
     [Header("edit")]
     public float eff1Frame;
     public float eff2Frame;
     public float eff3Frame;
+    public float resultFrame;
     public float finishFrame;
 
     [Header("read only")]
+    public Camera performCmr;
+    public Transform effTrs;
     public Camera mainCmr;
     public List<GameObject> effTrash;
 
@@ -40,12 +42,8 @@ public class ClearPerformController : MonoBehaviour
     void Start()
     {
         mainCmr = Camera.main;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        performCmr=GameObject.Find("PerformCamera").GetComponent<Camera>();
+        effTrs = GameObject.Find("ClearPerformTrs").transform;
     }
 
     public void StartPerform()
@@ -61,6 +59,7 @@ public class ClearPerformController : MonoBehaviour
         Invoke("MakeEff1", eff1Frame * 1.0f / 60.0f);
         Invoke("MakeEff2", eff2Frame * 1.0f / 60.0f);
         Invoke("MakeEff3", eff3Frame * 1.0f / 60.0f);
+        Invoke("ShowResult", resultFrame * 1.0f / 60.0f);
         Invoke("Finish", finishFrame * 1.0f / 60.0f);
     }
 
@@ -87,6 +86,13 @@ public class ClearPerformController : MonoBehaviour
     void MakeEff3()
     {
         MakeEff(eff3,performCmr.transform);
+    }
+    void ShowResult()
+    {
+        //play bgm
+        BGMController.Instance.PlayResultBGM();
+        //start result
+        ResultPanel2Controller.Instance.StartShowResult();
     }
     void Finish()
     {

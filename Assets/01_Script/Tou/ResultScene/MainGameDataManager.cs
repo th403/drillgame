@@ -74,6 +74,7 @@ public class MainGameDataManager : MonoBehaviour
     //stage target
     public List<Noruma> norumas;
     public List<WLProperty<bool>> energyGots;//x num
+    public WLProperty<int> energyCount;
     public WLProperty<float> time;
     public WLProperty<Noruma> nowNoruma;
     public WLProperty<Noruma> nextNoruma;
@@ -98,7 +99,15 @@ public class MainGameDataManager : MonoBehaviour
     public float Money
     {
         get { return money.Value; }
-        set { money.Value =Mathf.Clamp( value,0,GreatestNorumaTarget); }
+        set { money.Value = Mathf.Max(value, 0); }//,GreatestNorumaTarget); }
+    }
+
+    public int EnergyMax
+    {
+        get
+        {
+            return energyGots.Count;
+        }
     }
 
     public int EnergyCount
