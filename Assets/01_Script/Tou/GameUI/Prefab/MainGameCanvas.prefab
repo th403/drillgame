@@ -476,8 +476,8 @@ MonoBehaviour:
   pieces: []
   pieceMax: 60
   warnRate: 0.9
-  safeColor: {r: 0, g: 1, b: 0, a: 1}
-  warnColor: {r: 1, g: 0, b: 0, a: 1}
+  safeColor: {r: 0, g: 1, b: 0.72313213, a: 1}
+  warnColor: {r: 0.3247597, g: 0.7735849, b: 0.746971, a: 1}
   clearColor: {r: 1, g: 1, b: 1, a: 0.16862746}
   startTimeStamp: 0
   canCount: 0
@@ -808,7 +808,7 @@ MonoBehaviour:
   time_startAddEnergyBonus: 0
   time_startShowNomaru: 0
   showMoney: 0
-  targetMoney: 0
+  targetMoney: {x: 0, y: 0}
   showClearTime: 0
   showEnergy: 0
   timeStartStamp: 0
@@ -1147,7 +1147,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &5982527536445709789
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5640,7 +5640,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 0
+  m_PresetInfoIsWorld: 1
 --- !u!114 &3085477139434888977
 MonoBehaviour:
   m_ObjectHideFlags: 0

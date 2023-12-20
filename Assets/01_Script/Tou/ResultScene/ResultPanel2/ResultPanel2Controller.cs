@@ -216,15 +216,17 @@ public class ResultPanel2Controller : MonoBehaviour
         text_money.text = "00000000000000";
         text_timeBonus.gameObject.SetActive(false);
         text_energyBonus.gameObject.SetActive(false);
-        text_clearTime.gameObject.SetActive(false);
-        text_energy.gameObject.SetActive(false);
+        text_clearTime.gameObject.SetActive(true);
+        text_clearTime.text = "0";
+        text_energy.gameObject.SetActive(true);
+        text_energy.text = "0";
 
         //make anime
         var seq = DOTween.Sequence();
         image_backGround.color = new Color(1, 1, 1, 0);
         text_money.color = new Color(1, 1, 1, 0);
-        seq.Append(image_backGround.DOColor(new Color(1,1,1,1),time_showPanel).SetEase(Ease.OutElastic));
-        seq.Join(text_money.DOColor(new Color(1, 1, 1, 1), time_showPanel).SetEase(Ease.OutElastic));
+        seq.Append(image_backGround.DOColor(new Color(1,1,1,1),time_showPanel).SetEase(Ease.InOutElastic));
+        seq.Join(text_money.DOColor(new Color(1, 1, 1, 1), time_showPanel).SetEase(Ease.InOutElastic));
         seq.Play();
 
         //sequence
@@ -286,8 +288,8 @@ public class ResultPanel2Controller : MonoBehaviour
             image_gauge.transform.DOKill();
             image_gauge.transform.localScale = Vector3.one * 1.0f;
             var seq = DOTween.Sequence();
-            seq.Append(image_gauge.transform.DOScale(Vector3.one*1.2f,0.1f).SetEase(Ease.InFlash));
-            seq.Append(image_gauge.transform.DOScale(Vector3.one * 1.0f,0.1f).SetEase(Ease.OutFlash));
+            seq.Append(image_gauge.transform.DOScale(Vector3.one * 1.2f, 0.1f).SetEase(Ease.InFlash));
+            seq.Append(image_gauge.transform.DOScale(Vector3.one * 1.0f, 0.1f).SetEase(Ease.OutFlash));
             seq.Play();
         }
     }
