@@ -148,7 +148,7 @@ public class PlayerCtrl2 : MonoBehaviour
         else
         {
             InTheAir = true;
-            DeltaSpeed.y += (-15f * Time.deltaTime);
+            DeltaSpeed.y += (-10f * Time.deltaTime);
         }
 
         Debug.Log(characterController.isGrounded);
