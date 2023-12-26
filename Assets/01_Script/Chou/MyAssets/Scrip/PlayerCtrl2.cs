@@ -130,9 +130,9 @@ public class PlayerCtrl2 : MonoBehaviour
                 InTheAir = false;
             }
 
-            if (DeltaSpeed.y < -0.001f)
+            if (DeltaSpeed.y < -0.01f)
             {
-                DeltaSpeed.y = -0.001f;
+                DeltaSpeed.y = -0.01f;
             }
 
             if (Moving)
@@ -152,7 +152,10 @@ public class PlayerCtrl2 : MonoBehaviour
         }
 
         Debug.Log(characterController.isGrounded);
-
+        //Debug.Log(InTheAir);
+        //Debug.Log(DeltaSpeed);
+        //Debug.Log(DeltaMovement);
+        
 
         //Cannot Double Charge
         //if ((Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.JoystickButton0)) && !Moving)
