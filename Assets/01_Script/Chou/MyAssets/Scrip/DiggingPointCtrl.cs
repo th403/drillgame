@@ -93,7 +93,7 @@ public class DiggingPointCtrl : MonoBehaviour
         else
         {
             ////‘SŽ©“®////////////////////////////////////////
-            if (Input.GetMouseButton(0) || Input.GetKey(KeyCode.JoystickButton2))
+            if (Input.GetMouseButton(0) || Input.GetKey(KeyCode.JoystickButton1))
             {
                 if (time >= DiggingCooldown)
                 {
