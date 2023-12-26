@@ -5,9 +5,12 @@ using Digger.Modules.Core.Sources;
 using Digger.Modules.Core.Sources.Operations;
 using Unity.Jobs;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CameraCtrl : MonoBehaviour
 {
+    public TurtorialPanelManager turtorial;
+
     public Camera camera_Player;
     public Camera camera_Driller;
     public GameObject PlayerDiggingPoint;
@@ -19,6 +22,8 @@ public class CameraCtrl : MonoBehaviour
     public float DrillerOutImpactSize = 2;
     //public float DrillerDistanceToPlayer = 1.0f;
     public float TakeOutDrillerDelay = 2.0f;
+    public int FadeTime = 3;
+
     private DrillerRobo drillerRobo;
 
     //public GameObject FundsText;
@@ -28,6 +33,7 @@ public class CameraCtrl : MonoBehaviour
     private UIFundsCtrl UIFunds;
     private UIDrillerCtrl UIDrillers;
     private FadeInEffectCtrl fadeInEffectCtrl;
+    private bool TurtorialDril2 = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -55,7 +61,11 @@ public class CameraCtrl : MonoBehaviour
                 PlayerDiggingPointCtrl.StartDig(DrillerOutImpactStrength, DrillerOutImpactSize);
                 CharaAnimeController.Instance.StartTakeOut();
                 Invoke("StartFadeIn", TakeOutDrillerDelay);
-                Invoke("ChangeCamera", TakeOutDrillerDelay + fadeInEffectCtrl.Life); 
+                Invoke("ChangeCamera", TakeOutDrillerDelay + fadeInEffectCtrl.Life);
+
+                TurtorialDril2 = true;
+
+
 
 
             }
@@ -64,6 +74,12 @@ public class CameraCtrl : MonoBehaviour
                 ChangeCamera();
 
             }
+        }
+        if (TurtorialDril2 == true)
+        {
+            Invoke("OnTurtorialOreBreak", FadeTime);
+            //Debug.Log("Damage");
+
         }
     }
 
@@ -80,6 +96,14 @@ public class CameraCtrl : MonoBehaviour
     public void StartFadeIn()
     {
         fadeInEffectCtrl.StartFadeIn();
+    }
+
+    public void OnTurtorialOreBreak()
+    {
+        turtorial.OnTurtorialOreBreak();
+        //Debug.Log("Damage2");
+       
+
     }
 
 }
