@@ -26,7 +26,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1723785349001233578}
-  m_LocalRotation: {x: 0.12403724, y: 0.949677, z: -0.20113575, w: -0.20560361}
+  m_LocalRotation: {x: 0.12403297, y: 0.949677, z: -0.2011362, w: -0.20560573}
   m_LocalPosition: {x: -88.96, y: 18.93, z: 13.43}
   m_LocalScale: {x: 0.19352344, y: 0.19352344, z: 0.19352344}
   m_ConstrainProportionsScale: 0
@@ -118,7 +118,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &6779043678763157261
 Transform:
   m_ObjectHideFlags: 0
@@ -145,7 +145,7 @@ Light:
   serializedVersion: 10
   m_Type: 2
   m_Shape: 0
-  m_Color: {r: 0.92901134, g: 0, b: 1, a: 1}
+  m_Color: {r: 0.9776915, g: 0.6839622, b: 1, a: 1}
   m_Intensity: 124364490
   m_Range: 14.7
   m_SpotAngle: 30
@@ -219,7 +219,7 @@ MonoBehaviour:
   m_FadeDistance: 10000
   m_VolumetricFadeDistance: 10000
   m_AffectDiffuse: 1
-  m_AffectSpecular: 0
+  m_AffectSpecular: 1
   m_NonLightmappedOnly: 0
   m_ShapeWidth: 0.5
   m_ShapeHeight: 0.5

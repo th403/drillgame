@@ -48,6 +48,7 @@ public class InOutEffectController : MonoBehaviour
         MainGameDataManager.Instance.money.OnValueChange += (oldVal, newVal) =>
         {
             float deltaVal = newVal - oldVal;
+            //if (deltaVal < 0) return;
             MakeEffectOnBar((int)deltaVal);
         };
     }

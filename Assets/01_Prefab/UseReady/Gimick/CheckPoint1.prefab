@@ -5366,6 +5366,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 9062738552141923858, guid: dc58562cd37e7b34ebb6e98bcbaa713d, type: 3}
+      propertyPath: InitialModule.startSize.scalar
+      value: 1.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dc58562cd37e7b34ebb6e98bcbaa713d, type: 3}
 --- !u!1 &872701321458956771 stripped
@@ -5445,4 +5449,4 @@ MonoBehaviour:
   ReviveStartFunds: 10000
   RevivePos: {fileID: 1096691252365148924}
   Value: 200000
-  FundsPerSec: 2500
+  EffectTime: 2

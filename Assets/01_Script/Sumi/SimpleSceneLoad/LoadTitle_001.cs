@@ -14,7 +14,8 @@ public class LoadTitle_001 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(KeyCode.Return))
+        if ((Input.GetKeyDown(KeyCode.Return) || Input.GetKeyUp(KeyCode.JoystickButton1)))
+        //if (Input.GetKey(KeyCode.Return))
         {
             SceneManager.LoadScene("02_Title_Test");
         }

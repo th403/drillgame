@@ -46,8 +46,14 @@ public class IncomeBarController : MonoBehaviour
     //public WLProperty<float> currentMoney=new WLProperty<float>();
     public Vector3 nowNorumaPos;
     Sequence seqNowNoruma;
+    public float currentShowMoney;
 
-    public void InitEvent()
+    private void FixedUpdate()
+    {
+        MoneyDelayChange();
+    }
+
+    public void Init()
     {
         //add event to property 'money'
         MainGameDataManager.Instance.money.OnValueChange += (float oldMoney, float newMoney) =>
@@ -69,6 +75,9 @@ public class IncomeBarController : MonoBehaviour
             //float passMoney = MainGameDataManager.Instance.PassNorumaTarget;
             float passMoney = MainGameDataManager.Instance.GreatestNorumaTarget;
             ChangeMoneyNumber(newMoney, passMoney);
+
+            //set current show money
+            currentShowMoney = 0.1f;
         };
 
         //add event to property 'nowNoruma'
@@ -182,7 +191,17 @@ public class IncomeBarController : MonoBehaviour
         //moneyNumber.DOScale(Vector3.one, 1).SetEase(Ease.OutElastic);
     }
 
-    
+    void MoneyDelayChange()
+    {
+        if(currentShowMoney!=MainGameDataManager.Instance.Money)
+        {
+            //set current show money
+            currentShowMoney = ((MainGameDataManager.Instance.Money-currentShowMoney) * 0.8f + currentShowMoney);
+            float passMoney = MainGameDataManager.Instance.GreatestNorumaTarget;
+            ChangeMoneyNumber(currentShowMoney, passMoney);
+        }
+    }
+
     //for changing money
     public bool AddMoney(float add)
     {
@@ -198,5 +217,9 @@ public class IncomeBarController : MonoBehaviour
     {
         MainGameDataManager.Instance.Money = mny;
         return MainGameDataManager.Instance.Money>0&&MainGameDataManager.Instance.Money< MainGameDataManager.Instance.GreatestNorumaTarget;
+    }
+    public bool IsGameOver()
+    {
+        return currentShowMoney <= 0;
     }
 }

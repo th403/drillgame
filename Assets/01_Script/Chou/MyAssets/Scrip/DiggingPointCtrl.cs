@@ -98,7 +98,7 @@ public class DiggingPointCtrl : MonoBehaviour
         else
         {
             ////‘SŽ©“®////////////////////////////////////////
-            if (Input.GetMouseButton(0))
+            if (Input.GetMouseButton(0) || Input.GetKey(KeyCode.JoystickButton1))
             {
                 if (time >= DiggingCooldown)
                 {
@@ -120,7 +120,7 @@ public class DiggingPointCtrl : MonoBehaviour
             /////////////////////////////////////////////////
 
             ////”¼Ž©“®///////////////////////////////////////
-            if (Input.GetMouseButtonDown(1))
+            else if (Input.GetMouseButtonDown(1))
             {
                 //(Vector3 position, BrushType brush, ActionType action, int textureIndex, float opacity,
                 //float size * ScaleRate, float stalagmiteHeight = 8f, bool stalagmiteUpsideDown = false,

@@ -19,6 +19,7 @@ public class FollowAss : MonoBehaviour
     private float ResetDelay;
     private Vector3 RootCTorayStartPos;
     private bool FPS=false;
+    private float CountRayCheck = 0.0f;
     // Start is called before the first frame update
     void Start()
     {
@@ -88,23 +89,29 @@ public class FollowAss : MonoBehaviour
         Debug.DrawRay(rayStartPos, rayDirection * 100, Color.red);
         if (!FPS)
         {
+            CountRayCheck -= Time.deltaTime;
             if (Physics.Raycast(rayStartPos, rayDirection, out hit))
             {
                 //Debug
                 //HitPoint.transform.position = hit.point;
 
-                if (hit.collider.gameObject.tag == "Terrain" && hit.distance < RootCTorayStartPos.magnitude)
+                if (hit.collider.gameObject.tag == "Terrain" 
+                    && hit.distance < RootCTorayStartPos.magnitude)
                 {
                     float PosAdjustmentRate = 0.95f;
 
                     float r = hit.distance / RootCTorayStartPos.magnitude;
                     RootC.transform.localPosition = new Vector3(0, PlayerLookingAtPointHeight, 0) + RootCTorayStartPos * r * PosAdjustmentRate;
 
+                    CountRayCheck = 2.0f;
                     //RootC.transform.localPosition= new Vector3(0.2f, PlayerLookingAtPointHeight, 0.2f);
                     //FPS = true;
                 }
-                else
+                else if (CountRayCheck <= 0)
                 {
+                    //Debug.Log(hit.collider.gameObject.tag);
+                    //Debug.Log(hit.distance);
+                    //Debug.Log(RootCTorayStartPos.magnitude);
                     RootC.transform.localPosition = RootCTorayStartPos + new Vector3(0, PlayerLookingAtPointHeight, 0);
                     //FPS = false;
                 }
