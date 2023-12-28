@@ -4893,9 +4893,25 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2100000, guid: 0af1ad3bc3a3751408717942029bcbd5, type: 2}
     - target: {fileID: 2436140211251288498, guid: 6844e23a593915d41831765871ea34ac, type: 3}
-      propertyPath: m_Volume
-      value: 0.529
+      propertyPath: Priority
+      value: 143
       objectReference: {fileID: 0}
+    - target: {fileID: 2436140211251288498, guid: 6844e23a593915d41831765871ea34ac, type: 3}
+      propertyPath: m_Volume
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2436140211251288498, guid: 6844e23a593915d41831765871ea34ac, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2436140211251288498, guid: 6844e23a593915d41831765871ea34ac, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: ef51c1441c2624142baa6d0abaca1565, type: 3}
+    - target: {fileID: 2436140211251288498, guid: 6844e23a593915d41831765871ea34ac, type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: -8231922340941597365, guid: 16990643c1bf99d44a46dfae119f4fed, type: 2}
     - target: {fileID: 7159537732293378975, guid: 6844e23a593915d41831765871ea34ac, type: 3}
       propertyPath: m_Name
       value: rock
