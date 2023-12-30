@@ -82,6 +82,10 @@ public class PAUSE_001 : MonoBehaviour
             Debug.Log("aaa");
 
         }
+        if (Input.GetMouseButtonDown(0))
+        {
+            StartCoroutine(DelayedSelection());
+        }
     }
 
     public void OnPausePanel()
@@ -95,6 +99,7 @@ public class PAUSE_001 : MonoBehaviour
         
         Time.timeScale = 0;
         pauseGame = true;
+        ONOPTION = true;
         StartCoroutine(DelayedSelection2());
 
     }

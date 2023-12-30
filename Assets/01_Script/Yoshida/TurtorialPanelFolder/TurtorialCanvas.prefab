@@ -36,6 +36,7 @@ RectTransform:
   - {fileID: 396434076389689801}
   - {fileID: 396434077575572189}
   - {fileID: 396434077033666142}
+  - {fileID: 8994440760744114352}
   - {fileID: 396434076869543514}
   - {fileID: 396434076640670096}
   m_Father: {fileID: 0}
@@ -202,6 +203,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: TurtorialMovePanel
       objectReference: {fileID: 0}
+    - target: {fileID: 3071030859692635542, guid: a88338cc9b690e84d8eede253a9d0c10, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a88338cc9b690e84d8eede253a9d0c10, type: 3}
 --- !u!224 &396434077780973210 stripped
@@ -304,6 +309,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: TutorialCameraPanel
       objectReference: {fileID: 0}
+    - target: {fileID: 3060143123772488403, guid: 731da13f72bffc34f83fbe59c6c3f159, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 731da13f72bffc34f83fbe59c6c3f159, type: 3}
 --- !u!224 &396434076824794513 stripped
@@ -321,6 +330,10 @@ PrefabInstance:
     - target: {fileID: 3786336989545322236, guid: f15f79c9ec4ea0343bfe22ecfc97de22, type: 3}
       propertyPath: m_Name
       value: TurtorialCashdownPanel
+      objectReference: {fileID: 0}
+    - target: {fileID: 3786336989545322236, guid: f15f79c9ec4ea0343bfe22ecfc97de22, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3786336989545322237, guid: f15f79c9ec4ea0343bfe22ecfc97de22, type: 3}
       propertyPath: m_Pivot.x
@@ -413,6 +426,112 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 3786336989545322237, guid: f15f79c9ec4ea0343bfe22ecfc97de22, type: 3}
   m_PrefabInstance: {fileID: 3534111705703726112}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &5213313878870928973
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 396434077421483208}
+    m_Modifications:
+    - target: {fileID: 3786336989545322236, guid: db9d65b81ab0d7c44b8b9f1ae2da61ef, type: 3}
+      propertyPath: m_Name
+      value: TurtorialDorilPanel2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3786336989545322236, guid: db9d65b81ab0d7c44b8b9f1ae2da61ef, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3786336989545322237, guid: db9d65b81ab0d7c44b8b9f1ae2da61ef, type: 3}
+      propertyPath: m_Pivot.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3786336989545322237, guid: db9d65b81ab0d7c44b8b9f1ae2da61ef, type: 3}
+      propertyPath: m_Pivot.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3786336989545322237, guid: db9d65b81ab0d7c44b8b9f1ae2da61ef, type: 3}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3786336989545322237, guid: db9d65b81ab0d7c44b8b9f1ae2da61ef, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3786336989545322237, guid: db9d65b81ab0d7c44b8b9f1ae2da61ef, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3786336989545322237, guid: db9d65b81ab0d7c44b8b9f1ae2da61ef, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3786336989545322237, guid: db9d65b81ab0d7c44b8b9f1ae2da61ef, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3786336989545322237, guid: db9d65b81ab0d7c44b8b9f1ae2da61ef, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3786336989545322237, guid: db9d65b81ab0d7c44b8b9f1ae2da61ef, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3786336989545322237, guid: db9d65b81ab0d7c44b8b9f1ae2da61ef, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3786336989545322237, guid: db9d65b81ab0d7c44b8b9f1ae2da61ef, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3786336989545322237, guid: db9d65b81ab0d7c44b8b9f1ae2da61ef, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3786336989545322237, guid: db9d65b81ab0d7c44b8b9f1ae2da61ef, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3786336989545322237, guid: db9d65b81ab0d7c44b8b9f1ae2da61ef, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3786336989545322237, guid: db9d65b81ab0d7c44b8b9f1ae2da61ef, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3786336989545322237, guid: db9d65b81ab0d7c44b8b9f1ae2da61ef, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3786336989545322237, guid: db9d65b81ab0d7c44b8b9f1ae2da61ef, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3786336989545322237, guid: db9d65b81ab0d7c44b8b9f1ae2da61ef, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3786336989545322237, guid: db9d65b81ab0d7c44b8b9f1ae2da61ef, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3786336989545322237, guid: db9d65b81ab0d7c44b8b9f1ae2da61ef, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3786336989545322237, guid: db9d65b81ab0d7c44b8b9f1ae2da61ef, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: db9d65b81ab0d7c44b8b9f1ae2da61ef, type: 3}
+--- !u!224 &8994440760744114352 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 3786336989545322237, guid: db9d65b81ab0d7c44b8b9f1ae2da61ef, type: 3}
+  m_PrefabInstance: {fileID: 5213313878870928973}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &5624481461834774072
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -430,7 +549,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5444366685855844264, guid: 877ee18db1c50f8449c1ea787ecff097, type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 5444366685855844264, guid: 877ee18db1c50f8449c1ea787ecff097, type: 3}
       propertyPath: m_AnchorMax.x
@@ -508,6 +627,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: TurtorialGoalPanel
       objectReference: {fileID: 0}
+    - target: {fileID: 5444366685855844437, guid: 877ee18db1c50f8449c1ea787ecff097, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 877ee18db1c50f8449c1ea787ecff097, type: 3}
 --- !u!224 &396434076640670096 stripped
@@ -525,6 +648,10 @@ PrefabInstance:
     - target: {fileID: 6735478863616095670, guid: 4946fe46db234ff49a1d080755e7a158, type: 3}
       propertyPath: m_Name
       value: TurtorialGeothermalPanel
+      objectReference: {fileID: 0}
+    - target: {fileID: 6735478863616095670, guid: 4946fe46db234ff49a1d080755e7a158, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6735478863616095671, guid: 4946fe46db234ff49a1d080755e7a158, type: 3}
       propertyPath: m_Pivot.x
@@ -628,6 +755,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: TurtorialDorilPanel
       objectReference: {fileID: 0}
+    - target: {fileID: 7347282756255534717, guid: 579430d0dc0edda43aa1f12adb1b2006, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7347282756255534718, guid: 579430d0dc0edda43aa1f12adb1b2006, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -730,6 +861,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: TurtorialOreBreakPanel
       objectReference: {fileID: 0}
+    - target: {fileID: 8852045958734338629, guid: d7e77505ed7ab194a8464f02a3a2f2fc, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8852045958734338630, guid: d7e77505ed7ab194a8464f02a3a2f2fc, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -740,7 +875,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8852045958734338630, guid: d7e77505ed7ab194a8464f02a3a2f2fc, type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 8852045958734338630, guid: d7e77505ed7ab194a8464f02a3a2f2fc, type: 3}
       propertyPath: m_AnchorMax.x
