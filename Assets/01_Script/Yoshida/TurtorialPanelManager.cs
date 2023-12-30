@@ -13,7 +13,7 @@ public class TurtorialPanelManager : MonoBehaviour
     public TurtorialLaveCtrl tlc;
 
     public GameObject TurtorialCameraPanel, TurtorialMovePanel, TurtorialGeothermalPanel,
-        TurtorialCashdownPanel, TurtorialDorilPanel, TurtorialOreBreakPanel, TurtorialGoalPanel;
+        TurtorialCashdownPanel, TurtorialDorilPanel, TurtorialDorilPanel2, TurtorialOreBreakPanel, TurtorialGoalPanel;
 
     public int FadeTime = 3;
     private bool TurtorialDri = false;
@@ -31,7 +31,7 @@ public class TurtorialPanelManager : MonoBehaviour
             Debug.Log("Damage26");
             if (TurtorialDri == true)
             {
-                Invoke("OnturtorialOreBreak", FadeTime);
+                Invoke("OnTurtorialDoril2", FadeTime);
             }
 
         }
@@ -46,6 +46,7 @@ public class TurtorialPanelManager : MonoBehaviour
         TurtorialGeothermalPanel.SetActive(false);     // TurtorialGeothermalPanelをfalseにする
         TurtorialCashdownPanel.SetActive(false);       // TurtorialCashdownPanelをfalseにする
         TurtorialDorilPanel.SetActive(false);          // TurtorialDorilPanelをfalseにする
+        TurtorialDorilPanel2.SetActive(false);          // TurtorialDorilPanel2をfalseにする
         TurtorialOreBreakPanel.SetActive(false);       // TurtorialOreBreakPanelをfalseにする
         TurtorialGoalPanel.SetActive(false);           // TurtorialGoalPanelをfalseにする
 
@@ -59,6 +60,7 @@ public class TurtorialPanelManager : MonoBehaviour
         TurtorialGeothermalPanel.SetActive(false);     // TurtorialGeothermalPanelをfalseにする
         TurtorialCashdownPanel.SetActive(false);       // TurtorialCashdownPanelをfalseにする
         TurtorialDorilPanel.SetActive(false);          // TurtorialDorilPanelをfalseにする
+        TurtorialDorilPanel2.SetActive(false);          // TurtorialDorilPanel2をfalseにする
         TurtorialOreBreakPanel.SetActive(false);       // TurtorialOreBreakPanelをfalseにする
         TurtorialGoalPanel.SetActive(false);           // TurtorialGoalPanelをfalseにする
     }
@@ -71,6 +73,7 @@ public class TurtorialPanelManager : MonoBehaviour
         TurtorialGeothermalPanel.SetActive(true);     // TurtorialGeothermalPanelをtrueにする
         TurtorialCashdownPanel.SetActive(false);      // TurtorialCashdownPanelをfalseにする
         TurtorialDorilPanel.SetActive(false);         // TurtorialDorilPanelをfalseにする
+        TurtorialDorilPanel2.SetActive(false);          // TurtorialDorilPanel2をfalseにする
         TurtorialOreBreakPanel.SetActive(false);      // TurtorialOreBreakPanelをfalseにする
         TurtorialGoalPanel.SetActive(false);          // TurtorialGoalPanelをfalseにする
 
@@ -83,6 +86,7 @@ public class TurtorialPanelManager : MonoBehaviour
         TurtorialGeothermalPanel.SetActive(false);    // TurtorialGeothermalPanelをfalseにする
         TurtorialCashdownPanel.SetActive(true);       // TurtorialCashdownPanelをtrueにする
         TurtorialDorilPanel.SetActive(false);         // TurtorialDorilPanelをfalseにする
+        TurtorialDorilPanel2.SetActive(false);          // TurtorialDorilPanel2をfalseにする
         TurtorialOreBreakPanel.SetActive(false);      // TurtorialOreBreakPanelをfalseにする
         TurtorialGoalPanel.SetActive(false);          // TurtorialGoalPanelをfalseにする
     }
@@ -94,6 +98,22 @@ public class TurtorialPanelManager : MonoBehaviour
         TurtorialGeothermalPanel.SetActive(false);    // TurtorialGeothermalPanelをfalseにする
         TurtorialCashdownPanel.SetActive(false);      // TurtorialCashdownPanelをfalseにする
         TurtorialDorilPanel.SetActive(true);          // TurtorialDorilPanelをtrueにする
+        TurtorialDorilPanel2.SetActive(false);          // TurtorialDorilPanel2をfalseにする
+        TurtorialOreBreakPanel.SetActive(false);      // TurtorialOreBreakPanelをfalseにする
+        TurtorialGoalPanel.SetActive(false);          // TurtorialGoalPanelをfalseにする
+
+        TurtorialDri = true;
+
+    }
+    //お金チュートリアルを閉じたら(5-2)
+    public void OnTurtorialDoril2()
+    {
+        TurtorialCameraPanel.SetActive(false);        // TurtorialCameraPanelをfalseにする
+        TurtorialMovePanel.SetActive(false);          // TurtorialMovePanelをfalseにする
+        TurtorialGeothermalPanel.SetActive(false);    // TurtorialGeothermalPanelをfalseにする
+        TurtorialCashdownPanel.SetActive(false);      // TurtorialCashdownPanelをfalseにする
+        TurtorialDorilPanel.SetActive(false);          // TurtorialDorilPanelをfalseにする
+        TurtorialDorilPanel2.SetActive(true);          // TurtorialDorilPanel2をtrueにする
         TurtorialOreBreakPanel.SetActive(false);      // TurtorialOreBreakPanelをfalseにする
         TurtorialGoalPanel.SetActive(false);          // TurtorialGoalPanelをfalseにする
 
@@ -101,13 +121,14 @@ public class TurtorialPanelManager : MonoBehaviour
 
     }
     //ドリルチュートリアルが終わったら(6)
-    public void OnturtorialOreBreak()
+    public void OnTurtorialOreBreak()
     {
         TurtorialCameraPanel.SetActive(false);        // TurtorialCameraPanelをfalseにする
         TurtorialMovePanel.SetActive(false);          // TurtorialMovePanelをfalseにする
         TurtorialGeothermalPanel.SetActive(false);    // TurtorialGeothermalPanelをfalseにする
         TurtorialCashdownPanel.SetActive(false);      // TurtorialCashdownPanelをfalseにする
         TurtorialDorilPanel.SetActive(false);         // TurtorialDorilPanelをfalseにする
+        TurtorialDorilPanel2.SetActive(false);          // TurtorialDorilPanel2をfalseにする
         TurtorialOreBreakPanel.SetActive(true);       // TurtorialOreBreakPanelをtrueにする
         TurtorialGoalPanel.SetActive(false);          // TurtorialGoalPanelをfalseにする
     }
@@ -119,6 +140,7 @@ public class TurtorialPanelManager : MonoBehaviour
         TurtorialGeothermalPanel.SetActive(false);    // TurtorialGeothermalPanelをfalseにする
         TurtorialCashdownPanel.SetActive(false);      // TurtorialCashdownPanelをfalseにする
         TurtorialDorilPanel.SetActive(false);         // TurtorialDorilPanelをfalseにする
+        TurtorialDorilPanel2.SetActive(false);          // TurtorialDorilPanel2をfalseにする
         TurtorialOreBreakPanel.SetActive(false);      // TurtorialOreBreakPanelをfalseにする
         TurtorialGoalPanel.SetActive(true);           // TurtorialGoalPanelをtrueにする
     }
