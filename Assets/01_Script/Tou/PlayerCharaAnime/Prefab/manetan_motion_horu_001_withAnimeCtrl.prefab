@@ -1244,6 +1244,7 @@ GameObject:
   - component: {fileID: 6539672453648313532}
   - component: {fileID: 5058625178120427780}
   - component: {fileID: 8140212230355464451}
+  - component: {fileID: 5115706852984865688}
   m_Layer: 0
   m_Name: manetan_motion_horu_001_withAnimeCtrl
   m_TagString: Untagged
@@ -1440,6 +1441,21 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &5115706852984865688
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2043701171166228977}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f902e2dd569bab4c8a2e135711fc1e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DepthMeter: {fileID: 0}
+  Clock: {fileID: 0}
+  IncomeBark: {fileID: 0}
 --- !u!1 &2046654883431966305
 GameObject:
   m_ObjectHideFlags: 0
