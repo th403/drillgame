@@ -5,10 +5,13 @@ using Digger.Modules.Core.Sources;
 using Digger.Modules.Core.Sources.Operations;
 using Unity.Jobs;
 using UnityEngine;
+using UnityEngine.UI;
 
 //namespace Digger.Modules.Runtime.Sources
 public class DiggingPointCtrl : MonoBehaviour
 {
+    public TurtorialPanelManager turtorial;
+
     //public GameObject Camera;
     //public GameObject Player;
     public GameObject Effect;
@@ -24,6 +27,7 @@ public class DiggingPointCtrl : MonoBehaviour
     public float stalagmiteHeight = 8f;
     public bool stalagmiteUpsideDown = false;
     public bool opacityIsTarget = false;
+    public int FadeTime = 3;
 
     //public BrushType brush2;
     //public ActionType action2;
@@ -37,6 +41,7 @@ public class DiggingPointCtrl : MonoBehaviour
     private float ScaleRate = 1;
     private float time = 0;
     private Digger.Modules.Runtime.Sources.DiggerMasterRuntime DMR;
+    private bool TurtorialClick = false;
 
     // Start is called before the first frame update
     void Start()
@@ -108,6 +113,7 @@ public class DiggingPointCtrl : MonoBehaviour
                     if (Effect)
                     {
                         Instantiate(Effect, transform.position, transform.rotation);
+                        TurtorialClick = true;
                     }
                 }
             }
@@ -153,6 +159,14 @@ public class DiggingPointCtrl : MonoBehaviour
             ///////////////////////////////////////////////
         }
 
+        if (TurtorialClick == true)
+        {
+            Invoke("OnTurtorialGoal", FadeTime);
+            //Debug.Log("Damage");
+
+        }
+
+
     }
 
 
@@ -178,6 +192,14 @@ public class DiggingPointCtrl : MonoBehaviour
     {
         DMR.Modify(transform.position, brush, action, textureIndex, strength,
         size * ScaleRate, stalagmiteHeight, stalagmiteUpsideDown, opacityIsTarget);
+    }
+
+    public void OnTurtorialGoal()
+    {
+        turtorial.OnTurtorialGoal();
+        //Debug.Log("Damage2");
+       
+
     }
 
 }

@@ -92,4 +92,8 @@ public class CharaAnimeController : MonoBehaviour
     {
         anim.SetBool("Dig", false);
     }
+    public void callshow()
+    {
+        ResultPanel2Controller.Instance.StartShowResult();
+    }
 }

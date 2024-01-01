@@ -1660,6 +1660,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 143790838587420030}
     m_Modifications:
+    - target: {fileID: 711223389626859548, guid: 65270a0bf2d13254eb682518f7a7c8d6, type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 4063
+      objectReference: {fileID: 0}
     - target: {fileID: 1663939116600519499, guid: 65270a0bf2d13254eb682518f7a7c8d6, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -1703,6 +1707,34 @@ PrefabInstance:
     - target: {fileID: 1663939116600519499, guid: 65270a0bf2d13254eb682518f7a7c8d6, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1826654445764602518, guid: 65270a0bf2d13254eb682518f7a7c8d6, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -2.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1826654445764602518, guid: 65270a0bf2d13254eb682518f7a7c8d6, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1826654445764602518, guid: 65270a0bf2d13254eb682518f7a7c8d6, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.96730083
+      objectReference: {fileID: 0}
+    - target: {fileID: 1826654445764602518, guid: 65270a0bf2d13254eb682518f7a7c8d6, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1826654445764602518, guid: 65270a0bf2d13254eb682518f7a7c8d6, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.25363207
+      objectReference: {fileID: 0}
+    - target: {fileID: 1826654445764602518, guid: 65270a0bf2d13254eb682518f7a7c8d6, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1826654445764602518, guid: 65270a0bf2d13254eb682518f7a7c8d6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -29.385
       objectReference: {fileID: 0}
     - target: {fileID: 1971091385045785504, guid: 65270a0bf2d13254eb682518f7a7c8d6, type: 3}
       propertyPath: m_RenderingLayerMask
@@ -1797,10 +1829,6 @@ PrefabInstance:
     - target: {fileID: 7165886148555578397, guid: 163988c60c91811499641d27e68716ce, type: 3}
       propertyPath: DiggerMasterRuntimeObj
       value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 8300534901846344833, guid: 163988c60c91811499641d27e68716ce, type: 3}
-      propertyPath: m_Enabled
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9082303489091384382, guid: 163988c60c91811499641d27e68716ce, type: 3}
       propertyPath: m_Name

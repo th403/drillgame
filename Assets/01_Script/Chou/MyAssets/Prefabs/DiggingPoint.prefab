@@ -128,7 +128,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9082303489091384382}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -188,6 +188,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5edd839e848a8af48a78774175221521, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  turtorial: {fileID: 0}
   Effect: {fileID: 0}
   DiggerMasterRuntimeObj: {fileID: 0}
   DiggingCooldown: 1
@@ -200,6 +201,7 @@ MonoBehaviour:
   stalagmiteHeight: 8
   stalagmiteUpsideDown: 0
   opacityIsTarget: 0
+  FadeTime: 3
 --- !u!1001 &8346582074583094674
 PrefabInstance:
   m_ObjectHideFlags: 0

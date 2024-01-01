@@ -18,4 +18,8 @@ public class Test_ResultPanel2 : MonoBehaviour
             ResultPanel2Controller.Instance.StartShowResult();
         }
     }
+    public void callshow()
+    {
+        ResultPanel2Controller.Instance.StartShowResult();
+    }
 }
