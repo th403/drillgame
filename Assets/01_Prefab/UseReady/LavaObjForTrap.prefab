@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 8356911061323357451}
   - component: {fileID: 6092743168800833107}
   - component: {fileID: 8130281913185695574}
+  - component: {fileID: -4191429926873722077}
   m_Layer: 3
   m_Name: LavaObjForTrap
   m_TagString: Untagged
@@ -119,6 +120,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Effect: {fileID: 2158408890764623839, guid: f2aa94ff6a2e0c644b6e9fc3bb59da99, type: 3}
   Damage: 3000
+  MinusEffect: {fileID: 8690043552863843515, guid: 82d482e310e6eb6499e634e4233b8ba2, type: 3}
 --- !u!135 &8130281913185695574
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -128,6 +130,19 @@ SphereCollider:
   m_GameObject: {fileID: 1484674492617232371}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 1.3
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!135 &-4191429926873722077
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1484674492617232371}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.7

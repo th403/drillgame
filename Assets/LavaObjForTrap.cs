@@ -6,6 +6,7 @@ public class LavaObjForTrap : MonoBehaviour
 {
     public GameObject Effect;
     public int Damage=3000;
+    public GameObject MinusEffect;
 
     // Start is called before the first frame update
     void Start()
@@ -31,11 +32,15 @@ public class LavaObjForTrap : MonoBehaviour
         }
         if (other.tag == "Player")
         {
-            if (Effect)
+            if (Effect && MinusEffect)
             {
-                GameObject clone = Instantiate(Effect, transform.position, transform.rotation);
-                clone.transform.localScale = transform.localScale;
+                GameObject effectClone = Instantiate(Effect, transform.position, transform.rotation);
+                effectClone.transform.localScale = transform.localScale;
+
+                GameObject minusEffectClone = Instantiate(MinusEffect, transform.position, transform.rotation);
+                //minusEffectClone.transform.localScale = transform.localScale;
             }
+
             EventCtrl.Instance.PlayerGetMoney(-Damage);
             Destroy(this.gameObject);
         }
