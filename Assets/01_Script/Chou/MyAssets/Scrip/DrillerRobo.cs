@@ -67,7 +67,6 @@ public class DrillerRobo : MonoBehaviour
                 DiggingSpeed += Acceleration * Time.deltaTime;
             }
             else if (DiggingSpeed > DiggingSpeedMax)
-
             {
                 DiggingSpeed -= Acceleration * Time.deltaTime;
             }
