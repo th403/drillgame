@@ -53,7 +53,7 @@ public class GameOverUI : MonoBehaviour
 
         //}
 
-        if (Input.GetKeyDown(KeyCode.S) || (CountDelay == DelayMax && dy > 0.5f))
+        if (Input.GetKeyDown(KeyCode.S) || (CountDelay == DelayMax && dy < -0.5f))
         {
             SoundManger.Instance.PlaySEUISelect();
 
@@ -63,7 +63,7 @@ public class GameOverUI : MonoBehaviour
                 Chose = 1;
             }
         }
-        else if (Input.GetKeyDown(KeyCode.W) || (CountDelay == DelayMax && dy < -0.5f))
+        else if (Input.GetKeyDown(KeyCode.W) || (CountDelay == DelayMax && dy > 0.5f))
         {
             SoundManger.Instance.PlaySEUISelect();
 
