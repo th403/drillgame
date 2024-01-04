@@ -60,7 +60,7 @@ public class WLPlayerControl : MonoBehaviour
         //get input
         inputHV = new Vector2(
             Input.GetAxis("Horizontal"),
-            Input.GetAxis("Vertical"));
+            -Input.GetAxis("Vertical"));
 
         //check if need move
         if (inputHV == Vector2.zero)
