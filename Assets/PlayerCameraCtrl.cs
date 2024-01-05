@@ -13,10 +13,12 @@ public class PlayerCameraCtrl : MonoBehaviour
     private Vector3 TargetPos;
     private FollowAss followAss;
     private PlayerCtrl2 playerCtrl2;
+    private TurtorialPlayerCtrl2 TurtorialplayerCtrl2;
     // Start is called before the first frame update
     void Start()
     {
         playerCtrl2= Player.GetComponentInParent<PlayerCtrl2>();
+        TurtorialplayerCtrl2 = Player.GetComponentInParent<TurtorialPlayerCtrl2>();
         followAss = CameraRoot.GetComponentInParent<FollowAss>();
         TargetPos = CameraRoot.transform.position;
         if(MinDiatancef<=0)

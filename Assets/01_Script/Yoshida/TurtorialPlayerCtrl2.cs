@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using StarterAssets;
 using UnityEngine.UI;
+
 public class TurtorialPlayerCtrl2 : MonoBehaviour
 {
     private static TurtorialPlayerCtrl2 instance;
@@ -34,7 +35,6 @@ public class TurtorialPlayerCtrl2 : MonoBehaviour
     public float ChargeTimeMax = 1.5f;
     public int OneChargePrice = 5000;
     public float xzDrag = 3.5f;
-    //public float Drag = 0.02f;
     public float AngularDrag = 3.5f;
     public int PricePerMeter = 100;
     public CharacterController characterController;
@@ -62,7 +62,7 @@ public class TurtorialPlayerCtrl2 : MonoBehaviour
     private Vector3 DeltaMovement;
     private Vector3 DeltaSpeed;
     private Vector3 RotationEulerAngleVelocity;
-
+    private Vector3 WarpPosition = Vector3.zero;
     private bool TurtorialCamera = false;
     private bool CameraOn = false;
 
@@ -74,7 +74,7 @@ public class TurtorialPlayerCtrl2 : MonoBehaviour
         //UIFunds = FundsText.GetComponent<UIFundsCtrl>();
         //LastFundsCheckPos = transform.position;
         DeltaSpeed = new Vector3(0, 0, 0);
-        DeltaMovement = new Vector3(0, -9.8f * Time.deltaTime, 0);
+        DeltaMovement = new Vector3(0, 0, 0);
         DeltaRotation = new Vector3(0, 0, 0);
         RotationEulerAngleVelocity = new Vector3(0, PlayerRotationSpeed, 0);
         //CharaAnimeController.Instance.StartIdle();
@@ -116,34 +116,31 @@ public class TurtorialPlayerCtrl2 : MonoBehaviour
 
             //à⁄ìÆäµê´ï€óØ
             DeltaSpeed *= 0.75f;
-            //DeltaMovement *= (0.75f);
+            
             DeltaMovement += DeltaSpeed * Time.deltaTime;
             characterController.Move(DeltaMovement);
             DeltaMovement = new Vector3(0, 0, 0);
 
             return;
         }
-
-
         //Move
-
         //DeltaMovement *= (1 - Drag);
 
         if (characterController.isGrounded)
         {
             if (InTheAir)
             {
-                //CreateHitGroundEffect(RunningEffectPosObj.transform.position);
+                CreateHitGroundEffect(RunningEffectPosObj.transform.position);
                 InTheAir = false;
             }
 
-            if (DeltaSpeed.y < -0.001f)
+            if (DeltaSpeed.y < -0.01f)
             {
-                DeltaSpeed.y = -0.001f;
+                DeltaSpeed.y = -0.01f;
             }
 
             if (Moving)
-                //CreateRunningEffect(RunningEffectPosObj.transform.position);
+                CreateRunningEffect(RunningEffectPosObj.transform.position);
 
             //Jump
             if (CanJump && Input.GetKeyDown(KeyCode.J))
@@ -155,7 +152,7 @@ public class TurtorialPlayerCtrl2 : MonoBehaviour
         else
         {
             InTheAir = true;
-            DeltaSpeed.y += (-15f * Time.deltaTime);
+            DeltaSpeed.y += (-10f * Time.deltaTime);
         }
 
 
@@ -204,34 +201,25 @@ public class TurtorialPlayerCtrl2 : MonoBehaviour
             {
                 //ChargeRate = ChargeTime / ChargeTimeMax;
                 float MovingDistance = MovingDistanceMin + (MovingDistanceMax - MovingDistanceMin) * ChargeRate;
+
                 ChargeTime = 0;
+
                 //if (UIFunds.AddFunds((int)(-PricePerMeter * MovingDistance)))
                 {
                     EventCtrl.Instance.PlayerGetMoney(-OneChargePrice);
+
                     MovingTime = MovingTimeMin + (MovingTimeMax - MovingTimeMin) * ChargeRate;
                     MovingSpeed = MovingDistance / MovingTime;
                     CharaAnimeController.Instance.StartRun();
                     Moving = true;
                 }
 
+                //Safity
+                //DeltaMovement.y = 0.001f;
+
             }
         }
-            
 
-        //if (Moving)
-        //{
-        //    MovingTime -= Time.deltaTime;
-
-        //    DeltaMovement = transform.forward * MovingSpeed * Time.deltaTime;
-
-
-        //    if (MovingTime <= 0)
-        //    {
-        //        Moving = false;
-        //        MovingSpeed = 0;
-        //        CharaAnimeController.Instance.StartIdle();
-        //    }
-        //}
         if (MovingTime > 0)
         {
             MovingTime -= Time.deltaTime;
@@ -250,18 +238,6 @@ public class TurtorialPlayerCtrl2 : MonoBehaviour
 
         }
 
-        ////gravity
-        //if (characterController.isGrounded && DeltaMovement.y < 0)
-        //{
-        //    DeltaMovement.y = 0;
-        //}
-        //else
-        //{
-        //    DeltaMovement.y += -9.8f * Time.deltaTime;
-        //}
-
-        //characterController.Move(DeltaMovement);
-
         if (!InTheAir)
         {
             DeltaSpeed.x *= (1 - xzDrag * Time.deltaTime);
@@ -269,12 +245,14 @@ public class TurtorialPlayerCtrl2 : MonoBehaviour
         }
 
         DeltaMovement += DeltaSpeed * Time.deltaTime;
-        characterController.Move(DeltaMovement);
+        //if (WarpPosition == Vector3.zero)
+        //{
+        //    characterController.Move(DeltaMovement);
+        //}
         DeltaMovement = new Vector3(0, 0, 0);
         //Debug.Log(DeltaSpeed);
 
         //rotate
-        //DeltaRotation *= (1 - AngularDrag);
         DeltaRotation *= (1 - AngularDrag * Time.deltaTime);
 
         if (DeltaRotation.y < 1 && DeltaRotation.y > -1)
@@ -288,12 +266,7 @@ public class TurtorialPlayerCtrl2 : MonoBehaviour
 
             Rotating = true;
 
-            if (TurtorialCamera == false)
-            {
-                TurtorialCamera = true;
-                CameraOn = true;
 
-            }
         }
 
         if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.Joystick1Button5))
@@ -310,6 +283,25 @@ public class TurtorialPlayerCtrl2 : MonoBehaviour
             }
 
         }
+
+        //if ((Input.GetKey(KeyCode.W) || Input.GetAxis("Vertical") > 1.0f))
+        //{
+        //    if (TurtorialCamera == false)
+        //    {
+        //        TurtorialCamera = true;
+        //        CameraOn = true;
+
+        //    }
+        //}
+        //else if (Input.GetKey(KeyCode.S) || Input.GetAxis("Vertical") < -1.0f)
+        //{
+        //    if (TurtorialCamera == false)
+        //    {
+        //        TurtorialCamera = true;
+        //        CameraOn = true;
+
+        //    }
+        //}
 
         float rotationY = Input.GetAxis("Horizontal");
         if (rotationY > 1 || rotationY < -1)
@@ -371,6 +363,7 @@ public class TurtorialPlayerCtrl2 : MonoBehaviour
     {
         return DeltaSpeed;
     }
+
     public void PlayerGetLava()
     {
         FreezingTime = 2.0f;
@@ -378,14 +371,12 @@ public class TurtorialPlayerCtrl2 : MonoBehaviour
         //reset
         MovingTime = 0;
         MovingSpeed = 0;
-        //Moving = false;
-        
-
         DeltaRotation = new Vector3(0, 0, 0);
 
         //ÉAÉjÉÅ
         CharaAnimeController.Instance.StartStick();
         SoundManger.Instance.PlaySESetPipe();
+
 
     }
     public void PlayerClearPerform()
@@ -401,12 +392,14 @@ public class TurtorialPlayerCtrl2 : MonoBehaviour
         ClearPerformController.Instance.StartPerform();
         SoundManger.Instance.PlaySESetPipe();
     }
+
     public bool CheckCanUseDriller()
     {
         if (Moving || FreezingTime > 0 || ChargeRate > 0.1f)
         {
             return false;
         }
+
         return CanUseDriller;
     }
 
@@ -415,6 +408,13 @@ public class TurtorialPlayerCtrl2 : MonoBehaviour
         if (other.tag == "NoDrillerZone")
         {
             CanUseDriller = false;
+        }
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.tag == "NoDrillerZone")
+        {
+            CanUseDriller = true;
         }
     }
     public void CreateRunningEffect(Vector3 pos)
@@ -426,14 +426,6 @@ public class TurtorialPlayerCtrl2 : MonoBehaviour
         Instantiate(HitGroundEffect, pos, transform.rotation);
         SoundManger.Instance.PlaySEHitGroundSE();
     }
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.tag == "NoDrillerZone")
-        {
-            CanUseDriller = true;
-        }
-    }
-
     private void Oncamera()
     {
         turtorial.OnTurtorialMove();

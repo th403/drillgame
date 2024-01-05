@@ -33,7 +33,13 @@ public class CameraCtrl : MonoBehaviour
     private UIFundsCtrl UIFunds;
     private UIDrillerCtrl UIDrillers;
     private FadeInEffectCtrl fadeInEffectCtrl;
-    private bool TurtorialDril2 = false;
+    private bool turtorialDril2 = false;
+
+    public bool TurtorialDril2
+    {
+        get { return turtorialDril2; }
+        set { turtorialDril2 = value; }
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -77,9 +83,11 @@ public class CameraCtrl : MonoBehaviour
         }
         if (TurtorialDril2 == true)
         {
-            Invoke("OnTurtorialOreBreak", FadeTime);
-            //Debug.Log("Damage");
-
+            if (turtorial.TurtorialDri)
+            {
+                Invoke("OnTurtorialDoril", FadeTime);
+                //Debug.Log("Damage");
+            }
         }
     }
 
@@ -98,11 +106,12 @@ public class CameraCtrl : MonoBehaviour
         fadeInEffectCtrl.StartFadeIn();
     }
 
-    public void OnTurtorialOreBreak()
+    public void OnTurtorialDoril()
     {
-        turtorial.OnTurtorialOreBreak();
+        turtorial.OnTurtorialDoril();
         //Debug.Log("Damage2");
-       
+        Invoke("OnTurtorialOreBreak", TakeOutDrillerDelay + fadeInEffectCtrl.Life);
+
 
     }
 

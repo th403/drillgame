@@ -79,11 +79,11 @@ public class TurtorialLaveCtrl : MonoBehaviour
     {
         turtorial.OnturtorialCashdown();
         
-        Invoke("OnturtorialCashdown", FadeTime2);
+        //Invoke("OnturtorialCashdown", FadeTime2);
     }
 
-    private void OnturtorialCashdown()
-    {
-        turtorial.OnTurtorialDoril();
-    }
+    //private void OnturtorialCashdown()
+    //{
+    //    turtorial.OnTurtorialDoril();
+    //}
 }
