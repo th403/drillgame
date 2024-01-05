@@ -15,6 +15,7 @@ public class DiggingPointCtrl : MonoBehaviour
     //public GameObject Camera;
     //public GameObject Player;
     public GameObject Effect;
+    public GameObject DigArea;
     //public GameObject DirtAndSpace;
     public GameObject DiggerMasterRuntimeObj;
     public float DiggingCooldown = 0.1f;
@@ -115,6 +116,11 @@ public class DiggingPointCtrl : MonoBehaviour
                         Instantiate(Effect, transform.position, transform.rotation);
                         TurtorialClick = true;
                     }
+                    if (DigArea)
+                    {
+                        Instantiate(DigArea, transform.position, transform.rotation);
+                    }
+                    
                 }
             }
             /////////////////////////////////////////////////
@@ -131,6 +137,10 @@ public class DiggingPointCtrl : MonoBehaviour
                 if (Effect)
                 {
                     Instantiate(Effect, transform.position, transform.rotation);
+                }
+                if (DigArea)
+                {
+                    Instantiate(DigArea, transform.position, transform.rotation);
                 }
 
             }

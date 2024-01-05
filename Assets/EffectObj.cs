@@ -5,6 +5,8 @@ using UnityEngine;
 public class EffectObj : MonoBehaviour
 {
     public GameObject Effect;
+    public bool ReactToDriller = true;
+    public bool ReactToPlayer = true;
 
     // Start is called before the first frame update
     void Start()
@@ -21,7 +23,7 @@ public class EffectObj : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         //if (other.tag == "Driller"&& Effect)
-        if ((other.tag == "Driller" || other.tag == "Player") && Effect)
+        if (((other.tag == "Driller"&& ReactToDriller) || (other.tag == "Player"&& ReactToPlayer)) && Effect)
         {
             Instantiate(Effect, transform.position, transform.rotation);
             Destroy(this.gameObject);

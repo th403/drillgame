@@ -51,6 +51,7 @@ public class BigGold : MonoBehaviour
                 gold.GetComponent<Rigidbody>().useGravity = true;
                 gold.GetComponent<Rigidbody>().constraints = 0;
                 gold.GetComponent<Rigidbody>().AddForce(randV, ForceMode.VelocityChange);
+                gold.GetComponent<EffectObj>().ReactToDriller=false;
 
             }
             Destroy(this.gameObject);
