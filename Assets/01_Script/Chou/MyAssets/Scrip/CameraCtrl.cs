@@ -9,7 +9,7 @@ using UnityEngine.UI;
 
 public class CameraCtrl : MonoBehaviour
 {
-    public TurtorialPanelManager turtorial;
+    //public TurtorialPanelManager turtorial;
 
     public Camera camera_Player;
     public Camera camera_Driller;
@@ -22,7 +22,7 @@ public class CameraCtrl : MonoBehaviour
     public float DrillerOutImpactSize = 2;
     //public float DrillerDistanceToPlayer = 1.0f;
     public float TakeOutDrillerDelay = 2.0f;
-    public int FadeTime = 3;
+    //public int FadeTime = 3;
 
     private DrillerRobo drillerRobo;
 
@@ -69,7 +69,7 @@ public class CameraCtrl : MonoBehaviour
                 Invoke("StartFadeIn", TakeOutDrillerDelay);
                 Invoke("ChangeCamera", TakeOutDrillerDelay + fadeInEffectCtrl.Life);
 
-                TurtorialDril2 = true;
+               // TurtorialDril2 = true;
 
 
 
@@ -81,14 +81,14 @@ public class CameraCtrl : MonoBehaviour
 
             }
         }
-        if (TurtorialDril2 == true)
-        {
-            if (turtorial.TurtorialDri)
-            {
-                Invoke("OnTurtorialDoril", FadeTime);
-                //Debug.Log("Damage");
-            }
-        }
+        //if (TurtorialDril2 == true)
+        //{
+        //    if (turtorial.TurtorialDri)
+        //    {
+        //        Invoke("OnTurtorialDoril", FadeTime);
+        //        //Debug.Log("Damage");
+        //    }
+        //}
     }
 
     public void ChangeCamera()
@@ -106,14 +106,14 @@ public class CameraCtrl : MonoBehaviour
         fadeInEffectCtrl.StartFadeIn();
     }
 
-    public void OnTurtorialDoril()
-    {
-        turtorial.OnTurtorialDoril();
-        //Debug.Log("Damage2");
-        Invoke("OnTurtorialOreBreak", TakeOutDrillerDelay + fadeInEffectCtrl.Life);
+    //public void OnTurtorialDoril()
+    //{
+    //    turtorial.OnTurtorialDoril();
+    //    //Debug.Log("Damage2");
+    //    Invoke("OnTurtorialOreBreak", TakeOutDrillerDelay + fadeInEffectCtrl.Life);
 
 
-    }
+    //}
 
 }
 
